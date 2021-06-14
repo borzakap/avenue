@@ -17,7 +17,7 @@ class LocalizationFilter implements FilterInterface {
     public function before(RequestInterface $request, $params = null) {
 
         // Make sure this isn't admin area
-        if (url_is('console*') || url_is('api*') || url_is('login') || url_is('logout')) {
+        if (url_is('console*') || url_is('api*') || url_is('login')) {
             return;
         }
 
