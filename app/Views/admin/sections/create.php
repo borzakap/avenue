@@ -2,7 +2,7 @@
 
 <?= $this->section('pagecss') ?>
     <!-- Custom css for sceditor-->
-    <link href="/admin/vendor/sceditor/minified/themes/default.min.css" rel="stylesheet">
+    <link href="/admin/modules/sceditor/minified/themes/default.min.css" rel="stylesheet">
 <?= $this->endSection() ?>
 
 <?= $this->section('main') ?>
@@ -35,7 +35,7 @@
 
 <?= $this->section('pagescript') ?>
         <!-- Custom scripts for sceditor-->
-        <script src="/admin/vendor/sceditor/minified/sceditor.min.js"></script>
-        <script src="/admin/vendor/sceditor/minified/formats/xhtml.js"></script>
+        <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
+        <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
 
 <?= $this->endSection() ?>
