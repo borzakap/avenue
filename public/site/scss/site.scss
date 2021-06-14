@@ -1,0 +1,26 @@
+// import variables overide bootstrap 
+@import "variables.scss";
+
+// import bootstrap
+@import "../modules/bootstrap/scss/bootstrap.scss";
+
+// general styling
+@import "general.scss";
+// paddings
+@import "paddings.scss";
+// margins
+@import "margins.scss";
+// gups
+@import "gups.scss";
+// width
+@import "width.scss";
+// crossborwser
+@import "crossborwser.scss";
+// header
+@import "header.scss";
+// contactform
+@import "contactform.scss";
+// style
+@import "style.scss";
+// responsive
+@import "responsive.scss";

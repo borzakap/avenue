@@ -1,0 +1,36 @@
+/*=== Cross Browser Compatibility ===*/
+
+i, a, img, input, button, textarea, :before, :after, label, span, .proj-info, .toggle-item > h4, .serv-box-inner > *, .rsnp-mnu, .sticky-menu {
+    -webkit-transition: var(--transition2);
+    -ms-transition: var(--transition2);
+    -o-transition: var(--transition2);
+    transition: var(--transition2);
+}
+
+nav ul li, .team-social, .shop-img > a {
+    -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1);
+
+    /* older webkit */
+    -webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* easeOutBack */
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+
+    /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* easeOutBack */
+}
+
+a i, button i {
+    -webkit-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}

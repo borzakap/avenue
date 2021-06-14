@@ -1,0 +1,44 @@
+.contact-form {
+    label {
+        font-size: 14px;
+        color: #777;
+        text-align: initial;
+        margin-bottom: 0;
+
+        + {
+            input, textarea {
+                margin-top: 14px;
+            }
+        }
+    }
+
+    input {
+        width: 100%;
+        border: 1px solid $gray-300;
+        height: 2.1875rem;
+        margin-bottom: 1.5625rem;
+        padding: 10px 1.25rem;
+        font-size: 14px;
+        color: #777;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    textarea {
+        width: 100%;
+        border: 1px solid $gray-300;
+        height: 1.1875rem;
+        margin-bottom: 1.5625rem;
+        padding: 10px 1.25rem;
+        font-size: 14px;
+        color: #777;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        height: 12.5rem;
+        padding: 1.25rem;
+    }
+
+    button {
+        margin-top: 0rem;
+    }
+}

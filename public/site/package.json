@@ -1,0 +1,34 @@
+{
+    "name": "site",
+    "version": "1.0.0",
+    "description": "site styles and js",
+    "main": "index.js",
+    "scripts": {
+        "test": "test"
+    },
+    "keywords": [
+        "idilika",
+        "avenue"
+    ],
+    "author": "borzakap",
+    "license": "MIT",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.13",
+        "bootstrap": "^4.6",
+        "jquery": "^3.6.0",
+        "slick-carousel": "^1.8.1"
+    },
+    "devDependencies": {
+        "browser-sync": "2.26.14",
+        "del": "6.0.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^5.0.0",
+        "gulp-clean-css": "4.3.0",
+        "gulp-header": "2.0.9",
+        "gulp-plumber": "^1.2.1",
+        "gulp-rename": "2.0.0",
+        "gulp-sass": "4.1.0",
+        "gulp-uglify": "3.0.2",
+        "merge-stream": "2.0.0"
+    }
+}

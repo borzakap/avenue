@@ -1,0 +1,102 @@
+/*=== Column Gap ===*/
+
+.mrg {
+    margin: 0;
+
+    div[class^="col"] {
+        padding: 0;
+    }
+}
+
+.mrg2 {
+    margin: 0 -1px;
+
+    div[class^="col"] {
+        padding: 0 1px;
+    }
+}
+
+.mrg5 {
+    margin: 0 -0.15625rem;
+
+    div[class^="col"] {
+        padding: 0 0.15625rem;
+    }
+}
+
+.mrg6 {
+    margin: 0 -0.1875rem;
+
+    div[class^="col"] {
+        padding: 0 0.1875rem;
+    }
+}
+
+.mrg10 {
+    margin: 0 -0.3125rem;
+
+    div[class^="col"] {
+        padding: 0 0.3125rem;
+    }
+}
+
+.mrg15 {
+    margin: 0 -0.46875rem;
+
+    div[class^="col"] {
+        padding: 0 0.46875rem;
+    }
+}
+
+.mrg20 {
+    margin: 0 -0.625rem;
+
+    div[class^="col"] {
+        padding: 0 0.625rem;
+    }
+}
+
+.mrg40 {
+    margin: 0 -1.25rem;
+
+    div[class^="col"] {
+        padding: 0 1.25rem;
+    }
+}
+
+.mrg45 {
+    margin: 0 -1.40625rem;
+
+    div[class^="col"] {
+        padding: 0 1.40625rem;
+    }
+}
+
+.mrg50 {
+    margin: 0 -1.5625rem;
+
+    div[class^="col"] {
+        padding: 0 1.5625rem;
+    }
+}
+
+.mrg60 {
+    margin: 0 -1.875rem;
+
+    div[class^="col"] {
+        padding: 0 1.875rem;
+    }
+}
+
+.mrg70 {
+    margin: 0 -2.1875rem;
+
+    div[class^="col"] {
+        padding: 0 2.1875rem;
+    }
+}
+
+.slick-slide div[class^="col"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+}

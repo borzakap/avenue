@@ -1,0 +1,124 @@
+/*=== General Styling ===*/
+
+body, html {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    // for privent scrolling if modal is open
+    &.modal-open{
+        height: 100vh;
+        overflow-y: hidden;
+        padding-right: 15px; /* Avoid width reflow */
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Roboto;
+    color: #222;
+    font-weight: 600;
+}
+
+p {
+    font-family: Roboto;
+    color: #777777;
+    line-height: 1.5rem;
+    font-size: .9rem;
+}
+
+ul li, ol li {
+    font-family: Roboto;
+    color: #777777;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+}
+
+a {
+    color: inherit;
+
+    &:hover, &:focus {
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+ins {
+    text-decoration: none;
+    outline: none;
+}
+
+input, textarea, select {
+    border: 0;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+}
+
+input[type="submit"], .fileContainer {
+    cursor: pointer;
+}
+
+input {
+    &[type="file"] {
+        cursor: pointer;
+    }
+
+    &:focus {
+        border-color: transparent;
+        outline: none !important;
+        -webkit-box-shadow: none !important;
+        -ms-box-shadow: none !important;
+        -o-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+}
+
+textarea:focus, select:focus, button:focus, a:focus, .form-wrp fieldset p a:focus, .page-link:focus {
+    border-color: transparent;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn {
+    &.focus, &:focus {
+        border-color: transparent;
+        outline: none !important;
+        -webkit-box-shadow: none !important;
+        -ms-box-shadow: none !important;
+        -o-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    border-color: transparent;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+textarea {
+    resize: none;
+}
+
+main, section, footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+}

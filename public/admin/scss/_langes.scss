@@ -1,0 +1,11 @@
+/*
+    Created on : 21 мая 2021 г., 17:09:37
+    Author     : alexey
+*/
+
+.languages-variants{
+    display: none;
+    &.active{
+        display: block;
+    }
+}
