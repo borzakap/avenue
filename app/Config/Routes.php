@@ -35,7 +35,7 @@ $routes->get('{locale}', 'Pages::index');
 $routes->get('{locale}/contact', 'Pages::contact');
 
 // admin
-$routes->group('admin', function($routes){
+$routes->group('console', function($routes){
     // residentials
     $routes->group('residentials', function($routes){
         $routes->add('', 'Admin\ResidentialsController::list', ['as' => 'residentials']);
