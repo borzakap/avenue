@@ -10,9 +10,9 @@ class PagesTranslations extends Migration {
         // residential translations
         $this->forge->addField([
             'id' => ['type' => 'int', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'slug' => ['type' => 'varchar', 'constraint' => 255, 'null' => false],
+            'slug' => ['type' => 'varchar', 'constraint' => 20, 'null' => false],
             'language' => ['type' => 'varchar', 'constraint' => 2, 'null' => false],
-            'code' => ['type' => 'varchar', 'constraint' => 255, 'null' => false],
+            'code' => ['type' => 'varchar', 'constraint' => 50, 'null' => false],
             'text' => ['type' => 'text', 'null' => true],
             'created_at' => ['type' => 'datetime', 'null' => true],
             'updated_at' => ['type' => 'datetime', 'null' => true],
