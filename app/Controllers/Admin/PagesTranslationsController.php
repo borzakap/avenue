@@ -18,6 +18,7 @@ class PagesTranslationsController extends BaseController{
     protected $pages = [
         'home',
         'contact',
+        'common',
     ];
 
     public function update(string $slug){

@@ -30,8 +30,8 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
-// admin
-$routes->group('console', ['filter' => 'role:admin,manager'], function($routes){
+// admin ['filter' => 'role:superadmin,moderator,manager'], 
+$routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_head,owner'], function($routes){
     // console dashboard
     $routes->add('/', 'Admin\ResidentialsController::list', ['as' => 'dashboard']);
     // residentials
@@ -54,6 +54,11 @@ $routes->group('console', ['filter' => 'role:admin,manager'], function($routes){
     $routes->group('requests', function($routes){
         $routes->add('', 'Admin\ClientsRequestsController::list', ['as' => 'requests']);
     });
+    // users
+    $routes->group('users', function($routes){
+        $routes->add('', 'Admin\UsersController::list', ['as' => 'users']);
+    });
+    
 });
 
 

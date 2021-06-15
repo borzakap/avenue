@@ -24,28 +24,36 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        <?=lang('Sidebar.Residentials.SectionHeading') ?>
-    </div>
-
-    <!-- Nav Item - Fasebook -->
+    <!-- Nav Item - Residential -->
     <li class="nav-item<?php if(in_array($current_url->getSegment(2), ['residentials', 'sections', 'layouts', 'flats'])) echo ' active' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResidentials" aria-expanded="true" aria-controls="collapseResidentials">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-building"></i>
             <span><?=lang('Sidebar.Residentials.BlockHeading') ?></span>
         </a>
         <div id="collapseResidentials" class="collapse<?php if(in_array($current_url->getSegment(2), ['residentials', 'sections', 'layouts', 'flats'])) echo ' show' ?>" aria-labelledby="headingResidentials" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header"><span><?=lang('Sidebar.Residentials.BlockHeading') ?></h6>
-                <a class="collapse-item<?php if($current_url->getSegment(2) == 'residentials') echo ' active' ?>" href="<?= route_to('residentials') ?>"><?=lang('Sidebar.Residentials.Residentials') ?></a>
-                <a class="collapse-item<?php if($current_url->getSegment(2) == 'sections') echo ' active' ?>" href="<?= route_to('sections') ?>"><?=lang('Sidebar.Residentials.Sections') ?></a>
-                <a class="collapse-item<?php if($current_url->getSegment(2) == 'layouts') echo ' active' ?>" href="<?= route_to('layouts') ?>"><?=lang('Sidebar.Residentials.Layouts') ?></a>
-                <a class="collapse-item<?php if($current_url->getSegment(2) == 'flats') echo ' active' ?>" href="<?= route_to('flats') ?>"><?=lang('Sidebar.Residentials.Flats') ?></a>
+            <div class="bg-white py-2 collapse-inner">
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'residentials') echo ' active' ?>" href="<?= route_to('residentials') ?>"><?=lang('Sidebar.Residentials.Residentials') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'sections') echo ' active' ?>" href="<?= route_to('sections') ?>"><?=lang('Sidebar.Residentials.Sections') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'layouts') echo ' active' ?>" href="<?= route_to('layouts') ?>"><?=lang('Sidebar.Residentials.Layouts') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'flats') echo ' active' ?>" href="<?= route_to('flats') ?>"><?=lang('Sidebar.Residentials.Flats') ?></a>
             </div>
         </div>
     </li>
 
+    <!-- Nav Item - Pages -->
+    <li class="nav-item<?php if(in_array($current_url->getSegment(2), ['pages'])) echo ' active' ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-language"></i>
+            <span><?=lang('Sidebar.Pages.BlockHeading') ?></span>
+        </a>
+        <div id="collapsePages" class="collapse<?php if(in_array($current_url->getSegment(2), ['pages'])) echo ' show' ?>" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner">
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'common') echo ' active' ?>" href="<?= route_to('page_update', 'common') ?>"><?=lang('Sidebar.Pages.Common') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'home') echo ' active' ?>" href="<?= route_to('page_update', 'home') ?>"><?=lang('Sidebar.Pages.Home') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'contact') echo ' active' ?>" href="<?= route_to('page_update', 'contact') ?>"><?=lang('Sidebar.Pages.Contact') ?></a>
+            </div>
+        </div>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

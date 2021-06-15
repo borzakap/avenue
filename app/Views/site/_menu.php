@@ -3,9 +3,9 @@
         <nav class="d-inline-flex justify-content-between align-items-center w-100 bg-color1">
             <div class="header-left">
                 <ul class="mb-0 list-unstyled d-inline-flex">
-                    <li><a href="<?= route_to('App\Controllers\Pages::index') ?>" title=""><?= lang('Menu.Home') ?></a></li>
-                    <li><a href="<?= route_to('App\Controllers\Pages::index') ?>" title=""><?= lang('Menu.About') ?></a></li>
-                    <li><a href="<?= route_to('App\Controllers\Pages::contact') ?>" title=""><?= lang('Menu.Contact') ?></a></li>
+                    <li><a href="<?= route_to('App\Controllers\Pages::index') ?>"><?= lang('Site.Menue.Main.Home') ?></a></li>
+                    <li><a href="<?= route_to('App\Controllers\Pages::index') ?>"><?= lang('Site.Menue.Main.About') ?></a></li>
+                    <li><a href="<?= route_to('App\Controllers\Pages::contact') ?>"><?= lang('Site.Menue.Main.Contact') ?></a></li>
                 </ul>
             </div>
             <div class="header-right-btns">

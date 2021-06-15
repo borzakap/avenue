@@ -25,8 +25,8 @@
                                                 <div class="serv-box w-100">
                                                     <i class="thm-clr flaticon-car-parts"></i>
                                                     <div class="serv-box-inner">
-                                                        <h3 class="mb-0"><a href="services-detail.html" title="">Automotive <br> Manufacturing</a></h3>
-                                                        <p class="mb-0">Eiusmod tempor incididunt ut labore et dolore magna.</p>
+                                                        <h3 class="mb-0"><a href="#" title=""><?= $section_about_first_subtitle ?></a></h3>
+                                                        <p class="mb-0"><?= $section_about_first_subdescription ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -34,8 +34,8 @@
                                                 <div class="serv-box w-100">
                                                     <i class="thm-clr flaticon-helmet"></i>
                                                     <div class="serv-box-inner">
-                                                        <h3 class="mb-0"><a href="services-detail.html" title="">Owner's <br> Representation</a></h3>
-                                                        <p class="mb-0">Eiusmod tempor incididunt ut labore et dolore magna.</p>
+                                                        <h3 class="mb-0"><a href="" title=""><?= $section_about_second_subtitle ?></a></h3>
+                                                        <p class="mb-0"><?= $section_about_second_subdescription ?></p>
                                                     </div>
                                                 </div>
                                             </div>
