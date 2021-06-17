@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 // admin ['filter' => 'role:superadmin,moderator,manager'], 
 $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_head,owner'], function($routes){
     // console dashboard
-    $routes->add('/', 'Admin\ResidentialsController::list', ['as' => 'dashboard']);
+    $routes->get('', 'Admin\ResidentialsController::list', ['as' => 'dashboard']);
     // residentials
     $routes->group('residentials', function($routes){
         $routes->add('', 'Admin\ResidentialsController::list', ['as' => 'residentials']);

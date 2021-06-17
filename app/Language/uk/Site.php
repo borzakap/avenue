@@ -8,4 +8,7 @@ return [
             'Contact' => 'Контакти',
         ],
     ],
+    'Buttons' => [
+        'LearnMore' => 'Дізнатися більше',
+    ],
 ];

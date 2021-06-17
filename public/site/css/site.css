@@ -1,7 +1,7 @@
 /*!
  * Start Bootstrap -  v1.0.0 ()
  * Copyright 2013-2021 borzakap
- * Licensed under MIT (https://github.com/StartBootstrap/site/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/StartBootstrap/Idilika Avenue/blob/master/LICENSE)
  */
 
 /*!
@@ -12690,7 +12690,6 @@ img {
 /*===== Project Style =====*/
 .proj-box {
   padding-top: 1.875rem;
-  margin-bottom: 1.875rem;
 }
 
 .proj-thumb > a {
@@ -12738,7 +12737,7 @@ img {
   opacity: .2;
   font-size: 2.5rem;
   left: 1.25rem;
-  top: 0;
+  top: 2rem;
   line-height: 5.15rem;
 }
 

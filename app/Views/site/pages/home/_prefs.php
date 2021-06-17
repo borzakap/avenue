@@ -8,9 +8,9 @@
                         <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg1.jpg);">
                             <i class="thm-clr flaticon-wheel-saw"></i>
                             <div class="serv-box-inner">
-                                <h3 class="mb-0"><a href="services-detail.html" title="">Construction <br> And Engineering</a></h3>
-                                <p class="mb-0">Nunc laoreet, mi sed fermentum fringilla, eros metus.</p>
-                                <span class="d-block"><i class="thm-clr">1-</i> Builders merchant sales</span>
+                                <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_first_sub_title ?></a></h3>
+                                <p class="mb-0"><?= $section_prefs_first_sub_description ?></p>
+                                <span class="d-block"><i class="thm-clr">1-</i> <?= $section_prefs_first_sub_after_description ?></span>
                             </div>
                         </div>
                     </div>
@@ -18,9 +18,9 @@
                         <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg2.jpg);">
                             <i class="thm-clr flaticon-helmet"></i>
                             <div class="serv-box-inner">
-                                <h3 class="mb-0"><a href="services-detail.html" title="">Industrial Equipments</a></h3>
-                                <p class="mb-0">Nunc laoreet, mi sed fermentum fringilla, eros metus.</p>
-                                <span class="d-block"><i class="thm-clr">2-</i> Builders merchant sales</span>
+                                <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_second_sub_title ?></a></h3>
+                                <p class="mb-0"><?= $section_prefs_second_sub_description ?></p>
+                                <span class="d-block"><i class="thm-clr">2-</i> <?= $section_prefs_second_sub_after_description ?></span>
                             </div>
                         </div>
                     </div>
@@ -28,9 +28,9 @@
                         <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg3.jpg);">
                             <i class="thm-clr flaticon-carpenter"></i>
                             <div class="serv-box-inner">
-                                <h3 class="mb-0"><a href="services-detail.html" title="">Owner's <br> Representation</a></h3>
-                                <p class="mb-0">Nunc laoreet, mi sed fermentum fringilla, eros metus.</p>
-                                <span class="d-block"><i class="thm-clr">3-</i> Builders merchant sales</span>
+                                <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_third_sub_title ?></a></h3>
+                                <p class="mb-0"><?= $section_prefs_third_sub_description ?></p>
+                                <span class="d-block"><i class="thm-clr">3-</i> <?= $section_prefs_third_sub_after_description ?></span>
                             </div>
                         </div>
                     </div>
@@ -38,9 +38,9 @@
                         <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg4.jpg);">
                             <i class="thm-clr flaticon-jigsaw"></i>
                             <div class="serv-box-inner">
-                                <h3 class="mb-0"><a href="services-detail.html" title="">Fuel Gas <br> Productions</a></h3>
-                                <p class="mb-0">Nunc laoreet, mi sed fermentum fringilla, eros metus.</p>
-                                <span class="d-block"><i class="thm-clr">4-</i> Builders merchant sales</span>
+                                <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_fourth_sub_title ?></a></h3>
+                                <p class="mb-0"><?= $section_prefs_fourth_sub_description ?></p>
+                                <span class="d-block"><i class="thm-clr">4-</i> <?= $section_prefs_fourth_sub_after_description ?></span>
                             </div>
                         </div>
                     </div>

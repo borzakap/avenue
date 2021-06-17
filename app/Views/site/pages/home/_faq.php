@@ -4,7 +4,7 @@
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
                     <span class="d-block thm-clr">OUR FAQ</span>
-                    <h3 class="mb-0">Freequently Ask Questions</h3>
+                    <h3 class="mb-0"><?= $section_faq_title ?></h3>
                 </div>
             </div>
             <div class="faq-wrap w-100">
@@ -15,24 +15,24 @@
                     <div class="col-md-6 col-sm-12 col-lg-6">
                         <div class="toggle w-100" id="toggle">
                             <div class="toggle-item w-100">
-                                <h4 class="mb-0"><span>01.</span>How can i buy this headphone?</h4>
-                                <div class="toggle-content w-100"><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p></div>
+                                <h4 class="mb-0"><span>01.</span><?= $section_faq_first_sub_title ?></h4>
+                                <div class="toggle-content w-100"><p class="mb-0"><?= $section_faq_first_sub_description ?></p></div>
                             </div>
                             <div class="toggle-item w-100">
-                                <h4 class="mb-0"><span>02.</span>This is Especially for listening to music?</h4>
-                                <div class="toggle-content w-100"><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p></div>
+                                <h4 class="mb-0"><span>02.</span><?= $section_faq_second_sub_title ?></h4>
+                                <div class="toggle-content w-100"><p class="mb-0"><?= $section_faq_second_sub_description ?></p></div>
                             </div>
                             <div class="toggle-item w-100">
-                                <h4 class="mb-0"><span>03.</span>How can i ordered it?</h4>
-                                <div class="toggle-content w-100"><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p></div>
+                                <h4 class="mb-0"><span>03.</span><?= $section_faq_third_sub_title ?></h4>
+                                <div class="toggle-content w-100"><p class="mb-0"><?= $section_faq_third_sub_description ?></p></div>
                             </div>
                             <div class="toggle-item w-100">
-                                <h4 class="mb-0"><span>04.</span>How can work this headphone?</h4>
-                                <div class="toggle-content w-100"><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p></div>
+                                <h4 class="mb-0"><span>04.</span><?= $section_faq_fourth_sub_title ?></h4>
+                                <div class="toggle-content w-100"><p class="mb-0"><?= $section_faq_fourth_sub_description ?></p></div>
                             </div>
                             <div class="toggle-item w-100">
-                                <h4 class="mb-0"><span>05.</span>This is Especially for listening to music?</h4>
-                                <div class="toggle-content w-100"><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p></div>
+                                <h4 class="mb-0"><span>05.</span><?= $section_faq_fifth_sub_title ?></h4>
+                                <div class="toggle-content w-100"><p class="mb-0"><?= $section_faq_fifth_sub_description ?></p></div>
                             </div>
                         </div>
                     </div>

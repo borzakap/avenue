@@ -6,9 +6,9 @@
                 <div class="row align-items-center">
                     <div class="col-md-7 col-sm-12 col-lg-7">
                         <div class="getin-touch-title w-100">
-                            <span class="d-block">Ready to get started?</span>
-                            <h2 class="mb-0">Get in touch, or create an account.</h2>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <span class="d-block"><?= $section_subscribe_before_title ?></span>
+                            <h2 class="mb-0"><?= $section_subscribe_title ?></h2>
+                            <p class="mb-0"><?= $section_subscribe_after_title ?></p>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-12 col-lg-5">
