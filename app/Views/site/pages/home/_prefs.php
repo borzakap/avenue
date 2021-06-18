@@ -5,8 +5,7 @@
             <div class="serv-wrap text-center w-100">
                 <div class="row res-caro2">
                     <div class="col-md-4 col-sm-6 col-lg-3">
-                        <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg1.jpg);">
-                            <i class="thm-clr flaticon-wheel-saw"></i>
+                        <div class="serv-box2 position-relative overflow-hidden w-100">
                             <div class="serv-box-inner">
                                 <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_first_sub_title ?></a></h3>
                                 <p class="mb-0"><?= $section_prefs_first_sub_description ?></p>
@@ -15,8 +14,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 col-lg-3">
-                        <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg2.jpg);">
-                            <i class="thm-clr flaticon-helmet"></i>
+                        <div class="serv-box2 position-relative overflow-hidden w-100">
                             <div class="serv-box-inner">
                                 <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_second_sub_title ?></a></h3>
                                 <p class="mb-0"><?= $section_prefs_second_sub_description ?></p>
@@ -25,8 +23,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 col-lg-3">
-                        <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg3.jpg);">
-                            <i class="thm-clr flaticon-carpenter"></i>
+                        <div class="serv-box2 position-relative overflow-hidden w-100">
                             <div class="serv-box-inner">
                                 <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_third_sub_title ?></a></h3>
                                 <p class="mb-0"><?= $section_prefs_third_sub_description ?></p>
@@ -35,8 +32,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 col-lg-3">
-                        <div class="serv-box2 position-relative overflow-hidden w-100" style="background-image: url(assets/images/resources/serv-bg4.jpg);">
-                            <i class="thm-clr flaticon-jigsaw"></i>
+                        <div class="serv-box2 position-relative overflow-hidden w-100">
                             <div class="serv-box-inner">
                                 <h3 class="mb-0"><a href="#" title=""><?= $section_prefs_fourth_sub_title ?></a></h3>
                                 <p class="mb-0"><?= $section_prefs_fourth_sub_description ?></p>
@@ -47,7 +43,6 @@
                 </div>
             </div><!-- Services Wrap -->
             <div class="facts-wrap thm-layer opc1 text-center position-relative overflow-hidden brd-rd5 w-100">
-                <div class="parallax-bg zoom-anim back-blend-multiply patern-bg thm-bg" style="background-image: url(assets/images/pattern-bg1.png);"></div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-lg-3">
                         <div class="fact-box w-100">
