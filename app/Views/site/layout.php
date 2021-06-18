@@ -32,11 +32,6 @@
             <!-- footer -->
             <?= view('App\Views\site\_footer') ?>
             
-            <div class="copyright w-100 text-center dark-bg position-relative">
-                <div class="container">
-                    <p class="mb-0">Copyright by <a href="index.html" title="">@Blubuild</a>. All Rights Reserved</p>
-                </div>
-            </div><!-- Copyright -->
         <?= view('App\Views\site\_popup_form') ?>
         </main><!-- Main Wrapper -->
 

@@ -6,7 +6,7 @@
                 <div class="banner-inner d-inline-block">
                     <h2 class="mb-0"><?= $section_promo_title ?></h2>
                     <p class="mb-0"><?= $section_promo_description ?></p>
-                    <a class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.LearnMore') ?></a>
+                    <a data-toggle="modal" data-target="#contact-form-modal" data-type="promo" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.LearnMore') ?></a>
                 </div>
             </div><!-- Banner Wrap -->
         </div>

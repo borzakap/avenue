@@ -3,8 +3,8 @@
         <div class="container">
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
-                    <span class="d-block thm-clr">OUR BLOG</span>
-                    <h3 class="mb-0">Our Latest News</h3>
+                    <span class="d-block thm-clr"><?= lang('Site.Sections.News.BeforeTitle') ?></span>
+                    <h3 class="mb-0"><?= lang('Site.Sections.News.Title') ?></h3>
                 </div>
             </div>
             <div class="blog-wrap w-100">
@@ -96,7 +96,7 @@
                 </div>
             </div><!-- Blog Wrap -->
             <div class="view-all w-100 text-center">
-                <a class="thm-btn thm-bg" href="blog.html" title="">View All News<i class="flaticon-arrow-pointing-to-right"></i></a>
+                <a data-toggle="modal" data-target="#contact-form-modal" data-type="news" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.MoreLayouts') ?></a>
             </div><!-- View All -->
         </div>
     </div>

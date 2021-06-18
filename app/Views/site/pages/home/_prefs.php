@@ -43,29 +43,30 @@
                 </div>
             </div><!-- Services Wrap -->
             <div class="facts-wrap thm-layer opc1 text-center position-relative overflow-hidden brd-rd5 w-100">
+                <div class="parallax-bg zoom-anim back-blend-multiply patern-bg thm-bg"></div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-lg-3">
                         <div class="fact-box w-100">
-                            <h2 class="mb-0"><span class="counter">18</span><sup>+</sup></h2>
-                            <h4 class="mb-0">Experience</h4>
+                            <h2 class="mb-0"><span class="counter">160</span></h2>
+                            <h4 class="mb-0"><?= lang('Site.Sections.Prefs.FlatsCount') ?></h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-lg-3">
                         <div class="fact-box w-100">
-                            <h2 class="mb-0"><span class="counter">502</span><sup>+</sup></h2>
-                            <h4 class="mb-0">Complete Projects</h4>
+                            <h2 class="mb-0"><span class="counter">9</span></h2>
+                            <h4 class="mb-0"><?= lang('Site.Sections.Prefs.FloorsCount') ?></h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-lg-3">
                         <div class="fact-box w-100">
-                            <h2 class="mb-0"><span class="counter">120</span><sup>+</sup></h2>
-                            <h4 class="mb-0">Works Employed</h4>
+                            <h2 class="mb-0"><span class="counter">4</span></h2>
+                            <h4 class="mb-0"><?= lang('Site.Sections.Prefs.HousesCount') ?></h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-lg-3">
                         <div class="fact-box w-100">
-                            <h2 class="mb-0"><span class="counter">12</span><sup>+</sup></h2>
-                            <h4 class="mb-0">Running Projects</h4>
+                            <h2 class="mb-0"><span class="counter">2</span></h2>
+                            <h4 class="mb-0"><?= lang('Site.Sections.Prefs.FeeCount') ?></h4>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
-                    <span class="d-block thm-clr">OUR WORKS</span>
+                    <span class="d-block thm-clr"><?= lang('Site.Sections.Projects.BeforeTitle') ?></span>
                     <h3 class="mb-0"><?= $section_proj_title ?></h3>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 </div>
             </div><!-- Projects Wrap -->
             <div class="view-all mt-20 w-100 text-center">
-                <a class="thm-btn thm-bg" href="#" title="">View All Portfolio<i class="flaticon-arrow-pointing-to-right"></i></a>
+                <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
             </div><!-- View All -->
         </div>
     </div>

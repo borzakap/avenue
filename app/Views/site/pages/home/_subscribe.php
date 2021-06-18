@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-5 col-sm-12 col-lg-5">
                         <div class="getin-touch-btn position-relative text-right">
-                            <a class="thm-btn thm-bg" href="#" title="">Subscribe Now<i class="flaticon-arrow-pointing-to-right"></i></a>
+                            <a data-toggle="modal" data-target="#contact-form-modal" data-type="subscribe" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.SelectMy') ?></a>
                         </div>
                     </div>
                 </div>
