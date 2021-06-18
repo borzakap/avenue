@@ -57,12 +57,12 @@ class BaseController extends Controller {
         // default metadata for template
         $this->data['meta_title'] = $this->text->translate('meta_title', 'common');
         $this->data['meta_description'] = $this->text->translate('meta_description', 'common');
-        $this->data['contact_phone'] = '0938499546';
+        $this->data['contact_phone'] = '(067)390-15-05';
         $this->data['contact_email'] = 'borzakap@gmail.com';
         $this->data['socials'] = [
-            'Facebook' => 'link',
-            'Instagram' => 'link',
-            'Youtube' => 'link',
+            'Facebook' => 'https://www.facebook.com/idilika.com.ua/',
+            'Instagram' => 'https://www.instagram.com/__idilika__/',
+            'Youtube' => 'https://www.youtube.com/channel/UCqFKJu9dEZmmg2NzJXgGbgw',
         ];
         
 

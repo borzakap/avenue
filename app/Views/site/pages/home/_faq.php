@@ -1,9 +1,10 @@
 <section>
+    <a id="prefs"></a>
     <div class="w-100 pt-100 pb-100 position-relative">
         <div class="container">
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
-                    <span class="d-block thm-clr">OUR FAQ</span>
+                    <span class="d-block thm-clr"><?= lang('Site.Sections.Faq.BeforeTitle') ?></span>
                     <h3 class="mb-0"><?= $section_faq_title ?></h3>
                 </div>
             </div>

@@ -5,9 +5,10 @@
             <nav class="d-inline-flex justify-content-between align-items-center">
                 <div class="header-left">
                     <ul class="mb-0 list-unstyled d-inline-flex">
-                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>"><?= lang('Site.Menue.Main.Home') ?></a></li>
-                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>"><?= lang('Site.Menue.Main.About') ?></a></li>
-                        <li><a href="<?= route_to('App\Controllers\Pages::contact') ?>"><?= lang('Site.Menue.Main.Contact') ?></a></li>
+                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#home"><?= lang('Site.Menue.Main.Home') ?></a></li>
+                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a></li>
+                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#layouts"><?= lang('Site.Menue.Main.Layouts') ?></a></li>
+                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#prefs"><?= lang('Site.Menue.Main.Prefs') ?></a></li>
                     </ul>
                 </div>
             </nav>

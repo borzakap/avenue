@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document"> 
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title"><?= lang('Site.Popapform.Title') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -16,17 +16,17 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 col-lg-12">
-                            <input class="fname" type="text" name="name" placeholder="Nick name">
+                            <input class="fname" type="text" name="name" placeholder="<?= lang('Site.Popapform.YourName') ?>">
                         </div>
                         <div class="col-md-6 col-sm-12 col-lg-6">
-                            <input class="email" type="text" name="phone" placeholder="Phone">
+                            <input class="email" type="text" name="phone" placeholder="<?= lang('Site.Popapform.YourPhone') ?>">
                         </div>
                         <div class="col-md-6 col-sm-12 col-lg-6">
-                            <input class="email" type="email" name="email" placeholder="Email">
+                            <input class="email" type="email" name="email" placeholder="<?= lang('Site.Popapform.YourMail') ?>">
                         </div>
                         <div class="col-md-12 col-sm-12 col-lg-12">
-                            <textarea class="contact_message" name="text" placeholder="Your message"></textarea>
-                            <button class="thm-btn thm-bg" id="submit" type="submit">Submit Now Next<i class="flaticon-arrow-pointing-to-right"></i></button>
+                            <textarea class="contact_message" name="text" placeholder="<?= lang('Site.Popapform.YourMessage') ?>"></textarea>
+                            <button class="thm-btn thm-bg" id="submit" type="submit"><?= lang('Site.Popapform.Submit') ?><i class="flaticon-arrow-pointing-to-right"></i></button>
                         </div>
                     </div>
                     <input type="hidden" name="type" id="form-type" value="" />

@@ -15,16 +15,16 @@ class ClientsRequestsController extends BaseController {
     public function send() {
         $return = [
             'success' => false,
-            'message' => lang('Form.Messages.Error.UndefinedError'),
+            'message' => lang('Site.Popapform.Messages.Error.UndefinedError'),
         ];
         if (!$this->request->isAJAX()) {
-            $return['message'] = lang('Form.Messages.Error.NotAjax');
+            $return['message'] = lang('Site.Popapform.Messages.Error.NotAjax');
             return $this->response->setJSON($return);
         }
         
         $phone = $this->request->getPost('phone');
         if(!$phone){
-            $return['message'] = lang('Form.Messages.Error.EmptyPhone');
+            $return['message'] = lang('Site.Popapform.Messages.Error.EmptyPhone');
             return $this->response->setJSON($return);
         }
         // validate phone
@@ -36,7 +36,7 @@ class ClientsRequestsController extends BaseController {
             return $this->response->setJSON($return);
         }
         if(!$phoneUtil->isValidNumber($pphone)){
-            $return['message'] = lang('Form.Messages.Error.NotValidPhone');
+            $return['message'] = lang('Site.Popapform.Messages.Error.NotValidPhone');
             return $this->response->setJSON($return);
         }
 
@@ -63,7 +63,7 @@ class ClientsRequestsController extends BaseController {
         
         if($model->save($data)){
             $return['success'] = true;
-            $return['message'] = lang('Form.Messages.success.SuccessMessage');
+            $return['message'] = lang('Site.Popapform.Messages.Success.Message');
             return $this->response->setJSON($return);
         }
         return $this->response->setJSON($return);

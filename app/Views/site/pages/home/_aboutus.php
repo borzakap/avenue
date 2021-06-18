@@ -1,4 +1,5 @@
 <section>
+    <a id="about"></a>
     <div class="w-100 pt-100 pb-100 position-relative">
         <div class="container">
             <div class="about-wrap w-100">
@@ -9,7 +10,7 @@
                                 <div class="col-md-12 col-sm-12 col-lg-4">
                                     <div class="sec-title title-with-shape w-100">
                                         <div class="sec-title-inner d-inline-block">
-                                            <span class="thm-clr d-block">WELCOME TO BLUBUILD</span>
+                                            <span class="thm-clr d-block"><?= lang('Site.Sections.Abouts.Wellcome') ?></span>
                                             <h3 class="mb-0"><?= $section_about_title ?></h3>
                                         </div>
                                     </div><!-- Sec Title -->

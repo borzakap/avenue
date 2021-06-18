@@ -12,15 +12,14 @@
             <div class="top-info-wrap d-inline-flex flex-wrap justify-content-between align-items-center">
                 <div class="call-us">
                     <i class="thm-clr flaticon-phone-call"></i>
-                    <span>24/7 Phone Services</span>
-                    <strong><?= $contact_phone ?></strong>
+                    <strong><a href="tel:<?= $contact_phone ?>"><?= $contact_phone ?></a></strong>
                 </div>
                 <div class="add-cart">
-                    <a href="<?= route_to('App\Controllers\Pages::index') ?>" title="">
+<!--                    <a href="<?= route_to('App\Controllers\Pages::index') ?>" title="">
                         <i class="thm-bg fas fa-gem"></i>
                         Add to Cart
                         <span class="d-block">(Item: 02)</span>
-                    </a>
+                    </a>-->
                 </div>
             </div>                            
         </div>

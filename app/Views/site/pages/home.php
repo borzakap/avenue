@@ -7,7 +7,7 @@
 
 
 <?= $this->section('main') ?>
-
+<a id="home"></a>
 <?= view('App\Views\site\pages\home\_slider') ?>
 
 <?= view('App\Views\site\pages\home\_aboutus') ?>

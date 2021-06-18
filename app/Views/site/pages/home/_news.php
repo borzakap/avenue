@@ -1,4 +1,5 @@
 <section>
+    <a id="layouts"></a>
     <div class="w-100 pt-210 pb-100 position-relative">
         <div class="container">
             <div class="sec-title w-100">
