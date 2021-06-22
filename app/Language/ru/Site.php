@@ -46,7 +46,7 @@ return [
         'Prefs' => [
             'FlatsCount' => 'Квартир в доме',
             'FloorsCount' => 'Этажей',
-            'HousesCount' => 'Домов',
+            'HousesCount' => 'Дом',
             'FeeCount' => 'Года рассрочки',
         ],
         'News' => [

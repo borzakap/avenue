@@ -10,6 +10,14 @@
         <link rel="stylesheet" href="/site/modules/fontawesome-free/css/all.min.css" type="text/css">
         <link rel="stylesheet" href="/site/css/site.min.css">
         <?= $this->renderSection('pagecss') ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68275464-10"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-68275464-10');
+        </script>
     </head>
     <body>
         <main>
