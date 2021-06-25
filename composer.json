@@ -9,7 +9,8 @@
 		"codeigniter4/framework": "^4",
 		"cocur/slugify": "^4.0",
 		"giggsey/libphonenumber-for-php": "^8.12",
-		"myth/auth": "^1.0"
+		"myth/auth": "^1.0",
+		"amocrm/amocrm-api-library": "^0.5.2"
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.9",

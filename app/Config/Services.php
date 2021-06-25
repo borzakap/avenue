@@ -44,4 +44,16 @@ class Services extends BaseService {
         return new \App\Libraries\LangChanger();
     }
 
+    /**
+     * phone service
+     * @param string $phone
+     * @return boolean
+     */
+    public static function phone($getShared = true){
+        if ($getShared) {
+            return static::getSharedInstance('phone');
+        }
+        return \libphonenumber\PhoneNumberUtil::getInstance();
+    }
+
 }
