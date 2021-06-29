@@ -7,6 +7,7 @@ use AmoCRM\Models\LeadModel;
 use AmoCRM\Models\ContactModel;
 use AmoCRM\Models\Unsorted\FormUnsortedModel;
 use AmoCRM\Models\Unsorted\FormsMetadata;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Description of ClientsRequestsController
@@ -53,7 +54,7 @@ class ClientsRequestsController extends BaseController {
      */
     private function prepareData(): void{
         // set amoservice vars
-        $this->amoService->setUnsortedUid(md5(Time::now()));
+        $this->amoService->setUnsortedUid(Uuid::uuid4());
         $this->amoService->setFormId('AvenueIdilika');
         $this->amoService->setFormName(lang('Amo.Titles.FormNameFromSite'));
         $this->amoService->setLeadName(lang('Amo.Titles.LeadNameFromSite'));

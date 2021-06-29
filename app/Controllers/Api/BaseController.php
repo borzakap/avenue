@@ -198,7 +198,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadGacid() {
         $gacidFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $gacidFieldValueModel->setFieldId($this->amoConf->leadGacidFieldId);
+        $gacidFieldValueModel->setFieldCode('GCLIENTID');
         $gacidFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadGacid()))
@@ -212,7 +212,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadGclid() {
         $gclidFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $gclidFieldValueModel->setFieldId($this->amoConf->leadGclidFieldId);
+        $gclidFieldValueModel->setFieldCode('GCLID');
         $gclidFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadGclid()))
@@ -226,7 +226,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUtmSource() {
         $utmSourceFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $utmSourceFieldValueModel->setFieldId($this->amoConf->leadUtmSourceFieldId);
+        $utmSourceFieldValueModel->setFieldCode('UTM_SOURCE');
         $utmSourceFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadUtmSource()))
@@ -240,7 +240,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUtmMedium() {
         $utmMediumFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $utmMediumFieldValueModel->setFieldId($this->amoConf->leadUtmMediumFieldId);
+        $utmMediumFieldValueModel->setFieldCode('UTM_MEDIUM');
         $utmMediumFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadUtmMedium()))
@@ -254,7 +254,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUtmTerm() {
         $utmTermFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $utmTermFieldValueModel->setFieldId($this->amoConf->leadUtmTermFieldId);
+        $utmTermFieldValueModel->setFieldCode('UTM_TERM');
         $utmTermFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadUtmTerm()))
@@ -268,7 +268,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUtmContent() {
         $utmContentFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $utmContentFieldValueModel->setFieldId($this->amoConf->leadUtmContentFieldId);
+        $utmContentFieldValueModel->setFieldCode('UTM_CONTENT');
         $utmContentFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadUtmContent()))
@@ -282,7 +282,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUtmCampaign() {
         $utmCompaingFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $utmCompaingFieldValueModel->setFieldId($this->amoConf->leadUtmCompaingFieldId);
+        $utmCompaingFieldValueModel->setFieldCode('UTM_CAMPAIGN');
         $utmCompaingFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadUtmCampaign()))
@@ -296,7 +296,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadPage() {
         $pageFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $pageFieldValueModel->setFieldId($this->amoConf->leadPageFieldId);
+        $pageFieldValueModel->setFieldCode('FROM');
         $pageFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getFormUrl()))
@@ -310,7 +310,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadDomain() {
         $domainFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $domainFieldValueModel->setFieldId($this->amoConf->leadDomainFieldId);
+        $domainFieldValueModel->setFieldCode('REFERRER');
         $domainFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadDomain()))
@@ -324,7 +324,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUserAgent() {
         $userAgentFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $userAgentFieldValueModel->setFieldId($this->amoConf->leadUserAgentFieldId);
+        $userAgentFieldValueModel->setFieldCode('USER_AGENT');
         $userAgentFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadUserAgent()))
@@ -338,7 +338,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadUserIp() {
         $userIpFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $userIpFieldValueModel->setFieldId($this->amoConf->leadUserIpFieldId);
+        $userIpFieldValueModel->setFieldCode('IP');
         $userIpFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getFormUserIp()))
@@ -352,7 +352,7 @@ class BaseController extends Controller {
      */
     protected function assignLeadTypeLeads() {
         $typeLeadFieldValueModel = new TrackingDataCustomFieldValuesModel();
-        $typeLeadFieldValueModel->setFieldId($this->amoConf->leadTypeLeadFieldId);
+        $typeLeadFieldValueModel->setFieldCode('TYPE_LEAD');
         $typeLeadFieldValueModel->setValues(
                 (new TrackingDataCustomFieldValueCollection())
                         ->add((new TrackingDataCustomFieldValueModel())->setValue($this->amoService->getLeadTypeLeadValue()))
