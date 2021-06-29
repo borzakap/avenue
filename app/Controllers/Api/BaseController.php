@@ -77,10 +77,10 @@ class BaseController extends Controller {
         parent::initController($request, $response, $logger);
         // preload amo config
         $this->amoConf = config('Amo');
-        // preload Amo
-        $this->apiClient = $this->connect();
         // preload amoservice
         $this->amoService = new Amoservice();
+        // preload Amo
+        $this->apiClient = $this->amoService->connect();
     }
     
     /**
