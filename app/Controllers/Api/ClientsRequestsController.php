@@ -7,6 +7,7 @@ use AmoCRM\Models\LeadModel;
 use AmoCRM\Models\ContactModel;
 use AmoCRM\Models\Unsorted\FormUnsortedModel;
 use AmoCRM\Models\Unsorted\FormsMetadata;
+use AmoCRM\Collections\ContactsCollection;
 use Ramsey\Uuid\Uuid;
 use CodeIgniter\I18n\Time;
 
