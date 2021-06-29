@@ -142,7 +142,7 @@ class ClientsRequestsController extends BaseController {
         $unsortedContactsCollection->add($unsortedContact);
 
         $formUnsorted
-                ->setSourceName($this->amoConf->unsortedTypeSite)
+                ->setSourceName($this->amoService->getFormId())
                 ->setSourceUid((string) $this->amoService->getUnsortedUid())
                 ->setCreatedAt(Time::now()->getTimestamp())
                 ->setMetadata($formMetadata)
