@@ -156,7 +156,8 @@ class ClientsRequestsController extends BaseController {
 
         try {
             $add_unsorted_log = $this->apiClient->unsorted()->add($formsUnsortedCollection);
-            log_message('info', '[INFO] {add_unsorted_log}', ['add_unsorted_log' => $add_unsorted_log]);
+            log_message('error', '[INFO] {add_unsorted_log}', ['add_unsorted_log' => $add_unsorted_log]);
+            return $add_unsorted_log;
         } catch (AmoCRMApiException $e) {
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
             return false;
