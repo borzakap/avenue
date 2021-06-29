@@ -8,6 +8,7 @@ use AmoCRM\Models\ContactModel;
 use AmoCRM\Models\Unsorted\FormUnsortedModel;
 use AmoCRM\Models\Unsorted\FormsMetadata;
 use Ramsey\Uuid\Uuid;
+use CodeIgniter\I18n\Time;
 
 /**
  * Description of ClientsRequestsController
@@ -110,7 +111,7 @@ class ClientsRequestsController extends BaseController {
         // form metadata
         $formMetadata->setFormId($this->amoService->getFormId())
                 ->setFormName($this->amoService->getFormName())
-                ->setFormSentAt(strtotime(Time::now()))
+                ->setFormSentAt(Time::now()->getTimestamp())
                 ->setFormPage($this->amoService->getFormUrl())
                 ->setReferer($this->amoService->getFormReferer())
                 ->setIp($this->amoService->getFormUserIp());
@@ -141,7 +142,7 @@ class ClientsRequestsController extends BaseController {
         $formUnsorted
                 ->setSourceName($this->amoConf->unsortedTypeSite)
                 ->setSourceUid((string) $this->amoService->getUnsortedUid())
-                ->setCreatedAt(strtotime(Time::now()))
+                ->setCreatedAt(Time::now()->getTimestamp())
                 ->setMetadata($formMetadata)
                 ->setLead($unsortedLead)
                 ->setPipelineId($this->amoConf->piplineId)
