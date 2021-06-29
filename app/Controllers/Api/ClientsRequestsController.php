@@ -9,6 +9,7 @@ use AmoCRM\Models\Unsorted\FormUnsortedModel;
 use AmoCRM\Models\Unsorted\FormsMetadata;
 use AmoCRM\Collections\ContactsCollection;
 use AmoCRM\Collections\CustomFieldsValuesCollection;
+use AmoCRM\Collections\Leads\Unsorted\FormsUnsortedCollection;
 use Ramsey\Uuid\Uuid;
 use CodeIgniter\I18n\Time;
 
