@@ -18,9 +18,8 @@ const pkg = require('./package.json');
 
 // Set the banner content
 const banner = ['/*!\n',
-    ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
-    ' * Copyright 2013-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
-    ' * Licensed under <%= pkg.license %> (https://github.com/StartBootstrap/<%= pkg.name %>/blob/master/LICENSE)\n',
+    ' * Idilika Avenue - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
+    ' * Copyright 2021-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
     ' */\n',
     '\n'
 ].join('');
@@ -68,7 +67,11 @@ function modules() {
     var fontAwesome = gulp.src('./node_modules/@fortawesome/**/*')
             .pipe(gulp.dest('./modules'));
 
-    return merge(bootstrapJS, bootstrapSCSS, jquery, slick, fontAwesome);
+    // js-cookie
+    var jsCookie = gulp.src('./node_modules/js-cookie/src/*')
+            .pipe(gulp.dest('./modules/js-cookie'));
+    
+    return merge(bootstrapJS, bootstrapSCSS, jquery, slick, fontAwesome, jsCookie);
 }
 
 // CSS task
@@ -101,7 +104,9 @@ function js() {
     return gulp
             .src([
                 './js/*.js',
-                '!./js/*.min.js'
+                './modules/js-cookie/*.js',
+                '!./js/*.min.js',
+                '!./modules/js-cookie/*.min.js'
             ])
             .pipe(uglify())
             .pipe(header(banner, {

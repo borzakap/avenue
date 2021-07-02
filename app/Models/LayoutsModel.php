@@ -6,7 +6,6 @@ use CodeIgniter\Model;
 
 class LayoutsModel extends Model
 {
-	protected $DBGroup              = 'default';
 	protected $table                = 'layouts';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;

@@ -76,5 +76,5 @@ class ResidentialsController extends BaseController {
     public function delete(int $id){
         
     }
-
+        
 }

@@ -1,33 +1,46 @@
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('pagecss') ?>
-    <!-- Custom css for sceditor-->
-    <link href="/admin/modules/sceditor/minified/themes/default.min.css" rel="stylesheet">
+<!-- Custom css for sceditor-->
+<link href="/admin/modules/sceditor/minified/themes/default.min.css" rel="stylesheet">
 <?= $this->endSection() ?>
 
 <?= $this->section('main') ?>
 
-<!-- DataTales Example -->
+<!-- Text card -->
 <div class="card shadow mb-4">
     <?= view('App\Views\admin\_messages') ?>
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <?= $breadcrumb ?>
+        <a href="#collapseText" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseText">
+            <h6 class="m-0 font-weight-bold text-primary"><?= lang('Sections.Cards.Title.TextTitle') ?></h6>
+        </a>
         <?= view('App\Views\admin\_lang_changer') ?>
     </div>
-    <div class="card-body">
+    <div class="collapse show card-body" id="collapseText">
         <?= form_open() ?>
-        <?= view('App\Views\admin\sections\_form') ?>
+        <?= view('App\Views\admin\sections\_text_form') ?>
         <?= form_submit('section_update', lang('Sections.Form.Buttons.Update'), ['class' => 'btn btn-primary']) ?>
         <?= form_close() ?>    
     </div>
 </div>
-<!-- Content Row -->
+<!-- Images card -->
+<div class="card shadow mb-4">
+    <a href="#collapseImages" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseImages">
+        <h6 class="m-0 font-weight-bold text-primary"><?= lang('Sections.Cards.Title.ImagesTitle') ?></h6>
+    </a>
+    <div class="collapse card-body" id="collapseImages">
+        <?= form_open() ?>
+        <?= view('App\Views\admin\sections\_images_form') ?>
+        <?= form_close() ?>    
+    </div>
+</div>
 
 <?= $this->endSection() ?>
 
 <?= $this->section('pagescript') ?>
-        <!-- Custom scripts for sceditor-->
-        <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
-        <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
+<!-- Custom scripts for sceditor-->
+<script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
+<script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
+<script src="/admin/js/filedrag.min.js"></script>
 
 <?= $this->endSection() ?>

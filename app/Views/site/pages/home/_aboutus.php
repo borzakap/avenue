@@ -46,7 +46,8 @@
                             </div>
                         </div>
                         <div class="about-image position-relative w-100">
-                            <img class="img-fluid w-100" src="/site/images/renders/render-960.jpg" alt="About Image 1">
+                            <iframe width="748" height="521" src="https://www.youtube.com/embed/aUXizxFkURc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                           
+<!--                            <img class="img-fluid w-100" src="/site/images/renders/render-960.jpg" alt="About Image 1">-->
                         </div>
                     </div>
                 </div>

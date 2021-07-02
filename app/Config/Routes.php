@@ -58,6 +58,10 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     $routes->group('users', function($routes){
         $routes->add('', 'Admin\UsersController::list', ['as' => 'users']);
     });
+    // ajax
+    $routes->group('ajax', function ($routes) {
+        $routes->post('floors-upload', 'Admin\SectionsController::floorsUpload', ['as' => 'floors-upload']);
+    });
     
 });
 

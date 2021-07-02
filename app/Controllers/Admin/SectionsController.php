@@ -72,11 +72,25 @@ class SectionsController extends BaseController{
         
     }
     
-    public function floorsLoad(){
+    public function floorsUpload(){
         
+        $return = [
+            'success' => false,
+            'message' => lang('Site.Popapform.Messages.Error.UndefinedError'),
+            'data' => '',
+            'method' => $this->request->getMethod(),
+            'headers' => $this->request->headers(),
+        ];
+        if (!$this->request->getMethod() === 'post') {
+            $return['message'] = lang('Site.Popapform.Messages.Error.NotAjax');
+            return $this->response->setJSON($return);
+        }
+//        $return['data'] = $this->request->getVals();
+        return $this->response->setJSON($return);
+
     }
 
-    public function floorsUpload(){
+    public function floorsLoad(){
         
     }
     

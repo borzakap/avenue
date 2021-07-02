@@ -1,7 +1,8 @@
 {
     "name": "Idilika Avenue",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "site styles and js",
+    "homepage": "https://avenue.idilika.com.ua",
     "main": "index.js",
     "scripts": {
         "test": "test"
@@ -16,6 +17,7 @@
         "@fortawesome/fontawesome-free": "^5.13",
         "bootstrap": "^4.6",
         "jquery": "^3.6.0",
+        "js-cookie": "^2.2.1",
         "slick-carousel": "^1.8.1"
     },
     "devDependencies": {
