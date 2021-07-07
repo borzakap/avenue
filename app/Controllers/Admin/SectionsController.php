@@ -25,6 +25,10 @@ class SectionsController extends BaseController{
         return view('admin/sections/list', $data);
     }
 
+    /**
+     * create section
+     * @return type
+     */
     public function create(){
         // verify if request method is not POST
         if ($this->request->getMethod() !== 'post') {
@@ -63,6 +67,7 @@ class SectionsController extends BaseController{
             'breadcrumb' => $this->breadcrumb->render(),
             'residentials' => $residentials_model->getResidentialsList($this->request->getLocale()),
             'data' => $model->find($id)->withTranslations(),
+            'section_id' => $id,
         ];
         return view('admin/sections/update', $data);
         
@@ -76,22 +81,51 @@ class SectionsController extends BaseController{
         
         $return = [
             'success' => false,
-            'message' => lang('Site.Popapform.Messages.Error.UndefinedError'),
-            'data' => '',
-            'method' => $this->request->getMethod(),
-            'headers' => $this->request->headers(),
+            'message' => lang('Sections.Messages.Error.UndefinedError'),
         ];
         if (!$this->request->getMethod() === 'post') {
-            $return['message'] = lang('Site.Popapform.Messages.Error.NotAjax');
+            $return['message'] = lang('Sections.Messages.Error.NotAjax');
             return $this->response->setJSON($return);
         }
-//        $return['data'] = $this->request->getVals();
-        return $this->response->setJSON($return);
+        $section_id = $this->request->getPost('section_id');
+        
+        if ($img = $this->request->getFile('image_file')) {
+            $name = $img->getRandomName();
+            $data = [
+                'image_name' => $name,
+                'image_code' => $this->request->getPost('image_code') ?? $name,
+                'image_mime' => $img->getMimeType(),
+                'section_id' => $this->request->getPost('section_id'),
+                'order' => 1,
+                'image_size' => 0,
+            ];
+            $floorsImagesModel = model('FloorsImagesModel');
+            $floorsImagesModel->save($data);
+            $img->move(WRITEPATH . 'uploads/sections/'.$section_id, $name);
+            $return['message'] = lang('Sections.Messages.Success.Uploaded');
+            $return['success'] = true;
 
+        }else{
+            $return['message'] = lang('Sections.Messages.Error.NotUpload');
+            return $this->response->setJSON($return);
+        }
+        
+        return $this->response->setJSON($return);
     }
 
+    /**
+     * load floors images for current section
+     * @return json
+     */
     public function floorsLoad(){
         
+        if(!$section_id = $this->request->getPost('section_id')){
+            return $this->response->setJSON([]);
+        }
+        
+        $floorsImagesModel = model('FloorsImagesModel');
+        $floors_images = $floorsImagesModel->getSectionFloorsImages($section_id);
+        return $this->response->setJSON($floors_images);
     }
     
     public function floorsDelete(){

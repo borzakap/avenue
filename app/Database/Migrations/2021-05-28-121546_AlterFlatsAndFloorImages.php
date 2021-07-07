@@ -57,7 +57,6 @@ class AlterFlatsAndFloorImages extends Migration {
         $this->forge->dropColumn('layouts', 'price');
         $this->forge->dropColumn('floor_images', 'order');
         $this->forge->dropColumn('floor_images', 'image_size');
-        
     }
 
 }

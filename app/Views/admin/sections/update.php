@@ -29,8 +29,9 @@
         <h6 class="m-0 font-weight-bold text-primary"><?= lang('Sections.Cards.Title.ImagesTitle') ?></h6>
     </a>
     <div class="collapse card-body" id="collapseImages">
-        <?= form_open() ?>
+        <?= form_open_multipart('console/ajax/floors-upload', ['id' => 'floors-upload']) ?>
         <?= view('App\Views\admin\sections\_images_form') ?>
+        <?= form_submit('floors_upload', lang('Sections.Form.Buttons.Upload'), ['class' => 'btn btn-primary', 'id' => 'floors-upload-btn']) ?>
         <?= form_close() ?>    
     </div>
 </div>
@@ -41,6 +42,6 @@
 <!-- Custom scripts for sceditor-->
 <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
 <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
-<script src="/admin/js/filedrag.min.js"></script>
+<script src="/admin/js/floors-images.min.js"></script>
 
 <?= $this->endSection() ?>

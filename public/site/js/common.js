@@ -83,6 +83,13 @@ $(document).ready(function () {
             success: function (data) {
                 $('#contact-form .response').html(data.message);
                 if (data.success === true) {
+                    // send events
+                    if (typeof gtag !== "undefined") { 
+                        gtag('event', 'send_form', { 'event_category': 'form', 'event_action': 'send', 'event_label': $('input[name=type]', form).val()});
+                    }
+                    if (typeof fbq !== "undefined") { 
+                        fbq('track','Lead');
+                    }
                     // clean inputs
                     $(':input', form).not(':button, :submit, :reset, :hidden').val('');
                     setTimeout(function () {

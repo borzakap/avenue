@@ -76,8 +76,8 @@ class ResidentialsModel extends Model {
                     ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
                     ->where('residentials_translation.language', $language)
                     ->findAll();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
+        } catch (\Exception $e) {
+            die($e->getTraceAsString());
         }
     }
 
