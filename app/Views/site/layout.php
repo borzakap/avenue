@@ -78,6 +78,16 @@
                 sn.parentNode.insertBefore(gcw, sn);
             })(document, window, 'script');
         </script> 
+        <script type="text/javascript">
+            (function (d, w, s) {
+                var widgetHash = 'zwvfo6dcfbdcoh6htaf6', ctw = d.createElement(s);
+                ctw.type = 'text/javascript';
+                ctw.async = true;
+                ctw.src = '//widgets.binotel.com/calltracking/widgets/' + widgetHash + '.js';
+                var sn = d.getElementsByTagName(s)[0];
+                sn.parentNode.insertBefore(ctw, sn);
+            })(document, window, 'script');
+        </script> 
     </body>	
 
 </html>

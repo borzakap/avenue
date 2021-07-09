@@ -17,7 +17,7 @@ class FloorsImagesModel extends Model {
     protected $returnType = 'App\Entities\FloorsImagesEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['image_code', 'image_name', 'image_mime', 'section_id', 'order', 'image_size'];
+    protected $allowedFields = ['image_src', 'image_code', 'image_name', 'image_mime', 'section_id', 'order', 'image_size'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -47,9 +47,8 @@ class FloorsImagesModel extends Model {
      */
     public function getSectionFloorsImages(int $section_id){
         try{
-            return $this->select('*')
-                    ->where('section_id', $section_id)
-                    ->findAll();
+            return $this->where('section_id', $section_id)
+                    ->get()->getResultArray();
         } catch (Exception $e) {
             die($e->getTraceAsString());
         }

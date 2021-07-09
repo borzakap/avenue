@@ -79,6 +79,9 @@ function modules() {
     // jQuery Easing
     var jqueryEasing = gulp.src('./node_modules/jquery.easing/*.js')
             .pipe(gulp.dest('./modules/jquery-easing'));
+    // jQuery Chained
+    var jqueryChained = gulp.src('./node_modules/jquery-chained/*.js')
+            .pipe(gulp.dest('./modules/jquery-chained'));
     // jQuery
     var jquery = gulp.src([
         './node_modules/jquery/dist/*',
@@ -86,7 +89,7 @@ function modules() {
     ])
             .pipe(gulp.dest('./modules/jquery'));
     
-    return merge(bootstrapJS, jsDatepicker, sceditor, mapcanvas, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing);
+    return merge(bootstrapJS, jsDatepicker, sceditor, mapcanvas, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing, jqueryChained);
 }
 
 // CSS task

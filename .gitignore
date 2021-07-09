@@ -125,7 +125,15 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
-# node
+# custom unnessery folders and files
 node_modules
 /ecess.log
 /erorr.log
+
+# sections images
+public/images/sections/*
+!public/images/sections/index.html
+
+# layouts images
+public/images/layouts/*
+!public/images/layouts/index.html

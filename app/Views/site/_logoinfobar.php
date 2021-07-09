@@ -12,7 +12,7 @@
             <div class="top-info-wrap d-inline-flex flex-wrap justify-content-between align-items-center">
                 <div class="call-us">
                     <i class="thm-clr flaticon-phone-call"></i>
-                    <strong><a href="tel:<?= $contact_phone ?>"><?= $contact_phone ?></a></strong>
+                    <strong><a href="tel:<?= $contact_phone ?>" class="binct-phone-number-1"><?= $contact_phone ?></a></strong>
                 </div>
                 <div class="add-cart">
 <!--                    <a href="<?= route_to('App\Controllers\Pages::index') ?>" title="">

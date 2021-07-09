@@ -11,6 +11,10 @@ use CodeIgniter\Entity\Entity;
  */
 class FloorsImagesEntity extends Entity {
     
+    protected $attributes = [
+        'image_src' => null,
+    ];
+    
     protected $datamap = [];
     protected $dates = [
         'created_at',
@@ -18,5 +22,9 @@ class FloorsImagesEntity extends Entity {
         'deleted_at',
     ];
     protected $casts = [];
+    
+    protected function getImageSrc(){
+        return 'images/sections/' . $this->image_name;
+    }
 
 }

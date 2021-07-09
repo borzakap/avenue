@@ -7,7 +7,7 @@ use CodeIgniter\Entity\Entity;
 class SectionsEntity extends Entity {
 
     protected $datamap = [];
-        // attributes
+    // attributes
     protected $attributes = [
         'title' => null,
         'meta_title' => null,

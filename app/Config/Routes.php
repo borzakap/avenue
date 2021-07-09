@@ -46,6 +46,12 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->add('create', 'Admin\SectionsController::create');
         $routes->add('update/(:num)', 'Admin\SectionsController::update/$1', ['as' => 'section_update']);
     });
+    // layouts
+    $routes->group('layouts', function($routes){
+        $routes->add('', 'Admin\LayoutsController::list', ['as' => 'layouts']);
+        $routes->add('create', 'Admin\LayoutsController::create');
+        $routes->add('update/(:num)', 'Admin\LayoutsController::update/$1', ['as' => 'layout_update']);
+    });
     // pages
     $routes->group('pages', function($routes){
         $routes->add('update/(:segment)', 'Admin\PagesTranslationsController::update/$1', ['as' => 'page_update']);
@@ -61,6 +67,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     // ajax
     $routes->group('ajax', function ($routes) {
         $routes->post('floors-upload', 'Admin\SectionsController::floorsUpload', ['as' => 'floors-upload']);
+        $routes->post('floors-load', 'Admin\SectionsController::floorsLoad', ['as' => 'floors-load']);
     });
     
 });

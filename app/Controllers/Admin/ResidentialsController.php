@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Admin\BaseController;
-use App\Models\ResidentialsModel;
 
 class ResidentialsController extends BaseController {
 

@@ -60,12 +60,13 @@ class SectionsController extends BaseController{
         if ($this->request->getMethod() === 'post') {
             
         }
-        $residentials_model = model(ResidentialsModel::class);
+        $model = model(SectionsModel::class);
+        $residentials = model(ResidentialsModel::class);
         $data = [
             'languages' => $config->supportedLocales,
             'default_naguage' => $config->defaultLocale,
             'breadcrumb' => $this->breadcrumb->render(),
-            'residentials' => $residentials_model->getResidentialsList($this->request->getLocale()),
+            'residentials' => $residentials->getResidentialsList($this->request->getLocale()),
             'data' => $model->find($id)->withTranslations(),
             'section_id' => $id,
         ];
@@ -101,7 +102,7 @@ class SectionsController extends BaseController{
             ];
             $floorsImagesModel = model('FloorsImagesModel');
             $floorsImagesModel->save($data);
-            $img->move(WRITEPATH . 'uploads/sections/'.$section_id, $name);
+            $img->move(IMGPATH . 'sections', $name);
             $return['message'] = lang('Sections.Messages.Success.Uploaded');
             $return['success'] = true;
 

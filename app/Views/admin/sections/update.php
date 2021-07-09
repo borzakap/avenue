@@ -33,6 +33,7 @@
         <?= view('App\Views\admin\sections\_images_form') ?>
         <?= form_submit('floors_upload', lang('Sections.Form.Buttons.Upload'), ['class' => 'btn btn-primary', 'id' => 'floors-upload-btn']) ?>
         <?= form_close() ?>    
+        <div id="images-greed" data-action="<?= route_to('floors-load') ?>" data-section="<?= $section_id ?>"></div>
     </div>
 </div>
 
@@ -43,5 +44,12 @@
 <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
 <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
 <script src="/admin/js/floors-images.min.js"></script>
+<script type="text/template" data-template="images">
+
+    <div class="">
+    <img src="/images/sections/${floor_img}" />
+        <div class="">${floor_code}</div>
+    </div>
+</script>
 
 <?= $this->endSection() ?>
