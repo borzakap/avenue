@@ -11,13 +11,15 @@
 <div class="card shadow mb-4">
     <?= view('App\Views\admin\_messages') ?>
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <?= $breadcrumb ?>
+        <a href="#collapseText" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseText">
+            <h6 class="m-0 font-weight-bold text-primary"><?= lang('Sections.Cards.Title.TextTitle') ?></h6>
+        </a>
         <?= view('App\Views\admin\_lang_changer') ?>
     </div>
-    <div class="card-body">
+    <div class="collapse show card-body" id="collapseText">
         <?= form_open() ?>
-        <?= view('App\Views\admin\residentials\_form') ?>
-        <?= form_submit('residential_create', lang('Residentials.Form.Buttons.Create'), ['class' => 'btn btn-primary']) ?>
+        <?= view('App\Views\admin\layouts\_form') ?>
+        <?= form_submit('layout_create', lang('Layouts.Form.Buttons.Create'), ['class' => 'btn btn-primary']) ?>
         <?= form_close() ?>    
     </div>
 </div>

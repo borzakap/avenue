@@ -57,6 +57,36 @@ class SectionsModel extends Model {
         }
     }
     
+    /**
+     * return the chained list id->title of sections
+     * @param string $language
+     * @return array
+     */
+    public function getSectionsList(string $language): array {
+        try {
+            if (! $found = cache("{$language}_sections_list")){
+                $found = [];
+                $items = $this->builder()
+                        ->select('sections.id, sections.section_code, sections.residential_id, sections_translation.title')
+                        ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                        ->where('sections_translation.language', $language)
+                        ->get()->getResultArray();
+                
+                foreach ($items as $item){
+                    $data = [];
+                    $data['chained'] = $item['residential_id'];
+                    $data['name'] = $item['section_code'];
+                    $found[$item['id']] = $data;
+                }
+                
+                cache()->save("{$language}_sections_list", $found, 0);
+            }
+            return $found;
+        } catch (\Exception $exc) {
+            die($exc->getTraceAsString());
+        }
+    }
+    
     public function createSection(array $data): int {
         $appConfig = config('App');
         // insert the data about section

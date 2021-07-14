@@ -15,7 +15,7 @@ class LayoutsModel extends Model {
     protected $returnType = 'App\Entities\LayoutsEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = [];
+    protected $allowedFields = ['code', 'slug', 'residential_id', 'section_id', 'image_2d', 'image_3d', 'image_other', 'file_to_upload', 'rooms', 'levels', 'ceil_height', 'all_area', 'live_area', 'kit_area', 'balcon', 'advertise', 'sold_out', 'publish', 'price', 'floor_images_id', 'poligon', 'language', 'title', 'meta_title', 'description', 'meta_description'];
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat = 'datetime';
@@ -139,22 +139,22 @@ class LayoutsModel extends Model {
             'slug' => $slugify->slugify($data['slug']),
             'residential_id' => (int)$data['residential_id'],
             'section_id' => (int)$data['section_id'],
-            'image_2d' => $data['image_2d'],
-            'image_3d' => $data['image_3d'],
-            'image_other' => $data['image_other'],
-            'file_to_upload' => $data['file_to_upload'],
+            'floor_images_id' => (int)$data['floor_images_id'],
+            'image_2d' => $data['image_2d'] ?? null,
+            'image_3d' => $data['image_3d'] ?? null,
+            'image_other' => $data['image_other'] ?? null,
+            'file_to_upload' => $data['file_to_upload'] ?? null,
             'rooms' => (int)$data['rooms'],
             'levels' => (int)$data['levels'],
             'ceil_height' => $data['ceil_height'],
             'all_area' => $data['all_area'],
             'live_area' => $data['live_area'],
             'kit_area' => $data['kit_area'],
-            'balcon' => $data['balcon'],
-            'advertise' => $data['advertise'],
-            'sold_out' => $data['sold_out'],
+            'balcon' => $data['balcon'] ?? 0,
+            'advertise' => $data['advertise'] ?? 0,
+            'sold_out' => $data['sold_out'] ?? 0,
             'price' => $data['price'],
-            'floor_images_id' => (int)$data['floor_images_id'],
-            'poligon' => $data['poligon'],
+            'poligon' => $data['poligon'] ?? null,
             'publish' => !isset($data['publish']) ? self::UNPUBLISH : self::PUBLISH,
         ];
         return $retrieved;

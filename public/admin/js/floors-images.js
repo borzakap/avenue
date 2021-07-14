@@ -40,6 +40,7 @@ $(document).ready(function () {
 function floorsLoad(){
     var container = $('#images-greed');
     var to_ajax = [];
+    container.html('');
     to_ajax.push({name: 'section_id', value: container.data('section')});
     $.ajax({
         url: container.data('action'),

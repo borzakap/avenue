@@ -55,4 +55,29 @@ class FloorsImagesModel extends Model {
     }
     
     
+    /**
+     * return the chained list id->title of floors images
+     * @param string $language
+     * @return array
+     */
+    public function getFloorsList(): array {
+        try {
+            if (! $found = cache("floors_list")){
+                $found = [];
+                $items = $this->get()->getResultArray();
+                foreach ($items as $item){
+                    $data = [];
+                    $data['chained'] = $item['section_id'];
+                    $data['name'] = $item['image_code'];
+                    $found[$item['id']] = $data;
+                }
+                
+                cache()->save("floors_list", $found, 0);
+            }
+            return $found;
+        } catch (\Exception $exc) {
+            die($exc->getTraceAsString());
+        }
+    }
+    
 }

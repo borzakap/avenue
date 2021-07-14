@@ -79,7 +79,8 @@
                 sceditor.create(e, {
                     plugins: 'plaintext',
                     format: 'xhtml',
-                    style: '/admin/vendor/sceditor/minified/themes/default.min.css',
+                    emoticonsEnabled: false,
+                    style: '/admin/modules/sceditor/minified/themes/default.min.css',
                     toolbar: 'bold,italic,underline|subscript,superscript|left,center,right,justify|link,unlink|removeformat,source'
                 });
             });

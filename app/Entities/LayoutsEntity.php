@@ -6,7 +6,14 @@ use CodeIgniter\Entity\Entity;
 
 class LayoutsEntity extends Entity {
 
-    protected $datamap = [];
+    // attributes
+    protected $attributes = [
+        'title' => null,
+        'meta_title' => null,
+        'description' => null,
+        'meta_description' => null,
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',

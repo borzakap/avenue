@@ -100,7 +100,7 @@ class SectionsController extends BaseController{
                 'order' => 1,
                 'image_size' => 0,
             ];
-            $floorsImagesModel = model('FloorsImagesModel');
+            $floorsImagesModel = model(FloorsImagesModel::class);
             $floorsImagesModel->save($data);
             $img->move(IMGPATH . 'sections', $name);
             $return['message'] = lang('Sections.Messages.Success.Uploaded');

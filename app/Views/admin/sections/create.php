@@ -16,7 +16,7 @@
     </div>
     <div class="card-body">
         <?= form_open() ?>
-        <?= view('App\Views\admin\sections\_form') ?>
+        <?= view('App\Views\admin\sections\_text_form') ?>
         <?= form_submit('residential_create', lang('Residentials.Form.Buttons.Create'), ['class' => 'btn btn-primary']) ?>
         <?= form_close() ?>    
     </div>
