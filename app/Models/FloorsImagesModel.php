@@ -17,7 +17,7 @@ class FloorsImagesModel extends Model {
     protected $returnType = 'App\Entities\FloorsImagesEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['image_src', 'image_code', 'image_name', 'image_mime', 'section_id', 'order', 'image_size'];
+    protected $allowedFields = ['image_src', 'image_code', 'image_name', 'image_width', 'section_id', 'order', 'image_height'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -32,12 +32,12 @@ class FloorsImagesModel extends Model {
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert = [];
-    protected $afterInsert = [];
+    protected $afterInsert = ['deleteCaches'];
     protected $beforeUpdate = [];
-    protected $afterUpdate = [];
+    protected $afterUpdate = ['deleteCaches'];
     protected $beforeFind = [];
     protected $afterFind = [];
-    protected $beforeDelete = [];
+    protected $beforeDelete = ['deleteCaches'];
     protected $afterDelete = [];
     
     /**
@@ -53,6 +53,20 @@ class FloorsImagesModel extends Model {
             die($e->getTraceAsString());
         }
     }
+    
+    /**
+     * get layouts poligon and other data for floor image
+     * @param int $floor_images_id
+     * @return array
+     */
+    public function getPoligons(int $floor_images_id): array{
+        try {
+            return $this->db->table('layouts')->where('floor_images_id', $floor_images_id)->get()->getResultObject();
+        } catch (Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
+    
     
     
     /**
@@ -78,6 +92,15 @@ class FloorsImagesModel extends Model {
         } catch (\Exception $exc) {
             die($exc->getTraceAsString());
         }
+    }
+    
+    /**
+     * delete caches in callbacks
+     * @return array
+     */
+    protected function deleteCaches(array $data): array{
+        cache()->delete('floors_list');
+        return $data;
     }
     
 }

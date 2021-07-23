@@ -11,7 +11,7 @@
     var init = function (index, input, options) {
 
         var points, activePoint, settings;
-        var $reset, $canvas, ctx, image;
+        var $reset, $canvas, ctx, image, wrapper;
         var draw, mousedown, stopdrag, move, moveall, resize, reset, rightclick, record;
         var dragpoint;
         var startpoint = false;
@@ -44,8 +44,14 @@
             resize();
         }
         $canvas.css({background: 'url(' + image.src + ')'});
+        wrapper = $('<div></div>');
+        $(wrapper).addClass('canvas-wrapper');
+        $(wrapper).css({'max-width': '100%'});
+        $(wrapper).css({'overflow-y': 'hidden'});
+        $(wrapper).css({'overflow-x': 'scroll'});
+        $(wrapper).append($canvas);
 
-        $(input).after('<br>', $canvas, '<br>', $reset);
+        $(input).after(wrapper, $reset);
 
         reset = function () {
             points = [];

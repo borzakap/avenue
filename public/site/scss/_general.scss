@@ -12,9 +12,8 @@ body {
     max-width: 100%;
     // for privent scrolling if modal is open
     &.modal-open{
-        height: 100vh;
-        overflow-y: hidden;
-        padding-right: 15px; /* Avoid width reflow */
+        overflow: hidden;
+        padding-right: 0!important;
     }
 }
 

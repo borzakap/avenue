@@ -3,7 +3,7 @@ $(document).ready(function () {
     floorsLoad();
     // uload image
     $('#floors-upload').on('submit', function (e) {
-        $('#floors-upload-btn').prop('Disabled');
+        $('#floors-upload-btn').prop('disabled');
         e.preventDefault();
         if ($('#image_file').val() == '') {
             alert("Choose File");

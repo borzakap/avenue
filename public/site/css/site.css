@@ -4068,7 +4068,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #4e73df;
+  background-color: #A07835;
 }
 
 .nav-fill > .nav-link,
@@ -9800,10 +9800,8 @@ body {
 }
 
 body.modal-open {
-  height: 100vh;
-  overflow-y: hidden;
-  padding-right: 15px;
-  /* Avoid width reflow */
+  overflow: hidden;
+  padding-right: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15197,5 +15195,47 @@ blockquote > p::after {
   }
   .getin-touch-wrap.style2 {
     padding: 2.5rem 1.5rem;
+  }
+}
+
+.sections-schema {
+  position: relative;
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.sections-schema svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sections-schema svg polygon {
+  fill: #00000036;
+  cursor: pointer;
+  stroke: #646464;
+  stroke-width: 0.2rem;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 767px) {
+  .rotation-wrapper-outer {
+    display: table;
+  }
+  .rotation-wrapper-outer .rotation-wrapper-inner {
+    padding: 50% 0 85% 0;
+    height: 0;
+  }
+  .rotation-wrapper-outer .rotation-wrapper-inner .sections-schema {
+    display: block;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-transform: rotate(-90deg) translate(-100%) scale(1.315);
+    transform: rotate(-90deg) translate(-100%) scale(1.315);
+    margin-top: -15%;
   }
 }

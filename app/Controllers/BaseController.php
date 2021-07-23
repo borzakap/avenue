@@ -57,6 +57,7 @@ class BaseController extends Controller {
         // default metadata for template
         $this->data['meta_title'] = $this->text->translate('meta_title', 'common');
         $this->data['meta_description'] = $this->text->translate('meta_description', 'common');
+        $this->data['page_header'] = 'Idilika Avenue';
         $this->data['contact_phone'] = '(067)390-15-05';
         $this->data['contact_email'] = 'borzakap@gmail.com';
         $this->data['socials'] = [

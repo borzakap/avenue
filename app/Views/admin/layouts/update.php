@@ -25,11 +25,12 @@
     </div>
 </div>
 <!-- poligon card -->
+<div id="poligon-alert"></div>
 <div class="card shadow mb-4">
     <a href="#collapsePoligon" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapsePoligon">
         <h6 class="m-0 font-weight-bold text-primary"><?= lang('Sections.Cards.Title.ImagesTitle') ?></h6>
     </a>
-    <div class="collapse card-body" id="collapsePoligon">
+    <div class="collapse show card-body" id="collapsePoligon">
         <?= form_open_multipart('console/ajax/poligon-save', ['id' => 'poligon_save']) ?>
         <?= view('App\Views\admin\layouts\_poligon_form') ?>
         <?= form_submit('poligon_send', lang('Layouts.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'poligon-save-btn']) ?>

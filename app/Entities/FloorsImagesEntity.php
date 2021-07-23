@@ -23,6 +23,29 @@ class FloorsImagesEntity extends Entity {
     ];
     protected $casts = [];
     
+    protected $poligons = [];
+
+    /**
+     * get poligons\sections data for floor images
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withPoligons(): self{
+        if(empty($this->id)){
+            throw new \RuntimeException('Floor image must be created before getting poligons.');
+        }
+        if(empty($this->poligons)){
+            $this->poligons = model(FloorsImagesModel::class)->getPoligons($this->id);
+        }
+        return $this;
+    }
+
+    protected function getPoligons(){
+        return $this->poligons;
+    }
+
+
+
     protected function getImageSrc(){
         return 'images/sections/' . $this->image_name;
     }

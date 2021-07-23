@@ -92,6 +92,23 @@
         <?= form_label(lang('Layouts.Form.Labels.KitArea'), 'kit_area') ?>
         <?= form_input(['name' => 'kit_area', 'type' => 'number', 'step' => '0.01', 'class' => 'form-control', 'id' => 'kit_area', 'value' => old('kit_area') ?? $data->kit_area ?? '']) ?>
     </div>
+    <!-- layout residential -->
+    <div class="form-group col-md-4">
+        <?= form_label(lang('Layouts.Form.Labels.Residential'), 'residential_id') ?>
+        <?= form_dropdown(['name' => 'residential_id', 'class' => 'form-control', 'id' => 'residential_id', 'options' => $residentials, 'selected' => old('residential_id') ?? $data->residential_id ?? 0]) ?>
+    </div>
+
+    <!-- layout section -->
+    <div class="form-group col-md-4">
+        <?= form_label(lang('Layouts.Form.Labels.Section'), 'section_id') ?>
+        <?= chained_dropdown(['name' => 'section_id', 'class' => 'form-control', 'id' => 'section_id', 'options' => $sections, 'selected' => old('section_id') ?? $data->section_id ?? 0]) ?>
+    </div>
+
+    <!-- layout floor -->
+    <div class="form-group col-md-4">
+        <?= form_label(lang('Layouts.Form.Labels.Floors'), 'floor_images_id') ?>
+        <?= chained_dropdown(['name' => 'floor_images_id', 'class' => 'form-control', 'id' => 'floor_images_id', 'options' => $floors, 'data-change-url' => route_to('floors-image-change-url'), 'selected' => old('floor_images_id') ?? $data->floor_images_id ?? 0]) ?>
+    </div>
 
     <!-- layout balcon -->
     <div class="form-group col-md-3">

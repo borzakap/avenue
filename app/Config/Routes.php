@@ -68,6 +68,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     $routes->group('ajax', function ($routes) {
         $routes->post('floors-upload', 'Admin\SectionsController::floorsUpload', ['as' => 'floors-upload']);
         $routes->post('floors-load', 'Admin\SectionsController::floorsLoad', ['as' => 'floors-load']);
+        $routes->post('floors-image-change-url', 'Admin\LayoutsController::poligonChange', ['as' => 'floors-image-change-url']);
         $routes->post('poligon-save', 'Admin\LayoutsController::poligonSave', ['as' => 'poligon-save']);
     });
     
@@ -101,11 +102,13 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function ($routes) 
 // api
 $routes->group('api', function($routes){
     $routes->post('request/send', 'Api\ClientsRequestsController::send');
+    $routes->post('layout-load', 'Api\LyoutsRequestsController::load', ['as'=>'layout-load']);
 });
 
 // site.
 $routes->get('{locale}', 'Pages::index');
 $routes->get('{locale}/contact', 'Pages::contact');
+$routes->get('{locale}/section/(:segment)', 'Sections::section/$1');
 
 /*
  * --------------------------------------------------------------------

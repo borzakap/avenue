@@ -22,6 +22,8 @@ class LayoutsEntity extends Entity {
     protected $casts = [];
     // all languages variants
     protected $translations = [];
+    // floor image
+    protected $floor_image;
     // update and delete links
     protected $update_link = '';
     protected $delete_link = '';
@@ -51,6 +53,29 @@ class LayoutsEntity extends Entity {
         return $this->translations;
     }
     
+    /**
+     * get layout floor image
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withFloorImage(): self{
+        if(empty($this->id)){
+            throw new \RuntimeException('Layout must be created before getting layout image.');
+        }
+        if(empty($this->floor_image)){
+            $this->floor_image = model(LayoutsModel::class)->getImageFloor($this->floor_images_id);
+        }
+        return $this;
+    }
+
+    public function getFloorImage(): object{
+        return $this->floor_image;
+    }
+
+    /**
+     * format update link
+     * @return string
+     */
     public function getUpdateLink (): string{
         if(!$this->update_link){
             $this->update_link = '<a href="' . route_to('App\Controllers\Admin\LayoutsController::update', $this->id). '"><i class="fas fa-edit"></i></a>';
@@ -58,6 +83,10 @@ class LayoutsEntity extends Entity {
         return $this->update_link;
     }
     
+    /**
+     * format delete link
+     * @return string
+     */
     public function getDeleteLink (): string{
         if(!$this->delete_link){
             $this->delete_link = '<a href="' . route_to('App\Controllers\Admin\LayoutsController::delete', $this->id). '"><i class="fas fa-trash"></i></a>';

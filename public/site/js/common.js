@@ -65,6 +65,13 @@ $(document).ready(function () {
         });
     }
 
+    //====== set tab default show if exist ======//
+    if($('.nav-pills').length > 0){
+       $('.nav-pills').each(function(){
+            $('.nav-pills li:first-child a').tab('show');
+       }); 
+    }
+
     //===== Sending Form =====//
     $('#contact-form').on('submit', function (e) {
         e.preventDefault();

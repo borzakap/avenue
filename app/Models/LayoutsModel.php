@@ -17,7 +17,7 @@ class LayoutsModel extends Model {
     protected $protectFields = true;
     protected $allowedFields = ['code', 'slug', 'residential_id', 'section_id', 'image_2d', 'image_3d', 'image_other', 'file_to_upload', 'rooms', 'levels', 'ceil_height', 'all_area', 'live_area', 'kit_area', 'balcon', 'advertise', 'sold_out', 'publish', 'price', 'floor_images_id', 'poligon', 'language', 'title', 'meta_title', 'description', 'meta_description'];
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
@@ -50,10 +50,10 @@ class LayoutsModel extends Model {
     public function getLayoutBySlug(string $slug, string $language): object{
         try {
             return $this->select('layouts.*, layouts_translation.title, layouts_translation.meta_title, layouts_translation.description, layouts_translation.meta_description, layouts_translation.language')
-                    ->joint('layouts_translation', 'layouts_translation.layout_id = layouts.id', 'inner')
+                    ->join('layouts_translation', 'layouts_translation.layout_id = layouts.id', 'inner')
                     ->where('layouts.slug', $slug)
                     ->where('layouts_translation.language', $language)
-                    ->findAll();
+                    ->first();
         } catch (\Exception $exc) {
             die($exc->getTraceAsString());
         }
@@ -75,7 +75,6 @@ class LayoutsModel extends Model {
         }
     }
 
-    
     /**
      * get translations by layout_id
      * @param int $layout_id
@@ -84,11 +83,25 @@ class LayoutsModel extends Model {
     public function getTranslations(int $layout_id): array {
         try {
             return $this->db->table('layouts_translation')->where('layout_id', $layout_id)->get()->getResultObject();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
+        } catch (\Exception $e) {
+            die($e->getTraceAsString());
         }
     }
     
+    /**
+     * get floor image data
+     * @param int $floor_image_id
+     * @return object
+     */
+    public function getImageFloor(int $floor_image_id){
+        try{
+            return $this->db->table('floor_images')->where('id', $floor_image_id)->get()->getFirstRow();
+        } catch (Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
+
+
     /**
      * cretating the residential
      * @param array $data
@@ -96,9 +109,11 @@ class LayoutsModel extends Model {
      */
     public function createLayout(array $data): int {
         $appConfig = config('App');
-        // insert the data about complex
+        // insert the data about layout
+        $main = $this->retrieveMainData($data);
+
         try {
-            $layout_id = $this->insert($this->retrieveMainData($data), true);
+            $layout_id = $this->insert($main, true);
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
@@ -122,6 +137,43 @@ class LayoutsModel extends Model {
     }
     
     /**
+     * updating layout
+     * @param int $layout_id
+     * @param array $data
+     * @return int
+     * @throws Exception
+     */
+    public function updateLayout(int $layout_id, array $data): int{
+        $appConfig = config('App');
+        // update layout
+        try {
+            $this->update($layout_id, $this->retrieveMainData($data));
+        } catch (\Exception $exc) {
+            die($exc->getMessage());
+        }
+        // insert translations
+        $translations = [];
+        foreach ($data['translation'] as $language => $translation) {
+            if (!in_array($language, $appConfig->supportedLocales)) {
+                continue;
+            }
+            $translations[] = $this->retrieveTranslationData($layout_id, $language, $translation);
+        }
+        if (empty($translations)) {
+            throw new Exception('there must be the translations');
+        }
+        try {
+            foreach($translations as $translation){
+                $this->db->table('layouts_translation')->replace($translation);
+            }
+//            $this->db->table('layouts_translation')->updateBatch($translations, 'layout_id');
+        } catch (\Exception $exc) {
+            die($exc->getMessage());
+        }
+        return $layout_id;
+    }
+
+    /**
      * retrieving the main data for complex table
      * @param array $data
      * @return array
@@ -137,13 +189,6 @@ class LayoutsModel extends Model {
         $retrieved = [
             'code' => $data['code'],
             'slug' => $slugify->slugify($data['slug']),
-            'residential_id' => (int)$data['residential_id'],
-            'section_id' => (int)$data['section_id'],
-            'floor_images_id' => (int)$data['floor_images_id'],
-            'image_2d' => $data['image_2d'] ?? null,
-            'image_3d' => $data['image_3d'] ?? null,
-            'image_other' => $data['image_other'] ?? null,
-            'file_to_upload' => $data['file_to_upload'] ?? null,
             'rooms' => (int)$data['rooms'],
             'levels' => (int)$data['levels'],
             'ceil_height' => $data['ceil_height'],
@@ -154,7 +199,9 @@ class LayoutsModel extends Model {
             'advertise' => $data['advertise'] ?? 0,
             'sold_out' => $data['sold_out'] ?? 0,
             'price' => $data['price'],
-            'poligon' => $data['poligon'] ?? null,
+            'residential_id' => (int)$data['residential_id'],
+            'section_id' => (int)$data['section_id'],
+            'floor_images_id' => (int)$data['floor_images_id'],
             'publish' => !isset($data['publish']) ? self::UNPUBLISH : self::PUBLISH,
         ];
         return $retrieved;
@@ -162,7 +209,7 @@ class LayoutsModel extends Model {
 
     /**
      * retreive the translation data
-     * @param int $residential_id
+     * @param int $layout_id
      * @param string $language
      * @param array $data
      * @return array

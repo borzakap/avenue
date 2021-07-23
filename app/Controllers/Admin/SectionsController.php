@@ -91,18 +91,31 @@ class SectionsController extends BaseController{
         $section_id = $this->request->getPost('section_id');
         
         if ($img = $this->request->getFile('image_file')) {
-            $name = $img->getRandomName();
+            
+            $name = $img->getName();
+            $path = IMGPATH . 'sections/'.$name;
+            
+            \Config\Services::image()
+                    ->withFile($img)
+                    ->resize(1200, 800, true, 'width')
+                    ->save($path);
+            
+            // get the properties
+            $info = \Config\Services::image('imagick')
+                    ->withFile($path)
+                    ->getFile()
+                    ->getProperties(true);
             $data = [
                 'image_name' => $name,
                 'image_code' => $this->request->getPost('image_code') ?? $name,
-                'image_mime' => $img->getMimeType(),
                 'section_id' => $this->request->getPost('section_id'),
                 'order' => 1,
-                'image_size' => 0,
+                'image_width' => $info['width'] ?? 0,
+                'image_height' => $info['height'] ?? 0,
             ];
             $floorsImagesModel = model(FloorsImagesModel::class);
             $floorsImagesModel->save($data);
-            $img->move(IMGPATH . 'sections', $name);
+//            $img->move(IMGPATH . 'sections', $name);
             $return['message'] = lang('Sections.Messages.Success.Uploaded');
             $return['success'] = true;
 

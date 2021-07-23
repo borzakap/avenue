@@ -62,6 +62,7 @@
             <?= view('App\Views\site\_footer') ?>
 
             <?= view('App\Views\site\_popup_form') ?>
+            <?= $this->renderSection('artermain') ?>
         </main><!-- Main Wrapper -->
 
         <script src="/site/modules/jquery/jquery.min.js"></script>

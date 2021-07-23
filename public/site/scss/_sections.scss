@@ -1,0 +1,36 @@
+.sections-schema{
+    position: relative;
+    margin: 0 auto;
+    width: fit-content;
+    svg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        polygon{
+            fill: #00000036;
+            cursor: pointer;
+            stroke: #646464;
+            stroke-width: 0.2rem;
+            stroke-linejoin: round;
+        }
+    }
+}
+@media(max-width: 767px){
+    .rotation-wrapper-outer {
+        display: table;
+        .rotation-wrapper-inner {
+            padding: 50% 0 85% 0;
+            height: 0;
+            .sections-schema{
+                display: block;
+                transform-origin: top left;
+                transform: rotate(-90deg) translate(-100%) scale(1.315);
+                margin-top: -15%;
+            }
+        }
+    }
+
+}
