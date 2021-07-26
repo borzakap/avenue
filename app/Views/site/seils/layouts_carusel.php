@@ -9,11 +9,11 @@
                 </div>
             </div>
             <div class="blog-wrap w-100">
-                <div class="row post-caro">
+                <div class="row layouts-caro">
                     <?php foreach($layouts as $layout) : ?>
                     <div class="col-md-6 col-sm-6 col-lg-4">
-                        <div class="post-box w-100">
-                            <div class="post-img overflow-hidden w-100 mb-20">
+                        <div class="layouts-box w-100">
+                            <div class="layout-img overflow-hidden w-100 mb-20">
                                 <a href="#" title=""><img class="img-fluid w-100" src="/images/layouts/<?= $layout->image_2d ?>" alt="Post Image 1"></a>
                             </div>
                             <dl class="row">

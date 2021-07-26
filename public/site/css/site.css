@@ -13091,10 +13091,6 @@ img {
   top: 0;
   bottom: 0;
   background-color: #76777A;
-  opacity: 0;
-}
-
-.post-box:hover .post-img > a::before {
   opacity: .05;
 }
 
@@ -15238,4 +15234,42 @@ blockquote > p::after {
     transform: rotate(-90deg) translate(-100%) scale(1.315);
     margin-top: -15%;
   }
+}
+
+.layouts-caro .layouts-box {
+  margin-bottom: 3.125rem;
+}
+
+.layouts-caro .layouts-box .layout-img > a {
+  display: block;
+  position: relative;
+  height: 100%;
+  padding-top: 100%;
+  position: relative;
+  display: block;
+}
+
+.layouts-caro .layouts-box .layout-img > a img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: auto;
+  margin: auto 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.layouts-caro .layouts-box .layout-img > a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #76777A;
+  opacity: .05;
 }
