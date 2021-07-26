@@ -64,7 +64,7 @@ $(document).ready(function () {
             ]
         });
         //====== Post Carousel =====//
-        $('.post-caro').slick({
+        $('.layouts-caro').slick({
             slidesToShow: 3,
             slidesToScroll: 1,
             dots: false,
