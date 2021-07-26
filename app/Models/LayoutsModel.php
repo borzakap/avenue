@@ -64,7 +64,7 @@ class LayoutsModel extends Model {
      * @param string $language
      * @return array
      */
-    public function getLayouts(string $language): array{
+    public function getLayouts(string $language, array $params = []): array{
         try {
             return $this->select('layouts.*, layouts_translation.title, layouts_translation.meta_title, layouts_translation.description, layouts_translation.meta_description, layouts_translation.language')
                     ->join('layouts_translation', 'layouts_translation.layout_id = layouts.id', 'inner')

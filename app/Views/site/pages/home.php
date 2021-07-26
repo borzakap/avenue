@@ -14,7 +14,7 @@
 
 <?= view('App\Views\site\pages\home\_prefs') ?>
 
-<?= view('App\Views\site\pages\home\_news') ?>
+<?= view_cell('\App\Libraries\Layouts::carusel') ?>
 
 <?= view('App\Views\site\pages\home\_subscribe') ?>
 

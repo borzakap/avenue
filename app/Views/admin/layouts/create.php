@@ -1,8 +1,8 @@
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('pagecss') ?>
-    <!-- Custom css for sceditor-->
-    <link href="/admin/modules/sceditor/minified/themes/default.min.css" rel="stylesheet">
+<!-- Custom css for sceditor-->
+<link href="/admin/modules/sceditor/minified/themes/default.min.css" rel="stylesheet">
 <?= $this->endSection() ?>
 
 <?= $this->section('main') ?>
@@ -27,8 +27,9 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('pagescript') ?>
-        <!-- Custom scripts for sceditor-->
-        <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
-        <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
-
+<!-- Custom scripts for sceditor-->
+<script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
+<script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
+<script src="/admin/js/jquery.chained.js"></script>
+<script src="/admin/js/layouts.min.js"></script>
 <?= $this->endSection() ?>
