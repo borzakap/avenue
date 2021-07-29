@@ -34,7 +34,33 @@
             gtag('config', 'UA-68275464-10');
         </script>
         <script src="//code.jivosite.com/widget/KlsLfikVEM" async></script>
-
+        <!-- Marquiz script start -->
+        <script>
+            (function (w, d, s, o) {
+                var j = d.createElement(s);
+                j.async = true;
+                j.src = '//script.marquiz.ru/v2.js';
+                j.onload = function () {
+                    if (document.readyState !== 'loading')
+                        Marquiz.init(o);
+                    else
+                        document.addEventListener("DOMContentLoaded", function () {
+                            Marquiz.init(o);
+                        });
+                };
+                d.head.insertBefore(j, d.head.firstElementChild);
+            })(window, document, 'script', {
+                host: '//quiz.marquiz.ru',
+                region: 'eu',
+                id: '610015711eae72003e495432',
+                autoOpen: 15,
+                autoOpenFreq: 'once',
+                openOnExit: true,
+                disableOnMobile: false
+            }
+            );
+        </script>
+        <!-- Marquiz script end -->
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
@@ -44,31 +70,31 @@
         <main>
             <header class="stick style1 w-100">
                 <!-- top bar -->
-                <?= view('App\Views\site\_topbar') ?>
+<?= view('App\Views\site\_topbar') ?>
                 <!-- logo info bar -->
-                <?= view('App\Views\site\_logoinfobar') ?>
+            <?= view('App\Views\site\_logoinfobar') ?>
                 <!-- logo info bar -->
-                <?= view('App\Views\site\_menu') ?>
+            <?= view('App\Views\site\_menu') ?>
 
             </header><!-- Header -->
             <!-- logo info bar -->
-            <?= view('App\Views\site\_stickymenu') ?>
+<?= view('App\Views\site\_stickymenu') ?>
             <!-- responsive header -->
             <?= view('App\Views\site\_responsiveheader') ?>
 
             <?= $this->renderSection('main') ?>
 
             <!-- footer -->
-            <?= view('App\Views\site\_footer') ?>
+<?= view('App\Views\site\_footer') ?>
 
-            <?= view('App\Views\site\_popup_form') ?>
-            <?= $this->renderSection('artermain') ?>
+<?= view('App\Views\site\_popup_form') ?>
+        <?= $this->renderSection('artermain') ?>
         </main><!-- Main Wrapper -->
 
         <script src="/site/modules/jquery/jquery.min.js"></script>
         <script src="/site/modules/bootstrap/js/bootstrap.min.js"></script>
         <script src="/site/js/common.min.js"></script>
-        <?= $this->renderSection('pagejs') ?>
+<?= $this->renderSection('pagejs') ?>
         <script type="text/javascript">
             (function (d, w, s) {
                 var widgetHash = 'uqx4ugylsllgfwcf5fi7', gcw = d.createElement(s);

@@ -9,7 +9,7 @@ namespace App\Controllers;
  */
 class Layouts extends BaseController{
     
-    public function layoutsCarusel($param) {
+    public function layout(string $slug) {
         
     }
 
