@@ -108,7 +108,8 @@ $routes->group('api', function($routes){
 // site.
 $routes->get('{locale}', 'Pages::index');
 $routes->get('{locale}/contact', 'Pages::contact');
-$routes->get('{locale}/section/(:segment)', 'Sections::section/$1', ['as'=>'section']);
+$routes->get('{locale}/section/(:segment)', 'Sections::view/$1', ['as'=>'section']);
+$routes->get('{locale}/layout/(:segment)', 'Layouts::view/$1', ['as'=>'layout']);
 $routes->get('{locale}/genplan', 'Complex::genplan');
 
 /*

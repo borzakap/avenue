@@ -15218,24 +15218,22 @@ blockquote > p::after {
   stroke-linejoin: round;
 }
 
-@media (max-width: 767px) {
-  .rotation-wrapper-outer {
-    display: table;
-  }
-  .rotation-wrapper-outer .rotation-wrapper-inner {
-    padding: 50% 0 85% 0;
-    height: 0;
-  }
-  .rotation-wrapper-outer .rotation-wrapper-inner .sections-schema {
-    display: block;
-    -webkit-transform-origin: top left;
-    transform-origin: top left;
-    -webkit-transform: rotate(-90deg) translate(-100%) scale(1.315);
-    transform: rotate(-90deg) translate(-100%) scale(1.315);
-    margin-top: -15%;
-  }
-}
+/*@media(max-width: 767px){
+    .rotation-wrapper-outer {
+        display: table;
+        .rotation-wrapper-inner {
+            padding: 50% 0 85% 0;
+            height: 0;
+            .sections-schema{
+                display: block;
+                transform-origin: top left;
+                transform: rotate(-90deg) translate(-100%) scale(1.315);
+                margin-top: -15%;
+            }
+        }
+    }
 
+}*/
 .layouts-caro .layouts-box {
   margin-bottom: 3.125rem;
 }

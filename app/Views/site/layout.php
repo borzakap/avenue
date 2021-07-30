@@ -70,31 +70,31 @@
         <main>
             <header class="stick style1 w-100">
                 <!-- top bar -->
-<?= view('App\Views\site\_topbar') ?>
+                <?= view('App\Views\site\_topbar') ?>
                 <!-- logo info bar -->
-            <?= view('App\Views\site\_logoinfobar') ?>
+                <?= view('App\Views\site\_logoinfobar') ?>
                 <!-- logo info bar -->
-            <?= view('App\Views\site\_menu') ?>
+                <?= view('App\Views\site\_menu') ?>
 
             </header><!-- Header -->
             <!-- logo info bar -->
-<?= view('App\Views\site\_stickymenu') ?>
+            <?= view('App\Views\site\_stickymenu') ?>
             <!-- responsive header -->
             <?= view('App\Views\site\_responsiveheader') ?>
 
             <?= $this->renderSection('main') ?>
 
             <!-- footer -->
-<?= view('App\Views\site\_footer') ?>
+            <?= view('App\Views\site\_footer') ?>
 
-<?= view('App\Views\site\_popup_form') ?>
-        <?= $this->renderSection('artermain') ?>
+            <?= view('App\Views\site\_popup_form') ?>
+            <?= $this->renderSection('aftermain') ?>
         </main><!-- Main Wrapper -->
 
         <script src="/site/modules/jquery/jquery.min.js"></script>
         <script src="/site/modules/bootstrap/js/bootstrap.min.js"></script>
         <script src="/site/js/common.min.js"></script>
-<?= $this->renderSection('pagejs') ?>
+        <?= $this->renderSection('pagejs') ?>
         <script type="text/javascript">
             (function (d, w, s) {
                 var widgetHash = 'uqx4ugylsllgfwcf5fi7', gcw = d.createElement(s);

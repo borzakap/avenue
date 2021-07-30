@@ -15,7 +15,7 @@ namespace App\Controllers;
  */
 class Sections extends BaseController{
     //put your code here
-    public function section(string $slug){
+    public function view(string $slug){
         helper('html');
         $model = model(SectionsModel::class);
         $section = $model->where('slug', $slug)->first();
