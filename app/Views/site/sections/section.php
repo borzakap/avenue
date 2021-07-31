@@ -15,7 +15,7 @@
 
 <?= $this->section('aftermain') ?>
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" id="empModal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" id="layout-modal" role="dialog" aria-labelledby="layoutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,7 +23,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body"></div>
+            <div class="modal-body" id="layout-modal-body"></div>
         </div>
     </div>
 </div>

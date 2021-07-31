@@ -14,9 +14,9 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (data) {
                 console.log(data);
-                $('.modal-body').html(data.html);
+                $('#layout-modal-body').html(data.html);
                 // Display Modal
-                $('#empModal').modal('show');
+                $('#layout-modal').modal('show');
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
