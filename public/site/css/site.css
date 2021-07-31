@@ -15194,6 +15194,10 @@ blockquote > p::after {
   }
 }
 
+.rotation-wrapper-outer {
+  padding: 1rem 0;
+}
+
 .sections-schema {
   position: relative;
   margin: 0 auto;
