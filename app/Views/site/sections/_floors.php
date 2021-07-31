@@ -3,11 +3,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-12">
-                    <div class="nav flex-md-column nav-pills" id="pills-tab" role="tablist">
+                    <p class="title d-sm-none d-md-block"><?= lang('Site.Sections.Page.Floors') ?></p>
+                    <ul class="nav flex-md-column nav-pills" id="pills-tab" role="tablist">
                         <?php foreach ($floors as $floor) : ?>
-                            <a class="nav-link" id="pills-<?= $floor->id ?>-tab" data-toggle="pill" href="#pills-<?= $floor->id ?>" role="tab" aria-controls="pills-<?= $floor->id ?>" aria-selected="true"><?= $floor->image_code ?></a>
+                            <li class="nav-item"">
+                                <a class="nav-link" id="pills-<?= $floor->id ?>-tab" data-toggle="pill" href="#pills-<?= $floor->id ?>" role="tab" aria-controls="pills-<?= $floor->id ?>" aria-selected="true"><?= $floor->image_code ?></a>
+                            </li>
                         <?php endforeach; ?>
-                    </div>
+                    </ul>
                 </div>
                 <div class="col-md-8 col-12">
                     <div class="tab-content" id="pills-tabContent">
