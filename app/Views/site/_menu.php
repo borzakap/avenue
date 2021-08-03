@@ -5,8 +5,8 @@
                 <ul class="mb-0 list-unstyled d-inline-flex">
                     <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#home"><?= lang('Site.Menue.Main.Home') ?></a></li>
                     <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a></li>
-                    <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#layouts"><?= lang('Site.Menue.Main.Layouts') ?></a></li>
                     <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#prefs"><?= lang('Site.Menue.Main.Prefs') ?></a></li>
+                    <li><a href="<?= route_to('App\Controllers\Complex::genplan') ?>"><?= lang('Site.Menue.Main.Layouts') ?></a></li>
                 </ul>
             </div>
             <div class="header-right-btns">

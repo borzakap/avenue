@@ -18,6 +18,8 @@ return [
             'AllArea' => 'Загальна площа',
             'LiveArea' => 'Житлова площа',
             'KitArea' => 'Площа кухні',
+            'Quarter' => 'квартал',
+            'Year' => 'р.',
         ],
     ],
     'Popapform' => [

@@ -44,12 +44,37 @@ class SectionsModel extends Model {
                             ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
                             ->where('sections_translation.language', $language)
                             ->findAll();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
+        } catch (\Exception $e) {
+            die($e->getTraceAsString());
         }
     }
     
-    public function getTranslations(int $section_id): array{
+    /**
+     * get section data by id and language (frontend)
+     * @param int $id
+     * @param string $language
+     * @return object
+     */
+    public function getSection(int $id, string $language): object
+    {
+        try{
+            return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
+                            ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                            ->where('sections_translation.language', $language)
+                            ->where('sections.id', $id)
+                            ->first();
+        } catch (Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
+
+    /**
+     * get section`s translation
+     * @param int $section_id
+     * @return array
+     */
+    public function getTranslations(int $section_id): array
+    {
         try{
             return $this->db->table('sections_translation')->where('section_id', $section_id)->get()->getResultObject();
         } catch (\Exception $exc) {

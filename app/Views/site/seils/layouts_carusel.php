@@ -14,7 +14,7 @@
                     <div class="col-md-6 col-sm-6 col-lg-4">
                         <div class="layouts-box w-100">
                             <div class="layout-img overflow-hidden w-100 mb-20">
-                                <a href="#" title=""><img class="img-fluid w-100" src="/images/layouts/<?= $layout->image_2d ?>" alt="Post Image 1"></a>
+                                <a href="<?= route_to('App\Controllers\Layouts::view', $layout->slug) ?>" title=""><img class="img-fluid w-100" src="/images/layouts/<?= $layout->image_2d ?>" alt="Post Image 1"></a>
                             </div>
                             <dl class="row">
                                 <dt class="col-8"><?= lang('Site.Layouts.Dt.AllArea') ?></dt>

@@ -12,6 +12,7 @@ class LayoutsEntity extends Entity {
         'meta_title' => null,
         'description' => null,
         'meta_description' => null,
+        'language' => null,
     ];
 
     protected $dates = [
@@ -24,6 +25,8 @@ class LayoutsEntity extends Entity {
     protected $translations = [];
     // floor image
     protected $floor_image;
+    // section
+    protected $section;
     // update and delete links
     protected $update_link = '';
     protected $delete_link = '';
@@ -58,7 +61,8 @@ class LayoutsEntity extends Entity {
      * @return self
      * @throws \RuntimeException
      */
-    public function withFloorImage(): self{
+    public function withFloorImage(): self
+    {
         if(empty($this->id)){
             throw new \RuntimeException('Layout must be created before getting layout image.');
         }
@@ -71,6 +75,29 @@ class LayoutsEntity extends Entity {
     public function getFloorImage(): object{
         return $this->floor_image;
     }
+
+    /**
+     * get layout`s section data
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withSection(): self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Layout must be created before getting layout`s section.');
+        }
+        if(empty($this->section)){
+            $this->section = model(SectionsModel::class)->getSection($this->section_id, $this->language);
+        }
+        return $this;
+    }
+
+    public function getSection(){
+        return $this->section;
+    }
+
+
+
 
     /**
      * format update link

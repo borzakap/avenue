@@ -14,14 +14,17 @@ namespace App\Controllers;
  * @author alexey
  */
 class Sections extends BaseController{
-    //put your code here
+    /**
+     * section view
+     * @param string $slug
+     * @return type
+     */
     public function view(string $slug){
         helper('html');
         $model = model(SectionsModel::class);
         $section = $model->where('slug', $slug)->first();
         $floors_model = model(FloorsImagesModel::class);
-        $floors = $floors_model->where('section_id', $section->id)->find();
-        $this->data['floors'] = $floors;
+        $this->data['floors'] = $floors_model->where('section_id', $section->id)->find();
         return view('site/sections/section', $this->data);
     }
 }
