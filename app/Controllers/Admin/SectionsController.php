@@ -60,7 +60,6 @@ class SectionsController extends BaseController{
         if ($this->request->getMethod() === 'post') {
             
         }
-        $model = model(SectionsModel::class);
         $residentials = model(ResidentialsModel::class);
         $data = [
             'languages' => $config->supportedLocales,
@@ -142,11 +141,32 @@ class SectionsController extends BaseController{
         return $this->response->setJSON($floors_images);
     }
     
-    public function floorsDelete(){
-        
-    }
+    /**
+     * Updeting floors images
+     * @return type
+     */
     public function floorsUpdate(){
-        
+        $return = [
+            'message' => lang('Sections.Messages.Error.NotUpload'),
+        ];
+        if(!$this->request->getMethod() === 'post'){
+            return $this->response->setJSON($return);
+        }
+        $floorsImagesModel = model('FloorsImagesModel');
+        $floorsImages = $floorsImagesModel->find($this->request->getPost('id'));
+        $data = $this->request->getPost();
+        if($this->request->getPost('delete_img')){
+            if($floorsImages->image_name && file_exists(IMGPATH . 'sections/' . $floorsImages->image_name)){
+                unlink(IMGPATH . 'sections/' . $floorsImages->image_name);  
+            }
+            $floorsImagesModel->delete($floorsImages->id);
+            $return['message'] = lang('Sections.Messages.Success.Deleted');
+        }else{
+            $floorsImages->image_code = $this->request->getPost('image_code');
+            $floorsImagesModel->save($floorsImages);
+            $return['message'] = lang('Sections.Messages.Success.Updated');
+        }
+        return $this->response->setJSON($return);
     }
     //put your code here
 }

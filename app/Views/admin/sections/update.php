@@ -33,7 +33,7 @@
         <?= view('App\Views\admin\sections\_images_form') ?>
         <?= form_submit('floors_upload', lang('Sections.Form.Buttons.Upload'), ['class' => 'btn btn-primary', 'id' => 'floors-upload-btn']) ?>
         <?= form_close() ?>    
-        <div id="images-greed" data-action="<?= route_to('floors-load') ?>" data-section="<?= $section_id ?>"></div>
+        <div id="images-greed" class="row" data-action="<?= route_to('floors-load') ?>" data-section="<?= $section_id ?>"></div>
     </div>
 </div>
 
@@ -45,10 +45,14 @@
 <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
 <script src="/admin/js/floors-images.min.js"></script>
 <script type="text/template" data-template="images">
-
-    <div class="">
-    <img src="/images/sections/${floor_img}" />
-        <div class="">${floor_code}</div>
+    <div class="col-12 col-md-6">
+        <?= form_open('console/ajax/floors-update', ['class' => 'floors-update']) ?>
+            <img class="img-fluid img-thumbnail" src="/images/sections/${image_name}" />
+            <input type="text" value="${image_code}" name="image_code" />
+            <input type="hidden" name="id" value="${id}" />
+            <input type="checkbox" name="delete_img" id="delete_img_${id}"> <label for="delete_img_${id}">Delete</label>
+            <input type="submit" name="update_img" value="Submit" />
+        <?= form_close() ?>    
     </div>
 </script>
 

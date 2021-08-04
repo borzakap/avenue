@@ -35,6 +35,30 @@ $(document).ready(function () {
             });
         }
     });
+    
+    // update floors
+    $(document).on('submit', '.floors-update', function(e){
+        e.preventDefault();
+//        console.log(e.submitter);
+//        $(this).closest('input[name=delete_img]').on('click', function(){
+//            if(!confirm('delete this img?')){
+//                return false;
+//            }
+//        });
+        $.ajax({
+            url: $(this).attr('action'),
+            method: "POST",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: "json",
+            success: function(res){
+                console.log(res.message);
+                floorsLoad();
+            }
+        });
+    });
 });
 
 function floorsLoad(){
@@ -50,10 +74,10 @@ function floorsLoad(){
             var greed = [];
             var template = $('script[data-template="images"]').text().split(/\$\{(.+?)\}/g);
             $.each(res, function(i, image){
-                greed.floor_img = image.image_name;
-                greed.floor_title = image.image_code;
+                greed.id = image.id;
+                greed.image_name = image.image_name;
+                greed.image_code = image.image_code;
                 var html = template.map(render(greed)).join('');
-                console.log(html);
                 container.append(html);
             });
         }

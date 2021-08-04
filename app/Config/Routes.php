@@ -68,6 +68,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     $routes->group('ajax', function ($routes) {
         $routes->post('floors-upload', 'Admin\SectionsController::floorsUpload', ['as' => 'floors-upload']);
         $routes->post('floors-load', 'Admin\SectionsController::floorsLoad', ['as' => 'floors-load']);
+        $routes->post('floors-update', 'Admin\SectionsController::floorsUpdate', ['as' => 'floors-update']);
         $routes->post('floors-image-change-url', 'Admin\LayoutsController::poligonChange', ['as' => 'floors-image-change-url']);
         $routes->post('poligon-save', 'Admin\LayoutsController::poligonSave', ['as' => 'poligon-save']);
     });

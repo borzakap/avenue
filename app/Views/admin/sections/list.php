@@ -24,7 +24,6 @@
                 <thead>
                     <tr>
                         <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
                         <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
                         <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
                         <th></th>
@@ -35,7 +34,6 @@
                 <tfoot>
                     <tr>
                         <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
                         <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
                         <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
                         <th></th>
@@ -47,9 +45,8 @@
                     <?php foreach ($items as $item) : ?>
                         <tr>
                             <td><?= $item->title ?></td>
-                            <td><?= $item->address ?></td>
-                            <td><?= $item->residential_build_start ?></td>
-                            <td><?= $item->residential_build_end ?></td>
+                            <td><?= $item->section_build_start ?></td>
+                            <td><?= $item->section_build_end ?></td>
                             <td><?= $item->status ?></td>
                             <td><?= $item->update_link ?></td>
                             <td><?= $item->delete_link ?></td>
