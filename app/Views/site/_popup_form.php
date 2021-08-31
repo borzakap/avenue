@@ -15,17 +15,17 @@
                                 <div class="response w-100"></div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-sm-12 col-lg-12">
+<!--                        <div class="col-md-12 col-sm-12 col-lg-12">
                             <input class="fname" type="text" name="name" placeholder="<?= lang('Site.Popapform.YourName') ?>">
-                        </div>
-                        <div class="col-md-6 col-sm-12 col-lg-6">
+                        </div>-->
+                        <div class="col-md-12 col-sm-12 col-lg-12">
                             <input class="email" type="text" name="phone" placeholder="<?= lang('Site.Popapform.YourPhone') ?>">
                         </div>
-                        <div class="col-md-6 col-sm-12 col-lg-6">
+<!--                        <div class="col-md-6 col-sm-12 col-lg-6">
                             <input class="email" type="email" name="email" placeholder="<?= lang('Site.Popapform.YourMail') ?>">
-                        </div>
+                        </div>-->
                         <div class="col-md-12 col-sm-12 col-lg-12">
-                            <textarea class="contact_message" name="text" placeholder="<?= lang('Site.Popapform.YourMessage') ?>"></textarea>
+                            <textarea class="contact_message" name="text" rows="4" placeholder="<?= lang('Site.Popapform.YourMessage') ?>"></textarea>
                             <button class="thm-btn thm-bg" id="submit" type="submit"><?= lang('Site.Popapform.Submit') ?><i class="flaticon-arrow-pointing-to-right"></i></button>
                         </div>
                     </div>
