@@ -5,6 +5,7 @@ namespace App\Libraries;
 use CodeIgniter\I18n\Time;
 use AmoCRM\Client\AmoCRMApiClient;
 use League\OAuth2\Client\Token\AccessTokenInterface;
+use Ramsey\Uuid\Uuid;
 
 class Amoservice {
 
@@ -176,10 +177,11 @@ class Amoservice {
 
     /**
      * set the unsorted uid
+     * @param mixed $UnsortedUid
      * @return \App\Libraries\Amoservice
      */
-    public function setUnsortedUid(string $UnsortedUid): Amoservice {
-        $this->unsortedUid = $UnsortedUid;
+    public function setUnsortedUid($UnsortedUid): Amoservice {
+        $this->unsortedUid = filter_var($UnsortedUid, FILTER_SANITIZE_STRING);
         return $this;
     }
 
@@ -188,16 +190,19 @@ class Amoservice {
      * @return string
      */
     public function getUnsortedUid(): string {
+        if(!$this->unsortedUid){
+            $this->unsortedUid = Uuid::uuid4();
+        }
         return $this->unsortedUid;
     }
 
     /**
      * set the unsorted form id
-     * @param string|null $FormId
+     * @param mixed $FormId
      * @return \App\Libraries\Amoservice
      */
-    public function setFormId(?string $FormId): Amoservice {
-        $this->formId = $FormId;
+    public function setFormId($FormId): Amoservice {
+        $this->formId = filter_var($FormId, FILTER_SANITIZE_STRING);
         return $this;
     }
 
@@ -214,11 +219,11 @@ class Amoservice {
 
     /**
      * set the unsorted form name
-     * @param string|null $FormName
+     * @param mixed $FormName
      * @return \App\Libraries\Amoservice
      */
-    public function setFormName(?string $FormName): Amoservice {
-        $this->formName = $FormName;
+    public function setFormName($FormName): Amoservice {
+        $this->formName = filter_var($FormName, FILTER_SANITIZE_STRING);
         return $this;
     }
 
@@ -228,18 +233,21 @@ class Amoservice {
      */
     public function getFormName(): string {
         if (!$this->formName) {
-            $this->formName = lang('Amoservice.FormName');
+            $this->formName = lang('Amoservice.DefaultFormName');
         }
         return $this->formName;
     }
 
     /**
      * set the unsorted form from url
-     * @param string|null $FormUrl
+     * @param mixed $FormUrl
      * @return \App\Libraries\Amoservice
      */
-    public function setFormUrl(?string $FormUrl): Amoservice {
-        $this->formUrl = $this->validateTextFieldLength(urldecode($FormUrl));
+    public function setFormUrl($FormUrl): Amoservice {
+        $this->formUrl = filter_var($FormUrl, FILTER_VALIDATE_URL);
+        if($this->formUrl){
+            $this->formUrl = $this->validateTextFieldLength(urldecode($this->formUrl));
+        }
         return $this;
     }
 
@@ -256,11 +264,14 @@ class Amoservice {
 
     /**
      * set the unsorted form referer
-     * @param string|null $FormReferer
+     * @param mixed $FormReferer
      * @return \App\Libraries\Amoservice
      */
-    public function setFormReferer(?string $FormReferer): Amoservice {
-        $this->formReferer = $this->validateTextFieldLength($FormReferer);
+    public function setFormReferer($FormReferer): Amoservice {
+        $this->formReferer = filter_var($FormReferer, FILTER_VALIDATE_URL);
+        if($this->formReferer){
+            $this->formReferer = $this->validateTextFieldLength(urldecode($this->formReferer));
+        }
         return $this;
     }
 
@@ -277,11 +288,11 @@ class Amoservice {
 
     /**
      * set the unsorted user ip
-     * @param string|null $UserIp
+     * @param mixed $UserIp
      * @return \App\Libraries\Amoservice
      */
-    public function setFormUserIp(?string $UserIp): Amoservice {
-        $this->formUserIp = $UserIp;
+    public function setFormUserIp($UserIp): Amoservice {
+        $this->formUserIp = filter_var($UserIp, FILTER_VALIDATE_IP);
         return $this;
     }
 
@@ -301,12 +312,12 @@ class Amoservice {
 
     /**
      * set the resposible user id
-     * @param int|null $ResponsibleUserId
+     * @param mixed $ResponsibleUserId
      * @return \App\Libraries\Amoservice
      */
-    public function setResponsibleUserId(?int $ResponsibleUserId): Amoservice {
-        $this->responsibleUserId = $ResponsibleUserId;
-        return $this;
+    public function setResponsibleUserId($ResponsibleUserId): Amoservice {
+        $this->responsibleUserId = filter_var($ResponsibleUserId, FILTER_VALIDATE_INT);
+            return $this;
     }
 
     /**
@@ -314,6 +325,9 @@ class Amoservice {
      * @return int
      */
     public function getResponsibleUserId(): int {
+        if(!$this->responsibleUserId){
+            $this->responsibleUserId = 0;
+        }
         return $this->responsibleUserId;
     }
 
@@ -321,10 +335,10 @@ class Amoservice {
 
     /**
      * set the valid contact`s email
-     * @param string|null $ContactEmail
+     * @param mixed $ContactEmail
      * @return \App\Libraries\Amoservice
      */
-    public function setContactEmail(?string $ContactEmail): Amoservice {
+    public function setContactEmail($ContactEmail): Amoservice {
         $this->contactEmail = filter_var($ContactEmail, FILTER_VALIDATE_EMAIL);
         return $this;
     }
@@ -334,27 +348,35 @@ class Amoservice {
      * @return string|null
      */
     public function getContactEmail(): ?string {
+        if(!$this->contactEmail){
+            $this->contactEmail = null;
+        }
         return $this->contactEmail;
     }
 
     /**
      * set the valid contact`s phone
-     * @param string|null $ContactPhone
+     * @param mixed $ContactPhone
      * @return \App\Libraries\Amoservice
      */
-    public function setContactPhone(?string $ContactPhone): Amoservice {
+    public function setContactPhone($ContactPhone): Amoservice {
+        $phone = filter_var($ContactPhone, FILTER_SANITIZE_STRING);
+        if(!$phone){
+            $this->contactPhone = null;
+            return $this;
+        }
         $phoneUtil = service('phone');
         try {
-            $phone = $phoneUtil->parse($ContactPhone, "UA");
-        } catch (Exception $ex) {
-            $this->contactPhone = false;
+            $r_phone = $phoneUtil->parse($phone, "UA");
+        } catch (Exception $e) {
+            $this->contactPhone = null;
             return $this;
         }
-        if (!$phoneUtil->isValidNumber($phone)) {
-            $this->contactPhone = false;
+        if (!$phoneUtil->isValidNumber($r_phone)) {
+            $this->contactPhone = null;
             return $this;
         }
-        $this->contactPhone = $phoneUtil->format($phone, \libphonenumber\PhoneNumberFormat::E164);
+        $this->contactPhone = $phoneUtil->format($r_phone, \libphonenumber\PhoneNumberFormat::E164);
         return $this;
     }
 
@@ -363,16 +385,22 @@ class Amoservice {
      * @return string|null
      */
     public function getContactPhone(): ?string {
+        if(!$this->contactPhone){
+            $this->contactPhone = null;
+        }
         return $this->contactPhone;
     }
 
     /**
      * set the contact`s name
-     * @param string|null $ContactName
+     * @param mixed $ContactName
      * @return \App\Libraries\Amoservice
      */
-    public function setContactName(?string $ContactName): Amoservice {
-        $this->contactName = $this->validateTextFieldLength($ContactName);
+    public function setContactName($ContactName): Amoservice {
+        $this->contactName = filter_var($ContactName, FILTER_SANITIZE_STRING);
+        if($this->contactName){
+            $this->contactName = $this->validateTextFieldLength($this->contactName);
+        }
         return $this;
     }
 
@@ -389,11 +417,14 @@ class Amoservice {
 
     /**
      * set the contact`s country
-     * @param string|null $ContactCountry
+     * @param mixed $ContactCountry
      * @return \App\Libraries\Amoservice
      */
-    public function setContactCountry(?string $ContactCountry): Amoservice {
-        $this->contactCountry = $this->validateTextFieldLength($ContactCountry);
+    public function setContactCountry($ContactCountry): Amoservice {
+        $this->contactCountry = filter_var($ContactCountry, FILTER_SANITIZE_STRING);
+        if($this->contactCountry){
+            $this->contactCountry = $this->validateTextFieldLength($this->contactCountry);
+        }
         return $this;
     }
 
@@ -402,16 +433,22 @@ class Amoservice {
      * @return string|null
      */
     public function getContactCountry(): ?string {
+        if(!$this->contactCountry){
+            $this->contactCountry = null;
+        }
         return $this->contactCountry;
     }
 
     /**
      * set the contact`s city
-     * @param string|null $ContactCity
+     * @param mixed $ContactCity
      * @return \App\Libraries\Amoservice
      */
-    public function setContactCity(?string $ContactCity): Amoservice {
-        $this->contactCity = $this->validateTextFieldLength($ContactCity);
+    public function setContactCity($ContactCity): Amoservice {
+        $this->contactCity = filter_var($ContactCity, FILTER_SANITIZE_STRING);
+        if($this->contactCity){
+            $this->contactCity = $this->validateTextFieldLength($this->contactCity);
+        }
         return $this;
     }
 
@@ -420,6 +457,9 @@ class Amoservice {
      * @return string|null
      */
     public function getContactCity(): ?string {
+        if(!$this->contactCity){
+            $this->contactCity = null;
+        }
         return $this->contactCity;
     }
 
@@ -427,11 +467,14 @@ class Amoservice {
 
     /**
      * set lead Name
-     * @param string|null $LeadName
+     * @param mixed $LeadName
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadName(?string $LeadName): Amoservice {
-        $this->leadName = $this->validateTextFieldLength($LeadName);
+    public function setLeadName($LeadName): Amoservice {
+        $this->leadName = filter_var($LeadName, FILTER_SANITIZE_STRING);
+        if($this->leadName){
+            $this->leadName = $this->validateTextFieldLength($this->leadName);
+        }
         return $this;
     }
 
@@ -448,11 +491,14 @@ class Amoservice {
 
     /**
      * set the google analytics client id
-     * @param string|null $LeadGacid
+     * @param mixed $LeadGacid
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadGacid(?string $LeadGacid): Amoservice {
-        $this->leadGacid = $this->validateTextFieldLength($LeadGacid);
+    public function setLeadGacid($LeadGacid): Amoservice {
+        $this->leadGacid = filter_var($LeadGacid, FILTER_SANITIZE_STRING);
+        if($this->leadGacid){
+            $this->leadGacid = $this->validateTextFieldLength($this->leadGacid);
+        }
         return $this;
     }
 
@@ -461,16 +507,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadGacid(): ?string {
+        if(!$this->leadGacid){
+            $this->leadGacid = null;
+        }
         return $this->leadGacid;
     }
 
     /**
      * set the google ads gclid data
-     * @param string|null $LeadGclid
+     * @param mixed $LeadGclid
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadGclid(?string $LeadGclid): Amoservice {
-        $this->leadGclid = $this->validateTextFieldLength($LeadGclid);
+    public function setLeadGclid($LeadGclid): Amoservice {
+        $this->leadGclid = filter_var($LeadGclid, FILTER_SANITIZE_STRING);
+        if($this->leadGclid){
+            $this->leadGclid = $this->validateTextFieldLength($this->leadGclid);
+        }
         return $this;
     }
 
@@ -479,16 +531,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadGclid(): ?string {
+        if(!$this->leadGclid){
+            $this->leadGclid = null;
+        }
         return $this->leadGclid;
     }
 
     /**
      * set the utm_source
-     * @param string|null $LeadUtmSource
+     * @param mixed $LeadUtmSource
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadUtmSource(?string $LeadUtmSource): Amoservice {
-        $this->leadUtmSource = $this->validateTextFieldLength($LeadUtmSource);
+    public function setLeadUtmSource($LeadUtmSource): Amoservice {
+        $this->leadUtmSource = filter_var($LeadUtmSource, FILTER_SANITIZE_STRING);
+        if($this->leadUtmSource){
+            $this->leadUtmSource = $this->validateTextFieldLength($this->leadUtmSource);
+        }
         return $this;
     }
 
@@ -497,16 +555,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadUtmSource(): ?string {
+        if(!$this->leadUtmSource){
+            $this->leadUtmSource = null;
+        }
         return $this->leadUtmSource;
     }
 
     /**
      * set the utm_medium
-     * @param string|null $LeadUtmMedium
+     * @param mixed $LeadUtmMedium
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadUtmMedium(?string $LeadUtmMedium): Amoservice {
-        $this->leadUtmMedium = $this->validateTextFieldLength($LeadUtmMedium);
+    public function setLeadUtmMedium($LeadUtmMedium): Amoservice {
+        $this->leadUtmMedium = filter_var($LeadUtmMedium, FILTER_SANITIZE_STRING);
+        if($this->leadUtmMedium){
+            $this->leadUtmMedium = $this->validateTextFieldLength($this->leadUtmMedium);
+        }
         return $this;
     }
 
@@ -515,16 +579,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadUtmMedium(): ?string {
+        if(!$this->leadUtmMedium){
+            $this->leadUtmMedium = null;
+        }
         return $this->leadUtmMedium;
     }
 
     /**
      * set the utm_term
-     * @param string|null $LeadUtmTerm
+     * @param mixed $LeadUtmTerm
      * @return \App\Libraries\Amoservice
      */
     public function setLeadUtmTerm(?string $LeadUtmTerm): Amoservice {
-        $this->leadUtmTerm = $this->validateTextFieldLength($LeadUtmTerm);
+        $this->leadUtmTerm = filter_var($LeadUtmTerm, FILTER_SANITIZE_STRING);
+        if($this->leadUtmTerm){
+            $this->leadUtmTerm = $this->validateTextFieldLength($this->leadUtmTerm);
+        }
         return $this;
     }
 
@@ -533,16 +603,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadUtmTerm(): ?string {
+        if(!$this->leadUtmTerm){
+            $this->leadUtmTerm = null;
+        }
         return $this->leadUtmTerm;
     }
 
     /**
      * set the utm_content
-     * @param string|null $LeadUtmContent
+     * @param mixed $LeadUtmContent
      * @return \App\Libraries\Amoservice
      */
     public function setLeadUtmContent(?string $LeadUtmContent): Amoservice {
-        $this->leadUtmContent = $this->validateTextFieldLength($LeadUtmContent);
+        $this->leadUtmContent = filter_var($LeadUtmContent, FILTER_SANITIZE_STRING);
+        if($this->leadUtmContent){
+            $this->leadUtmContent = $this->validateTextFieldLength($this->leadUtmContent);
+        }
         return $this;
     }
 
@@ -551,16 +627,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadUtmContent(): ?string {
+        if(!$this->leadUtmContent){
+            $this->leadUtmContent = null;
+        }
         return $this->leadUtmContent;
     }
 
     /**
      * set the utm_campaign
-     * @param string|null $LeadUtmCampaign
+     * @param mixed $LeadUtmCampaign
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadUtmCampaign(?string $LeadUtmCampaign): Amoservice {
-        $this->leadUtmCampaign = $this->validateTextFieldLength($LeadUtmCampaign);
+    public function setLeadUtmCampaign($LeadUtmCampaign): Amoservice {
+        $this->leadUtmCampaign = filter_var($LeadUtmCampaign, FILTER_SANITIZE_STRING);
+        if($this->leadUtmCampaign){
+            $this->leadUtmCampaign = $this->validateTextFieldLength($this->leadUtmCampaign);
+        }
         return $this;
     }
 
@@ -569,18 +651,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadUtmCampaign(): ?string {
+        if(!$this->leadUtmCampaign){
+            $this->leadUtmCampaign = null;
+        }
         return $this->leadUtmCampaign;
     }
 
     /**
      * set the type lead data
-     * @param string|null $TypeLead
+     * @param mixed $TypeLead
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadTypeLead(?string $TypeLead): Amoservice {
-        if (isset($this->amoConf->leadTypeLeadFieldValues[$TypeLead])) {
-            $this->leadTypeLeadValue = $TypeLead;
-            $this->leadTypeLeadEnum = $this->amoConf->leadTypeLeadFieldValues[$TypeLead];
+    public function setLeadTypeLead($TypeLead): Amoservice {
+        $Type = filter_var($TypeLead, FILTER_SANITIZE_STRING);
+        if($Type && isset($this->amoConf->leadTypeLeadFieldValues[$Type])){
+            $this->leadTypeLeadValue = $Type;
+            $this->leadTypeLeadEnum = $this->amoConf->leadTypeLeadFieldValues[$Type];
         }
         return $this;
     }
@@ -590,6 +676,9 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadTypeLeadValue(): ?string {
+        if(!$this->leadTypeLeadValue){
+            $this->leadTypeLeadValue = null;
+        }
         return $this->leadTypeLeadValue;
     }
 
@@ -598,16 +687,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadTypeLeadEnum(): ?string {
+        if(!$this->leadTypeLeadEnum){
+            $this->leadTypeLeadEnum = null;
+        }
         return $this->leadTypeLeadEnum;
     }
 
     /**
      * set the site domain
-     * @param string|null $LeadDomain
+     * @param mixed $LeadDomain
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadDomain(?string $LeadDomain): Amoservice {
-        $this->leadDomain = $this->validateTextFieldLength($LeadDomain);
+    public function setLeadDomain($LeadDomain): Amoservice {
+        $this->leadDomain = filter_var($LeadDomain, FILTER_VALIDATE_DOMAIN);
+        if($this->leadDomain){
+            $this->leadDomain = $this->validateTextFieldLength($this->leadDomain);
+        }
         return $this;
     }
 
@@ -616,22 +711,28 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadDomain(): ?string {
-        if (!$this->leadDomain && $this->formUrl) {
+        if(!$this->leadDomain && $this->formUrl){
             $url = parse_url($this->formUrl);
-            if (isset($url['host'])) {
+            if(isset($url['host'])){
                 $this->leadDomain = $url['host'];
             }
+        }
+        if(!$this->leadDomain){
+            $this->leadDomain = null;
         }
         return $this->leadDomain;
     }
 
     /**
      * set the user Agent data
-     * @param string|null $LeadUserAgent
+     * @param mixed $LeadUserAgent
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadUserAgent(?string $LeadUserAgent): Amoservice {
-        $this->leadUserAgent = $this->validateTextFieldLength($LeadUserAgent);
+    public function setLeadUserAgent($LeadUserAgent): Amoservice {
+        $this->leadUserAgent = filter_var($LeadUserAgent, FILTER_SANITIZE_STRING);
+        if($this->leadUserAgent){
+            $this->leadUserAgent = $this->validateTextFieldLength($this->leadUserAgent);
+        }
         return $this;
     }
 
@@ -640,16 +741,22 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadUserAgent(): ?string {
+        if(!$this->leadUserAgent){
+            $this->leadUserAgent = null;
+        }
         return $this->leadUserAgent;
     }
 
     /**
      * set the lead`s message
-     * @param string|null $LeadMessage
+     * @param mixed $LeadMessage
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadMessage(?string $LeadMessage): Amoservice {
-        $this->leadMessage = strip_tags($LeadMessage);
+    public function setLeadMessage($LeadMessage): Amoservice {
+        $this->leadMessage = filter_var($LeadMessage, FILTER_SANITIZE_STRING);
+        if($this->leadMessage){
+            $this->leadMessage = strip_tags($this->leadMessage);
+        }
         return $this;
     }
 
@@ -658,24 +765,27 @@ class Amoservice {
      * @return string|null
      */
     public function getLeadMessage(): ?string {
+        if(!$this->leadMessage){
+            $this->leadMessage = null;
+        }
         return $this->leadMessage;
     }
 
     /**
      * set created at the lead
-     * @param int|null $leadCreatedAt
+     * @param mixed $leadCreatedAt
      * @return \App\Libraries\Amoservice
      */
-    public function setLeadCreatedAt(?int $leadCreatedAt): Amoservice {
-        $this->leadCreatedAt = $leadCreatedAt;
+    public function setLeadCreatedAt($leadCreatedAt): Amoservice {
+        $this->leadCreatedAt = filter_var($leadCreatedAt, FILTER_VALIDATE_INT);
         return $this;
     }
 
     /**
      * get lead created at
-     * @return int|null
+     * @return int
      */
-    public function getLeadCreatedAt(): ?int {
+    public function getLeadCreatedAt(): int {
         if (!$this->leadCreatedAt) {
             return Time::now()->getTimestamp();
         }
