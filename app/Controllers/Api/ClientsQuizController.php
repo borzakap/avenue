@@ -28,8 +28,8 @@ class ClientsQuizController extends BaseController{
         
     }
 
-    public function prepareData() :void{
-        $this->amoService->setUnsortedUid(Uuid::uuid4());
+    public function prepareData() :void 
+    {
         $this->amoService->setFormId('AvenueIdilika');
         $this->amoService->setFormName(lang('Amo.Titles.FormNameFromQuiz'));
         $this->amoService->setLeadName(lang('Amo.Titles.FormNameFromQuiz'));
