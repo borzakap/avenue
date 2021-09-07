@@ -21,7 +21,9 @@ use AmoCRM\Models\CustomFieldsValues\ValueModels\MultitextCustomFieldValueModel;
 use AmoCRM\Models\CustomFieldsValues\ValueModels\TextCustomFieldValueModel;
 use AmoCRM\Models\CustomFieldsValues\ValueModels\SelectCustomFieldValueModel;
 use AmoCRM\Models\CustomFieldsValues\ValueModels\TrackingDataCustomFieldValueModel;
+
 use AmoCRM\Collections\CustomFieldsValuesCollection;
+use AmoCRM\Collections\ContactsCollection;
 
 use AmoCRM\Models\ContactModel;
 use AmoCRM\Models\LeadModel;
