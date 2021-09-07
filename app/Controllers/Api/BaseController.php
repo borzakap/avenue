@@ -26,6 +26,12 @@ use AmoCRM\Collections\CustomFieldsValuesCollection;
 use AmoCRM\Models\ContactModel;
 use AmoCRM\Models\LeadModel;
 
+use AmoCRM\Models\Unsorted\FormUnsortedModel;
+use AmoCRM\Models\Unsorted\FormsMetadata;
+use AmoCRM\Collections\Leads\Unsorted\FormsUnsortedCollection;
+use CodeIgniter\I18n\Time;
+
+
 /**
  * Class BaseController
  *
@@ -419,5 +425,65 @@ class BaseController extends Controller {
         }
 
     }
+    
+    
+    protected function sendUnsorted() {
+
+        $formUnsorted = new FormUnsortedModel();
+        $formMetadata = new FormsMetadata();
+        // form metadata
+        $formMetadata->setFormId($this->amoService->getFormId())
+                ->setFormName($this->amoService->getFormName())
+                ->setFormSentAt(Time::now()->getTimestamp())
+                ->setFormPage($this->amoService->getFormUrl())
+                ->setReferer($this->amoService->getFormReferer())
+                ->setIp($this->amoService->getFormUserIp());
+
+        ## lead
+        $unsortedLead = new LeadModel();
+        $unsortedLead->setName($this->amoService->getLeadName());
+        $unsortedLead->setCustomFieldsValues($this->assignLeadCustomFields());
+
+        ## contact
+        $unsortedContactsCollection = new ContactsCollection();
+        $unsortedContact = new ContactModel();
+        $unsortedContact->setName($this->amoService->getContactName());
+
+        $contactCustomFields = new CustomFieldsValuesCollection();
+
+        // assign the contact`s phone
+        if ($this->amoService->getContactPhone()) {
+            $unsortedContact->setCustomFieldsValues($contactCustomFields->add($this->assignContactPhone()));
+        }
+        // assign the contact`s email
+        if ($this->amoService->getContactEmail()) {
+            $unsortedContact->setCustomFieldsValues($contactCustomFields->add($this->assignContactEmail()));
+        }
+
+        $unsortedContactsCollection->add($unsortedContact);
+
+        $formUnsorted
+                ->setSourceName($this->amoService->getFormId())
+                ->setSourceUid((string) $this->amoService->getUnsortedUid())
+                ->setCreatedAt(Time::now()->getTimestamp())
+                ->setMetadata($formMetadata)
+                ->setLead($unsortedLead)
+                ->setPipelineId($this->amoConf->piplineId)
+                ->setContacts($unsortedContactsCollection);
+
+        $formsUnsortedCollection = new FormsUnsortedCollection();
+        $formsUnsortedCollection->add($formUnsorted);
+
+        try {
+            $add_unsorted_log = $this->apiClient->unsorted()->add($formsUnsortedCollection);
+            log_message('error', '[INFO] {add_unsorted_log}', ['add_unsorted_log' => $add_unsorted_log]);
+            return $add_unsorted_log;
+        } catch (AmoCRMApiException $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            return false;
+        }
+    }
+
+    
 
 }

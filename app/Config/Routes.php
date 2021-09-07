@@ -103,6 +103,7 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function ($routes) 
 // api
 $routes->group('api', function($routes){
     $routes->post('request/send', 'Api\ClientsRequestsController::send');
+    $routes->post('quiz/send', 'Api\ClientsQuizController::send');
     $routes->post('layout-load', 'Api\LyoutsRequestsController::load', ['as'=>'layout-load']);
 });
 
