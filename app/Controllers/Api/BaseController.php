@@ -3,6 +3,7 @@
 namespace App\Controllers\Api;
 
 use CodeIgniter\Controller;
+use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -44,7 +45,7 @@ use CodeIgniter\I18n\Time;
  *
  * For security be sure to declare any new methods as protected or private.
  */
-class BaseController extends Controller {
+class BaseController extends ResourceController {
 
     /**
      * An array of helpers to be loaded automatically upon
