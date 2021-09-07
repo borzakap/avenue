@@ -50,8 +50,8 @@ class ClientsRequestsController extends BaseController {
     private function prepareData(): void{
         // set amoservice vars
         $this->amoService->setFormId('AvenueIdilika');
-        $this->amoService->setFormName(lang('Amo.Titles.FormNameFromSite'));
-        $this->amoService->setLeadName(lang('Amo.Titles.LeadNameFromSite'));
+        $this->amoService->setFormName(lang('Api.Titles.FormNameFromSite'));
+        $this->amoService->setLeadName(lang('Api.Titles.LeadNameFromSite'));
         $this->amoService->setContactName($this->request->getPost('name', FILTER_SANITIZE_STRING));
         $this->amoService->setContactPhone($this->request->getPost('phone'));
         $this->amoService->setContactEmail($this->request->getPost('email', FILTER_SANITIZE_EMAIL));

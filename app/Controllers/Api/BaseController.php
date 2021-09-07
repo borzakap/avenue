@@ -411,7 +411,7 @@ class BaseController extends ResourceController {
         $lead->setResponsibleUserId($this->amoService->getResponsibleUserId());
         $lead->setStatusId($this->amoConf->newLead);
         $lead->setCreatedAt($this->amoService->getLeadCreatedAt());
-//        $lead->setPipelineId($pipelineId);
+        $lead->setPipelineId($this->amoConf->piplineId);
         $lead->setCustomFieldsValues($this->assignLeadCustomFields());
         try{
             return $this->apiClient->leads()->addOne($lead);
@@ -472,7 +472,7 @@ class BaseController extends ResourceController {
 
         try {
             $add_unsorted_log = $this->apiClient->unsorted()->add($formsUnsortedCollection);
-            log_message('error', '[INFO] {add_unsorted_log}', ['add_unsorted_log' => $add_unsorted_log]);
+//            log_message('error', '[INFO] {add_unsorted_log}', ['add_unsorted_log' => $add_unsorted_log]);
             return $add_unsorted_log;
         } catch (AmoCRMApiException $e) {
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);

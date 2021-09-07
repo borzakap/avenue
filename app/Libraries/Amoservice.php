@@ -233,7 +233,7 @@ class Amoservice {
      */
     public function getFormName(): string {
         if (!$this->formName) {
-            $this->formName = lang('Amoservice.DefaultFormName');
+            $this->formName = lang('Api.Titles.DefaultFormName');
         }
         return $this->formName;
     }
@@ -410,7 +410,7 @@ class Amoservice {
      */
     public function getContactName(): string {
         if (!$this->contactName) {
-            $this->contactName = lang('Amoservice.ClientName');
+            $this->contactName = lang('Api.Titles.ClientName');
         }
         return $this->contactName;
     }
@@ -484,7 +484,7 @@ class Amoservice {
      */
     public function getLeadName(): string {
         if (!$this->leadName) {
-            $this->leadName = lang('Amoservice.LeadName');
+            $this->leadName = lang('Api.Titles.LeadName');
         }
         return $this->leadName;
     }

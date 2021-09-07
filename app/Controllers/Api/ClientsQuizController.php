@@ -31,8 +31,8 @@ class ClientsQuizController extends BaseController{
     public function prepareData() :void 
     {
         $this->amoService->setFormId('AvenueIdilika');
-        $this->amoService->setFormName(lang('Amo.Titles.FormNameFromQuiz'));
-        $this->amoService->setLeadName(lang('Amo.Titles.FormNameFromQuiz'));
+        $this->amoService->setFormName(lang('Api.Titles.FormNameFromQuiz'));
+        $this->amoService->setLeadName(lang('Api.Titles.FormNameFromQuiz'));
         $this->amoService->setContactEmail($this->request->getJsonVar('contacts.email'));
         $this->amoService->setContactPhone($this->request->getJsonVar('contacts.phone'));
         $this->amoService->setContactName($this->request->getJsonVar('contacts.name'));
