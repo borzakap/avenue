@@ -29,7 +29,7 @@ class CommerceModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|alpha_numeric_space|min_length[3]|is_unique[commerce.slug]',
+        'slug' => 'required|min_length[5]|is_unique[commerce.slug]',
         'residential_id' => 'required',
         'section_id' => 'required',
         'code' => 'required',
@@ -39,6 +39,7 @@ class CommerceModel extends Model implements TranslationInterface{
         'slug' => [
             'is_unique' => 'Validation.Slug.Unique',
             'required' => 'Validation.Slug.Required',
+            'min_length' => 'Validation.Slug.MinLength',
         ],
         'residential_id' => [
             'required' => 'Validation.ResidentialId.Required',
@@ -182,7 +183,7 @@ class CommerceModel extends Model implements TranslationInterface{
         // insert translations
         $translations = [];
         foreach ($data['translation'] as $language => $translation) {
-            if (!in_array($language, config('App')->supportedLocales)) {
+            if (!in_array($language, config(App::class)->supportedLocales)) {
                 continue;
             }
             $translations[] = $this->retrieveTranslation($item_id, $language, $translation);
@@ -206,8 +207,6 @@ class CommerceModel extends Model implements TranslationInterface{
      * @return array
      */
     public function retrieveMainData(array $data): array {
-        
-        $appConfig = config('App');
         $slugify = new Slugify();
         if(!isset($data['slug']) || empty($data['slug'])){
             $data['slug'] = $data['code'] ?? substr(str_shuffle(MD5(microtime())), 0, 10);

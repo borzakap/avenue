@@ -184,8 +184,6 @@ class LayoutsModel extends Model implements TranslationInterface{
      */
     public function retrieveMainData(array $data): array 
     {
-        
-        $appConfig = config('App');
         $slugify = new Slugify();
         if(!isset($data['slug']) || empty($data['slug'])){
             $data['slug'] = isset($data['code']) ? $data['code'] : substr(str_shuffle(MD5(microtime())), 0, 10);

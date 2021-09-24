@@ -61,60 +61,90 @@
             );
         </script>
         <!-- Marquiz script end -->
-    </head>
-    <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P56NB8V"
-                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->        
-        <main>
-            <header class="stick style1 w-100">
-                <!-- top bar -->
-                <?= view('App\Views\site\_topbar') ?>
-                <!-- logo info bar -->
-                <?= view('App\Views\site\_logoinfobar') ?>
-                <!-- logo info bar -->
-                <?= view('App\Views\site\_menu') ?>
-
-            </header><!-- Header -->
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function (f, b, e, v, n, t, s)
+            {
+                if (f.fbq)
+                    return;
+                n = f.fbq = function () {
+                    n.callMethod ?
+                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq)
+                    f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '222136853284692');
+            fbq('track', 'PageView');
+        </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=222136853284692&ev=PageView&noscript=1"
+                   /></noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P56NB8V"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->        
+    <main>
+        <header class="stick style1 w-100">
+            <!-- top bar -->
+            <?= view('App\Views\site\_topbar') ?>
             <!-- logo info bar -->
-            <?= view('App\Views\site\_stickymenu') ?>
-            <!-- responsive header -->
-            <?= view('App\Views\site\_responsiveheader') ?>
+            <?= view('App\Views\site\_logoinfobar') ?>
+            <!-- logo info bar -->
+            <?= view('App\Views\site\_menu') ?>
 
-            <?= $this->renderSection('main') ?>
+        </header><!-- Header -->
+        <!-- logo info bar -->
+        <?= view('App\Views\site\_stickymenu') ?>
+        <!-- responsive header -->
+        <?= view('App\Views\site\_responsiveheader') ?>
 
-            <!-- footer -->
-            <?= view('App\Views\site\_footer') ?>
+        <?= $this->renderSection('main') ?>
 
-            <?= view('App\Views\site\_popup_form') ?>
-            <?= $this->renderSection('aftermain') ?>
-        </main><!-- Main Wrapper -->
+        <!-- footer -->
+        <?= view('App\Views\site\_footer') ?>
 
-        <script src="/site/modules/jquery/jquery.min.js"></script>
-        <script src="/site/modules/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/site/js/common.min.js"></script>
-        <?= $this->renderSection('pagejs') ?>
-        <script type="text/javascript">
-            (function (d, w, s) {
-                var widgetHash = 'uqx4ugylsllgfwcf5fi7', gcw = d.createElement(s);
-                gcw.type = 'text/javascript';
-                gcw.async = true;
-                gcw.src = '//widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
-                var sn = d.getElementsByTagName(s)[0];
-                sn.parentNode.insertBefore(gcw, sn);
-            })(document, window, 'script');
-        </script> 
-        <script type="text/javascript">
-            (function (d, w, s) {
-                var widgetHash = 'zwvfo6dcfbdcoh6htaf6', ctw = d.createElement(s);
-                ctw.type = 'text/javascript';
-                ctw.async = true;
-                ctw.src = '//widgets.binotel.com/calltracking/widgets/' + widgetHash + '.js';
-                var sn = d.getElementsByTagName(s)[0];
-                sn.parentNode.insertBefore(ctw, sn);
-            })(document, window, 'script');
-        </script> 
-    </body>	
+        <?= view('App\Views\site\_popup_form') ?>
+        <?= $this->renderSection('aftermain') ?>
+    </main><!-- Main Wrapper -->
+
+    <script src="/site/modules/jquery/jquery.min.js"></script>
+    <script src="/site/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/site/js/common.min.js"></script>
+    <?= $this->renderSection('pagejs') ?>
+    <script type="text/javascript">
+(function (d, w, s) {
+    var widgetHash = 'uqx4ugylsllgfwcf5fi7', gcw = d.createElement(s);
+    gcw.type = 'text/javascript';
+    gcw.async = true;
+    gcw.src = '//widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
+    var sn = d.getElementsByTagName(s)[0];
+    sn.parentNode.insertBefore(gcw, sn);
+})(document, window, 'script');
+    </script> 
+    <script type="text/javascript">
+        (function (d, w, s) {
+            var widgetHash = 'zwvfo6dcfbdcoh6htaf6', ctw = d.createElement(s);
+            ctw.type = 'text/javascript';
+            ctw.async = true;
+            ctw.src = '//widgets.binotel.com/calltracking/widgets/' + widgetHash + '.js';
+            var sn = d.getElementsByTagName(s)[0];
+            sn.parentNode.insertBefore(ctw, sn);
+        })(document, window, 'script');
+    </script> 
+</body>	
 
 </html>
