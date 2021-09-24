@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\TranslationInterface;
 use Cocur\Slugify\Slugify;
 
 
-class LayoutsModel extends Model {
+class LayoutsModel extends Model implements TranslationInterface{
 
     protected $table = 'layouts';
     protected $primaryKey = 'id';
@@ -45,9 +46,10 @@ class LayoutsModel extends Model {
      * get by curren slug
      * @param string $slug
      * @param string $language
-     * @return object
+     * @return object|null
      */
-    public function getLayoutBySlug(string $slug, string $language): object{
+    public function getBySlug(string $slug, string $language): ?object
+    {
         try {
             return $this->select('layouts.*, layouts_translation.title, layouts_translation.meta_title, layouts_translation.description, layouts_translation.meta_description, layouts_translation.language')
                     ->join('layouts_translation', 'layouts_translation.layout_id = layouts.id', 'inner')
@@ -64,7 +66,7 @@ class LayoutsModel extends Model {
      * @param string $language
      * @return array
      */
-    public function getLayouts(string $language, array $params = []): array{
+    public function getList(string $language, array $params = []): array{
         try {
             return $this->select('layouts.*, layouts_translation.title, layouts_translation.meta_title, layouts_translation.description, layouts_translation.meta_description, layouts_translation.language')
                     ->join('layouts_translation', 'layouts_translation.layout_id = layouts.id', 'inner')
@@ -89,25 +91,27 @@ class LayoutsModel extends Model {
     }
     
     /**
-     * get floor image data
-     * @param int $floor_image_id
-     * @return object
+     * get layouts poligon and other data for floor image
+     * @param int $floor_images_id
+     * @return array
      */
-    public function getImageFloor(int $floor_image_id){
-        try{
-            return $this->db->table('floor_images')->where('id', $floor_image_id)->get()->getFirstRow();
-        } catch (Exception $e) {
+    public function getPoligons(int $floor_images_id): array
+    {
+        try {
+            return $this->where('floor_images_id', $floor_images_id)->findAll();
+        } catch (\Exception $e) {
             die($e->getTraceAsString());
         }
     }
 
 
     /**
-     * cretating the residential
+     * cretating the layout
      * @param array $data
      * @return int
      */
-    public function createLayout(array $data): int {
+    public function createItem(array $data): int 
+    {
         $appConfig = config('App');
         // insert the data about layout
         $main = $this->retrieveMainData($data);
@@ -143,7 +147,7 @@ class LayoutsModel extends Model {
      * @return int
      * @throws Exception
      */
-    public function updateLayout(int $layout_id, array $data): int{
+    public function updateItem(int $layout_id, array $data): int{
         $appConfig = config('App');
         // update layout
         try {
@@ -157,7 +161,7 @@ class LayoutsModel extends Model {
             if (!in_array($language, $appConfig->supportedLocales)) {
                 continue;
             }
-            $translations[] = $this->retrieveTranslationData($layout_id, $language, $translation);
+            $translations[] = $this->retrieveTranslation($layout_id, $language, $translation);
         }
         if (empty($translations)) {
             throw new Exception('there must be the translations');
@@ -178,7 +182,8 @@ class LayoutsModel extends Model {
      * @param array $data
      * @return array
      */
-    protected function retrieveMainData(array $data): array {
+    public function retrieveMainData(array $data): array 
+    {
         
         $appConfig = config('App');
         $slugify = new Slugify();
@@ -214,7 +219,7 @@ class LayoutsModel extends Model {
      * @param array $data
      * @return array
      */
-    protected function retrieveTranslationData(int $layout_id, string $language, array $data): array {
+    public function retrieveTranslation(int $layout_id, string $language, array $data): array {
         $retrieved = [
             'layout_id' => $layout_id,
             'language' => $language,

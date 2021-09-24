@@ -27,12 +27,26 @@ class ResidentialsEntity extends Entity {
     
     // all languages variants
     protected $translations = [];
+    // all sections of residential
+    protected $sections = [];
+    // all plans
+    protected $plans = [];
+    // data about current plan
+    protected $leaving_plan;
+    protected $commerce_plan;
+    protected $pantry_plan;
     // update and delete links
     protected $update_link = '';
     protected $delete_link = '';
 
 
-    public function withTranslations(): self{
+    /**
+     * get translations for residential edit page 
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withTranslations(): self
+    {
         if(empty($this->id)){
             throw new \RuntimeException('Residential must be created before getting translations.');
         }
@@ -49,17 +63,125 @@ class ResidentialsEntity extends Entity {
         return $this;
     }
     
-    public function getTranslations(): array{
+    /**
+     * get translations
+     * @return array
+     */
+    public function getTranslations(): array
+    {
         return $this->translations;
     }
     
-    public function getUpdateLink (): string{
+    /**
+     * find the residential`s sections
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withSections(): self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Residential must be created before getting sections.');
+        }
+        if(empty($this->sections)){
+            $this->sections = model(SectionsModel::class)->findSections($this->id, $this->language);
+        }
+        
+        return $this;
+    }
+
+    /**
+     * get residential`s sections
+     * @return array|null
+     */
+    public function getSections(): ?array
+    {
+        return $this->sections;
+    }
+
+    /**
+     * find residentials plans 
+     * @return self|null
+     * @throws \RuntimeException
+     */
+    public function withPlans(): ?self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Section must be created before getting translations.');
+        }
+        
+        if(empty($this->plans)){
+            $this->plans = model(PlansImagesModel::class)->getImages($this->id);
+        }
+        
+        foreach($this->plans as $plan){
+            switch ($plan->plan_type) {
+                case model(PlansImagesModel::class)::TYPE_LEAVING:
+                    $this->leaving_plan = $plan;
+                    break;
+                case model(PlansImagesModel::class)::TYPE_COMMERCE:
+                    $this->commerce_plan = $plan;
+                    break;
+                case model(PlansImagesModel::class)::TYPE_PANTRY:
+                    $this->pantry_plan = $plan;
+                    break;
+            }
+        }
+        
+        return $this;
+    }
+
+    /**
+     * get residential`s plans
+     * @return array|null
+     */
+    public function getPlans(): ?array
+    {
+        return $this->plans;
+    }
+
+    /**
+     * get leaving plan
+     * @return object|null
+     */
+    public function getLeavingPlan(): ?object
+    {
+        return $this->leaving_plan;
+    }
+
+    /**
+     * get pantry plan
+     * @return object|null
+     */
+    public function getPantryPlan(): ?object
+    {
+        return $this->pantry_plan;
+    }
+
+    /**
+     * get commerce plan
+     * @return object|null
+     */
+    public function getCommercePlan(): ?object
+    {
+        return $this->commerce_plan;
+    }
+
+    /**
+     * get formated update link
+     * @return string
+     */
+    public function getUpdateLink (): string
+    {
         if(!$this->update_link){
             $this->update_link = '<a href="' . route_to('App\Controllers\Admin\ResidentialsController::update', $this->id). '"><i class="fas fa-edit"></i></a>';
         }
         return $this->update_link;
     }
     
+    /**
+     * get formated delete link
+     * @return string
+     */
     public function getDeleteLink (): string{
         if(!$this->delete_link){
             $this->delete_link = '<a href="' . route_to('App\Controllers\Admin\ResidentialsController::delete', $this->id). '"><i class="fas fa-trash"></i></a>';

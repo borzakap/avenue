@@ -8,6 +8,7 @@ return [
         'Sections' => 'Секції',
         'Layouts' => 'Планування',
         'Flats' => 'Квартири',
+        'Commerce' => 'Комерція',
     ],
     'Pages' => [
         'BlockHeading' => 'Переклади',

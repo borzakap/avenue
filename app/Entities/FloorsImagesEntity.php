@@ -26,21 +26,43 @@ class FloorsImagesEntity extends Entity {
     protected $poligons = [];
 
     /**
-     * get poligons\sections data for floor images
+     * get poligons\sections data for leaving layouts floor images
      * @return self
      * @throws \RuntimeException
      */
-    public function withPoligons(): self{
+    public function withLayoutsPoligons(): self
+    {
         if(empty($this->id)){
             throw new \RuntimeException('Floor image must be created before getting poligons.');
         }
         if(empty($this->poligons)){
-            $this->poligons = model(FloorsImagesModel::class)->getPoligons($this->id);
+            $this->poligons = model(LayoutsModel::class)->getPoligons($this->id);
         }
         return $this;
     }
 
-    protected function getPoligons(){
+    /**
+     * get poligons\sections data for commerce layouts floor images
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withCommercePoligons(): self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Floor image must be created before getting poligons.');
+        }
+        if(empty($this->poligons)){
+            $this->poligons = model(CommerceModel::class)->getPoligons($this->id);
+        }
+        return $this;
+    }
+    
+    /**
+     * retrun poligon
+     * @return array
+     */
+    protected function getPoligons() :array
+    {
         return $this->poligons;
     }
 

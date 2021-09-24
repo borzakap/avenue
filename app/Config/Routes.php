@@ -36,21 +36,38 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     $routes->get('', 'Admin\ResidentialsController::list', ['as' => 'dashboard']);
     // residentials
     $routes->group('residentials', function($routes){
-        $routes->add('', 'Admin\ResidentialsController::list', ['as' => 'residentials']);
-        $routes->add('create', 'Admin\ResidentialsController::create');
-        $routes->add('update/(:num)', 'Admin\ResidentialsController::update/$1', ['as' => 'residential_update']);
+        $routes->get('', 'Admin\ResidentialsController::list', ['as' => 'residentials']);
+        $routes->match(['get', 'post'], 'create', 'Admin\ResidentialsController::create');
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\ResidentialsController::update/$1', ['as' => 'residential_update']);
+        $routes->post('plans-upload', 'Admin\ResidentialsController::plansUpload', ['as' => 'plans-upload']);
+        $routes->post('plans-load', 'Admin\ResidentialsController::plansLoad', ['as' => 'plans-load']);
+        $routes->post('plans-update', 'Admin\ResidentialsController::plansUpdate', ['as' => 'plans-update']);
     });
     // sections
     $routes->group('sections', function($routes){
-        $routes->add('', 'Admin\SectionsController::list', ['as' => 'sections']);
-        $routes->add('create', 'Admin\SectionsController::create');
-        $routes->add('update/(:num)', 'Admin\SectionsController::update/$1', ['as' => 'section_update']);
+        $routes->get('', 'Admin\SectionsController::list', ['as' => 'sections']);
+        $routes->match(['get', 'post'], 'create', 'Admin\SectionsController::create');
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\SectionsController::update/$1', ['as' => 'section_update']);
+        $routes->post('floors-upload', 'Admin\SectionsController::floorsUpload', ['as' => 'floors-upload']);
+        $routes->post('floors-load', 'Admin\SectionsController::floorsLoad', ['as' => 'floors-load']);
+        $routes->post('floors-update', 'Admin\SectionsController::floorsUpdate', ['as' => 'floors-update']);
+        $routes->post('poligon-commerce', 'Admin\SectionsController::poligonCommerce', ['as' => 'section_poligon_commerce']);
+        $routes->post('poligon-leaving', 'Admin\SectionsController::poligonLeaving', ['as' => 'section_poligon_leaving']);
+        $routes->post('poligon-pantry', 'Admin\SectionsController::poligonPantry', ['as' => 'section_poligon_pantry']);
     });
     // layouts
     $routes->group('layouts', function($routes){
-        $routes->add('', 'Admin\LayoutsController::list', ['as' => 'layouts']);
-        $routes->add('create', 'Admin\LayoutsController::create');
-        $routes->add('update/(:num)', 'Admin\LayoutsController::update/$1', ['as' => 'layout_update']);
+        $routes->get('', 'Admin\LayoutsController::list', ['as' => 'layouts']);
+        $routes->match(['get', 'post'], 'create', 'Admin\LayoutsController::create');
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\LayoutsController::update/$1', ['as' => 'layout_update']);
+        $routes->post('poligon-save', 'Admin\LayoutsController::poligonSave', ['as' => 'layout_poligon_save']);
+    });
+    // commerce
+    $routes->group('commerce', function($routes){
+        $routes->get('', 'Admin\CommerceController::list', ['as' => 'commerce']);
+        $routes->match(['get', 'post'], 'create', 'Admin\CommerceController::create', ['as' => 'commerce_create']);
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\CommerceController::update/$1', ['as' => 'commerce_update']);
+        $routes->post('poligon-save', 'Admin\CommerceController::poligonSave', ['as' => 'commerce_poligon_save']);
     });
     // pages
     $routes->group('pages', function($routes){
@@ -66,11 +83,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     });
     // ajax
     $routes->group('ajax', function ($routes) {
-        $routes->post('floors-upload', 'Admin\SectionsController::floorsUpload', ['as' => 'floors-upload']);
-        $routes->post('floors-load', 'Admin\SectionsController::floorsLoad', ['as' => 'floors-load']);
-        $routes->post('floors-update', 'Admin\SectionsController::floorsUpdate', ['as' => 'floors-update']);
         $routes->post('floors-image-change-url', 'Admin\LayoutsController::poligonChange', ['as' => 'floors-image-change-url']);
-        $routes->post('poligon-save', 'Admin\LayoutsController::poligonSave', ['as' => 'poligon-save']);
     });
     
 });
@@ -104,15 +117,26 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function ($routes) 
 $routes->group('api', function($routes){
     $routes->post('request/send', 'Api\ClientsRequestsController::send');
     $routes->post('quiz/send', 'Api\ClientsQuizController::send');
-    $routes->post('layout-load', 'Api\LyoutsRequestsController::load', ['as'=>'layout-load']);
 });
 
 // site.
-$routes->get('{locale}', 'Pages::index');
-$routes->get('{locale}/contact', 'Pages::contact');
-$routes->get('{locale}/section/(:segment)', 'Sections::view/$1', ['as'=>'section']);
-$routes->get('{locale}/layout/(:segment)', 'Layouts::view/$1', ['as'=>'layout']);
-$routes->get('{locale}/genplan', 'Complex::genplan');
+$routes->group('{locale}', function($routes){
+    $routes->get('', 'Pages::index');
+    $routes->get('contact', 'Pages::contact');
+    $routes->group('layouts', function($routes){
+        $routes->get('genplan/(:segment)', 'Layouts::genplan/$1', ['as'=>'layouts-genplan']);
+        $routes->get('section/(:segment)', 'Layouts::section/$1', ['as'=>'layouts-section']);
+        $routes->get('view/(:segment)', 'Layouts::view/$1', ['as'=>'layout-view']);
+        $routes->post('load', 'Layouts::load', ['as'=>'layout-load']);
+    });
+    $routes->group('commerce', function($routes){
+        $routes->get('genplan/(:segment)', 'Commerce::genplan/$1', ['as'=>'commerce-genplan']);
+        $routes->get('section/(:segment)', 'Commerce::section/$1', ['as'=>'commerce-section']);
+        $routes->get('view/(:segment)', 'Commerce::view/$1', ['as'=>'commerce-view']);
+        $routes->post('load', 'Commerce::load', ['as'=>'commerce-load']);
+    });
+});
+
 
 /*
  * --------------------------------------------------------------------

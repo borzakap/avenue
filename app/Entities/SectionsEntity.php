@@ -25,14 +25,21 @@ class SectionsEntity extends Entity {
     protected $casts = [];
     // all languages variants
     protected $translations = [];
+    // all genplans for section
+    protected $plans;
+    // data about current plan
+    protected $leaving_plan;
+    protected $commerce_plan;
+    protected $pantry_plan;
     // update and delete links
     protected $update_link = '';
     protected $delete_link = '';
 
 
-    public function withTranslations(): self{
+    public function withTranslations(): self
+    {
         if(empty($this->id)){
-            throw new \RuntimeException('Residential must be created before getting translations.');
+            throw new \RuntimeException('Section must be created before getting translations.');
         }
         if(empty($this->translations)){
             $translations = model(SectionsModel::class)->getTranslations($this->id);
@@ -46,18 +53,69 @@ class SectionsEntity extends Entity {
         return $this;
     }
     
-    public function getTranslations(): array{
+    public function getTranslations(): array
+    {
         return $this->translations;
     }
     
-    public function getUpdateLink (): string{
+    public function withPlans(): ?self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Section must be created before getting translations.');
+        }
+        
+        if(empty($this->plans)){
+            $this->plans = model(PlansImagesModel::class)->getImages($this->residential_id);
+        }
+        
+        foreach($this->plans as $plan){
+            switch ($plan->plan_type) {
+                case model(PlansImagesModel::class)::TYPE_LEAVING:
+                    $this->leaving_plan = $plan;
+                    break;
+                case model(PlansImagesModel::class)::TYPE_COMMERCE:
+                    $this->commerce_plan = $plan;
+                    break;
+                case model(PlansImagesModel::class)::TYPE_PANTRY:
+                    $this->pantry_plan = $plan;
+                    break;
+            }
+        }
+        
+        return $this;
+    }
+
+    public function getPlans(): ?array
+    {
+        return $this->plans;
+    }
+
+    public function getLeavingPlan(): ?object
+    {
+        return $this->leaving_plan;
+    }
+
+    public function getPantryPlan(): ?object
+    {
+        return $this->pantry_plan;
+    }
+
+    public function getCommercePlan(): ?object
+    {
+        return $this->commerce_plan;
+    }
+
+
+    public function getUpdateLink (): string
+    {
         if(!$this->update_link){
             $this->update_link = '<a href="' . route_to('App\Controllers\Admin\SectionsController::update', $this->id). '"><i class="fas fa-edit"></i></a>';
         }
         return $this->update_link;
     }
     
-    public function getDeleteLink (): string{
+    public function getDeleteLink (): string
+    {
         if(!$this->delete_link){
             $this->delete_link = '<a href="' . route_to('App\Controllers\Admin\SectionsController::delete', $this->id). '"><i class="fas fa-trash"></i></a>';
         }

@@ -4,8 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 use Cocur\Slugify\Slugify;
+use App\Models\TranslationInterface;
 
-class ResidentialsModel extends Model {
+class ResidentialsModel extends Model implements TranslationInterface {
 
     protected $table = 'residentials';
     protected $primaryKey = 'id';
@@ -25,10 +26,10 @@ class ResidentialsModel extends Model {
     ];
     protected $validationMessages = [
         'slug' => [
-            'required' => 'Rules.slug.required',
-            'min_length' => 'Rules.slug.minlength',
-            'max_length' => 'Rules.slug.alphadash',
-            'is_unique' => 'Rules.slug.isunique'
+            'required' => 'Validation.slug.required',
+            'min_length' => 'Validation.slug.minlength',
+            'max_length' => 'Validation.slug.alphadash',
+            'is_unique' => 'Validation.slug.isunique'
         ],
     ];
     protected $skipValidation = false;
@@ -51,17 +52,18 @@ class ResidentialsModel extends Model {
      * get by curren slug
      * @param string $slug
      * @param string $language
-     * @return object
+     * @return object|null
      */
-    public function getResidentialBySlug(string $slug, string $language): object{
+    public function getBySlug(string $slug, string $language): ?object
+    {
         try {
             return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.language')
-                    ->joint('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
+                    ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
                     ->where('residentials.slug', $slug)
                     ->where('residentials_translation.language', $language)
-                    ->findAll();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
+                    ->first();
+        } catch (\Exception $e) {
+            die($e->getMessage());
         }
     }
     
@@ -70,7 +72,8 @@ class ResidentialsModel extends Model {
      * @param string $language
      * @return array
      */
-    public function getResidentials(string $language): array{
+    public function getList(string $language, array $params = []): array
+    {
         try {
             return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.language')
                     ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
@@ -81,6 +84,138 @@ class ResidentialsModel extends Model {
         }
     }
 
+    /**
+     * get translations by residential_id
+     * @param int $residential_id
+     * @return object
+     */
+    public function getTranslations(int $residential_id): array{
+        try{
+            return $this->db->table('residentials_translation')->where('residential_id', $residential_id)->get()->getResultObject();
+        } catch (\Exception $exc) {
+            die($exc->getTraceAsString());
+        }
+    }
+    
+    /**
+     * cretating the residential
+     * @param array $data
+     * @return int
+     */
+    public function createItem(array $data): int 
+    {
+        $appConfig = config('App');
+        // insert the data about complex
+        try {
+            $residential_id = $this->insert($this->retrieveMainData($data), true);
+        } catch (\Exception $exc) {
+            die($exc->getMessage());
+        }
+        // insert translations
+        $translations = [];
+        foreach ($data['translation'] as $language => $translation) {
+            if (!in_array($language, $appConfig->supportedLocales)) {
+                continue;
+            }
+            $translations[] = $this->retrieveTranslation($residential_id, $language, $translation);
+        }
+        if (empty($translations)) {
+            throw new Exception('there must be the translations');
+        }
+        try {
+            $this->db->table('residentials_translation')->insertBatch($translations);
+        } catch (\Exception $exc) {
+            die($exc->getMessage());
+        }
+        return $residential_id;
+    }
+
+    /**
+     * updating section
+     * @param int $section_id
+     * @param array $data
+     * @return int
+     * @throws Exception
+     */
+    public function updateItem(int $section_id, array $data): int
+    {
+        // update layout
+        try {
+            $this->update($section_id, $this->retrieveMainData($data));
+        } catch (\Exception $exc) {
+            die($exc->getMessage());
+        }
+        // insert translations
+        $translations = [];
+        foreach ($data['translation'] as $language => $translation) {
+            if (!in_array($language, config(App::class)->supportedLocales)) {
+                continue;
+            }
+            $translations[] = $this->retrieveTranslation($section_id, $language, $translation);
+        }
+        if (empty($translations)) {
+            throw new Exception('there must be the translations');
+        }
+        try {
+            foreach($translations as $translation){
+                $this->db->table('sections_translation')->replace($translation);
+            }
+//            $this->db->table('layouts_translation')->updateBatch($translations, 'layout_id');
+        } catch (\Exception $exc) {
+            die($exc->getMessage());
+        }
+        return $section_id;
+    }
+    
+    
+    /**
+     * retrieving the main data for complex table
+     * @param array $data
+     * @return array
+     */
+    public function retrieveMainData(array $data): array {
+        
+        $appConfig = config('App');
+        $slugify = new Slugify();
+        if(!isset($data['slug']) || empty($data['slug'])){
+            $data['slug'] = isset($data['translation'][$appConfig->defaultLocale]['title']) ? $data['translation'][$appConfig->defaultLocale]['title'] : substr(str_shuffle(MD5(microtime())), 0, 10);
+        }
+        
+        $retrieved = [
+            'slug' => $slugify->slugify($data['slug']),
+            'residential_build_start' => $data['residential_build_start'],
+            'residential_build_end' => $data['residential_build_end'],
+            'latitude' => $data['latitude'],
+            'longitude' => $data['longitude'],
+            'ceil_height' => $data['ceil_height'],
+            'floors_number' => $data['floors_number'],
+            'publish' => !isset($data['publish']) ? self::UNPUBLISH : self::PUBLISH,
+        ];
+        return $retrieved;
+    }
+
+
+    /**
+     * retreive the translation data
+     * @param int $residential_id
+     * @param string $language
+     * @param array $data
+     * @return array
+     */
+    public function retrieveTranslation(int $residential_id, string $language, array $data): array {
+        $retrieved = [
+            'residential_id' => $residential_id,
+            'language' => $language,
+            'title' => $data['title'],
+            'meta_title' => $data['meta_title'],
+            'description' => $data['description'],
+            'meta_description' => $data['meta_description'],
+            'address' => $data['address'],
+        ];
+        return $retrieved;
+        
+    }
+    
     /**
      * return the list id->title of residential
      * @param string $language
@@ -108,50 +243,6 @@ class ResidentialsModel extends Model {
         }
     }
 
-    /**
-     * get translations by residential_id
-     * @param int $residential_id
-     * @return object
-     */
-    public function getTranslations(int $residential_id): array{
-        try{
-            return $this->db->table('residentials_translation')->where('residential_id', $residential_id)->get()->getResultObject();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
-        }
-    }
-
-    /**
-     * cretating the residential
-     * @param array $data
-     * @return int
-     */
-    public function createResidential(array $data): int {
-        $appConfig = config('App');
-        // insert the data about complex
-        try {
-            $residential_id = $this->insert($this->retrieveMainData($data), true);
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
-        }
-        // insert translations
-        $translations = [];
-        foreach ($data['translation'] as $language => $translation) {
-            if (!in_array($language, $appConfig->supportedLocales)) {
-                continue;
-            }
-            $translations[] = $this->retrieveTranslationData($residential_id, $language, $translation);
-        }
-        if (empty($translations)) {
-            throw new Exception('there must be the translations');
-        }
-        try {
-            $this->db->table('residentials_translation')->insertBatch($translations);
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
-        }
-        return $residential_id;
-    }
 
     /**
      * delete caches in callbacks
@@ -166,51 +257,5 @@ class ResidentialsModel extends Model {
         return $data;
     }
 
-    /**
-     * retrieving the main data for complex table
-     * @param array $data
-     * @return array
-     */
-    protected function retrieveMainData(array $data): array {
-        
-        $appConfig = config('App');
-        $slugify = new Slugify();
-        if(!isset($data['slug']) || empty($data['slug'])){
-            $data['slug'] = isset($data['translation'][$appConfig->defaultLocale]['title']) ? $data['translation'][$appConfig->defaultLocale]['title'] : substr(str_shuffle(MD5(microtime())), 0, 10);
-        }
-        
-        $retrieved = [
-            'slug' => $slugify->slugify($data['slug']),
-            'residential_build_start' => $data['residential_build_start'],
-            'residential_build_end' => $data['residential_build_end'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude'],
-            'ceil_height' => $data['ceil_height'],
-            'floors_number' => $data['floors_number'],
-            'publish' => !isset($data['publish']) ? self::UNPUBLISH : self::PUBLISH,
-        ];
-        return $retrieved;
-    }
-
-    /**
-     * retreive the translation data
-     * @param int $residential_id
-     * @param string $language
-     * @param array $data
-     * @return array
-     */
-    protected function retrieveTranslationData(int $residential_id, string $language, array $data): array {
-        $retrieved = [
-            'residential_id' => $residential_id,
-            'language' => $language,
-            'title' => $data['title'],
-            'meta_title' => $data['meta_title'],
-            'description' => $data['description'],
-            'meta_description' => $data['meta_description'],
-            'address' => $data['address'],
-        ];
-        return $retrieved;
-        
-    }
 
 }

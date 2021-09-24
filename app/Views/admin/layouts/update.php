@@ -20,7 +20,7 @@
     <div class="collapse show card-body" id="collapseText">
         <?= form_open() ?>
         <?= view('App\Views\admin\layouts\_form') ?>
-        <?= form_submit('layout_update', lang('Layouts.Form.Buttons.Update'), ['class' => 'btn btn-primary']) ?>
+        <?= form_submit('layout_update', lang('Admin.Form.Buttons.Save'), ['class' => 'btn btn-primary']) ?>
         <?= form_close() ?>    
     </div>
 </div>
@@ -31,9 +31,9 @@
         <h6 class="m-0 font-weight-bold text-primary"><?= lang('Sections.Cards.Title.ImagesTitle') ?></h6>
     </a>
     <div class="collapse show card-body" id="collapsePoligon">
-        <?= form_open_multipart('console/ajax/poligon-save', ['id' => 'poligon_save']) ?>
+        <?= form_open_multipart(route_to('layout_poligon_save'), ['id' => 'poligon_save']) ?>
         <?= view('App\Views\admin\layouts\_poligon_form') ?>
-        <?= form_submit('poligon_send', lang('Layouts.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'poligon-save-btn']) ?>
+        <?= form_submit('poligon_send', lang('Admin.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'poligon-save-btn']) ?>
         <?= form_close() ?>    
     </div>
 </div>

@@ -2,10 +2,9 @@ $(document).ready(function () {
     $('.sections-schema polygon').on('click', function () {
         var datasend = new FormData();
         datasend.set('slug', $(this).data('slug'));
-
         $.ajax({
             headers: {'X-Requested-With': 'XMLHttpRequest'},
-            url: '/api/layout-load',
+            url: $(this).data('action'),
             type: "POST",
             cache: false,
             data: datasend,
@@ -13,7 +12,7 @@ $(document).ready(function () {
             contentType: false,
             dataType: "JSON",
             success: function (data) {
-                console.log(data);
+//                console.log(data);
                 $('#layout-modal-body').html(data.html);
                 // Display Modal
                 $('#layout-modal').modal('show');

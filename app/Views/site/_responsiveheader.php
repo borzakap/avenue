@@ -19,7 +19,8 @@
         <ul class="mb-0 list-unstyled w-100">
             <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#home"><?= lang('Site.Menue.Main.Home') ?></a></li>
             <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a></li>
-            <li><a href="<?= route_to('App\Controllers\Complex::genplan') ?>"><?= lang('Site.Menue.Main.Layouts') ?></a></li>
+            <li><a href="<?= route_to('App\Controllers\Layouts::genplan', 'default') ?>"><?= lang('Site.Menue.Main.LayoutsGenplan') ?></a></li>
+            <li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>
             <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#prefs"><?= lang('Site.Menue.Main.Prefs') ?></a></li>
         </ul>
     </div><!-- Responsive Menu -->

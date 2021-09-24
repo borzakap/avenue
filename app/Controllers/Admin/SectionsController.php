@@ -14,11 +14,9 @@ class SectionsController extends BaseController{
     protected $helpers = ['form'];
 
     public function list(){
-        $model = model(SectionsModel::class);
-        $items = $model->getSections($this->request->getLocale());
         $this->breadcrumb->add(lang('Breadcrumb.Admin.Sections'), '/admin/sections');
         $data = [
-            'items' => $items,
+            'items' => model(SectionsModel::class)->getList($this->request->getLocale()),
             'counts' => 0,
             'breadcrumb' => $this->breadcrumb->render(),
         ];
@@ -27,146 +25,225 @@ class SectionsController extends BaseController{
 
     /**
      * create section
-     * @return type
+     * @return RedirectResponse|string
      */
     public function create(){
         // verify if request method is not POST
         if ($this->request->getMethod() !== 'post') {
-            $config = config(App::class);
             $this->breadcrumb->add(lang('Breadcrumb.Admin.Sections'), '/admin/sections');
             $this->breadcrumb->add(lang('Breadcrumb.Admin.SectionCreate'), '/admin/sections/create');
-            $residentials_model = model(ResidentialsModel::class);
             $data = [
-                'languages' => $config->supportedLocales,
-                'default_naguage' => $config->defaultLocale,
+                'languages' => config(App::class)->supportedLocales,
+                'default_language' => config(App::class)->defaultLocale,
                 'breadcrumb' => $this->breadcrumb->render(),
-                'residentials' => $residentials_model->getResidentialsList($this->request->getLocale()),
+                'residentials' => model(ResidentialsModel::class)->getResidentialsList($this->request->getLocale()),
             ];
             return view('admin/sections/create', $data);
         }
-        $model = model(SectionsModel::class);
-        if (($id = $model->createSection($this->request->getPost()))) {
+        if (($id = model(SectionsModel::class)->createItem($this->request->getPost()))) {
             return redirect()->route('section_update', [$id])->with('message', lang('Sections.Messages.Messages.Insertatiton'));
         }
         return redirect()->back()->withInput()->with('error', lang('Sections.Messages.Error.Insertatiton'));
     }
 
-    public function update(int $id){
-        $model = model(SectionsModel::class);
-        $config = config(App::class);
+    /**
+     * Update section
+     * @param int $id
+     * @return RedirectResponse|string
+     */
+    public function update(int $id)
+    {
         $this->breadcrumb->add(lang('Breadcrumb.Admin.Sections'), '/admin/sections');
         $this->breadcrumb->add(lang('Breadcrumb.Admin.SectionUpdate'), '/admin/sections/update');
         // verify if request method is not POST
         if ($this->request->getMethod() === 'post') {
             
         }
-        $residentials = model(ResidentialsModel::class);
         $data = [
-            'languages' => $config->supportedLocales,
-            'default_naguage' => $config->defaultLocale,
+            'languages' => config(App::class)->supportedLocales,
+            'default_language' => config(App::class)->defaultLocale,
             'breadcrumb' => $this->breadcrumb->render(),
-            'residentials' => $residentials->getResidentialsList($this->request->getLocale()),
-            'data' => $model->find($id)->withTranslations(),
+            'floor_types' => model(FloorsImagesModel::class)->getFloorTypes(),
+            'residentials' => model(ResidentialsModel::class)->getResidentialsList($this->request->getLocale()),
+            'data' => model(SectionsModel::class)->find($id)->withTranslations()->withPlans(),
             'section_id' => $id,
         ];
         return view('admin/sections/update', $data);
-        
     }
     
     public function delete(int $id){
         
     }
     
-    public function floorsUpload(){
-        
+    /**
+     * upload new floor image
+     * @return object
+     */
+    public function floorsUpload() :object
+    {
         $return = [
             'success' => false,
-            'message' => lang('Sections.Messages.Error.UndefinedError'),
         ];
-        if (!$this->request->getMethod() === 'post') {
-            $return['message'] = lang('Sections.Messages.Error.NotAjax');
+        // validate image
+        $img_validate = $this->validate([
+            'image_file' => 'uploaded[image_file]|mime_in[image_file,image/png,image/jpg,image/jpeg]'
+        ]);
+        if(!$img_validate){
+            $return['message'] = lang('Admin.Messages.Errors.ImageNotValid');
             return $this->response->setJSON($return);
         }
-        $section_id = $this->request->getPost('section_id');
-        
-        if ($img = $this->request->getFile('image_file')) {
-            
-            $name = $img->getName();
-            $path = IMGPATH . 'sections/'.$name;
-            
-            \Config\Services::image()
-                    ->withFile($img)
-                    ->resize(1200, 800, true, 'width')
-                    ->save($path);
-            
-            // get the properties
-            $info = \Config\Services::image('imagick')
-                    ->withFile($path)
-                    ->getFile()
-                    ->getProperties(true);
-            $data = [
-                'image_name' => $name,
-                'image_code' => $this->request->getPost('image_code') ?? $name,
-                'section_id' => $this->request->getPost('section_id'),
-                'order' => 1,
-                'image_width' => $info['width'] ?? 0,
-                'image_height' => $info['height'] ?? 0,
-            ];
-            $floorsImagesModel = model(FloorsImagesModel::class);
-            $floorsImagesModel->save($data);
-//            $img->move(IMGPATH . 'sections', $name);
-            $return['message'] = lang('Sections.Messages.Success.Uploaded');
-            $return['success'] = true;
-
-        }else{
-            $return['message'] = lang('Sections.Messages.Error.NotUpload');
+        $image = $this->request->getFile('image_file');
+        // insert data about section first 
+        $data = [
+            'image_name' => $image->getName(),
+            'image_code' => $this->request->getPost('image_code'),
+            'section_id' => $this->request->getPost('section_id'),
+            'floor_type' => $this->request->getPost('floor_type'),
+            'order' => 1,
+        ];
+        if(!$id = model(FloorsImagesModel::class)->insert($data)){
+            $return['message'] = implode(', ', model(FloorsImagesModel::class)->errors());
             return $this->response->setJSON($return);
         }
-        
+        $path = IMGPATH . 'sections/'.$image->getName();
+        // prosses image
+        \Config\Services::image()
+                ->withFile($image)
+                ->resize(1200, 800, true, 'width')
+                ->save($path);
+        // get the properties
+        $info = \Config\Services::image('imagick')
+                ->withFile($path)
+                ->getFile()
+                ->getProperties(true);
+        // update meta for image
+        $floorImage = model(FloorsImagesModel::class)->find($id);
+        $floorImage->image_width = $info['width'] ?? 0;
+        $floorImage->image_height = $info['height'] ?? 0;
+        if(!model(FloorsImagesModel::class)->save($floorImage)){
+            $return['message'] = lang('Admin.Messages.Errors.ImageNotResized');
+            return $this->response->setJSON($return);
+        }
+        $return['success'] = true;
+        $return['message'] = lang('Sections.Messages.Success.ImageUploaded');
         return $this->response->setJSON($return);
     }
 
     /**
      * load floors images for current section
-     * @return json
+     * @return object|null
      */
-    public function floorsLoad(){
-        
-        if(!$section_id = $this->request->getPost('section_id')){
+    public function floorsLoad() : ?object
+    {
+        if(!$id = $this->request->getPost('id')){
             return $this->response->setJSON([]);
         }
-        
-        $floorsImagesModel = model('FloorsImagesModel');
-        $floors_images = $floorsImagesModel->getSectionFloorsImages($section_id);
-        return $this->response->setJSON($floors_images);
+        return $this->response->setJSON(model(FloorsImagesModel::class)->getSectionFloorsImages($id));
     }
     
     /**
      * Updeting floors images
-     * @return type
+     * @return object|null
      */
-    public function floorsUpdate(){
+    public function floorsUpdate() :?object
+    {
         $return = [
             'message' => lang('Sections.Messages.Error.NotUpload'),
         ];
         if(!$this->request->getMethod() === 'post'){
             return $this->response->setJSON($return);
         }
-        $floorsImagesModel = model('FloorsImagesModel');
-        $floorsImages = $floorsImagesModel->find($this->request->getPost('id'));
-        $data = $this->request->getPost();
+        $floorsImages = model(FloorsImagesModel::class)->find($this->request->getPost('id'));
         if($this->request->getPost('delete_img')){
+            try{
+                model(FloorsImagesModel::class)->delete($floorsImages->id);
+            } catch (\Exception $e) {
+                if($e->getCode() == 1451){
+                    $return['message'] = lang('Sections.Messages.Error.FloorImageUsed');
+                    return $this->response->setJSON($return);
+                }
+            }
             if($floorsImages->image_name && file_exists(IMGPATH . 'sections/' . $floorsImages->image_name)){
                 unlink(IMGPATH . 'sections/' . $floorsImages->image_name);  
             }
-            $floorsImagesModel->delete($floorsImages->id);
             $return['message'] = lang('Sections.Messages.Success.Deleted');
         }else{
             $floorsImages->image_code = $this->request->getPost('image_code');
-            $floorsImagesModel->save($floorsImages);
+            model(FloorsImagesModel::class)->save($floorsImages);
             $return['message'] = lang('Sections.Messages.Success.Updated');
         }
         return $this->response->setJSON($return);
     }
-    //put your code here
+    
+    public function poligonCommerce(): ?object
+    {
+        $return = [
+            'success' => false,
+            'message' => lang('Sections.Messages.Error.NotUpload'),
+        ];
+        if(!$this->request->getMethod() === 'post'){
+            return $this->response->setJSON($return);
+        }
+        $section = model(SectionsModel::class)->find($this->request->getPost('section_id'));
+        if(!$section){
+            $return['message'] = lang('Admin.Messages.Errors.SectionNotUpload');
+            return $this->response->setJSON($return);
+        }
+        $section->commerce_poligon = $this->request->getPost('commerce_poligon');
+        if(!model(SectionsModel::class)->save($section)){
+            $return['message'] = lang('Admin.Messages.Errors.PoligonNotUpdated');
+            return $this->response->setJSON($return);
+        }
+        $return['success'] = true;
+        $return['message'] = lang('Admin.Messages.Seccess.PoligonUpdated');
+        return $this->response->setJSON($return);
+        
+    }
+    public function poligonLeaving(): ?object
+    {
+        $return = [
+            'success' => false,
+            'message' => lang('Sections.Messages.Error.NotUpload'),
+        ];
+        if(!$this->request->getMethod() === 'post'){
+            return $this->response->setJSON($return);
+        }
+        $section = model(SectionsModel::class)->find($this->request->getPost('section_id'));
+        if(!$section){
+            $return['message'] = lang('Admin.Messages.Errors.SectionNotUpload');
+            return $this->response->setJSON($return);
+        }
+        $section->leaving_poligon = $this->request->getPost('leaving_poligon');
+        if(!model(SectionsModel::class)->save($section)){
+            $return['message'] = lang('Admin.Messages.Errors.PoligonNotUpdated');
+            return $this->response->setJSON($return);
+        }
+        $return['success'] = true;
+        $return['message'] = lang('Admin.Messages.Seccess.PoligonUpdated');
+        return $this->response->setJSON($return);
+    }
+    
+    public function poligonPantry(): ?object
+    {
+        $return = [
+            'success' => false,
+            'message' => lang('Sections.Messages.Error.NotUpload'),
+        ];
+        if(!$this->request->getMethod() === 'post'){
+            return $this->response->setJSON($return);
+        }
+        $section = model(SectionsModel::class)->find($this->request->getPost('section_id'));
+        if(!$section){
+            $return['message'] = lang('Admin.Messages.Errors.SectionNotUpload');
+            return $this->response->setJSON($return);
+        }
+        $section->pantry_poligon = $this->request->getPost('pantry_poligon');
+        if(!model(SectionsModel::class)->save($section)){
+            $return['message'] = lang('Admin.Messages.Errors.PoligonNotUpdated');
+            return $this->response->setJSON($return);
+        }
+        $return['success'] = true;
+        $return['message'] = lang('Admin.Messages.Seccess.PoligonUpdated');
+        return $this->response->setJSON($return);
+    }
 }

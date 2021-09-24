@@ -13183,6 +13183,11 @@ img {
 
 .widget > p {
   line-height: 1.75rem;
+  color: #eaecf4;
+}
+
+.widget h3 {
+  color: #f8f9fc;
 }
 
 .bg-color5 .widget > p, .bg-color5 .widget ul li {

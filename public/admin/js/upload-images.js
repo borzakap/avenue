@@ -1,17 +1,19 @@
 $(document).ready(function () {
+    var form = $('#upload-images');
+    var message = $('#upload-messages');
+    var btn = $('#floors-upload-btn');
     //load the floor images
-    floorsLoad();
+    imagesLoad();
     // uload image
-    $('#floors-upload').on('submit', function (e) {
-        $('#floors-upload-btn').prop('disabled');
+    form.on('submit', function (e) {
+        btn.prop('disabled');
         e.preventDefault();
-        if ($('#image_file').val() == '') {
+        if ($('#image_file').val() === '') {
             alert("Choose File");
-            $('#floors-upload-btn').prop('enabled');
-            document.getElementById("floors-upload").reset();
+            btn.prop('enabled');
         } else {
             $.ajax({
-                url: $(this).attr('action'),
+                url: form.attr('action'),
                 method: "POST",
                 data: new FormData(this),
                 processData: false,
@@ -19,32 +21,27 @@ $(document).ready(function () {
                 cache: false,
                 dataType: "json",
                 success: function (res) {
-                    if (res.success == true) {
-                        $('#upload-messages').html(res.message);
-                    } else if (res.success == false) {
-                        $('#upload-messages').html(res.message);
+                    console.log(res);
+                    if (res.success === true) {
+                        message.html(res.message);
+                    } else if (res.success === false) {
+                        message.html(res.message);
                     }
                     setTimeout(function () {
-                        $('#upload-messages').html('');
+                        message.html('');
                     }, 4000);
 
-                    $('#floors-upload-btn').prop('Enabled');
-                    document.getElementById("floors-upload").reset();
-                    floorsLoad();
+                    btn.prop('Enabled');
+                    form[0].reset();
+                    imagesLoad();
                 }
             });
         }
     });
     
     // update floors
-    $(document).on('submit', '.floors-update', function(e){
+    $(document).on('submit', '.update-image', function(e){
         e.preventDefault();
-//        console.log(e.submitter);
-//        $(this).closest('input[name=delete_img]').on('click', function(){
-//            if(!confirm('delete this img?')){
-//                return false;
-//            }
-//        });
         $.ajax({
             url: $(this).attr('action'),
             method: "POST",
@@ -54,30 +51,26 @@ $(document).ready(function () {
             cache: false,
             dataType: "json",
             success: function(res){
-                console.log(res.message);
-                floorsLoad();
+                imagesLoad();
             }
         });
     });
 });
 
-function floorsLoad(){
+function imagesLoad(){
     var container = $('#images-greed');
     var to_ajax = [];
     container.html('');
-    to_ajax.push({name: 'section_id', value: container.data('section')});
+    to_ajax.push({name: 'id', value: container.data('id')});
     $.ajax({
         url: container.data('action'),
         method: 'POST',
         data: to_ajax,
         success: function(res){
-            var greed = [];
+            console.log(res);
             var template = $('script[data-template="images"]').text().split(/\$\{(.+?)\}/g);
             $.each(res, function(i, image){
-                greed.id = image.id;
-                greed.image_name = image.image_name;
-                greed.image_code = image.image_code;
-                var html = template.map(render(greed)).join('');
+                var html = template.map(render(image)).join('');
                 container.append(html);
             });
         }

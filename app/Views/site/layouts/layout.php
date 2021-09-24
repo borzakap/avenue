@@ -37,7 +37,7 @@
                     </table>
                 </div>
                 <div class="col-md-5 col-12">
-                    <p><a href="<?= route_to('App\Controllers\Sections::view', $layout->section->slug) ?>"><?= $layout->section->title ?></a></p>
+                    <p><a href="<?= route_to('App\Controllers\Layouts::section', $layout->section->slug) ?>"><?= $layout->section->title ?></a></p>
                     <h2><?= $layout->title ?></h2>
                     <p><?= number_to_roman(ceil($layout->section->section_build_end->getMonth() / 3)) ?> <?= lang('Site.Layouts.Dt.Quarter') ?> <?= $layout->section->section_build_end->getYear() ?> <?= lang('Site.Layouts.Dt.Year') ?></p>
                     <div class="mt-20 w-100">

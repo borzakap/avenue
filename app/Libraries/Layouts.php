@@ -15,11 +15,10 @@ class Layouts {
         $this->request = service('request');
     }
     
-    public function carusel(array $params = []) : string{
-        $model = model(LayoutsModel::class);
-        $layouts = $model->getLayouts($this->request->getLocale(), $params);
+    public function carusel(array $params = []) : string
+    {
         $data = [
-            'layouts' => $layouts,
+            'layouts' => model(LayoutsModel::class)->getList($this->request->getLocale(), $params),
         ];
         return view('site/seils/layouts_carusel', $data);
     }

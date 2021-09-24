@@ -10,6 +10,11 @@ use CodeIgniter\Model;
  * @author alexey
  */
 class FloorsImagesModel extends Model {
+    
+    const TYPE_COMMERCE = 'commerce';
+    const TYPE_LEAVING = 'leaving';
+    const TYPE_PANTRY = 'pantry';
+    
     protected $table = 'floor_images';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
@@ -17,7 +22,7 @@ class FloorsImagesModel extends Model {
     protected $returnType = 'App\Entities\FloorsImagesEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['image_src', 'image_code', 'image_name', 'image_width', 'section_id', 'order', 'image_height'];
+    protected $allowedFields = ['image_code', 'image_name', 'image_width', 'section_id', 'order', 'image_height', 'floor_type'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -25,8 +30,24 @@ class FloorsImagesModel extends Model {
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
     // Validation
-    protected $validationRules = [];
-    protected $validationMessages = [];
+    protected $validationRules = [
+        'image_name' => 'required|is_unique[floor_images.image_name]',
+        'image_code' => 'required',
+        'floor_type' => 'required|in_list['.self::TYPE_COMMERCE.','.self::TYPE_LEAVING.','.self::TYPE_PANTRY.']',
+    ];
+    protected $validationMessages = [
+        'image_name' => [
+            'required' => 'Validation.Required.ImageName',
+            'is_unique' => 'Validation.IsUnique.ImageName',
+        ],
+        'image_code' => [
+            'required' => 'Validation.Required.ImageCode',
+        ],
+        'floor_type' => [
+            'required' => 'Validation.Required.FloorType',
+            'in_list' => 'Validation.InList.FloorType',
+        ],
+    ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
     // Callbacks
@@ -43,64 +64,151 @@ class FloorsImagesModel extends Model {
     /**
      * get floor images by section
      * @param int $section_id
-     * @return object
+     * @return array|null
      */
-    public function getSectionFloorsImages(int $section_id){
+    public function getSectionFloorsImages(int $section_id): ?array
+    {
         try{
             return $this->where('section_id', $section_id)
                     ->get()->getResultArray();
+        } catch (\Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
+    
+    /**
+     * get floor image data
+     * @param int $id
+     * @return object|null
+     */
+    public function getImageFloor(int $id): ?object
+    {
+        try{
+            return $this->where('id', $id)->first();
+        } catch (Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
+
+    /**
+     * get the floors for layouts
+     * @param int $section_id
+     * @return array|null
+     */
+    public function getSectionsFloorsLayouts(int $section_id): ?array
+    {
+        try{
+            return $this->where('section_id', $section_id)
+                    ->where('floor_type', self::TYPE_LEAVING)
+                    ->find();
         } catch (Exception $e) {
             die($e->getTraceAsString());
         }
     }
     
     /**
-     * get layouts poligon and other data for floor image
-     * @param int $floor_images_id
-     * @return array
+     * get the floors for commerce
+     * @param int $section_id
+     * @return array|null
      */
-    public function getPoligons(int $floor_images_id): array{
-        try {
-            return $this->db->table('layouts')->where('floor_images_id', $floor_images_id)->get()->getResultObject();
+    public function getSectionsFloorsCommerce(int $section_id): ?array
+    {
+        try{
+            return $this->where('section_id', $section_id)
+                    ->where('floor_type', self::TYPE_COMMERCE)
+                    ->find();
         } catch (Exception $e) {
             die($e->getTraceAsString());
         }
     }
     
+    /**
+     * return the chained list id->title of pantry floors layouts images
+     * @return array
+     */
+    public function getFloorsPantryList(): array 
+    {
+        $floor_type = self::TYPE_PANTRY;
+        if (! $found = cache("floors_list_{$floor_type}")){
+            $found = [];
+            $items = $this->where('floor_type', $floor_type)->get()->getResultArray();
+            foreach ($items as $item){
+                $data = [];
+                $data['chained'] = $item['section_id'];
+                $data['name'] = $item['image_code'];
+                $found[$item['id']] = $data;
+            }
+
+            cache()->save("floors_list_{$floor_type}", $found, 0);
+        }
+        return $found;
+    }
     
-    
+    /**
+     * return the chained list id->title of commerce floors images
+     * @return array
+     */
+    public function getFloorsCommerceList(): array 
+    {
+        $floor_type = self::TYPE_COMMERCE;
+        if (! $found = cache("floors_list_{$floor_type}")){
+            $found = [];
+            $items = $this->where('floor_type', $floor_type)->get()->getResultArray();
+            foreach ($items as $item){
+                $data = [];
+                $data['chained'] = $item['section_id'];
+                $data['name'] = $item['image_code'];
+                $found[$item['id']] = $data;
+            }
+
+            cache()->save("floors_list_{$floor_type}", $found, 0);
+        }
+        return $found;
+    }
+
     /**
      * return the chained list id->title of floors images
-     * @param string $language
      * @return array
      */
-    public function getFloorsList(): array {
-        try {
-            if (! $found = cache("floors_list")){
-                $found = [];
-                $items = $this->get()->getResultArray();
-                foreach ($items as $item){
-                    $data = [];
-                    $data['chained'] = $item['section_id'];
-                    $data['name'] = $item['image_code'];
-                    $found[$item['id']] = $data;
-                }
-                
-                cache()->save("floors_list", $found, 0);
+    public function getFloorsLayoutsList(): array 
+    {
+        $floor_type = self::TYPE_LEAVING;
+        if (! $found = cache("floors_list_{$floor_type}")){
+            $found = [];
+            $items = $this->where('floor_type', $floor_type)->get()->getResultArray();
+            foreach ($items as $item){
+                $data = [];
+                $data['chained'] = $item['section_id'];
+                $data['name'] = $item['image_code'];
+                $found[$item['id']] = $data;
             }
-            return $found;
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
+
+            cache()->save("floors_list_{$floor_type}", $found, 0);
         }
+        return $found;
     }
-    
+
     /**
      * delete caches in callbacks
      * @return array
      */
-    protected function deleteCaches(array $data): array{
-        cache()->delete('floors_list');
+    protected function deleteCaches(array $data): array
+    {
+        cache()->deleteMatching('floors_list*');
         return $data;
+    }
+    
+    /**
+     * get the floor types
+     * @return array
+     */
+    public function getFloorTypes() :array
+    {
+        return [
+            self::TYPE_COMMERCE => lang('Admin.List.CommerceType'),
+            self::TYPE_LEAVING => lang('Admin.List.LeavingType'),
+            self::TYPE_PANTRY => lang('Admin.List.LeavingPangtry'),
+        ];
     }
     
 }

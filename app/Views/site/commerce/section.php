@@ -9,13 +9,15 @@
 
 <?= view('App\Views\site\_breadcrumb') ?>
 
-<?= view('App\Views\site\complexes\_genplan') ?>
+<?= view('App\Views\site\commerce\_floors') ?>
 
 <?= $this->endSection() ?>
 
-<?= $this->section('artermain') ?>
+<?= $this->section('aftermain') ?>
+<!-- Modal -->
+<div id="layout-modal-body"></div>
 <?= $this->endSection() ?>
 
 <?= $this->section('pagejs') ?>
-
+<script src="/site/js/section.min.js"></script>
 <?= $this->endSection() ?>

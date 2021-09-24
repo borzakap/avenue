@@ -21,8 +21,8 @@
                                         <div class="sections-schema">
                                             <?= img(['src' => 'images/sections/' . $floor->image_name, 'class' => 'img-fluid', 'width' => $floor->image_width, 'height' => $floor->image_height]) ?>
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 <?= $floor->image_width ?> <?= $floor->image_height ?>">
-                                                <?php foreach ($floor->withPoligons()->poligons as $poligon) : ?>
-                                                    <polygon data-id="<?= $poligon->id ?>" data-slug="<?= $poligon->slug ?>" data-rooms="<?= $poligon->rooms ?>" points="<?= $poligon->poligon ?>"></polygon>                        
+                                                <?php foreach ($floor->withCommercePoligons()->poligons as $poligon) : ?>
+                                                    <polygon data-id="<?= $poligon->id ?>" data-slug="<?= $poligon->slug ?>"  data-action="<?= route_to('commerce-load') ?>" points="<?= $poligon->poligon ?>"></polygon>                        
                                                 <?php endforeach; ?>
                                             </svg>
                                         </div>

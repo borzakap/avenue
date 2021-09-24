@@ -67,12 +67,17 @@ class LayoutsEntity extends Entity {
             throw new \RuntimeException('Layout must be created before getting layout image.');
         }
         if(empty($this->floor_image)){
-            $this->floor_image = model(LayoutsModel::class)->getImageFloor($this->floor_images_id);
+            $this->floor_image = model(FloorsImagesModel::class)->getImageFloor($this->floor_images_id);
         }
         return $this;
     }
 
-    public function getFloorImage(): object{
+    /**
+     * get the floor image object
+     * @return object|null
+     */
+    public function getFloorImage(): ?object
+    {
         return $this->floor_image;
     }
 
@@ -87,23 +92,25 @@ class LayoutsEntity extends Entity {
             throw new \RuntimeException('Layout must be created before getting layout`s section.');
         }
         if(empty($this->section)){
-            $this->section = model(SectionsModel::class)->getSection($this->section_id, $this->language);
+            $this->section = model(SectionsModel::class)->findSection($this->section_id, $this->language);
         }
         return $this;
     }
 
-    public function getSection(){
+    /**
+     * return the object of section
+     * @return object|null
+     */
+    public function getSection() : ?object {
         return $this->section;
     }
-
-
-
-
+    
     /**
      * format update link
-     * @return string
+     * @return string|null
      */
-    public function getUpdateLink (): string{
+    public function getUpdateLink (): ?string
+    {
         if(!$this->update_link){
             $this->update_link = '<a href="' . route_to('App\Controllers\Admin\LayoutsController::update', $this->id). '"><i class="fas fa-edit"></i></a>';
         }
@@ -112,9 +119,10 @@ class LayoutsEntity extends Entity {
     
     /**
      * format delete link
-     * @return string
+     * @return string|null
      */
-    public function getDeleteLink (): string{
+    public function getDeleteLink (): ?string
+    {
         if(!$this->delete_link){
             $this->delete_link = '<a href="' . route_to('App\Controllers\Admin\LayoutsController::delete', $this->id). '"><i class="fas fa-trash"></i></a>';
         }

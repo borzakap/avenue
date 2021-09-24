@@ -137,3 +137,7 @@ public/images/sections/*
 # layouts images
 public/images/layouts/*
 !public/images/layouts/index.html
+
+# plans images
+public/images/plans/*
+!public/images/plans/index.html

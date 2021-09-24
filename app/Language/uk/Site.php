@@ -7,6 +7,8 @@ return [
             'About' => 'Про нас',
             'Contact' => 'Контакти',
             'Layouts' => 'Планування',
+            'LayoutsGenplan' => 'Квартири',
+            'CommerceGenplan' => 'Комерція',
             'Prefs' => 'Переваги',
             'Qoute' => 'Зворотній зв\'звязок',
         ],
