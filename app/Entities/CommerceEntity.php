@@ -82,9 +82,9 @@ class CommerceEntity extends Entity {
 
     /**
      * get the floor image
-     * @return object
+     * @return object|null
      */
-    public function getFloorImage(): object
+    public function getFloorImage(): ?object
     {
         return $this->floor_image;
     }
