@@ -65,6 +65,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     // commerce
     $routes->group('commerce', function($routes){
         $routes->get('', 'Admin\CommerceController::list', ['as' => 'commerce']);
+        $routes->get('chess', 'Admin\CommerceController::chess', ['as' => 'commerce_chess']);
         $routes->match(['get', 'post'], 'create', 'Admin\CommerceController::create', ['as' => 'commerce_create']);
         $routes->match(['get', 'post'], 'update/(:num)', 'Admin\CommerceController::update/$1', ['as' => 'commerce_update']);
         $routes->post('poligon-save', 'Admin\CommerceController::poligonSave', ['as' => 'commerce_poligon_save']);

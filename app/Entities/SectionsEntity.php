@@ -31,6 +31,10 @@ class SectionsEntity extends Entity {
     protected $leaving_plan;
     protected $commerce_plan;
     protected $pantry_plan;
+    // commerces data
+    protected $commerces;
+
+
     // update and delete links
     protected $update_link = '';
     protected $delete_link = '';
@@ -104,6 +108,33 @@ class SectionsEntity extends Entity {
     {
         return $this->commerce_plan;
     }
+
+    /**
+     * retraive the all commerces for section
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withCommerces(): self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Section must be created before getting translations.');
+        }
+        if(empty($this->commerces)){
+            $this->commerces = model(CommerceModel::class)->findItemsByFloors($this->id);
+        }
+        return $this;
+    }
+
+    /**
+     * return the commerces
+     * @return array|null
+     */
+    public function getCommerces(): ?array
+    {
+        return $this->commerces;
+    }
+
+
 
 
     public function getUpdateLink (): string

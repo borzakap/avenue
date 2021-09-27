@@ -26,6 +26,17 @@ class CommerceController extends BaseController{
         return view('admin/commerce/list', $data);
     }
     
+    public function chess(): ?string
+    {
+        $this->breadcrumb->add(lang('Breadcrumb.Admin.Commerce'), '/console/commerce');
+        $data = [
+            'items' => model(SectionsModel::class)->getList($this->request->getLocale()),
+            'breadcrumb' => $this->breadcrumb->render(),
+        ];
+        return view('admin/commerce/chess', $data);
+    }
+
+
     /**
      * create the commerce
      * @return type
@@ -65,8 +76,8 @@ class CommerceController extends BaseController{
         $this->breadcrumb->add(lang('Breadcrumb.Admin.SectionUpdate'), '/console/commerce/update');
         // verify if request method is not POST
         if ($this->request->getMethod() === 'post') {
-            if (($id = model(CommerceModel::class)->updateItem($id, $this->request->getPost()))) {
-                return redirect()->route('layout_update', [$id])->with('message', 'Layouts.Messages.Messages.Insertatiton');
+            if (model(CommerceModel::class)->updateItem($id, $this->request->getPost())) {
+                return redirect()->route('commerce_update', [$id])->with('message', 'Admin.Messages.Success.Updated');
             }
             return redirect()->back()->withInput()->with('errors', model(CommerceModel::class)->errors());
         }

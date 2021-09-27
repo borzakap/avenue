@@ -24,7 +24,9 @@ class LayoutsModel extends Model implements TranslationInterface{
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
     // Validation
-    protected $validationRules = [];
+    protected $validationRules = [
+        'slug' => 'required|min_length[5]|is_unique[commerce.slug,slug,{slug}]',
+    ];
     protected $validationMessages = [];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;

@@ -29,7 +29,7 @@ class CommerceModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[5]|is_unique[commerce.slug]',
+        'slug' => 'required|min_length[5]|is_unique[commerce.slug,slug,{slug}]',
         'residential_id' => 'required',
         'section_id' => 'required',
         'code' => 'required',
@@ -139,10 +139,8 @@ class CommerceModel extends Model implements TranslationInterface{
      */
     public function createItem(array $data): int {
         // insert the data about layout
-        $main = $this->retrieveMainData($data);
-
         try {
-            $item_id = $this->insert($main, true);
+            $item_id = $this->insert($this->retrieveMainData($data), true);
         } catch (\Exception $e) {
             die($e->getMessage());
         }
@@ -175,10 +173,8 @@ class CommerceModel extends Model implements TranslationInterface{
     public function updateItem(int $item_id, array $data): int
     {
         // update layout
-        try {
-            $this->update($item_id, $this->retrieveMainData($data));
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
+        if(!$this->update($item_id, $this->retrieveMainData($data))){
+            return false;
         }
         // insert translations
         $translations = [];
@@ -249,7 +245,18 @@ class CommerceModel extends Model implements TranslationInterface{
         return $retrieved;
         
     }
-
     
-    
+    public function findItemsByFloors(int $section_id): ?array
+    {
+        $return = [];
+        $items = $this->where('section_id', $section_id)->orderBy('floor', 'ASC')->find();
+        if(!$items){
+            return $return;
+        }
+        foreach ($items as $item){
+            $return[$item->floor][$item->id] = $item;
+        }
+        
+        return $return;
+    }
 }
