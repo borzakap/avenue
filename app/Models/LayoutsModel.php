@@ -25,7 +25,7 @@ class LayoutsModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[5]|is_unique[commerce.slug,slug,{slug}]',
+        'slug' => 'required|min_length[5]|max_length[15]|alpha_dash|is_unique[layouts.slug,id,{id}]',
     ];
     protected $validationMessages = [];
     protected $skipValidation = false;
@@ -153,7 +153,7 @@ class LayoutsModel extends Model implements TranslationInterface{
         $appConfig = config('App');
         // update layout
         try {
-            $this->update($layout_id, $this->retrieveMainData($data));
+            $this->update($layout_id, $this->retrieveMainData($data, $layout_id));
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
@@ -182,9 +182,9 @@ class LayoutsModel extends Model implements TranslationInterface{
     /**
      * retrieving the main data for complex table
      * @param array $data
-     * @return array
+     * @return array|null
      */
-    public function retrieveMainData(array $data): array 
+    public function retrieveMainData(array $data, int $id = 0): ?array 
     {
         $slugify = new Slugify();
         if(!isset($data['slug']) || empty($data['slug'])){
@@ -192,6 +192,7 @@ class LayoutsModel extends Model implements TranslationInterface{
         }
         
         $retrieved = [
+            'id' => $id,
             'code' => $data['code'],
             'slug' => $slugify->slugify($data['slug']),
             'rooms' => (int)$data['rooms'],

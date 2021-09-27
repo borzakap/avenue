@@ -29,7 +29,7 @@ class CommerceModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[5]|is_unique[commerce.slug,slug,{slug}]',
+        'slug' => 'required|min_length[5]|max_length[15]|alpha_dash|is_unique[commerce.slug,id,{id}]',
         'residential_id' => 'required',
         'section_id' => 'required',
         'code' => 'required',
@@ -173,7 +173,7 @@ class CommerceModel extends Model implements TranslationInterface{
     public function updateItem(int $item_id, array $data): int
     {
         // update layout
-        if(!$this->update($item_id, $this->retrieveMainData($data))){
+        if(!$this->update($item_id, $this->retrieveMainData($data, $item_id))){
             return false;
         }
         // insert translations
@@ -202,13 +202,14 @@ class CommerceModel extends Model implements TranslationInterface{
      * @param array $data
      * @return array
      */
-    public function retrieveMainData(array $data): array {
+    public function retrieveMainData(array $data, int $id = 0): array {
         $slugify = new Slugify();
         if(!isset($data['slug']) || empty($data['slug'])){
             $data['slug'] = $data['code'] ?? substr(str_shuffle(MD5(microtime())), 0, 10);
         }
         
         $retrieved = [
+            'id' => $id,
             'slug' => $slugify->slugify($data['slug']),
             'residential_id' => (int)$data['residential_id'],
             'section_id' => (int)$data['section_id'],

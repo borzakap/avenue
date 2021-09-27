@@ -132,16 +132,16 @@ class ResidentialsModel extends Model implements TranslationInterface {
 
     /**
      * updating section
-     * @param int $section_id
+     * @param int $item_id
      * @param array $data
      * @return int
      * @throws Exception
      */
-    public function updateItem(int $section_id, array $data): int
+    public function updateItem(int $item_id, array $data): int
     {
         // update layout
         try {
-            $this->update($section_id, $this->retrieveMainData($data));
+            $this->update($item_id, $this->retrieveMainData($data, $item_id));
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
@@ -151,7 +151,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
             if (!in_array($language, config(App::class)->supportedLocales)) {
                 continue;
             }
-            $translations[] = $this->retrieveTranslation($section_id, $language, $translation);
+            $translations[] = $this->retrieveTranslation($item_id, $language, $translation);
         }
         if (empty($translations)) {
             throw new Exception('there must be the translations');
@@ -164,7 +164,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
-        return $section_id;
+        return $item_id;
     }
     
     
@@ -173,7 +173,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
      * @param array $data
      * @return array
      */
-    public function retrieveMainData(array $data): array {
+    public function retrieveMainData(array $data, int $id = 0): array {
         
         $appConfig = config('App');
         $slugify = new Slugify();
@@ -182,6 +182,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
         }
         
         $retrieved = [
+            'id' => $id,
             'slug' => $slugify->slugify($data['slug']),
             'residential_build_start' => $data['residential_build_start'],
             'residential_build_end' => $data['residential_build_end'],

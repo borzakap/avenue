@@ -49,16 +49,16 @@ interface TranslationInterface {
     /**
      * retraive data for main table
      * @param array $data
-     * @return array
+     * @return array|null
      */
-    public function retrieveMainData(array $data): array;
+    public function retrieveMainData(array $data, int $id = 0): ?array;
     
     /**
      * retrive translations
      * @param int $item_id
      * @param string $language
      * @param array $data
-     * @return array
+     * @return array|null
      */
-    public function retrieveTranslation(int $item_id, string $language, array $data): array;    
+    public function retrieveTranslation(int $item_id, string $language, array $data): ?array;    
 }

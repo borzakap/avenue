@@ -20,8 +20,17 @@ class SectionsModel extends Model implements TranslationInterface{
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
     // Validation
-    protected $validationRules = [];
-    protected $validationMessages = [];
+    protected $validationRules = [
+        'slug' => 'required|min_length[5]|max_length[15]|alpha_dash|is_unique[sections.slug,id,{id}]',
+    ];
+    protected $validationMessages = [
+        'slug' => [
+            'required' => 'Validation.slug.required',
+            'min_length' => 'Validation.slug.minlength',
+            'max_length' => 'Validation.slug.alphadash',
+            'is_unique' => 'Validation.slug.isunique'
+        ],
+    ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
     // Callbacks
@@ -120,16 +129,16 @@ class SectionsModel extends Model implements TranslationInterface{
 
     /**
      * updating section
-     * @param int $section_id
+     * @param int $item_id
      * @param array $data
      * @return int
      * @throws Exception
      */
-    public function updateItem(int $section_id, array $data): int
+    public function updateItem(int $item_id, array $data): int
     {
         // update layout
         try {
-            $this->update($section_id, $this->retrieveMainData($data));
+            $this->update($item_id, $this->retrieveMainData($data, $item_id));
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
@@ -139,7 +148,7 @@ class SectionsModel extends Model implements TranslationInterface{
             if (!in_array($language, config(App::class)->supportedLocales)) {
                 continue;
             }
-            $translations[] = $this->retrieveTranslation($section_id, $language, $translation);
+            $translations[] = $this->retrieveTranslation($item_id, $language, $translation);
         }
         if (empty($translations)) {
             throw new Exception('there must be the translations');
@@ -152,10 +161,10 @@ class SectionsModel extends Model implements TranslationInterface{
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
-        return $section_id;
+        return $item_id;
     }
 
-    public function retrieveMainData(array $data): array 
+    public function retrieveMainData(array $data, int $id = 0): array 
     {
         
         $appConfig = config(App::class);
@@ -165,6 +174,7 @@ class SectionsModel extends Model implements TranslationInterface{
         }
         
         $retrieved = [
+            'id' => $id,
             'slug' => $slugify->slugify($data['slug']),
             'section_build_start' => $data['section_build_start'],
             'section_build_end' => $data['section_build_end'],
