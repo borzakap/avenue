@@ -29,7 +29,7 @@ class CommerceModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[5]|max_length[15]|alpha_dash|is_unique[commerce.slug,id,{id}]',
+        'slug' => 'required|min_length[2]|max_length[20]|alpha_dash|is_unique[commerce.slug,id,{id}]',
         'residential_id' => 'required',
         'section_id' => 'required',
         'code' => 'required',

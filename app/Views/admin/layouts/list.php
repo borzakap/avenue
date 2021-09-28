@@ -24,10 +24,10 @@
                 <thead>
                     <tr>
                         <th><?= lang('Admin.List.Headers.Section') ?></th>
+                        <th><?= lang('Admin.List.Headers.Floor') ?></th>
                         <th><?= lang('Admin.List.Headers.Rooms') ?></th>
                         <th><?= lang('Admin.List.Headers.AllArea') ?></th>
                         <th><?= lang('Admin.List.Headers.LiveArea') ?></th>
-                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -35,6 +35,7 @@
                 <tfoot>
                     <tr>
                         <th><?= lang('Admin.List.Headers.Section') ?></th>
+                        <th><?= lang('Admin.List.Headers.Floor') ?></th>
                         <th><?= lang('Admin.List.Headers.Rooms') ?></th>
                         <th><?= lang('Admin.List.Headers.AllArea') ?></th>
                         <th><?= lang('Admin.List.Headers.LiveArea') ?></th>
@@ -46,6 +47,7 @@
                     <?php foreach ($items as $item) : ?>
                         <tr>
                             <td><?= $item->withSection()->section->title ?></td>
+                            <td><?= $item->withFloorImage()->floor_image->image_code ?></td>
                             <td><?= $item->rooms ?></td>
                             <td><?= $item->all_area ?></td>
                             <td><?= $item->live_area ?></td>

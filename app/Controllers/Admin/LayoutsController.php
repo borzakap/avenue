@@ -52,10 +52,10 @@ class LayoutsController extends BaseController {
         $this->breadcrumb->add(lang('Admin.Breadcrumb.SectionUpdate'), '/console/layouts/update');
         // verify if request method is not POST
         if ($this->request->getMethod() === 'post') {
-            if (($id = model(LayoutsModel::class)->updateItem($id, $this->request->getPost()))) {
-                return redirect()->route('layout_update', [$id])->with('message', lang('Layouts.Messages.Messages.Insertatiton'));
+            if (model(LayoutsModel::class)->updateItem($id, $this->request->getPost())) {
+                return redirect()->route('layout_update', [$id])->with('message', lang('Admin.Messages.Insertatiton'));
             }
-            return redirect()->back()->withInput()->with('error', lang('Layouts.Messages.Error.Updating'));
+            return redirect()->back()->withInput()->with('errors', model(CommerceModel::class)->errors());
         }
         $data = [
             'languages' => $config->supportedLocales,

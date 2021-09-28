@@ -25,9 +25,28 @@ class LayoutsModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[5]|max_length[15]|alpha_dash|is_unique[layouts.slug,id,{id}]',
+        'slug' => 'required|min_length[2]|max_length[20]|alpha_dash|is_unique[layouts.slug,id,{id}]',
+        'residential_id' => 'required',
+        'section_id' => 'required',
+        'code' => 'required',
     ];
-    protected $validationMessages = [];
+    protected $validationMessages = [
+        'slug' => [
+            'is_unique' => 'Validation.Unique.Slug',
+            'required' => 'Validation.Required.Slug',
+            'min_length' => 'Validation.MinLength.Slug',
+            'max_length' => 'Validation.MaxLength.Slug',
+        ],
+        'residential_id' => [
+            'required' => 'Validation.ResidentialId.Required',
+        ],
+        'section_id' => [
+            'required' => 'Validation.SectionId.Required',
+        ],
+        'code' => [
+            'required' => 'Validation.Code.Required',
+        ],
+    ];
     protected $skipValidation = false;
     protected $cleanValidationRules = true;
     // Callbacks
@@ -114,22 +133,18 @@ class LayoutsModel extends Model implements TranslationInterface{
      */
     public function createItem(array $data): int 
     {
-        $appConfig = config('App');
-        // insert the data about layout
-        $main = $this->retrieveMainData($data);
-
         try {
-            $layout_id = $this->insert($main, true);
+            $item_id = $this->insert($this->retrieveMainData($data), true);
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
         // insert translations
         $translations = [];
         foreach ($data['translation'] as $language => $translation) {
-            if (!in_array($language, $appConfig->supportedLocales)) {
+            if (!in_array($language, config(App::class)->supportedLocales)) {
                 continue;
             }
-            $translations[] = $this->retrieveTranslationData($layout_id, $language, $translation);
+            $translations[] = $this->retrieveTranslationData($item_id, $language, $translation);
         }
         if (empty($translations)) {
             throw new Exception('there must be the translations');
@@ -139,31 +154,28 @@ class LayoutsModel extends Model implements TranslationInterface{
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
-        return $layout_id;
+        return $item_id;
     }
     
     /**
      * updating layout
-     * @param int $layout_id
+     * @param int $item_id
      * @param array $data
      * @return int
      * @throws Exception
      */
-    public function updateItem(int $layout_id, array $data): int{
-        $appConfig = config('App');
+    public function updateItem(int $item_id, array $data): int{
         // update layout
-        try {
-            $this->update($layout_id, $this->retrieveMainData($data, $layout_id));
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
+        if(!$this->update($item_id, $this->retrieveMainData($data, $item_id))){
+            return false;
         }
         // insert translations
         $translations = [];
         foreach ($data['translation'] as $language => $translation) {
-            if (!in_array($language, $appConfig->supportedLocales)) {
+            if (!in_array($language, config(App::class)->supportedLocales)) {
                 continue;
             }
-            $translations[] = $this->retrieveTranslation($layout_id, $language, $translation);
+            $translations[] = $this->retrieveTranslation($item_id, $language, $translation);
         }
         if (empty($translations)) {
             throw new Exception('there must be the translations');
@@ -172,11 +184,10 @@ class LayoutsModel extends Model implements TranslationInterface{
             foreach($translations as $translation){
                 $this->db->table('layouts_translation')->replace($translation);
             }
-//            $this->db->table('layouts_translation')->updateBatch($translations, 'layout_id');
         } catch (\Exception $exc) {
             die($exc->getMessage());
         }
-        return $layout_id;
+        return $item_id;
     }
 
     /**
