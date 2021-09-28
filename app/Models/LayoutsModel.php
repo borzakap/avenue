@@ -144,7 +144,7 @@ class LayoutsModel extends Model implements TranslationInterface{
             if (!in_array($language, config(App::class)->supportedLocales)) {
                 continue;
             }
-            $translations[] = $this->retrieveTranslationData($item_id, $language, $translation);
+            $translations[] = $this->retrieveTranslation($item_id, $language, $translation);
         }
         if (empty($translations)) {
             throw new Exception('there must be the translations');
