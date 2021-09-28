@@ -23,10 +23,10 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
+                        <th><?= lang('Admin.List.Headers.Section') ?></th>
+                        <th><?= lang('Admin.List.Headers.Rooms') ?></th>
+                        <th><?= lang('Admin.List.Headers.AllArea') ?></th>
+                        <th><?= lang('Admin.List.Headers.LiveArea') ?></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -34,11 +34,10 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
-                        <th></th>
+                        <th><?= lang('Admin.List.Headers.Section') ?></th>
+                        <th><?= lang('Admin.List.Headers.Rooms') ?></th>
+                        <th><?= lang('Admin.List.Headers.AllArea') ?></th>
+                        <th><?= lang('Admin.List.Headers.LiveArea') ?></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -46,11 +45,10 @@
                 <tbody>
                     <?php foreach ($items as $item) : ?>
                         <tr>
-                            <td><?= $item->title ?></td>
-                            <td><?= $item->address ?></td>
-                            <td><?= $item->residential_build_start ?></td>
-                            <td><?= $item->residential_build_end ?></td>
-                            <td><?= $item->status ?></td>
+                            <td><?= $item->withSection()->section->title ?></td>
+                            <td><?= $item->rooms ?></td>
+                            <td><?= $item->all_area ?></td>
+                            <td><?= $item->live_area ?></td>
                             <td><?= $item->update_link ?></td>
                             <td><?= $item->delete_link ?></td>
                         </tr>

@@ -13,7 +13,7 @@ class LayoutsController extends BaseController {
 
     public function list() :string
     {
-        $this->breadcrumb->add(lang('Residentials.Breadcrumb.Admin.Residentials'), '/admin/residentials');
+        $this->breadcrumb->add(lang('Admin.Breadcrumb.Residentials'), '/console/residentials');
         $data = [
             'items' => model(LayoutsModel::class)->getList($this->request->getLocale()),
             'counts' => 0,
@@ -26,8 +26,8 @@ class LayoutsController extends BaseController {
         // verify if request method is not POST
         if ($this->request->getMethod() !== 'post') {
             $config = config(App::class);
-            $this->breadcrumb->add(lang('Breadcrumb.Admin.Layouts'), '/admin/layouts');
-            $this->breadcrumb->add(lang('Breadcrumb.Admin.LayoutsCreate'), '/admin/layouts/create');
+            $this->breadcrumb->add(lang('Admin.Breadcrumb.Layouts'), '/console/layouts');
+            $this->breadcrumb->add(lang('Admin.Breadcrumb.LayoutsCreate'), '/console/layouts/create');
 
             $data = [
                 'languages' => $config->supportedLocales,
@@ -48,8 +48,8 @@ class LayoutsController extends BaseController {
 
     public function update(int $id) {
         $config = config(App::class);
-        $this->breadcrumb->add(lang('Breadcrumb.Admin.Layouts'), '/admin/layouts');
-        $this->breadcrumb->add(lang('Breadcrumb.Admin.SectionUpdate'), '/admin/layouts/update');
+        $this->breadcrumb->add(lang('Admin.Breadcrumb.Layouts'), '/console/layouts');
+        $this->breadcrumb->add(lang('Admin.Breadcrumb.SectionUpdate'), '/console/layouts/update');
         // verify if request method is not POST
         if ($this->request->getMethod() === 'post') {
             if (($id = model(LayoutsModel::class)->updateItem($id, $this->request->getPost()))) {

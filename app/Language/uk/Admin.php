@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'List' => [
+        'Headers' => [
+            'Section' => 'Секція',
+            'Rooms' => 'Кімнатність',
+            'AllArea' => 'Загальна площа',
+            'LiveArea' => 'Житлова площа',
+        ],
+    ],
     'Cards' => [
         'CommerceTitle' => 'Створити комерційне приміщення',
     ],
