@@ -11,7 +11,13 @@ return [
         ],
     ],
     'Cards' => [
-        'CommerceTitle' => 'Створити комерційне приміщення',
+        'Titles' => [
+            'CreateCommerce' => 'Створити комерційне приміщення',
+            'CreateLayout' => 'Створити житлове планування',
+        ],
+    ],
+    'Buttons' => [
+        'Create' => 'Створити',
     ],
     'Form' => [
         'Buttons' => [

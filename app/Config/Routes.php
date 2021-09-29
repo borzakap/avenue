@@ -58,7 +58,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     // layouts
     $routes->group('layouts', function($routes){
         $routes->get('', 'Admin\LayoutsController::list', ['as' => 'layouts']);
-        $routes->match(['get', 'post'], 'create', 'Admin\LayoutsController::create');
+        $routes->match(['get', 'post'], 'create', 'Admin\LayoutsController::create', ['as' => 'layout_create']);
         $routes->match(['get', 'post'], 'update/(:num)', 'Admin\LayoutsController::update/$1', ['as' => 'layout_update']);
         $routes->post('poligon-save', 'Admin\LayoutsController::poligonSave', ['as' => 'layout_poligon_save']);
     });

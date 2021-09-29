@@ -3,13 +3,13 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('FacebookExport.PageTitle') ?></h1>
+    <h1 class="h3 mb-0 text-gray-800"><?= lang('Admin.Cards.Titles.CreateLayout') ?></h1>
     <!-- Topbar Search -->
-    <a href="<?= route_to('managers/create') ?>" class="btn btn-primary btn-icon-split">
+    <a href="<?= route_to('layout_create') ?>" class="btn btn-primary btn-icon-split">
         <span class="icon text-white-50">
             <i class="fas fa-flag"></i>
         </span>
-        <span class="text"><?= lang('Managers.TableButtonCreate') ?></span>
+        <span class="text"><?= lang('Admin.Buttons.Create') ?></span>
     </a>
 </div>
 
