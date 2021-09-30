@@ -22,7 +22,7 @@ class PlansImagesModel extends Model {
     protected $returnType = 'App\Entities\PlansImagesEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['image_name', 'image_width', 'residential_id', 'order', 'image_height', 'plan_type'];
+    protected $allowedFields = ['image_name', 'image_width', 'residential_id', 'order', 'image_height', 'plan_type', 'image_code'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -49,13 +49,13 @@ class PlansImagesModel extends Model {
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert = [];
-    protected $afterInsert = [];
+    protected $afterInsert = ['deleteCaches'];
     protected $beforeUpdate = [];
-    protected $afterUpdate = [];
+    protected $afterUpdate = ['deleteCaches'];
     protected $beforeFind = [];
     protected $afterFind = [];
     protected $beforeDelete = [];
-    protected $afterDelete = [];
+    protected $afterDelete = ['deleteCaches'];
     
     /**
      * get plans images by residential
@@ -77,7 +77,7 @@ class PlansImagesModel extends Model {
      * @param int $id
      * @return object|null
      */
-    public function getImage(int $id): ?object
+    public function getImage(?int $id): ?object
     {
         try{
             return $this->where('id', $id)->first();
@@ -96,7 +96,7 @@ class PlansImagesModel extends Model {
         try{
             return $this->where('residential_id', $residential_id)
                     ->where('plan_type', self::TYPE_LEAVING)
-                    ->first();
+                    ->find();
         } catch (Exception $e) {
             die($e->getTraceAsString());
         }
@@ -111,13 +111,79 @@ class PlansImagesModel extends Model {
     {
         try{
             return $this->where('residential_id', $residential_id)
-                    ->where('floor_type', self::TYPE_COMMERCE)
+                    ->where('plan_type', self::TYPE_COMMERCE)
                     ->find();
         } catch (Exception $e) {
             die($e->getTraceAsString());
         }
     }
     
+    /**
+     * return the chained list id->title of pantry floors layouts images
+     * @return array
+     */
+    public function getFloorsPantryList(): array 
+    {
+        $plan_type = self::TYPE_PANTRY;
+        if (! $found = cache("plans_list_{$plan_type}")){
+            $found = [];
+            $items = $this->where('plan_type', $plan_type)->get()->getResultArray();
+            foreach ($items as $item){
+                $data = [];
+                $data['chained'] = $item['residential_id'];
+                $data['name'] = $item['image_code'];
+                $found[$item['id']] = $data;
+            }
+
+            cache()->save("plans_list_{$plan_type}", $found, 0);
+        }
+        return $found;
+    }
+    
+    /**
+     * return the chained list id->title of commerce floors images
+     * @return array
+     */
+    public function getFloorsCommerceList(): array 
+    {
+        $plan_type = self::TYPE_COMMERCE;
+        if (! $found = cache("plans_list_{$plan_type}")){
+            $found = [];
+            $items = $this->where('plan_type', $plan_type)->get()->getResultArray();
+            foreach ($items as $item){
+                $data = [];
+                $data['chained'] = $item['residential_id'];
+                $data['name'] = $item['image_code'];
+                $found[$item['id']] = $data;
+            }
+
+            cache()->save("plans_list_{$plan_type}", $found, 0);
+        }
+        return $found;
+    }
+
+    /**
+     * return the chained list id->title of floors images
+     * @return array
+     */
+    public function getFloorsLayoutsList(): array 
+    {
+        $plan_type = self::TYPE_LEAVING;
+        if (! $found = cache("plans_list_{$plan_type}")){
+            $found = [];
+            $items = $this->where('plan_type', $plan_type)->get()->getResultArray();
+            foreach ($items as $item){
+                $data = [];
+                $data['chained'] = $item['residential_id'];
+                $data['name'] = $item['image_code'];
+                $found[$item['id']] = $data;
+            }
+
+            cache()->save("plans_list_{$plan_type}", $found, 0);
+        }
+        return $found;
+    }
+
     /**
      * get the floor types
      * @return array
@@ -130,5 +196,16 @@ class PlansImagesModel extends Model {
             self::TYPE_PANTRY => lang('Admin.List.LeavingPangtry'),
         ];
     }
+    
+    /**
+     * delete caches in callbacks
+     * @return array
+     */
+    protected function deleteCaches(array $data): array
+    {
+        cache()->deleteMatching('plans_list*');
+        return $data;
+    }
+    
     
 }

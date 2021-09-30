@@ -55,6 +55,7 @@ class CommerceController extends BaseController{
                 'residentials' => model(ResidentialsModel::class)->getResidentialsList($config->defaultLocale),
                 'sections' => model(SectionsModel::class)->getSectionsList($config->defaultLocale),
                 'floors' => model(FloorsImagesModel::class)->getFloorsCommerceList(),
+                'plans' => model(PlansImagesModel::class)->getFloorsCommerceList(),
             ];
             return view('admin/commerce/create', $data);
         }
@@ -88,21 +89,58 @@ class CommerceController extends BaseController{
             'residentials' => model(ResidentialsModel::class)->getResidentialsList($config->defaultLocale),
             'sections' => model(SectionsModel::class)->getSectionsList($config->defaultLocale),
             'floors' => model(FloorsImagesModel::class)->getFloorsCommerceList(),
-            'data' => model(CommerceModel::class)->find($id)->withTranslations()->withFloorImage(),
+            'plans' => model(PlansImagesModel::class)->getFloorsCommerceList(),
+            'data' => model(CommerceModel::class)->find($id)->withTranslations()->withFloorImage()->withPlanImage(),
             'id' => $id,
         ];
         return view('admin/commerce/update', $data);
     }
     
     /**
-     * save the data about poligon
+     * save section`s poligon
      * @return object
      */
-    public function poligonSave(): object
+    public function poligonSectionSave(): object
     {
-        
-        $commerce = model(CommerceModel::class)->find($this->request->getPost('commerce_id'));
-        if(!$commerce){
+        $layout = model(CommerceModel::class)->find($this->request->getPost('commerce_id'));
+        if(!$layout){
+            return $this->response->setJSON(['success' => false, 'message' => lang('Admin.Messages.Erorrs.NotFound')]);
+        }
+        $layout->poligon = $this->request->getPost('poligon');
+        if(model(CommerceModel::class)->save($layout)){
+            return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
+        }else{
+            return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(CommerceModel::class)->errors())]);
+        }
+    }
+    
+    /**
+     * save plan`s poligon
+     * @return object
+     */
+    public function poligonPlanSave(): object
+    {
+        $layout = model(CommerceModel::class)->find($this->request->getPost('commerce_id'));
+        if(!$layout){
+            return $this->response->setJSON(['success' => false, 'message' => lang('Admin.Messages.Erorrs.NotFound')]);
+        }
+        $layout->plan_poligon = $this->request->getPost('plan_poligon');
+        if(model(CommerceModel::class)->save($layout)){
+            return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
+        }else{
+            return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(CommerceModel::class)->errors())]);
+        }
+    }
+    
+    
+    /**
+     * save images for layout
+     * @return object
+     */
+    public function imagesSave(): object
+    {
+        $layout = model(CommerceModel::class)->find($this->request->getPost('commerce_id'));
+        if(!$layout){
             return $this->response->setJSON(['success' => false, 'message' => lang('Admin.Messages.Erorrs.NotFound')]);
         }
         $files = $this->request->getFileMultiple('files');
@@ -114,13 +152,12 @@ class CommerceController extends BaseController{
             }else{
                 continue;
             }
-            if($commerce->{$name} && file_exists(IMGPATH . 'layouts/' . $commerce->{$name})){
-                unlink(IMGPATH . 'layouts/' . $commerce->{$name});  
+            if($layout->{$name} && file_exists(IMGPATH . 'layouts/' . $layout->{$name})){
+                unlink(IMGPATH . 'layouts/' . $layout->{$name});  
             }
-            $commerce->{$name} = $file->getName();
+            $layout->{$name} = $file->getName();
         }
-        $commerce->poligon = $this->request->getPost('poligon');
-        if(model(CommerceModel::class)->save($commerce)){
+        if(model(LayoutsModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
         }else{
             return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(CommerceModel::class)->errors())]);

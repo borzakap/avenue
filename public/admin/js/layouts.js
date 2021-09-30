@@ -1,5 +1,6 @@
 $(document).ready(function () {
     // cained selects
+    $("#plans_images_id").chained("#residential_id");
     $("#section_id").chained("#residential_id");
     $("#floor_images_id").chained("#section_id");
 
@@ -35,8 +36,8 @@ $(document).ready(function () {
         });
     });
 
-    // save the poligon and images
-    $('#poligon_save').on('submit', function (e) {
+    // upload images
+    $('#images_upload').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
             url: $(this).attr('action'),
@@ -47,16 +48,68 @@ $(document).ready(function () {
             cache: false,
             dataType: "json",
             success: function (res) {
-                if (res.success == true) {
-                    $('#poligon-alert').show();
-                    $('#poligon-alert').html('<div class="alert alert-success" role="alert">' + res.message + '</div>');
+                if (res.success === true) {
+                    $('#images_alert').show();
+                    $('#images_alert').html('<div class="alert alert-success" role="alert">' + res.message + '</div>');
                 } else {
-                    $('#poligon-alert').show();
-                    $('#poligon-alert').html('<div class="alert alert-warning" role="alert">' + res.message + '</div>');
+                    $('#images_alert').show();
+                    $('#images_alert').html('<div class="alert alert-warning" role="alert">' + res.message + '</div>');
                 }
                 setTimeout(function () {
-                    $('#poligon-alert').hide();
-                    $('#poligon-alert').html('');
+                    $('#images_alert').hide();
+                    $('#images_alert').html('');
+                }, 10000);
+            }
+        });
+    });
+    // save section poligon
+    $('#poligon_section').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            method: "POST",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: "json",
+            success: function (res) {
+                if (res.success === true) {
+                    $('#section_alert').show();
+                    $('#section_alert').html('<div class="alert alert-success" role="alert">' + res.message + '</div>');
+                } else {
+                    $('#section_alert').show();
+                    $('#section_alert').html('<div class="alert alert-warning" role="alert">' + res.message + '</div>');
+                }
+                setTimeout(function () {
+                    $('#section_alert').hide();
+                    $('#section_alert').html('');
+                }, 10000);
+            }
+        });
+    });
+    // save plan poligon
+    $('#poligon_plan').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            method: "POST",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            dataType: "json",
+            success: function (res) {
+                if (res.success === true) {
+                    $('#plan_alert').show();
+                    $('#plan_alert').html('<div class="alert alert-success" role="alert">' + res.message + '</div>');
+                } else {
+                    $('#plan_alert').show();
+                    $('#plan_alert').html('<div class="alert alert-warning" role="alert">' + res.message + '</div>');
+                }
+                setTimeout(function () {
+                    $('#plan_alert').hide();
+                    $('#plan_alert').html('');
                 }, 10000);
             }
         });

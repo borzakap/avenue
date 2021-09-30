@@ -23,10 +23,10 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
+                        <th><?= lang('Admin.List.Headers.Title') ?></th>
+                        <th><?= lang('Admin.List.Headers.Address') ?></th>
+                        <th><?= lang('Admin.List.Headers.BuildStart') ?></th>
+                        <th><?= lang('Admin.List.Headers.BuildEnd') ?></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -34,10 +34,10 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
+                        <th><?= lang('Admin.List.Headers.Title') ?></th>
+                        <th><?= lang('Admin.List.Headers.Address') ?></th>
+                        <th><?= lang('Admin.List.Headers.BuildStart') ?></th>
+                        <th><?= lang('Admin.List.Headers.BuildEnd') ?></th>
                         <th></th>
                         <th></th>
                         <th></th>

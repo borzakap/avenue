@@ -20,7 +20,7 @@ class CommerceModel extends Model implements TranslationInterface{
     protected $returnType = 'App\Entities\CommerceEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['slug', 'residential_id', 'section_id', 'code', 'advertise', 'sold_out', 'booked_for', 'price', 'floor', 'ceil_height', 'all_area', 'image_2d', 'image_3d', 'file_to_upload', 'floor_images_id', 'poligon', 'levels', 'publish', 'title', 'meta_title', 'description', 'meta_description'];
+    protected $allowedFields = ['slug', 'residential_id', 'section_id', 'code', 'advertise', 'sold_out', 'booked_for', 'price', 'floor', 'ceil_height', 'all_area', 'image_2d', 'image_3d', 'file_to_upload', 'floor_images_id', 'poligon', 'levels', 'publish', 'title', 'meta_title', 'description', 'meta_description', 'plans_images_id', 'plan_poligon'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -133,6 +133,20 @@ class CommerceModel extends Model implements TranslationInterface{
     }
 
     /**
+     * get layouts genplan poligon and other data for floor image
+     * @param int $plans_images_id
+     * @return array|null
+     */
+    public function getPlanPoligons(int $plans_images_id): ?array
+    {
+        try {
+            return $this->where('plans_images_id', $plans_images_id)->findAll();
+        } catch (\Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
+
+    /**
      * cretating the commerce
      * @param array $data
      * @return int
@@ -221,6 +235,7 @@ class CommerceModel extends Model implements TranslationInterface{
             'ceil_height' => $data['ceil_height'],
             'all_area' => $data['all_area'],
             'levels' => (int)$data['levels'],
+            'plans_images_id' => (int)$data['plans_images_id'],
             'floor_images_id' => (int)$data['floor_images_id'],
             'publish' => $data['publish'] ?? self::YES,
         ];
@@ -229,14 +244,14 @@ class CommerceModel extends Model implements TranslationInterface{
 
     /**
      * retreive the translation data
-     * @param int $commerce_id
+     * @param int $item_id
      * @param string $language
      * @param array $data
      * @return array
      */
-    public function retrieveTranslation(int $commerce_id, string $language, array $data): array {
+    public function retrieveTranslation(int $item_id, string $language, array $data): array {
         $retrieved = [
-            'commerce_id' => $commerce_id,
+            'commerce_id' => $item_id,
             'language' => $language,
             'title' => $data['title'],
             'meta_title' => $data['meta_title'],

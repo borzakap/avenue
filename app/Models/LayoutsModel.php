@@ -16,7 +16,7 @@ class LayoutsModel extends Model implements TranslationInterface{
     protected $returnType = 'App\Entities\LayoutsEntity';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['code', 'slug', 'residential_id', 'section_id', 'image_2d', 'image_3d', 'image_other', 'file_to_upload', 'rooms', 'levels', 'ceil_height', 'all_area', 'live_area', 'kit_area', 'balcon', 'advertise', 'sold_out', 'publish', 'price', 'floor_images_id', 'poligon', 'language', 'title', 'meta_title', 'description', 'meta_description'];
+    protected $allowedFields = ['code', 'slug', 'residential_id', 'section_id', 'image_2d', 'image_3d', 'image_other', 'file_to_upload', 'rooms', 'levels', 'ceil_height', 'all_area', 'live_area', 'kit_area', 'balcon', 'advertise', 'sold_out', 'publish', 'price', 'floor_images_id', 'poligon', 'language', 'title', 'meta_title', 'description', 'meta_description', 'plans_images_id', 'plan_poligon'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -114,9 +114,9 @@ class LayoutsModel extends Model implements TranslationInterface{
     /**
      * get layouts poligon and other data for floor image
      * @param int $floor_images_id
-     * @return array
+     * @return array|null
      */
-    public function getPoligons(int $floor_images_id): array
+    public function getPoligons(int $floor_images_id): ?array
     {
         try {
             return $this->where('floor_images_id', $floor_images_id)->findAll();
@@ -125,6 +125,19 @@ class LayoutsModel extends Model implements TranslationInterface{
         }
     }
 
+    /**
+     * get layouts genplan poligon and other data for floor image
+     * @param int $plans_images_id
+     * @return array|null
+     */
+    public function getPlanPoligons(int $plans_images_id): ?array
+    {
+        try {
+            return $this->where('plans_images_id', $plans_images_id)->findAll();
+        } catch (\Exception $e) {
+            die($e->getTraceAsString());
+        }
+    }
 
     /**
      * cretating the layout
@@ -219,6 +232,7 @@ class LayoutsModel extends Model implements TranslationInterface{
             'residential_id' => (int)$data['residential_id'],
             'section_id' => (int)$data['section_id'],
             'floor_images_id' => (int)$data['floor_images_id'],
+            'plans_images_id' => (int)$data['plans_images_id'],
             'publish' => !isset($data['publish']) ? self::UNPUBLISH : self::PUBLISH,
         ];
         return $retrieved;

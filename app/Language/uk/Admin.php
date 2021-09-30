@@ -3,11 +3,15 @@
 return [
     'List' => [
         'Headers' => [
-            'Section' => 'Секція',
-            'Rooms' => 'Кімнатність',
+            'Address' => 'Адреса',
             'AllArea' => 'Загальна площа',
-            'LiveArea' => 'Житлова площа',
+            'BuildEnd' => 'Здача',
+            'BuildStart' => 'Початок будівництва',
             'Floor' => 'Поверх',
+            'LiveArea' => 'Житлова площа',
+            'Rooms' => 'Кімнатність',
+            'Section' => 'Секція',
+            'Title' => 'Назва',
         ],
     ],
     'Cards' => [

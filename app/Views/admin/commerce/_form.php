@@ -88,19 +88,25 @@
 
 <div class="form-row">
     <!-- layout residential -->
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
         <?= form_label(lang('Admin.Form.Labels.Residential'), 'residential_id') ?>
         <?= form_dropdown(['name' => 'residential_id', 'class' => 'form-control', 'id' => 'residential_id', 'options' => $residentials, 'selected' => old('residential_id') ?? $data->residential_id ?? 0]) ?>
     </div>
 
+    <!-- layout genplan image -->
+    <div class="form-group col-md-3">
+        <?= form_label(lang('Admin.Form.Labels.Genplan'), 'plans_images_id') ?>
+        <?= chained_dropdown(['name' => 'plans_images_id', 'class' => 'form-control', 'id' => 'plans_images_id', 'options' => $plans, 'selected' => old('plans_images_id') ?? $data->plans_images_id ?? 0]) ?>
+    </div>
+
     <!-- layout section -->
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
         <?= form_label(lang('Admin.Form.Labels.Section'), 'section_id') ?>
         <?= chained_dropdown(['name' => 'section_id', 'class' => 'form-control', 'id' => 'section_id', 'options' => $sections, 'selected' => old('section_id') ?? $data->section_id ?? 0]) ?>
     </div>
 
     <!-- layout floor -->
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
         <?= form_label(lang('Admin.Form.Labels.Floors'), 'floor_images_id') ?>
         <?= chained_dropdown(['name' => 'floor_images_id', 'class' => 'form-control', 'id' => 'floor_images_id', 'options' => $floors, 'data-change-url' => route_to('floors-image-change-url'), 'selected' => old('floor_images_id') ?? $data->floor_images_id ?? 0]) ?>
     </div>

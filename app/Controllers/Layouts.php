@@ -37,12 +37,12 @@ class Layouts extends BaseController{
      */
     public function section(string $slug): string
     {
-        if(!$this->data['section'] = model(SectionsModel::class)->getBySlug($slug, $this->request->getLocale())){
+        if(!$section = model(SectionsModel::class)->getBySlug($slug, $this->request->getLocale())){
             throw PageNotFoundException::forPageNotFound();
         }
-        $this->data['meta_title'] = $this->data['section']->meta_title;
-        $this->data['meta_description'] = $this->data['section']->meta_description;
-        $this->data['floors'] = model(FloorsImagesModel::class)->getSectionsFloorsLayouts($this->data['section']->id);
+        $this->data['meta_title'] = $section->meta_title;
+        $this->data['meta_description'] = $section->meta_description;
+        $this->data['floors'] = model(FloorsImagesModel::class)->getSectionsFloorsLayouts($section->id);
         return view('site/layouts/section', $this->data);
     }
     
@@ -63,6 +63,7 @@ class Layouts extends BaseController{
         }
         $this->data['meta_title'] = $residential->meta_title;
         $this->data['meta_description'] = $residential->meta_description;
+        $this->data['floors'] = model(PlansImagesModel::class)->getPlanLayouts($residential->id);
         $this->data['genplan'] = $residential->withSections()->withPlans();
         return view('site/layouts/genplan', $this->data);
     }

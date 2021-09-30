@@ -58,8 +58,8 @@ class FloorsImagesModel extends Model {
     protected $afterUpdate = ['deleteCaches'];
     protected $beforeFind = [];
     protected $afterFind = [];
-    protected $beforeDelete = ['deleteCaches'];
-    protected $afterDelete = [];
+    protected $beforeDelete = [];
+    protected $afterDelete = ['deleteCaches'];
     
     /**
      * get floor images by section
@@ -81,7 +81,7 @@ class FloorsImagesModel extends Model {
      * @param int $id
      * @return object|null
      */
-    public function getImageFloor(int $id): ?object
+    public function getImage(?int $id): ?object
     {
         try{
             return $this->where('id', $id)->first();

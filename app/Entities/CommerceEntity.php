@@ -27,6 +27,8 @@ class CommerceEntity extends Entity {
     protected $translations = [];
     // floor image
     protected $floor_image;
+    // genplan image
+    protected $plan_image;
     // section
     protected $section;
     // update and delete links
@@ -75,7 +77,7 @@ class CommerceEntity extends Entity {
             throw new \RuntimeException('Commerce must be created before getting layout image.');
         }
         if(empty($this->floor_image)){
-            $this->floor_image = model(FloorsImagesModel::class)->getImageFloor($this->floor_images_id);
+            $this->floor_image = model(FloorsImagesModel::class)->getImage($this->floor_images_id);
         }
         return $this;
     }
@@ -87,6 +89,31 @@ class CommerceEntity extends Entity {
     public function getFloorImage(): ?object
     {
         return $this->floor_image;
+    }
+
+    /**
+     * get layout genplan image
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withPlanImage(): self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Layout must be created before getting its genplan image.');
+        }
+        if(empty($this->plan_image)){
+            $this->plan_image = model(PlansImagesModel::class)->getImage($this->plans_images_id);
+        }
+        return $this;
+    }
+
+    /**
+     * get the genplan image object
+     * @return object|null
+     */
+    public function getPlanImage(): ?object
+    {
+        return $this->plan_image;
     }
 
     /**

@@ -94,6 +94,7 @@ class ResidentialsController extends BaseController {
         // insert data about section first 
         $data = [
             'image_name' => $image->getName(),
+            'image_code' => $this->request->getPost('image_code'),
             'residential_id' => $this->request->getPost('residential_id'),
             'plan_type' => $this->request->getPost('plan_type'),
             'order' => 1,
@@ -165,6 +166,7 @@ class ResidentialsController extends BaseController {
             }
             $return['message'] = lang('Admin.Messages.Success.Deleted');
         }else{
+            $planImages->image_code = $this->request->getPost('image_code');
             model(PlansImagesModel::class)->save($planImages);
             $return['message'] = lang('Admin.Messages.Success.Updated');
         }

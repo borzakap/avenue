@@ -33,10 +33,10 @@ class PlansImagesEntity extends Entity {
     public function withLayoutsPoligons(): self
     {
         if(empty($this->id)){
-            throw new \RuntimeException('Floor image must be created before getting poligons.');
+            throw new \RuntimeException('Genplan image must be created before getting poligons.');
         }
         if(empty($this->poligons)){
-            $this->poligons = model(LayoutsModel::class)->getPoligons($this->id);
+            $this->poligons = model(LayoutsModel::class)->getPlanPoligons($this->id);
         }
         return $this;
     }
@@ -52,7 +52,7 @@ class PlansImagesEntity extends Entity {
             throw new \RuntimeException('Floor image must be created before getting poligons.');
         }
         if(empty($this->poligons)){
-            $this->poligons = model(CommerceModel::class)->getPoligons($this->id);
+            $this->poligons = model(CommerceModel::class)->getPlanPoligons($this->id);
         }
         return $this;
     }

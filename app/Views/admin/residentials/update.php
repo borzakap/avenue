@@ -47,6 +47,7 @@
         <?= form_open(route_to('plans-update'), ['class' => 'update-image']) ?>
             <img class="img-fluid img-thumbnail" src="/images/plans/${image_name}" />
             <input type="hidden" name="id" value="${id}" />
+            <input type="text" value="${image_code}" name="image_code" />
             <input type="checkbox" name="delete_img" id="delete_img_${id}" /> <label for="delete_img_${id}">Delete</label>
             <input type="submit" name="update_img" value="Submit" />
         <?= form_close() ?>    

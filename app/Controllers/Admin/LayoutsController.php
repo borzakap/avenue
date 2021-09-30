@@ -36,6 +36,7 @@ class LayoutsController extends BaseController {
                 'residentials' => model(ResidentialsModel::class)->getResidentialsList($config->defaultLocale),
                 'sections' => model(SectionsModel::class)->getSectionsList($config->defaultLocale),
                 'floors' => model(FloorsImagesModel::class)->getFloorsLayoutsList(),
+                'plans' => model(PlansImagesModel::class)->getFloorsLayoutsList(),
             ];
             return view('admin/layouts/create', $data);
         }
@@ -64,19 +65,56 @@ class LayoutsController extends BaseController {
             'residentials' => model(ResidentialsModel::class)->getResidentialsList($config->defaultLocale),
             'sections' => model(SectionsModel::class)->getSectionsList($config->defaultLocale),
             'floors' => model(FloorsImagesModel::class)->getFloorsLayoutsList(),
-            'data' => model(LayoutsModel::class)->find($id)->withTranslations()->withFloorImage(),
-            'layout_id' => $id,
+            'plans' => model(PlansImagesModel::class)->getFloorsLayoutsList(),
+            'data' => model(LayoutsModel::class)->find($id)->withTranslations()->withFloorImage()->withPlanImage(),
+            'id' => $id,
         ];
         return view('admin/layouts/update', $data);
     }
 
     /**
-     * save poligon for layout
+     * save section`s poligon
      * @return object
      */
-    public function poligonSave(): object
+    public function poligonSectionSave(): object
     {
-        
+        $layout = model(LayoutsModel::class)->find($this->request->getPost('layout_id'));
+        if(!$layout){
+            return $this->response->setJSON(['success' => false, 'message' => lang('Admin.Messages.Erorrs.NotFound')]);
+        }
+        $layout->poligon = $this->request->getPost('poligon');
+        if(model(LayoutsModel::class)->save($layout)){
+            return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
+        }else{
+            return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(LayoutsModel::class)->errors())]);
+        }
+    }
+    
+    /**
+     * save plan`s poligon
+     * @return object
+     */
+    public function poligonPlanSave(): object
+    {
+        $layout = model(LayoutsModel::class)->find($this->request->getPost('layout_id'));
+        if(!$layout){
+            return $this->response->setJSON(['success' => false, 'message' => lang('Admin.Messages.Erorrs.NotFound')]);
+        }
+        $layout->plan_poligon = $this->request->getPost('plan_poligon');
+        if(model(LayoutsModel::class)->save($layout)){
+            return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
+        }else{
+            return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(LayoutsModel::class)->errors())]);
+        }
+    }
+    
+    
+    /**
+     * save images for layout
+     * @return object
+     */
+    public function imagesSave(): object
+    {
         $layout = model(LayoutsModel::class)->find($this->request->getPost('layout_id'));
         if(!$layout){
             return $this->response->setJSON(['success' => false, 'message' => lang('Admin.Messages.Erorrs.NotFound')]);
@@ -95,7 +133,6 @@ class LayoutsController extends BaseController {
             }
             $layout->{$name} = $file->getName();
         }
-        $layout->poligon = $this->request->getPost('poligon');
         if(model(LayoutsModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
         }else{
@@ -104,7 +141,12 @@ class LayoutsController extends BaseController {
         
     }
     
-    public function poligonChange(){
+    /**
+     * TODO
+     * @return object
+     */
+    public function poligonChange(): object
+    {
         $return = [
             'success' => false,
             'message' => lang('Layouts.Messages.Error.UndefinedError'),

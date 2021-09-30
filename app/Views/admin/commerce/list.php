@@ -23,22 +23,18 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
-                        <th></th>
+                        <th><?= lang('Admin.List.Headers.Section') ?></th>
+                        <th><?= lang('Admin.List.Headers.Floor') ?></th>
+                        <th><?= lang('Admin.List.Headers.AllArea') ?></th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th><?= lang('Residentials.List.Headers.Title') ?></th>
-                        <th><?= lang('Residentials.List.Headers.Address') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildStart') ?></th>
-                        <th><?= lang('Residentials.List.Headers.BuildEnd') ?></th>
-                        <th></th>
+                        <th><?= lang('Admin.List.Headers.Section') ?></th>
+                        <th><?= lang('Admin.List.Headers.Floor') ?></th>
+                        <th><?= lang('Admin.List.Headers.AllArea') ?></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -46,11 +42,9 @@
                 <tbody>
                     <?php foreach ($items as $item) : ?>
                         <tr>
-                            <td><?= $item->title ?></td>
-                            <td><?= $item->code ?></td>
-                            <td><?= $item->booked_for ?></td>
-                            <td><?= $item->price ?></td>
-                            <td><?= $item->status ?></td>
+                            <td><?= $item->withSection()->section->title ?></td>
+                            <td><?= $item->withFloorImage()->floor_image->image_code ?></td>
+                            <td><?= $item->all_area ?></td>
                             <td><?= $item->update_link ?></td>
                             <td><?= $item->delete_link ?></td>
                         </tr>

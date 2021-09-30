@@ -60,7 +60,9 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->get('', 'Admin\LayoutsController::list', ['as' => 'layouts']);
         $routes->match(['get', 'post'], 'create', 'Admin\LayoutsController::create', ['as' => 'layout_create']);
         $routes->match(['get', 'post'], 'update/(:num)', 'Admin\LayoutsController::update/$1', ['as' => 'layout_update']);
-        $routes->post('poligon-save', 'Admin\LayoutsController::poligonSave', ['as' => 'layout_poligon_save']);
+        $routes->post('poligon-section', 'Admin\LayoutsController::poligonSectionSave', ['as' => 'layout_poligon_section']);
+        $routes->post('poligon-plan', 'Admin\LayoutsController::poligonPlanSave', ['as' => 'layout_poligon_plan']);
+        $routes->post('images', 'Admin\LayoutsController::imagesSave', ['as' => 'layout_images_upload']);
     });
     // commerce
     $routes->group('commerce', function($routes){
@@ -68,7 +70,9 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->get('chess', 'Admin\CommerceController::chess', ['as' => 'commerce_chess']);
         $routes->match(['get', 'post'], 'create', 'Admin\CommerceController::create', ['as' => 'commerce_create']);
         $routes->match(['get', 'post'], 'update/(:num)', 'Admin\CommerceController::update/$1', ['as' => 'commerce_update']);
-        $routes->post('poligon-save', 'Admin\CommerceController::poligonSave', ['as' => 'commerce_poligon_save']);
+        $routes->post('poligon-section', 'Admin\CommerceController::poligonSectionSave', ['as' => 'commerce_poligon_section']);
+        $routes->post('poligon-plan', 'Admin\CommerceController::poligonPlanSave', ['as' => 'commerce_poligon_plan']);
+        $routes->post('images', 'Admin\CommerceController::imagesSave', ['as' => 'commerce_images_upload']);
     });
     // pages
     $routes->group('pages', function($routes){

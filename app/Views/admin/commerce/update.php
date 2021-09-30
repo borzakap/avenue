@@ -24,19 +24,47 @@
         <?= form_close() ?>    
     </div>
 </div>
-<!-- poligon card -->
-<div id="poligon-alert"></div>
 <div class="card shadow mb-4">
-    <a href="#collapsePoligon" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapsePoligon">
-        <h6 class="m-0 font-weight-bold text-primary"><?= lang('Admin.Cards.Title.CommerceImagesTitle') ?></h6>
+    <a href="#collapseImages" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseImages">
+        <h6 class="m-0 font-weight-bold text-primary"><?= lang('Admin.Cards.Title.ImagesTitle') ?></h6>
     </a>
-    <div class="collapse show card-body" id="collapsePoligon">
-        <?= form_open_multipart(route_to('commerce_poligon_save'), ['id' => 'poligon_save']) ?>
-        <?= view('App\Views\admin\commerce\_poligon_form') ?>
-        <?= form_submit('poligon_send', lang('Admin.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'poligon-save-btn']) ?>
+    <div class="collapse card-body" id="collapseImages">
+        <?= form_open_multipart(route_to('commerce_images_upload'), ['id' => 'images_upload']) ?>
+        <?= view('App\Views\admin\commerce\_images_form') ?>
+        <?= form_submit('images_upload', lang('Admin.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'upload-images-btn']) ?>
         <?= form_close() ?>    
+        <div id="images_alert"></div>
     </div>
 </div>
+
+<?php if($data->floor_image) : ?>
+<div class="card shadow mb-4">
+    <a href="#collapseSection" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseSection">
+        <h6 class="m-0 font-weight-bold text-primary"><?= lang('Admin.Cards.Title.SectionPoligonTitle') ?></h6>
+    </a>
+    <div class="collapse card-body" id="collapseSection">
+        <?= form_open_multipart(route_to('commerce_poligon_section'), ['id' => 'poligon_section']) ?>
+        <?= view('App\Views\admin\commerce\_section_poligon_form') ?>
+        <?= form_submit('section_poligon', lang('Admin.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'section-poligon-btn']) ?>
+        <?= form_close() ?>    
+        <div id="section_alert"></div>
+    </div>
+</div>
+<?php endif; ?>
+<?php if($data->plan_image) : ?>
+<div class="card shadow mb-4">
+    <a href="#collapsePlan" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapsePlan">
+        <h6 class="m-0 font-weight-bold text-primary"><?= lang('Admin.Cards.Title.PlanPoligonTitle') ?></h6>
+    </a>
+    <div class="collapse card-body" id="collapsePlan">
+        <?= form_open_multipart(route_to('commerce_poligon_plan'), ['id' => 'poligon_plan']) ?>
+        <?= view('App\Views\admin\commerce\_genplan_poligon_form') ?>
+        <?= form_submit('plan_poligon', lang('Admin.Form.Buttons.Save'), ['class' => 'btn btn-primary', 'id' => 'plan-poligon-btn']) ?>
+        <?= form_close() ?>    
+        <div id="plan_alert"></div>
+    </div>
+</div>
+<?php endif; ?>
 
 <!-- Content Row -->
 <?= $this->endSection() ?>

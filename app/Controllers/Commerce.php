@@ -64,6 +64,7 @@ class Commerce extends BaseController{
         $this->data['meta_title'] = $residential->meta_title;
         $this->data['meta_description'] = $residential->meta_description;
         $this->data['genplan'] = $residential->withSections()->withPlans();
+        $this->data['floors'] = model(PlansImagesModel::class)->getPlanCommerce($residential->id);
         return view('site/commerce/genplan', $this->data);
     }
     
