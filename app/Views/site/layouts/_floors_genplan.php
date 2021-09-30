@@ -2,7 +2,7 @@
     <div class="w-100 pt-100 pb-100 position-relative">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 col-12">
+                <div class="col-md-1 col-12">
                     <p class="title d-sm-none d-md-block"><?= lang('Site.Sections.Page.Floors') ?></p>
                     <ul class="nav flex-md-column nav-pills" id="pills-tab" role="tablist">
                         <?php foreach ($floors as $floor) : ?>
@@ -12,7 +12,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                <div class="col-md-8 col-12">
+                <div class="col-md-10 col-12">
                     <div class="tab-content" id="pills-tabContent">
                         <?php foreach ($floors as $floor) : ?>
                             <div class="tab-pane fade" id="pills-<?= $floor->id ?>" role="tabpanel" aria-labelledby="pills-<?= $floor->id ?>-tab">
@@ -32,7 +32,7 @@
                         <?php endforeach; ?>
                     </div> 
                 </div>
-                <div class="col-md-2 col-12">
+                <div class="col-md-1 col-12">
                 </div>
             </div>
         </div>
