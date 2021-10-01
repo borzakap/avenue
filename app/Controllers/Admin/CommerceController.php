@@ -157,7 +157,7 @@ class CommerceController extends BaseController{
             }
             $layout->{$name} = $file->getName();
         }
-        if(model(LayoutsModel::class)->save($layout)){
+        if(model(CommerceModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
         }else{
             return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(CommerceModel::class)->errors())]);
