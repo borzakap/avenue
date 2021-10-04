@@ -56,7 +56,7 @@ class LayoutsController extends BaseController {
             if (model(LayoutsModel::class)->updateItem($id, $this->request->getPost())) {
                 return redirect()->route('layout_update', [$id])->with('message', lang('Admin.Messages.Insertatiton'));
             }
-            return redirect()->back()->withInput()->with('errors', model(CommerceModel::class)->errors());
+            return redirect()->back()->withInput()->with('errors', model(LayoutsModel::class)->errors());
         }
         $data = [
             'languages' => $config->supportedLocales,
@@ -136,7 +136,7 @@ class LayoutsController extends BaseController {
         if(model(LayoutsModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
         }else{
-            return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(CommerceModel::class)->errors())]);
+            return $this->response->setJSON(['success' => false, 'message' => implode(', ', model(LayoutsModel::class)->errors())]);
         }
         
     }
@@ -159,7 +159,7 @@ class LayoutsController extends BaseController {
         
         $floor_images_id = $this->request->getPost('floor_images_id');
 
-        $image = model(LayoutsModel::class)->getImageFloor($floor_images_id);
+        $image = model(FloorsImagesModel::class)->getImage($floor_images_id);
         if(isset($image->image_name) && $image->image_name){
             $return['success'] = true;
             $return['image'] = base_url('images/sections/'.$image->image_name);
