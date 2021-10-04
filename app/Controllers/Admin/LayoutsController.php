@@ -124,14 +124,15 @@ class LayoutsController extends BaseController {
         foreach($files as $name => $file){
 
             if($file->isValid() && !$file->hasMoved() && in_array($file->getMimeType(), ['image/png','image/jpg','image/jpeg']) ){
-                $file->move(IMGPATH . 'layouts', $file->getName(), true);
+                $image_name = $file->getRandomName();
+                $file->move(IMGPATH . 'layouts', $image_name, true);
             }else{
                 continue;
             }
             if($layout->{$name} && file_exists(IMGPATH . 'layouts/' . $layout->{$name})){
                 unlink(IMGPATH . 'layouts/' . $layout->{$name});  
             }
-            $layout->{$name} = $file->getRandomName();
+            $layout->{$name} = $image_name;
         }
         if(model(LayoutsModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);
