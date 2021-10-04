@@ -95,7 +95,7 @@ class SectionsController extends BaseController{
         $image = $this->request->getFile('image_file');
         // insert data about section first 
         $data = [
-            'image_name' => $image->getName(),
+            'image_name' => $image->getRandomName(),
             'image_code' => $this->request->getPost('image_code'),
             'section_id' => $this->request->getPost('section_id'),
             'floor_type' => $this->request->getPost('floor_type'),
@@ -105,7 +105,7 @@ class SectionsController extends BaseController{
             $return['message'] = implode(', ', model(FloorsImagesModel::class)->errors());
             return $this->response->setJSON($return);
         }
-        $path = IMGPATH . 'sections/'.$image->getName();
+        $path = IMGPATH . 'sections/'.$data['image_name'];
         // prosses image
         \Config\Services::image()
                 ->withFile($image)

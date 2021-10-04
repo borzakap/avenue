@@ -155,7 +155,7 @@ class CommerceController extends BaseController{
             if($layout->{$name} && file_exists(IMGPATH . 'layouts/' . $layout->{$name})){
                 unlink(IMGPATH . 'layouts/' . $layout->{$name});  
             }
-            $layout->{$name} = $file->getName();
+            $layout->{$name} = $file->getRandomName();
         }
         if(model(CommerceModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);

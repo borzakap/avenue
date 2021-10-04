@@ -131,7 +131,7 @@ class LayoutsController extends BaseController {
             if($layout->{$name} && file_exists(IMGPATH . 'layouts/' . $layout->{$name})){
                 unlink(IMGPATH . 'layouts/' . $layout->{$name});  
             }
-            $layout->{$name} = $file->getName();
+            $layout->{$name} = $file->getRandomName();
         }
         if(model(LayoutsModel::class)->save($layout)){
             return $this->response->setJSON(['success' => true, 'message' => lang('Admin.Messages.Success.Updated')]);

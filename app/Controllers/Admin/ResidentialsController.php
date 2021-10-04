@@ -93,7 +93,7 @@ class ResidentialsController extends BaseController {
         $image = $this->request->getFile('image_file');
         // insert data about section first 
         $data = [
-            'image_name' => $image->getName(),
+            'image_name' => $image->getRandomName(),
             'image_code' => $this->request->getPost('image_code'),
             'residential_id' => $this->request->getPost('residential_id'),
             'plan_type' => $this->request->getPost('plan_type'),
@@ -103,7 +103,7 @@ class ResidentialsController extends BaseController {
             $return['message'] = implode(', ', model(PlansImagesModel::class)->errors());
             return $this->response->setJSON($return);
         }
-        $path = IMGPATH . 'plans/'.$image->getName();
+        $path = IMGPATH . 'plans/'.$data['image_name'];
         // prosses image
         \Config\Services::image()
                 ->withFile($image)
