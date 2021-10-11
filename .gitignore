@@ -141,3 +141,6 @@ public/images/layouts/*
 # plans images
 public/images/plans/*
 !public/images/plans/index.html
+ 
+# facebook tracker
+public/*.html

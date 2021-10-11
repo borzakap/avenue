@@ -127,14 +127,43 @@ class CommerceEntity extends Entity {
             throw new \RuntimeException('Layout must be created before getting layout`s section.');
         }
         if(empty($this->section)){
-            $this->section = model(SectionsModel::class)->findSection($this->section_id, $this->language);
+            $this->section = model(SectionsModel::class)->findItem($this->section_id, $this->language);
         }
         return $this;
     }
 
-    public function getSection(): object
+    /**
+     * get section
+     * @return object|null
+     */
+    public function getSection(): ?object
     {
         return $this->section;
+    }
+
+    /**
+     * get layout`s residential data
+     * @return self
+     * @throws \RuntimeException
+     */
+    public function withPlan(): self
+    {
+        if(empty($this->id)){
+            throw new \RuntimeException('Layout must be created before getting layout`s residential.');
+        }
+        if(empty($this->plan)){
+            $this->plan = model(ResidentialsModel::class)->findItem($this->residential_id, $this->language);
+        }
+        return $this;
+    }
+    
+    /**
+     * get residential
+     * @return object|null
+     */
+    public function getPlan(): ?object
+    {
+        return $this->plan;
     }
 
     /**

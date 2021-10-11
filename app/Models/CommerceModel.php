@@ -76,46 +76,33 @@ class CommerceModel extends Model implements TranslationInterface{
      * @param string $language
      * @return object|null
      */
-    public function getBySlug(string $slug, string $language): ?object
-    {
-        try {
-            return $this->select('commerce.*, commerce_translation.title, commerce_translation.meta_title, commerce_translation.description, commerce_translation.meta_description, commerce_translation.language')
-                    ->join('commerce_translation', 'commerce_translation.commerce_id = commerce.id', 'inner')
-                    ->where('commerce.slug', $slug)
-                    ->where('commerce_translation.language', $language)
-                    ->first();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
-        }
+    public function getBySlug(string $slug, string $language): ?object {
+        return $this->select('commerce.*, commerce_translation.title, commerce_translation.meta_title, commerce_translation.description, commerce_translation.meta_description, commerce_translation.language')
+                        ->join('commerce_translation', 'commerce_translation.commerce_id = commerce.id', 'inner')
+                        ->where('commerce.slug', $slug)
+                        ->where('commerce_translation.language', $language)
+                        ->first();
     }
 
     /**
      * get commerce list
      * @param string $language
-     * @return array
+     * @return array|null
      */
-    public function getList(string $language, array $params = []): array{
-        try {
-            return $this->select('commerce.*, commerce_translation.title, commerce_translation.meta_title, commerce_translation.description, commerce_translation.meta_description, commerce_translation.language')
-                    ->join('commerce_translation', 'commerce_translation.commerce_id = commerce.id', 'inner')
-                    ->where('commerce_translation.language', $language)
-                    ->findAll();
-        } catch (\Exception $e) {
-            die($e->getTraceAsString());
-        }
+    public function getList(string $language, array $params = []): ?array {
+        return $this->select('commerce.*, commerce_translation.title, commerce_translation.meta_title, commerce_translation.description, commerce_translation.meta_description, commerce_translation.language')
+                        ->join('commerce_translation', 'commerce_translation.commerce_id = commerce.id', 'inner')
+                        ->where('commerce_translation.language', $language)
+                        ->findAll();
     }
-    
+
     /**
      * get translations by commerce_id
      * @param int $item_id
      * @return object
      */
     public function getTranslations(int $item_id): array {
-        try {
-            return $this->db->table('commerce_translation')->where('commerce_id', $item_id)->get()->getResultObject();
-        } catch (\Exception $e) {
-            die($e->getTraceAsString());
-        }
+        return $this->db->table('commerce_translation')->where('commerce_id', $item_id)->get()->getResultObject();
     }
 
     /**
@@ -123,13 +110,8 @@ class CommerceModel extends Model implements TranslationInterface{
      * @param int $floor_images_id
      * @return array|null
      */
-    public function getPoligons(int $floor_images_id): ?array
-    {
-        try {
-            return $this->where('floor_images_id', $floor_images_id)->findAll();
-        } catch (\Exception $e) {
-            die($e->getTraceAsString());
-        }
+    public function getPoligons(int $floor_images_id): ?array {
+        return $this->where('floor_images_id', $floor_images_id)->findAll();
     }
 
     /**
@@ -137,13 +119,8 @@ class CommerceModel extends Model implements TranslationInterface{
      * @param int $plans_images_id
      * @return array|null
      */
-    public function getPlanPoligons(int $plans_images_id): ?array
-    {
-        try {
-            return $this->where('plans_images_id', $plans_images_id)->findAll();
-        } catch (\Exception $e) {
-            die($e->getTraceAsString());
-        }
+    public function getPlanPoligons(int $plans_images_id): ?array {
+        return $this->where('plans_images_id', $plans_images_id)->findAll();
     }
 
     /**
@@ -153,11 +130,7 @@ class CommerceModel extends Model implements TranslationInterface{
      */
     public function createItem(array $data): int {
         // insert the data about layout
-        try {
-            $item_id = $this->insert($this->retrieveMainData($data), true);
-        } catch (\Exception $e) {
-            die($e->getMessage());
-        }
+        $item_id = $this->insert($this->retrieveMainData($data), true);
         // insert translations
         $translations = [];
         foreach ($data['translation'] as $language => $translation) {
@@ -169,26 +142,21 @@ class CommerceModel extends Model implements TranslationInterface{
         if (empty($translations)) {
             throw new Exception('there must be the translations');
         }
-        try {
-            $this->db->table('commerce_translation')->insertBatch($translations);
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
-        }
+        $this->db->table('commerce_translation')->insertBatch($translations);
         return $item_id;
     }
-    
+
     /**
      * updating layout
      * @param int $item_id
      * @param array $data
-     * @return int
+     * @return int|null
      * @throws Exception
      */
-    public function updateItem(int $item_id, array $data): int
-    {
+    public function updateItem(int $item_id, array $data): ?int {
         // update layout
-        if(!$this->update($item_id, $this->retrieveMainData($data, $item_id))){
-            return false;
+        if (!$this->update($item_id, $this->retrieveMainData($data, $item_id))) {
+            return null;
         }
         // insert translations
         $translations = [];
@@ -201,12 +169,8 @@ class CommerceModel extends Model implements TranslationInterface{
         if (empty($translations)) {
             throw new Exception('there must be the translations');
         }
-        try {
-            foreach($translations as $translation){
-                $this->db->table('commerce_translation')->replace($translation);
-            }
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
+        foreach ($translations as $translation) {
+            $this->db->table('commerce_translation')->replace($translation);
         }
         return $item_id;
     }

@@ -54,12 +54,18 @@ function modules() {
     // Bootstrap SCSS
     var bootstrapSCSS = gulp.src('./node_modules/bootstrap/scss/**/*')
             .pipe(gulp.dest('./modules/bootstrap/scss'));
+    
+    // Bootstrap Select SCSS
+    var bootstrapSelect = gulp.src('./node_modules/bootstrap-select/sass/**/*')
+            .pipe(gulp.dest('./modules/bootstrap-select/scss'));
+    
     // jQuery
     var jquery = gulp.src([
         './node_modules/jquery/dist/*',
         '!./node_modules/jquery/dist/core.js'
     ])
             .pipe(gulp.dest('./modules/jquery'));
+    
     // slik carusel
     var slick = gulp.src('./node_modules/slick-carousel/slick/**/*')
             .pipe(gulp.dest('./modules/slick'));
@@ -71,7 +77,14 @@ function modules() {
     var jsCookie = gulp.src('./node_modules/js-cookie/src/*')
             .pipe(gulp.dest('./modules/js-cookie'));
     
-    return merge(bootstrapJS, bootstrapSCSS, jquery, slick, fontAwesome, jsCookie);
+    var jsBootstrapSelect = gulp.src('./node_modules/bootstrap-select/js/*')
+            .pipe(gulp.dest('./modules/js-bootstrap-select'));
+    
+    // popper
+//    var popper = gulp.src('./node_modules/popper.js/dist/*')
+//            .pipe(gulp.dest('./modules/popper'));
+    
+    return merge(bootstrapJS, bootstrapSCSS, bootstrapSelect, jsBootstrapSelect, jquery, slick, fontAwesome, jsCookie);
 }
 
 // CSS task
@@ -105,8 +118,10 @@ function js() {
             .src([
                 './js/*.js',
                 './modules/js-cookie/*.js',
+                './modules/js-bootstrap-select/bootstrap-select.js',
                 '!./js/*.min.js',
-                '!./modules/js-cookie/*.min.js'
+                '!./modules/js-cookie/*.min.js',
+                '!./modules/js-bootstrap-select/bootstrap-select.min.js'
             ])
             .pipe(uglify())
             .pipe(header(banner, {

@@ -23,6 +23,15 @@ return [
             'Quarter' => 'квартал',
             'Year' => 'г.',
         ],
+        'Texts' => [
+            'ViewLayout' => 'смотреть',
+            'RoomsCount' => 'Комнатность',
+            'FloorsCount' => 'Этажи',
+            'SectionsCount' => 'Секции',
+            'Ordering' => 'Сортировать',
+            'LiveAreaAsc' => 'Жилая площадь А-Я',
+            'LiveAreaDesc' => 'Жилая площадь Я-А',
+        ],
     ],
     'Popapform' => [
         'Title' => 'Запрос в отдел продаж',

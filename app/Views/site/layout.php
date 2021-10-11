@@ -120,9 +120,9 @@
         <?= view('App\Views\site\_popup_form') ?>
         <?= $this->renderSection('aftermain') ?>
     </main><!-- Main Wrapper -->
-
     <script src="/site/modules/jquery/jquery.min.js"></script>
-    <script src="/site/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/site/modules/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/site/js/bootstrap-select.min.js"></script>
     <script src="/site/js/common.min.js"></script>
     <?= $this->renderSection('pagejs') ?>
     <script type="text/javascript">

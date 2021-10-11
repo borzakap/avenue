@@ -23,6 +23,15 @@ return [
             'Quarter' => 'квартал',
             'Year' => 'р.',
         ],
+        'Texts' => [
+            'ViewLayout' => 'переглянути',
+            'RoomsCount' => 'Кімнатність',
+            'FloorsCount' => 'Поверхи',
+            'SectionsCount' => 'Секції',
+            'Ordering' => 'Сортувати',
+            'LiveAreaAsc' => 'Житлова площа А-Я',
+            'LiveAreaDesc' => 'Житлова площа Я-А',
+        ],
     ],
     'Popapform' => [
         'Title' => 'Запит у відділ продажів',

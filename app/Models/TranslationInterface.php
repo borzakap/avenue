@@ -20,9 +20,9 @@ interface TranslationInterface {
      * get list of items by language
      * @param string $language
      * @param array $params
-     * @return array
+     * @return array|null
      */
-    public function getList(string $language, array $params = []): array;
+    public function getList(string $language, array $params = []): ?array;
     
     /**
      * get translations for current item
@@ -42,9 +42,9 @@ interface TranslationInterface {
      * update item
      * @param int $item_id
      * @param array $data
-     * @return int
+     * @return int|null
      */
-    public function updateItem(int $item_id, array $data): int;
+    public function updateItem(int $item_id, array $data): ?int;
 
     /**
      * retraive data for main table

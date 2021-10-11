@@ -36,13 +36,13 @@ class SectionsModel extends Model implements TranslationInterface{
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert = [];
-    protected $afterInsert = [];
+    protected $afterInsert = ['deleteCaches'];
     protected $beforeUpdate = [];
-    protected $afterUpdate = [];
+    protected $afterUpdate = ['deleteCaches'];
     protected $beforeFind = [];
     protected $afterFind = [];
     protected $beforeDelete = [];
-    protected $afterDelete = [];
+    protected $afterDelete = ['deleteCaches'];
     
     const PUBLISH = 1;
     const UNPUBLISH = 0;
@@ -54,59 +54,48 @@ class SectionsModel extends Model implements TranslationInterface{
      * @param string $language
      * @return object|null
      */
-    public function getBySlug(string $slug, string $language): ?object
-    {
-        try{
-            return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
-                            ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
-                            ->where('sections_translation.language', $language)
-                            ->where('sections.slug', $slug)
-                            ->first();
-        } catch (Exception $e) {
-            die($e->getTraceAsString());
-        }
+    public function getBySlug(string $slug, string $language): ?object {
+        return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
+                        ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                        ->where('sections_translation.language', $language)
+                        ->where('sections.slug', $slug)
+                        ->first();
     }
 
     /**
      * get list of sections
      * @param string $language
      * @param array $params
-     * @return array
+     * @return array|null
      */
-    public function getList(string $language, array $params = []): array 
-    {
-        try {
-            return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
-                            ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
-                            ->where('sections_translation.language', $language)
-                            ->findAll();
-        } catch (\Exception $e) {
-            die($e->getTraceAsString());
-        }
+    public function getList(string $language, array $params = []): ?array {
+        return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
+                        ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                        ->where('sections_translation.language', $language)
+                        ->findAll();
     }
-    
+
     /**
      * get section`s translation
      * @param int $section_id
      * @return array
      */
-    public function getTranslations(int $section_id): array
-    {
-        try{
-            return $this->db->table('sections_translation')->where('section_id', $section_id)->get()->getResultObject();
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
-        }
+    public function getTranslations(int $section_id): array {
+        return $this->db->table('sections_translation')
+                        ->where('section_id', $section_id)
+                        ->get()->getResultObject();
     }
 
+    /**
+     * create the section
+     * @param array $data
+     * @return int
+     * @throws Exception
+     */
     public function createItem(array $data): int {
         $appConfig = config(App::class);
         // insert the data about section
-        try {
-            $section_id = $this->insert($this->retrieveMainData($data), true);
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
-        }
+        $section_id = $this->insert($this->retrieveMainData($data), true);
         // insert translations
         $translations = [];
         foreach ($data['translation'] as $language => $translation) {
@@ -118,29 +107,21 @@ class SectionsModel extends Model implements TranslationInterface{
         if (empty($translations)) {
             throw new Exception('there must be the translations');
         }
-        try {
-            $this->db->table('sections_translation')->insertBatch($translations);
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
-        }
+        $this->db->table('sections_translation')->insertBatch($translations);
         return $section_id;
-        
     }
 
     /**
      * updating section
      * @param int $item_id
      * @param array $data
-     * @return int
+     * @return int|null
      * @throws Exception
      */
-    public function updateItem(int $item_id, array $data): int
-    {
+    public function updateItem(int $item_id, array $data): ?int {
         // update layout
-        try {
-            $this->update($item_id, $this->retrieveMainData($data, $item_id));
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
+        if(!$this->update($item_id, $this->retrieveMainData($data, $item_id))){
+            return null;
         }
         // insert translations
         $translations = [];
@@ -153,26 +134,24 @@ class SectionsModel extends Model implements TranslationInterface{
         if (empty($translations)) {
             throw new Exception('there must be the translations');
         }
-        try {
-            foreach($translations as $translation){
-                $this->db->table('sections_translation')->replace($translation);
-            }
-//            $this->db->table('layouts_translation')->updateBatch($translations, 'layout_id');
-        } catch (\Exception $exc) {
-            die($exc->getMessage());
+        foreach ($translations as $translation) {
+            $this->db->table('sections_translation')->replace($translation);
         }
         return $item_id;
     }
 
-    public function retrieveMainData(array $data, int $id = 0): array 
-    {
-        
-        $appConfig = config(App::class);
+    /**
+     * get main data from post 
+     * @param array $data
+     * @param int $id
+     * @return array
+     */
+    public function retrieveMainData(array $data, int $id = 0): array {
         $slugify = new Slugify();
-        if(!isset($data['slug']) || empty($data['slug'])){
+        if (!isset($data['slug']) || empty($data['slug'])) {
             $data['slug'] = isset($data['translation'][config(App::class)->defaultLocale]['title']) ? $data['translation'][config(App::class)->defaultLocale]['title'] : substr(str_shuffle(MD5(microtime())), 0, 10);
         }
-        
+
         $retrieved = [
             'id' => $id,
             'slug' => $slugify->slugify($data['slug']),
@@ -187,9 +166,14 @@ class SectionsModel extends Model implements TranslationInterface{
         return $retrieved;
     }
 
-    
-    public function retrieveTranslation(int $section_id, string $language, array $data): array 
-    {
+    /**
+     * get translations data from post
+     * @param int $section_id
+     * @param string $language
+     * @param array $data
+     * @return array
+     */
+    public function retrieveTranslation(int $section_id, string $language, array $data): array {
         $retrieved = [
             'section_id' => $section_id,
             'language' => $language,
@@ -199,26 +183,20 @@ class SectionsModel extends Model implements TranslationInterface{
             'meta_description' => $data['meta_description'],
         ];
         return $retrieved;
-        
     }
-    
+
     /**
      * find the section by id
      * @param int $id
      * @param string $language
      * @return object|null
      */
-    public function findSection(int $id, string $language): ?object
-    {
-        try{
-            return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
-                            ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
-                            ->where('sections_translation.language', $language)
-                            ->where('sections.id', $id)
-                            ->first();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+    public function findItem(int $id, string $language): ?object {
+        return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
+                        ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                        ->where('sections_translation.language', $language)
+                        ->where('sections.id', $id)
+                        ->first();
     }
 
     /**
@@ -227,19 +205,13 @@ class SectionsModel extends Model implements TranslationInterface{
      * @param string $language
      * @return array|null
      */
-    public function findSections(int $residential_id, string $language): ?array
-    {
-        try{
-            return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
-                            ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
-                            ->where('sections_translation.language', $language)
-                            ->where('sections.residential_id', $residential_id)
-                            ->findAll();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+    public function findSections(int $residential_id, string $language): ?array {
+        return $this->select('sections.*, sections_translation.title, sections_translation.meta_title, sections_translation.description, sections_translation.meta_description, sections_translation.language')
+                        ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                        ->where('sections_translation.language', $language)
+                        ->where('sections.residential_id', $residential_id)
+                        ->findAll();
     }
-
 
     /**
      * return the chained list id->title of sections
@@ -247,29 +219,52 @@ class SectionsModel extends Model implements TranslationInterface{
      * @return array
      */
     public function getSectionsList(string $language): array {
-        try {
-            if (! $found = cache("{$language}_sections_list")){
-                $found = [];
-                $items = $this->builder()
-                        ->select('sections.id, sections.section_code, sections.residential_id, sections_translation.title')
-                        ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
-                        ->where('sections_translation.language', $language)
-                        ->get()->getResultArray();
-                
-                foreach ($items as $item){
-                    $data = [];
-                    $data['chained'] = $item['residential_id'];
-                    $data['name'] = $item['section_code'];
-                    $found[$item['id']] = $data;
-                }
-                
-                cache()->save("{$language}_sections_list", $found, 0);
+        if (!$found = cache("sections_list_{$language}")) {
+            $found = [];
+            $items = $this->builder()
+                            ->select('sections.id, sections.section_code, sections.residential_id, sections_translation.title')
+                            ->join('sections_translation', 'sections_translation.section_id = sections.id', 'inner')
+                            ->where('sections_translation.language', $language)
+                            ->get()->getResultArray();
+
+            foreach ($items as $item) {
+                $data = [];
+                $data['chained'] = $item['residential_id'];
+                $data['name'] = $item['section_code'];
+                $found[$item['id']] = $data;
             }
-            return $found;
-        } catch (\Exception $exc) {
-            die($exc->getTraceAsString());
+
+            cache()->save("sections_list_{$language}", $found, 0);
         }
+        return $found;
     }
 
+    /**
+     * get sections for filter
+     * @param int $residential_id
+     * @return array|null
+     */
+    public function getSectionsListFilter(int $residential_id): ?array {
+        if (!$found = cache("sections_for_filter_{$residential_id}")) {
+            $found = $this->builder()
+                            ->select('id, section_code')
+                            ->where('residential_id', $residential_id)
+                            ->orderBy('section_code', 'ASC')
+                            ->get()->getResultArray();
+            cache()->save("sections_for_filter_{$residential_id}", $found, 0);
+        }
+        return $found;
+    }
 
+    /**
+     * delete caches in callbacks
+     * @return array
+     */
+    protected function deleteCaches(array $data): array {
+        cache()->deleteMatching('sections_list*');
+        cache()->deleteMatching('sections_for_filter*');
+        return $data;
+    }
+    
+    
 }

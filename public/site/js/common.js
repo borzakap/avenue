@@ -66,10 +66,89 @@ $(document).ready(function () {
     }
 
     //====== set tab default show if exist ======//
-    if($('.nav-pills').length > 0){
-       $('.nav-pills').each(function(){
+    if ($('.nav-pills').length > 0) {
+        $('.nav-pills').each(function () {
             $('.nav-pills li:first-child a').tab('show');
-       }); 
+        });
+    }
+
+    //===== Select =====//
+    if ($('.slc-wrp > select').length > 0) {
+        $('.slc-wrp > select').selectpicker();
+    }
+    
+    $(document).on('click','.page-link', function(e){
+        e.preventDefault();
+    });
+    
+    // === filtering ====//
+    $(document).on('change, click', '.filter-field, .page-link', function (e) {
+        var rooms = $('input[name=rooms]:checked').map(function () {
+            return this.value;
+        }).get();
+        var floors = $('input[name=floors]:checked').map(function () {
+            return this.value;
+        }).get();
+        var sections = $('input[name=sections]:checked').map(function () {
+            return this.value;
+        }).get();
+        var order = $('.ordering').find(':selected').val();
+        
+        var page = 0;
+
+        if($(this).attr('href')){
+            page = getUrlParameter('page_layouts',new URL($(this).attr('href')).search.substring(1));
+        }
+        
+        var ps = {
+            rooms: rooms,
+            floors: floors,
+            sections: sections,
+            order: order,
+            page_layouts: page[0]
+        };
+        var qs = $.param(ps);
+        window.history.replaceState( {} , '', document.forms.filter_send.action + (qs !== '' ? '?' : '') + decodeURIComponent(qs) );
+        var form_data = new FormData();
+        appendFormdata(form_data, ps);
+
+        $.ajax({
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            url: $('#filter_send').attr('action'),
+            type: "POST",
+            cache: false,
+            data: form_data,
+            processData: false,
+            contentType: false,
+            dataType: "JSON",
+            success: function (data) {
+                $('#layouts_filtered').html(data.html);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    });
+    
+    
+    // ====== set chacked  ====== //
+    if ($('.filter-field').length > 0) {
+        var rooms = getUrlParameter('rooms');
+        var floors = getUrlParameter('floors');
+        var sections = getUrlParameter('sections');
+        var order = getUrlParameter('order');
+        console.log(rooms);
+        $.each(rooms, function (i, v) {
+            $('.filter-inner input[name=rooms][value=' + v + ']').prop('checked', true);
+        });
+        $.each(floors, function (i, v) {
+            $('.filter-inner input[name=floors][value=' + v + ']').prop('checked', true);
+        });
+        $.each(sections, function (i, v) {
+            $('.filter-inner input[name=sections][value=' + v + ']').prop('checked', true);
+        });
+        $('.ordering').val(order);
+//        $('.ordering').val(order).change();
     }
 
     //===== Sending Form =====//
@@ -91,11 +170,11 @@ $(document).ready(function () {
                 $('#contact-form .response').html(data.message);
                 if (data.success === true) {
                     // send events
-                    if (typeof gtag !== "undefined") { 
-                        gtag('event', 'send_form', { 'event_category': 'form', 'event_action': 'send', 'event_label': $('input[name=type]', form).val()});
+                    if (typeof gtag !== "undefined") {
+                        gtag('event', 'send_form', {'event_category': 'form', 'event_action': 'send', 'event_label': $('input[name=type]', form).val()});
                     }
-                    if (typeof fbq !== "undefined") { 
-                        fbq('track','Lead');
+                    if (typeof fbq !== "undefined") {
+                        fbq('track', 'Lead');
                     }
                     // clean inputs
                     $(':input', form).not(':button, :submit, :reset, :hidden').val('');
@@ -127,3 +206,45 @@ $(window).on('scroll', function () {
     }
 
 });
+
+// ==== Functions =====//
+function replaceQueryParam(param, newval, search) {
+    var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+    var query = search.replace(regex, "$1").replace(/&$/, '');
+
+    return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+}
+
+var getUrlParameter = function getUrlParameter(sParam, sPageURL = window.location.search.substring(1)) {
+    sPageURL = decodeURI(sPageURL);
+    console.log(sPageURL);
+    var sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            valReturn = [],
+            i;
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+//        console.log(sParameterName[0].replace(/\[.*?\]/g, ''));
+        if (sParameterName[0].replace(/\[.*?\]/g, '') === sParam) {
+            if (sParameterName[1] !== undefined) {
+                valReturn.push(decodeURIComponent(sParameterName[1]));
+            }
+        }
+    }
+    return valReturn;
+};
+
+function appendFormdata(FormData, data, name){
+    name = name || '';
+    if (typeof data === 'object'){
+        $.each(data, function(index, value){
+            if (name == ''){
+                appendFormdata(FormData, value, index);
+            } else {
+                appendFormdata(FormData, value, name + '['+index+']');
+            }
+        })
+    } else {
+        FormData.append(name, data);
+    }
+}    
