@@ -94,10 +94,12 @@ $(document).ready(function () {
         }).get();
         var order = $('.ordering').find(':selected').val();
         
-        var page = 0;
+        var page;
 
         if($(this).attr('href')){
             page = getUrlParameter('page_layouts',new URL($(this).attr('href')).search.substring(1));
+        }else{
+            page = [1];
         }
         
         var ps = {

@@ -93,14 +93,18 @@ class LayoutsModel extends Model implements TranslationInterface{
             $layouts->whereIn('section_id', $params['sections']);
         }
         if (isset($params['floors']) && is_array($params['floors'])) {
-            $layouts->whereIn('floor_images_id', $params['floors']);
+            $floor_images_builder = \Config\Database::connect()->table('floor_images');
+            $floors = $params['floors'];
+            $layouts->whereIn('floor_images_id', function($floor_images_builder) use ($floors){
+                return $floor_images_builder->select('id')->from('floor_images')
+                        ->whereIn('image_code',$floors);
+            });
         }
         if (isset($params['order'])) {
-            foreach (explode(':',$params['order']) as $field => $direction) {
-                $layouts->orderBy($field, $direction);
-            }
+            $order = explode(':', $params['order']);
+            $layouts->orderBy('layouts.' . $order[0], $order[1]);
         }
-        $page = $params['page_layouts'] ?? 0;
+        $page = $params['page_layouts'] ?? 1;
         
         return $layouts->paginate(16, 'layouts', (int)$page);
     }

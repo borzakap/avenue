@@ -173,7 +173,8 @@ class FloorsImagesModel extends Model {
         $floor_type = self::TYPE_LEAVING;
         if (!$found = cache("floors_for_filter_{$floor_type}")) {
             $found = $this->builder()
-                            ->select('id, image_code')
+                            ->select('image_code')
+                            ->groupBy('image_code')
                             ->where('floor_type', $floor_type)
                             ->orderBy('image_code', 'ASC')
                             ->get()->getResultArray();

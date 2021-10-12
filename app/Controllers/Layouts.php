@@ -95,7 +95,7 @@ class Layouts extends BaseController{
         }
         $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), $this->request->getPost());
         $this->data['pager'] = model(LayoutsModel::class)->pager;
-        return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed', $this->data)]);
+        return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed_paged', $this->data)]);
     }
 
     /**

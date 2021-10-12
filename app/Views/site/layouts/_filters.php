@@ -11,8 +11,8 @@
         <div class="filter-inner">
             <span><?= lang('Site.Layouts.Texts.FloorsCount') ?></span>
             <?php foreach ($floors as $floor) : ?>
-                <input type="checkbox" name="floors" id="floors_<?= $floor['id'] ?>" value="<?= $floor['id'] ?>" class="filter-field">
-                <label for="floors_<?= $floor['id'] ?>"><?= $floor['image_code'] ?></label>
+                <input type="checkbox" name="floors" id="floors_<?= $floor['image_code'] ?>" value="<?= $floor['image_code'] ?>" class="filter-field">
+                <label for="floors_<?= $floor['image_code'] ?>"><?= $floor['image_code'] ?></label>
             <?php endforeach; ?>
         </div>
         <div class="filter-inner">
@@ -26,6 +26,8 @@
             <span><?= lang('Site.Layouts.Texts.Ordering') ?></span>
             <div class="slc-wrp">
                 <select class="ordering filter-field">
+                    <option value="all_area:asc"><?= lang('Site.Layouts.Texts.AllAreaAsc') ?></option>
+                    <option value="all_area:desc"><?= lang('Site.Layouts.Texts.AllAreaDesc') ?></option>
                     <option value="live_area:asc"><?= lang('Site.Layouts.Texts.LiveAreaAsc') ?></option>
                     <option value="live_area:desc"><?= lang('Site.Layouts.Texts.LiveAreaDesc') ?></option>
                 </select>

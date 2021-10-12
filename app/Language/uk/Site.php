@@ -31,6 +31,8 @@ return [
             'Ordering' => 'Сортувати',
             'LiveAreaAsc' => 'Житлова площа А-Я',
             'LiveAreaDesc' => 'Житлова площа Я-А',
+            'AllAreaAsc' => 'Загальна площа А-Я',
+            'AllAreaDesc' => 'Загальна площа Я-А',
         ],
     ],
     'Popapform' => [
