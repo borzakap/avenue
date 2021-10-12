@@ -100,7 +100,7 @@ class LayoutsModel extends Model implements TranslationInterface{
                         ->whereIn('image_code',$floors);
             });
         }
-        if (isset($params['order'])) {
+        if (isset($params['order']) && !empty($params['order'])) {
             $order = explode(':', $params['order']);
             $layouts->orderBy('layouts.' . $order[0], $order[1]);
         }
