@@ -102,7 +102,9 @@ class LayoutsModel extends Model implements TranslationInterface{
         }
         if (isset($params['order']) && !empty($params['order'])) {
             $order = explode(':', $params['order']);
-            $layouts->orderBy('layouts.' . $order[0], $order[1]);
+            $field = $order[0] ?? 'all_area';
+            $value = $order[1] ?? 'ASC';
+            $layouts->orderBy($field, $value);
         }
         $page = $params['page_layouts'] ?? 1;
         
