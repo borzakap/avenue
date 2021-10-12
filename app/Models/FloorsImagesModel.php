@@ -32,7 +32,7 @@ class FloorsImagesModel extends Model {
     // Validation
     protected $validationRules = [
         'image_name' => 'required|is_unique[floor_images.image_name,id,{id}]',
-        'image_code' => 'required|',
+        'image_code' => 'required',
         'floor_type' => 'required|in_list['.self::TYPE_COMMERCE.','.self::TYPE_LEAVING.','.self::TYPE_PANTRY.']',
     ];
     protected $validationMessages = [
