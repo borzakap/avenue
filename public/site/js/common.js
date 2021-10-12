@@ -93,7 +93,9 @@ $(document).ready(function () {
             return this.value;
         }).get();
         var order = $('.ordering').find(':selected').val();
-        
+        if(order === undefined){
+            order = '';
+        }
         var page;
 
         if($(this).attr('href')){
@@ -139,7 +141,6 @@ $(document).ready(function () {
         var floors = getUrlParameter('floors');
         var sections = getUrlParameter('sections');
         var order = getUrlParameter('order');
-        console.log(rooms);
         $.each(rooms, function (i, v) {
             $('.filter-inner input[name=rooms][value=' + v + ']').prop('checked', true);
         });
@@ -219,7 +220,6 @@ function replaceQueryParam(param, newval, search) {
 
 var getUrlParameter = function getUrlParameter(sParam, sPageURL = window.location.search.substring(1)) {
     sPageURL = decodeURI(sPageURL);
-    console.log(sPageURL);
     var sURLVariables = sPageURL.split('&'),
             sParameterName,
             valReturn = [],
