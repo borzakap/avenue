@@ -1,0 +1,28 @@
+
+/*===== Banner Style =====*/
+
+.banner-inner {
+    max-width: 70%;
+    float: right;
+}
+
+.banner-inner {
+    > {
+        h2 + p {
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.5rem;
+            display: inline-block;
+            max-width: 80%;
+            color: $white;
+
+            + a {
+                margin-top: 2.5rem;
+            }
+        }
+    }
+
+} 

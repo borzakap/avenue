@@ -6,26 +6,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-3">
                         <div class="widget w-100">
-                            <div class="logo w-100"><h1 class="mb-0"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-60.png" alt="Logo" srcset="/site/images/logo-60.png"></a></h1></div><!-- Logo -->
+                            <div class="logo w-100"><h1 class="mb-0"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-white.png" alt="Logo" srcset="/site/images/logo-white.png"></a></h1></div><!-- Logo -->
                             <p class="mb-0"></p>
                             <div class="social-links d-inline-block">
                                 <?php foreach ($socials as $name => $link) : ?>
                                     <a href="<?= $link ?>" title="<?= $name ?>" target="_blank"><i class="fab fa-<?= strtolower($name) ?>"></i></a>
                                 <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-3 order-lg-1">
-                        <div class="widget w-100">
-                            <div class="visitor-stats w-100">
-                                <div class="visitor-stat-box w-100">
-<!--                                    <h4 class="mb-0 thm-clr counter">25,329,53253</h4>
-                                    <h5 class="mb-0">Our Total visitor</h5>-->
-                                </div>
-                                <div class="visitor-stat-box w-100">
-<!--                                    <h4 class="mb-0 text-color4 counter">329,53253825</h4>
-                                    <h5 class="mb-0">Our Unique visitor</h5>-->
-                                </div>
                             </div>
                         </div>
                     </div>

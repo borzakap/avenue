@@ -1,6 +1,7 @@
 <section>
     <a id="prefs"></a>
-    <div class="w-100 pt-100 pb-100 position-relative">
+    <div class="w-100 pt-100 pb-100 white-layer position-relative overflow-hidden">
+        <div class="fixed-bg" style="background-image: url(/site/images/slider/slider3.jpg);"></div>
         <div class="container">
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
@@ -10,10 +11,7 @@
             </div>
             <div class="faq-wrap w-100">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12 col-lg-6 order-md-1">
-                        <img class="img-fluid" src="site/images/renders/faq-800.jpg" alt="Faq Mockup">
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-lg-6">
+                    <div class="col-md-8 col-sm-12 col-lg-8">
                         <div class="toggle w-100" id="toggle">
                             <div class="toggle-item w-100">
                                 <h4 class="mb-0"><span>01.</span><?= $section_faq_first_sub_title ?></h4>

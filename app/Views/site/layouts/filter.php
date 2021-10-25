@@ -10,7 +10,7 @@
 <?= view('App\Views\site\_breadcrumb') ?>
 
 <section>
-    <div class="w-100 pt-100 pb-100 position-relative">
+    <div class="w-100 pt-50 pb-50 position-relative">
         <div class="container">
             <?= view('App\Views\site\layouts\_filters') ?>
             <div class="layouts-wrap w-100">

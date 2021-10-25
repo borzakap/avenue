@@ -1,0 +1,109 @@
+/*=== Image ===*/
+
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.image-box-container{
+    position: relative;
+    min-height: 20rem;
+    .image-box{
+        position: absolute;
+        z-index: 1;
+        width: 100vw;
+        overflow: hidden;
+        margin: 0 -15px;
+        height: -webkit-fill-available;
+        img{
+            margin: auto 0;
+            display: block;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+        }
+
+    }
+}
+
+
+.header-avenue{
+    overflow: hidden;
+    .image-box-container{
+        overflow: visible;
+        .image-box{
+            overflow: visible;
+            width: 100vw;
+            img{
+                top: auto;
+            }
+        }
+    }
+}
+
+.about-image{
+    max-width: 1024px;
+    box-shadow: 0px 74px 111px -40px rgba(122, 92, 45, 0.28);
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.svg-inline{
+    width: 4rem;
+    height: 4rem;
+    float: left;
+    svg{
+        width: 100%;
+        height: 100%;
+    }
+}
+.text-inline{
+    float: left;
+    margin-left: 1rem;
+}
+
+@media(min-width:769px){
+    .header-avenue{
+        .image-box-container{
+            .image-box{
+                margin-left: -20rem;
+            }
+        }
+    }
+    .image-box-container{
+        .image-box{
+            width: 60vw;
+            &.image-box-right{
+                left: 0;
+                margin-left: 0;
+                text-align: left;
+                img{
+                    left: 0;
+                }
+            }
+            &.image-box-left{
+                right: 0;
+                margin-right: 0;
+                text-align: right;
+                img{
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+@media(max-width:550px){
+    .image-box-container{
+        min-height: 14rem;
+    }
+}

@@ -7,27 +7,15 @@
 // import bootstrap
 @import "../modules/bootstrap-select/scss/bootstrap-select.scss";
 
-// general styling
-@import "general.scss";
-// paddings
-@import "paddings.scss";
-// margins
-@import "margins.scss";
-// gups
-@import "gups.scss";
-// width
-@import "width.scss";
-// crossborwser
-@import "crossborwser.scss";
-// header
-@import "header.scss";
-// contactform
-@import "contactform.scss";
+@import "components/module.scss";
+@import "base/module.scss";
+@import "layout/module.scss";
+@import "pages/module.scss";
+@import "themes/module.scss";
+@import "utils/module.scss";
+@import "vendors/module.scss";
+
 // style
 @import "style.scss";
 // responsive
 @import "responsive.scss";
-// sections
-@import "sections";
-// layouts
-@import "layouts";

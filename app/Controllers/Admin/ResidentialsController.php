@@ -6,14 +6,11 @@ use App\Controllers\Admin\BaseController;
 
 class ResidentialsController extends BaseController {
 
-    protected $helpers = ['form'];
-    
     /**
      * list of residentials
      * @return type
      */
-    public function list(): string 
-    {
+    public function list(): string {
         $this->breadcrumb->add(lang('Residentials.Breadcrumb.Admin.Residentials'), '/admin/residentials');
         $data = [
             'items' => model(ResidentialsModel::class)->getList($this->request->getLocale()),

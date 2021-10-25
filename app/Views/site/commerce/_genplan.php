@@ -1,5 +1,5 @@
 <section>
-    <div class="w-100 pt-100 pb-100 position-relative">
+    <div class="w-100 pt-50 pb-50 position-relative">
         <div class="container">
             <div class="sections-schema">
                 <?php if(!is_null($genplan->commerce_plan)) : ?>

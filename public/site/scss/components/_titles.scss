@@ -1,0 +1,15 @@
+.theme-heading-white{
+    font-weight: 900;
+    color: $white;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    text-shadow: 0px 9px 15px rgba(98, 64, 14, 0.45);
+    text-transform: uppercase;
+}
+
+@media(max-width: 768px){
+    .theme-heading-white{
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+}

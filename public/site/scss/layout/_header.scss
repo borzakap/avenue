@@ -6,6 +6,89 @@ header {
     z-index: 999;
 }
 
+.logo-info-bar-wrap{
+    transition: top .2s ease-in-out;
+    .logo-info-bar-inner{
+        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.71) 100%);
+        padding: 0.703rem 0 0.703rem;
+        width: 100%;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        float: right;
+        position: relative;
+        display: flex;
+        height: 6rem;
+        .logo-info-bar{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100vw;
+            justify-content: space-between;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            .logo{
+                width:14rem;
+            }
+            .afterlogo-wrap{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                width: calc(100% - 14rem);
+                .social-links{
+                    a{
+                        display: inline-block;
+                        font-size: .9rem;
+                        color: $white;
+                        line-height: 2.5rem;
+                        width: 2.5rem;
+                        text-align: center;
+                        height: 2.5rem;
+                        &:not(:first-child) {
+                            margin-left: 5px;
+                        }
+                    }
+                }
+                .aftersocials-wrap{
+                    display: flex;
+                    flex-wrap: wrap;
+                    .call-us{
+                        a{
+                            color: $white;
+                            font-size: 1.5rem;
+                            font-weight: 900;
+                        }
+                    }
+                    .lang-changer-wrap{
+                        margin-left: 2rem;
+                        margin-top: .2rem;
+                    }
+                }
+            }
+        }
+        .menu-wrap{
+            z-index: 1;
+            position: absolute;
+            width: 100vw;
+            margin-left: 15rem;
+            background-color: #fff;
+            margin-top: 3rem;
+        }
+    }
+}
+
+@media(max-width: 1400px){
+    .logo-info-bar-wrap{
+
+        .logo-info-bar-inner {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+
+
+
+
 nav {
     ul li {
         font-weight: 600;
@@ -20,7 +103,7 @@ nav {
     }
 
     > div > ul > li {
-        color: #fff;
+        color: #000000;
         margin-right: 2.8125rem;
         line-height: 3.875rem;
         font-size: 0.9375rem;
@@ -72,9 +155,6 @@ nav {
     }
 }
 
-.logo-info-bar-inner {
-    padding: 1.5625rem 0 3.4375rem;
-}
 
 .logo {
     display: inline-block;
@@ -84,29 +164,6 @@ nav {
     }
 }
 
-.call-us + .add-cart {
-    margin-left: 9.375rem;
-}
-
-.social-links > a {
-    display: inline-block;
-    font-size: .9rem;
-    color: #444;
-    line-height: 2.5rem;
-    width: 2.5rem;
-    text-align: center;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-color: #ecedef;
-
-    &:not(:first-child) {
-        margin-left: 5px;
-    }
-
-    &:hover, &:focus {
-        color: #a77a2b;
-    }
-}
 
 .call-us {
     position: relative;
@@ -133,32 +190,6 @@ nav {
     }
 }
 
-.add-cart > a {
-    position: relative;
-    display: inline-block;
-    padding-left: 3.125rem;
-    color: $color-1;
-    font-weight: 600;
-    font-size: 0.875rem;
-
-    i {
-        position: absolute;
-        left: 0;
-        line-height: 2.5rem;
-        width: 2.5rem;
-        text-align: center;
-        color: #fff;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-        height: 2.5rem;
-    }
-
-    span {
-        font-size: 0.8125rem;
-        color: #777;
-        font-weight: 400;
-    }
-}
 
 .menu-wrap {
     margin: -1.9375rem 0;
@@ -175,8 +206,6 @@ nav {
 .header-right-btns > a.get-quote {
     display: block;
     line-height: 3.875rem;
-    -webkit-border-radius: 0 5px 5px 0;
-    border-radius: 0 5px 5px 0;
     font-size: 0.875rem;
     padding: 0 1rem;
     background-color: rgba(0, 0, 0, 0.3);
@@ -206,74 +235,10 @@ nav {
     }
 
     &:hover, &:focus, &:hover i, &:focus i {
-        color: #fff;
+        color: $white;
     }
 }
 
-/*=== Header Style 2 ===*/
-
-header {
-    &.style2 {
-        .logo-info-bar-inner {
-            padding-bottom: 1.5625rem;
-        }
-
-        .menu-wrap {
-            margin: 0;
-
-            nav {
-                background-color: rgba(255, 255, 255, 0.15);
-            }
-        }
-
-        margin-bottom: -10.3rem;
-
-        .social-links > a {
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .call-us {
-            > span {
-                color: #d5d5d5;
-            }
-
-            > strong {
-                color: #fff;
-            }
-        }
-
-        .add-cart > a {
-            color: #fff;
-
-            span {
-                color: inherit;
-            }
-        }
-
-        .header-right-btns > a.get-quote {
-            &:hover, &:focus {
-                background-color: #1a1a1a;
-            }
-        }
-    }
-
-    &.style3 {
-        nav ul li {
-            &:hover > a, &.active > a, > a:focus {
-                color: $color-1;
-            }
-        }
-
-        .header-right-btns > a.get-quote {
-            background-color: rgba(255, 255, 255, 0.15);
-
-            &:hover, &:focus {
-                background-color: #1a1a1a;
-            }
-        }
-    }
-}
 
 /*=== Header Style 3 ===*/
 
@@ -303,9 +268,6 @@ nav > div {
             line-height: initial;
             opacity: 0;
             visibility: hidden;
-            -webkit-box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.08);
-            -ms-box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.08);
-            -o-box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.08);
             box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.08);
 
             ul {
@@ -332,7 +294,7 @@ nav > div {
 
                 a {
                     display: block;
-                    background-color: #fff;
+                    background-color: $white;
                     padding: 0.625rem 1.875rem;
                     position: relative;
 
@@ -399,11 +361,8 @@ nav > div {
     top: -5rem;
     left: 0;
     right: 0;
-    background-color: #fff;
+    background-color: $white;
     z-index: 999;
-    -webkit-box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.15);
-    -ms-box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.15);
-    -o-box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.15);
     opacity: 0;
     visibility: hidden;
@@ -450,7 +409,7 @@ body.sticky .sticky-menu {
         width: 2.5rem;
         line-height: 2.5rem;
         text-align: center;
-        color: #fff;
+        color: $white;
 
         &:not(:first-child) {
             margin-left: 1px;
@@ -554,7 +513,7 @@ body.sticky .sticky-menu {
 
 .rspn-mnu-cls {
     background-color: #303030;
-    color: #fff;
+    color: $white;
     cursor: pointer;
     font-size: 0.875rem;
     height: 2.5rem;
@@ -576,7 +535,7 @@ body.sticky .sticky-menu {
         width: 100% !important;
 
         > li {
-            color: #fff;
+            color: $white;
             font-size: 1rem;
             font-weight: 600;
             position: relative;
@@ -631,5 +590,62 @@ body.sticky .sticky-menu {
                 margin-top: .75rem;
             }
         }
+    }
+}
+
+// ====== header in manin ====///
+
+.feat-img {
+    top: 0;
+    background-size: cover;
+    background-position: 0 100%;
+    width: 100%;
+    transition: all 2s cubic-bezier(0.7, 0, 0.3, 1);
+    transform: scale(1.5);
+    height: 100%;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        opacity: .6;
+        z-index: -1;
+    }
+}
+
+.feat-cap {
+    position: relative;
+    background: radial-gradient(66.62% 64.54% at 33.09% 50%, #A78C2B 0%, rgba(147, 112, 45, 0.91) 100%);
+    opacity: 0.94;
+    padding: 3rem;
+    margin-bottom: 5rem;
+    > {
+
+        h1 + p, h2 + p {
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 2rem;
+            color: #fff;
+
+            + .feat-cap-innr {
+                margin-top: 2.5rem;
+            }
+        }
+    }
+}
+
+.feat-cap-innr > a + a {
+    margin-left: 1.25rem;
+}
+
+@media(max-width: 768px){
+    .feat-cap {
+        margin-bottom: 0;
     }
 }

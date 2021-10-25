@@ -1,0 +1,114 @@
+/*===== Theme Button =====*/
+
+.thm-btn {
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1.05rem 2.8rem;
+    overflow: hidden;
+    vertical-align: middle;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        background-color: #000;
+        opacity: .05;
+        -webkit-transform: translate(-30%, -120%) rotate(-55deg);
+        -ms-transform: translate(-30%, -120%) rotate(-55deg);
+        -o-transform: translate(-30%, -120%) rotate(-55deg);
+        transform: translate(-30%, -120%) rotate(-55deg);
+        width: 180%;
+        height: 280%;
+    }
+
+    > i {
+        margin-left: 10px;
+    }
+
+    &:hover, &:focus {
+        color: #fff;
+    }
+
+    &:hover:before, &:focus:before {
+        width: 200%;
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0);
+    }
+}
+
+/*===== Simple Button =====*/
+
+.simple-btn {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9.5px 1.5625rem;
+
+    &:hover, &:focus {
+        color: #fff;
+    }
+
+    &.thm-bg {
+        &:hover, &:focus {
+            background-color: $color-1;
+        }
+    }
+}
+
+.video-btn {
+    text-align: initial;
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    position: relative;
+    font-size: 1rem;
+    font-style: italic;
+    padding: 6px 0 6px 4.125rem;
+    font-weight: 600;
+
+    > span {
+        position: absolute;
+        left: 0;
+        text-align: center;
+        height: 3.6875rem;
+        width: 3.6875rem;
+        line-height: 3.6875rem;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        top: 0;
+    }
+
+    &:hover, &:focus {
+        color: #fff;
+    }
+}
+
+.header-right-btns > a.get-quote,
+.video-btn:hover > span, 
+.video-btn:focus > span,
+.simple-btn.bg-color1:hover,
+.simple-btn.bg-color1:focus,
+.rspn-mnu-btn:hover,
+.rspn-mnu-btn:focus
+{
+    background-color: $color-theme;
+}
+
+@media (max-width: 490px) {
+  .thm-btn {
+    font-size: .9375rem;
+    padding: 1rem 2.3rem;
+  }
+}

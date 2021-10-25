@@ -70,6 +70,27 @@
     });
 
     $(document).ready(function () {
+        
+        if ($('.jquery-datepicker').length > 0) {
+            var date, date_val = $('.jquery-datepicker__input').val();
+            if(date_val){
+                date = new Date(date_val);
+            }else{
+                date = new Date();
+            }
+            var month = date.getMonth()+1;
+            var day = date.getDate();
+
+            var formated = date.getFullYear() + '-' +
+                ((''+month).length<2 ? '0' : '') + month + '-' +
+                ((''+day).length<2 ? '0' : '') + day;
+
+            $('.jquery-datepicker').datepicker({
+                format: 'yyyymmdd',
+                date: formated
+            });
+        }
+        
         if (typeof sceditor !== 'undefined') {
             var textarea = $('.sceditor');
             if(typeof textarea === 'undefined'){

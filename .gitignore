@@ -142,5 +142,9 @@ public/images/layouts/*
 public/images/plans/*
 !public/images/plans/index.html
  
+# progress images
+public/images/progress/*
+!public/images/progress/index.html
+
 # facebook tracker
 public/*.html

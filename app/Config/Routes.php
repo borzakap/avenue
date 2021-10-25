@@ -43,6 +43,15 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->post('plans-load', 'Admin\ResidentialsController::plansLoad', ['as' => 'plans-load']);
         $routes->post('plans-update', 'Admin\ResidentialsController::plansUpdate', ['as' => 'plans-update']);
     });
+    // progress
+    $routes->group('progress', function($routes){
+        $routes->get('', 'Admin\ProgressController::list', ['as' => 'progress']);
+        $routes->match(['get', 'post'], 'create', 'Admin\ProgressController::create', ['as' => 'progress_create']);
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\ProgressController::update/$1', ['as' => 'progress_update']);
+        $routes->post('images-upload', 'Admin\ProgressController::imageUpload', ['as' => 'images_upload']);
+        $routes->post('images-load', 'Admin\ProgressController::imagesLoad', ['as' => 'images_load']);
+        $routes->post('images-update', 'Admin\ProgressController::imageUpdate', ['as' => 'image_update']);
+    });
     // sections
     $routes->group('sections', function($routes){
         $routes->get('', 'Admin\SectionsController::list', ['as' => 'sections']);

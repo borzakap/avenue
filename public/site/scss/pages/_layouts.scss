@@ -43,9 +43,6 @@
             color: #fff;
             text-transform: uppercase;
             font-size: 13px;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             padding: 7.25px .9375rem;
             min-width: 9.5625rem;
@@ -79,9 +76,10 @@
     }
     .layout-info{
         & > h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 500;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: $color-theme;    
+            line-height: 1.5;
 
             + .layouts-info-bottom {
                 margin-top: .85rem;
@@ -109,14 +107,6 @@
 
 .layouts-info-bottom span.rate {
     font-size: 13px;
-}
-
-.on {
-    color: var(--color3);
-}
-
-.off {
-    color: #d0d0d0;
 }
 
 .price {
@@ -147,9 +137,6 @@
     right: 4.375rem;
     top: 50%;
     max-width: 6.25rem;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
     transform: translateY(-50%);
     padding: 1.25rem 0;
 
@@ -174,7 +161,6 @@
 
     .slick-slide img {
         border: 1px solid transparent;
-        -webkit-border-radius: 5px;
         border-radius: 5px;
         cursor: pointer;
         margin: 10px 0;

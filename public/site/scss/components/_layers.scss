@@ -1,0 +1,92 @@
+/*=== Background Layer ===*/
+
+.black-layer, 
+.gray-layer, 
+.dark-layer, 
+.blue-layer,
+.white-layer,
+.white-layer-hor{
+    &:before{
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+}
+.white-layer{
+    &:before{
+        background: rgb(255,255,255);
+        background: linear-gradient(
+            90deg, rgba(255,255,255,1) 50%, rgba(252,252,252,0) 100%);
+    }
+}
+.white-layer-hor{
+    &:before{
+        background: rgb(255,255,255);
+        background: linear-gradient(
+            180deg, rgba(255,255,255,.7) 50%, rgba(252,252,252,0) 100%);
+    }
+}
+
+.right-layer{
+    &:before{
+        content: "";
+        height: calc(100% - 6rem);
+        right: 0;
+        position: absolute;
+        top: 3rem;
+        width: 70%;
+        z-index: -1;
+        background: radial-gradient(46.87% 64.54% at 22.71% 50%, rgba(167, 132, 43, 0.81) 0%, rgba(147, 112, 45, 0.94) 100%);
+    }
+}
+
+.black-layer{
+    &:before {
+        background-color: #000000;
+    }
+}
+
+.gray-layer:before {
+    background-color: #f6f7fb;
+}
+
+.dark-layer:before {
+    background-color: #382232;
+}
+
+.blue-layer:before {
+    background-color: $color-theme;
+}
+
+.black-layer.paralx-70:before, .gray-layer.paralx-70:before, .dark-layer.paralx-70:before, .dark-layer2.paralx-70:before, .blue-layer.paralx-70:before, .thm-layer.paralx-70:before {
+    height: 70%;
+}
+
+@media(max-width: 1024px){
+    .right-layer{
+        &:before{
+            width: 70%;
+        }
+    }
+}
+@media(max-width: 768px){
+    .white-layer{
+        &:before{
+            background: rgb(255,255,255);
+            background: linear-gradient(
+                130deg, rgba(255,255,255,1) 60%, rgba(252,252,252,0) 100%);
+        }
+    }
+
+}
+@media(max-width: 576px){
+    .right-layer{
+        &:before{
+            width: 100%;
+        }
+    }
+}

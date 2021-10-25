@@ -25,14 +25,14 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     font-family: Roboto;
-    color: #777777;
+    color: #333;
     line-height: 1.5rem;
     font-size: .9rem;
 }
 
 ul li, ol li {
     font-family: Roboto;
-    color: #777777;
+    color: #444;
     font-size: 0.875rem;
     line-height: 1.5rem;
 }
@@ -82,9 +82,6 @@ input {
 textarea:focus, select:focus, button:focus, a:focus, .form-wrp fieldset p a:focus, .page-link:focus {
     border-color: transparent;
     outline: none !important;
-    -webkit-box-shadow: none !important;
-    -ms-box-shadow: none !important;
-    -o-box-shadow: none !important;
     box-shadow: none !important;
 }
 
@@ -92,9 +89,6 @@ textarea:focus, select:focus, button:focus, a:focus, .form-wrp fieldset p a:focu
     &.focus, &:focus {
         border-color: transparent;
         outline: none !important;
-        -webkit-box-shadow: none !important;
-        -ms-box-shadow: none !important;
-        -o-box-shadow: none !important;
         box-shadow: none !important;
     }
 }
@@ -102,9 +96,6 @@ textarea:focus, select:focus, button:focus, a:focus, .form-wrp fieldset p a:focu
 .bootstrap-select .dropdown-toggle:focus {
     border-color: transparent;
     outline: none !important;
-    -webkit-box-shadow: none !important;
-    -ms-box-shadow: none !important;
-    -o-box-shadow: none !important;
     box-shadow: none !important;
 }
 
@@ -113,11 +104,16 @@ textarea {
 }
 
 main, section, footer {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     max-width: 100%;
     position: relative;
+    width: 100%;
+}
+strong {
+    font-weight: 600;
+}
+iframe {
+    border: 0;
     width: 100%;
 }

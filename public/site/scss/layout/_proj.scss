@@ -1,0 +1,98 @@
+/*===== Project Style =====*/
+
+.proj-box {
+    padding-top: 1.875rem;
+}
+
+.proj-thumb > a {
+    display: block;
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: $color-theme;
+        z-index: 1;
+        opacity: 0;
+    }
+}
+
+.proj-box:hover{
+    .proj-thumb {
+        img {
+            transform: scale(1.04) rotate(1deg);
+        }
+
+        > a:before {
+            opacity: .4;
+        }
+    }
+    .proj-info{
+        background-color: $color-theme;
+    }
+}
+
+
+.proj-info {
+    top: 0;
+    left: 1.875rem;
+    right: 0;
+    background-color: $white;
+    z-index: 1;
+    padding: 1.375rem .75rem 1.375rem 3rem;
+    border-right: 2px solid $color-theme;
+    
+    > {
+        i {
+            position: absolute;
+            color: $color-1;
+            font-size: 1.5rem;
+            left: -.5rem;
+            line-height: 1.5rem;
+            top: 1rem;
+            border: 2px solid $color-theme;
+            border-radius: 50%;
+            padding: .6rem;
+            background: $white;
+            display: block;
+            font-style: normal;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 400;
+
+            a {
+                &:hover, &:focus {
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+
+.proj-box:hover .proj-info {
+    >{
+        h3 {
+            color: $white;
+            opacity: 1;
+        }
+
+    }
+}
+.dom-fixed{
+    background-position: 50% 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    background-size: 100vw auto;
+    background-repeat: no-repeat;
+}    

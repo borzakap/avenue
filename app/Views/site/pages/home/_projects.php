@@ -1,5 +1,6 @@
 <section>
-    <div class="w-100 pt-100 pb-100 position-relative">
+    <div class="w-100 pt-100 pb-100 white-layer-hor position-relative overflow-hidden">
+        <div class="fixed-bg" style="background-image: url(/site/images/complex/nebo.png);"></div>
         <div class="container">
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
@@ -107,9 +108,10 @@
                     </div>
                 </div>
             </div><!-- Projects Wrap -->
-            <div class="view-all mt-20 w-100 text-center">
+            <div class="view-all mt-20 w-100">
                 <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
             </div><!-- View All -->
         </div>
+        <div class="dom-fixed" style="background-image: url(/site/images/complex/dom2.png);"></div>
     </div>
 </section>

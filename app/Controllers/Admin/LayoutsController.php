@@ -11,8 +11,8 @@ use CodeIgniter\Database\Exceptions\DataException;
  */
 class LayoutsController extends BaseController {
 
-    public function list() :string
-    {
+    
+    public function list(): string {
         $this->breadcrumb->add(lang('Admin.Breadcrumb.Residentials'), '/console/residentials');
         $data = [
             'items' => model(LayoutsModel::class)->getList($this->request->getLocale()),
