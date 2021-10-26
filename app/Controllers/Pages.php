@@ -60,6 +60,45 @@ class Pages extends BaseController {
         return view('site/pages/home', $this->data);
     }
     
+    public function oneroom(string $slug = 'default'){
+        $this->data['meta_title'] = $this->text->translate('meta_title', 'oneroom');
+        $this->data['meta_description'] = $this->text->translate('meta_description', 'oneroom');
+        $this->data['section_about_title'] = $this->text->translate('section_about_title', 'oneroom');
+        $this->data['section_about_second_title'] = $this->text->translate('section_about_second_title', 'oneroom');
+        $this->data['section_about_first_subtitle'] = $this->text->translate('section_about_first_subtitle', 'oneroom');
+        $this->data['section_about_first_subdescription'] = $this->text->translate('section_about_first_subdescription', 'oneroom');
+        $this->data['section_about_second_subtitle'] = $this->text->translate('section_about_second_subtitle', 'oneroom');
+        $this->data['section_about_second_subdescription'] = $this->text->translate('section_about_second_subdescription', 'oneroom');
+        helper('form');
+        if ($slug == 'default') {
+            $default = model(ResidentialsModel::class)->first();
+            return redirect()->route('oneroom-filter', [$default->slug]);
+        }
+        if (!$residential = model(ResidentialsModel::class)->getBySlug($slug, $this->request->getLocale())) {
+            throw PageNotFoundException::forPageNotFound();
+        }
+        $this->data['residential'] = $residential;
+        $this->data['rooms'] = model(LayoutsModel::class)->getRoomsListFilter();
+        $this->data['floors'] = model(FloorsImagesModel::class)->getFloorsLayoutsFilter();
+        $this->data['sections'] = model(SectionsModel::class)->getSectionsListFilter($residential->id);
+        $filter = [
+            'rooms' => [
+                0 => 1,
+            ],
+        ];
+        if ($this->request->getMethod() !== 'post') {
+            $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($filter, $this->request->getGet()));
+            $this->data['pager'] = model(LayoutsModel::class)->pager;
+            return view('site/pages/oneroom', $this->data);
+        }
+        $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($filter, $this->request->getPost()));
+        $this->data['pager'] = model(LayoutsModel::class)->pager;
+        return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed_paged', $this->data)]);
+    }
+    
+    
+    
+    
     public function contact() {
         return view('site/pages/contact', $this->data);
     }

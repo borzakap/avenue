@@ -136,6 +136,7 @@ $routes->group('api', function($routes){
 // site.
 $routes->group('{locale}', function($routes){
     $routes->get('', 'Pages::index');
+    $routes->match(['get', 'post'], 'oneroom/(:segment)', 'Pages::oneroom/$1', ['as'=>'oneroom-filter']);
     $routes->get('contact', 'Pages::contact');
     $routes->group('layouts', function($routes){
         $routes->get('genplan/(:segment)', 'Layouts::genplan/$1', ['as'=>'layouts-genplan']);

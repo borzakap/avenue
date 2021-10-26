@@ -19,6 +19,7 @@ class PagesTranslationsController extends BaseController{
         'home',
         'contact',
         'common',
+        'oneroom',
     ];
 
     public function update(string $slug){

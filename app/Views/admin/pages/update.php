@@ -11,13 +11,12 @@
 <div class="card shadow mb-4">
     <?= view('App\Views\admin\_messages') ?>
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <?= $breadcrumb ?>
         <?= view('App\Views\admin\_lang_changer') ?>
     </div>
     <div class="card-body">
         <?= form_open() ?>
         <?= view('App\Views\admin\pages\\'.$form) ?>
-        <?= form_submit('page_update', lang('Pages.Form.Buttons.Update'), ['class' => 'btn btn-primary']) ?>
+        <?= form_submit('page_update', lang('Admin.Form.Buttons.Update'), ['class' => 'btn btn-primary']) ?>
         <?= form_close() ?>    
     </div>
 </div>
