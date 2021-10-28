@@ -3,10 +3,10 @@
     <div class="w-100 pt-100 pb-100 white-layer position-relative overflow-hidden">
         <div class="fixed-bg" style="background-image: url(/site/images/slider/slider3.jpg);"></div>
         <div class="container">
-            <div class="sec-title w-100">
+            <div class="sec-title col-md-8 col-sm-12 col-lg-8">
                 <div class="sec-title-inner d-inline-block">
-                    <span class="d-block thm-clr"><?= lang('Site.Sections.Faq.BeforeTitle') ?></span>
-                    <h3 class="mb-0"><?= $section_faq_title ?></h3>
+                    <span class="d-block theme-pre-heading"><?= lang('Site.Sections.Faq.BeforeTitle') ?></span>
+                    <h3 class="mb-0 theme-heading"><?= $section_faq_title ?></h3>
                 </div>
             </div>
             <div class="faq-wrap w-100">

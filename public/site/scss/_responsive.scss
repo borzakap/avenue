@@ -86,10 +86,6 @@
     display: none !important;
   }
 
-  .rspn-hdr {
-    display: block;
-  }
-
   .feat-caro > button {
     &.slick-prev {
       left: .9375rem;
@@ -363,12 +359,6 @@
   .getin-touch-btn {
     text-align: center !important;
     margin-top: 2.5rem;
-  }
-}
-
-@media (max-width: 730px) {
-  .rspn-cnt {
-    display: none;
   }
 }
 

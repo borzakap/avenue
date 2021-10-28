@@ -2,10 +2,14 @@
     position: relative;
 }
 .layouts-box{
-    margin-bottom: 3.125rem;
-    margin-top: 3.125rem;
+    margin-top: 1.5rem;
+    box-shadow: 0px 4px 7px rgba(79, 55, 10, 0.12);
+    border: 3px solid #f2f2f2;
+    &:hover{
+        border: 3px solid rgba(161, 120, 54, 0.68);    
+    }
     .layout-img{
-
+        padding: 0.5rem;
         & > .layout-img-wraper {
             display: block;
             position: relative;
@@ -13,6 +17,7 @@
             padding-top: 100%;
             position: relative;
             display: block;
+            overflow: hidden;
             img{
                 display: block;
                 position: absolute;
@@ -31,7 +36,7 @@
                 right: 0;
                 top: 0;
                 bottom: 0;
-                background-color: $color-1;
+                background-color: $white;
                 opacity: .05;
             }
         }
@@ -39,28 +44,23 @@
             position: absolute;
             left: 50%;
             top: 80%;
-            background-color: $color-1;
+            background-color: $color-theme;
             color: #fff;
-            text-transform: uppercase;
-            font-size: 13px;
             transform: translate(-50%, -50%);
-            padding: 7.25px .9375rem;
-            min-width: 9.5625rem;
+            padding: 3rem;
             font-weight: 600;
             opacity: 0;
             visibility: hidden;
             width: fit-content;
+            border-radius: 50%;
 
             i {
-                margin-left: 10px;
-                font-size: 1.1rem;
+                font-size: 3rem;
                 vertical-align: middle;
-                padding-left: 7px;
-                border-left: 1px solid rgba(255, 255, 255, 0.15);
             }
 
             &:hover, &:focus {
-                background-color: #333;
+                background-color: $color-theme;
             }
         }
         &:hover{
@@ -72,14 +72,23 @@
         }
         & + .layout-info {
             margin-top: 1.5625rem;
+            padding: 0 1rem;
+            dd{
+                text-align: right;
+            }
         }
     }
     .layout-info{
         & > h3 {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            color: $color-theme;    
+            color: $black;    
             line-height: 1.5;
+            a{
+                &:hover{
+                    color: $color-theme;
+                }
+            }
 
             + .layouts-info-bottom {
                 margin-top: .85rem;

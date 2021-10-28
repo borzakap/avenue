@@ -1,24 +1,24 @@
 <div class="sticky-menu">
     <div class="container">
         <div class="sticky-menu-inner d-flex flex-wrap align-items-center justify-content-between w-100">
-            <div class="logo"><h1 class="mb-0"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-60.png" alt="Logo" srcset="/site/images/logo-60.png"></a></h1></div><!-- Logo -->
-            <nav class="d-inline-flex justify-content-between align-items-center">
-                <div class="header-left">
-                    <ul class="mb-0 list-unstyled d-inline-flex">
-                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#home"><?= lang('Site.Menue.Main.Home') ?></a></li>
-                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a></li>
-                        <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#prefs"><?= lang('Site.Menue.Main.Prefs') ?></a></li>
-                        <li class="menu-item-has-children">
-                            <a href="javascript:void(0);"><?= lang('Site.Menue.Main.LayoutsMenuSet') ?></a>
-                            <ul class="mb-0 list-unstyled">
-                                <li><a href="<?= route_to('App\Controllers\Layouts::genplan', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsGenplan') ?></a></li>
-                                <li><a href="<?= route_to('App\Controllers\Layouts::filter', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsFilter') ?></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>
-                    </ul>
+            <div class="logo"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-white.png" alt="Logo" srcset="/site/images/logo-white.png" width="131" height="49"></a></div><!-- Logo -->
+            <div class="d-inline-flex justify-content-between align-items-center bg-white">
+                <div class="social-links">
+                    <?php foreach ($socials as $name => $link) : ?>
+                        <a href="<?= $link ?>" title="<?= $name ?>" target="_blank"><i class="fab fa-<?= strtolower($name) ?>"></i></a>
+                    <?php endforeach; ?>
                 </div>
-            </nav>
+                <nav class="d-inline-flex justify-content-between align-items-center">
+                    <div class="header-left">
+                        <ul class="mb-0 list-unstyled d-inline-flex">
+                            <?= view('App\Views\site\_menu_list') ?>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="header-right-btns">
+                    <a href="#" data-toggle="modal" data-target="#contact-form-modal" data-type="menue" class="get-quote" title=""><i class="far fa-comments"></i><?= lang('Site.Menue.Main.Qoute') ?><i class="flaticon-arrow-pointing-to-right"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 </div><!-- Sticky Menu -->

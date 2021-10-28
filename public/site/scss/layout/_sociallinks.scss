@@ -1,0 +1,21 @@
+.social-links{
+    a{
+        display: inline-block;
+        font-size: 1rem;
+        color: $white;
+        line-height: 2.5rem;
+        width: 2.5rem;
+        text-align: center;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: $gray-400;
+        &:not(:first-child) {
+            margin-left: 5px;
+        }
+    }
+}
+.sticky-menu{
+    .social-links{
+        margin-left: 1rem;
+    }
+}

@@ -21,7 +21,7 @@ img {
             display: block;
             top: 0;
             bottom: 0;
-            position: absolute;
+            position: relative;
         }
 
     }
@@ -36,7 +36,7 @@ img {
             overflow: visible;
             width: 100vw;
             img{
-                top: auto;
+                top: 0;
             }
         }
     }
@@ -77,6 +77,9 @@ img {
         .image-box-container{
             .image-box{
                 margin-left: -20rem;
+                img{
+                    top: -5rem;
+                }
             }
         }
     }
@@ -89,6 +92,7 @@ img {
                 text-align: left;
                 img{
                     left: 0;
+                    float: left;
                 }
             }
             &.image-box-left{
@@ -97,13 +101,23 @@ img {
                 text-align: right;
                 img{
                     right: 0;
+                    float: right;
                 }
             }
         }
     }
 }
-@media(max-width:550px){
+@media(max-width:768px){
     .image-box-container{
-        min-height: 14rem;
+        min-height: auto;
+        .image-box{
+            position: relative;
+            min-height: auto;
+            height: auto;
+            img{
+                position: relative;
+                min-height: auto;
+            }
+        }
     }
 }

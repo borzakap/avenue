@@ -1,10 +1,29 @@
-.theme-heading-white{
+.sec-title {
+    position: relative;
+    margin-bottom: 2.8125rem;
+}
+.theme-heading-white, .theme-heading{
     font-weight: 900;
-    color: $white;
     font-size: 3rem;
     line-height: 3.5rem;
-    text-shadow: 0px 9px 15px rgba(98, 64, 14, 0.45);
     text-transform: uppercase;
+}
+.theme-heading{
+    color: $black;
+}
+.theme-heading-white{
+    color: $white;
+    text-shadow: 0px 9px 15px rgba(98, 64, 14, 0.45);
+}
+.theme-pre-heading, .theme-pre-heading-white{
+    font-size: 2.125rem;
+    font-weight: 900;
+}
+.theme-pre-heading{
+    color: $color-theme;
+}
+.theme-pre-heading-white{
+    color: $white;
 }
 
 @media(max-width: 768px){

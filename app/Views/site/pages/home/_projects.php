@@ -4,8 +4,8 @@
         <div class="container">
             <div class="sec-title w-100">
                 <div class="sec-title-inner d-inline-block">
-                    <span class="d-block thm-clr"><?= lang('Site.Sections.Projects.BeforeTitle') ?></span>
-                    <h3 class="mb-0"><?= $section_proj_title ?></h3>
+                    <span class="d-block theme-pre-heading"><?= lang('Site.Sections.Projects.BeforeTitle') ?></span>
+                    <h3 class="mb-0 theme-heading"><?= $section_proj_title ?></h3>
                 </div>
             </div>
             <div class="proj-wrap w-100 mb-5">
@@ -109,8 +109,11 @@
                 </div>
             </div><!-- Projects Wrap -->
             <div class="view-all mt-20 w-100">
-                <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
+                <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
             </div><!-- View All -->
+            <div class="in-logo mt-20">
+                <img src="/site/images/prefooter-logo.png" />
+            </div>
         </div>
         <div class="dom-fixed" style="background-image: url(/site/images/complex/dom2.png);"></div>
     </div>

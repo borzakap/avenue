@@ -102,6 +102,8 @@
             <?= view('App\Views\site\_logoinfobar') ?>
         </header><!-- Header -->
         <!-- responsive header -->
+        <?= view('App\Views\site\_stickymenu') ?>
+        <!-- responsive header -->
         <?= view('App\Views\site\_responsiveheader') ?>
 
         <?= $this->renderSection('main') ?>

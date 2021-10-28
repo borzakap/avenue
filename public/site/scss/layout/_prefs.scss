@@ -1,5 +1,8 @@
 /*===== Services Style 1 =====*/
-
+.prefs-col{
+    max-width: 20rem;
+    margin-bottom: 1.5rem;
+}
 .prefs-box {
     display: flex;
     position: relative;
@@ -12,7 +15,7 @@
         background: $white;
         margin: -0.8rem;
         min-height: 23rem;
-        padding: 1rem;
+        padding: 2rem;
 
         .thm-clr{
             font-size: 6rem;
@@ -20,6 +23,22 @@
             font-weight: 900;
             line-height: 1.2;
             font-style: normal;
+        }
+        .thm-subheader{
+            font-size: 1.25rem;
+            color: $black;
+            line-height: 1.313rem;
+            margin-bottom: .5rem;
+        }
+        p{
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: $black;
+        }
+        h3{
+            color: $color-theme;
+            font-size: 1.625rem;
+            line-height: 1.5rem;
         }
         
         &:hover{
@@ -38,11 +57,15 @@
         
     }
     &.prefs-box-odd{
-        padding-top: 2rem; 
         .prefs-box-inner {
             background: #F5F5F5;
         }
     }
-    
 }
-
+@media(min-width: 576px){
+    .prefs-box {
+        &.prefs-box-odd{
+            padding-top: 2rem; 
+        }
+    }
+}

@@ -7,12 +7,12 @@
                     <div class="social-links">
                         <?php foreach ($socials as $name => $link) : ?>
                             <a href="<?= $link ?>" title="<?= $name ?>" target="_blank"><i class="fab fa-<?= strtolower($name) ?>"></i></a>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="aftersocials-wrap">
                     <div class="call-us">
-                        <i class="thm-clr flaticon-phone-call"></i>
+                        <i class="thm-clr fas fa-phone-alt"></i>
                         <strong><a href="tel:<?= $contact_phone ?>" class="binct-phone-number-1"><?= $contact_phone ?></a></strong>
                     </div>
                     <div class="lang-changer-wrap">

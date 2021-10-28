@@ -1,0 +1,18 @@
+.bullets-section{
+    h4{
+        color: $color-theme;
+        font-weight: 900;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        line-height: 1.2;
+    }
+    p{
+        font-size: 1.1rem;
+    }
+    a{
+        color: $color-theme;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

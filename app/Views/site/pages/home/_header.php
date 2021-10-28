@@ -9,7 +9,7 @@
                             <h2 class="theme-heading-white mb-0"><?= lang('Site.Slider.Title') ?></h2>
                             <p class="mb-0"><?= lang('Site.Slider.Description') ?></p>
                             <div class="feat-cap-innr">
-                                <a data-toggle="modal" data-target="#contact-form-modal" data-type="slider" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.LearnMore') ?><i class="flaticon-arrow-pointing-to-right"></i></a>
+                                <a data-toggle="modal" data-target="#contact-form-modal" data-type="slider" class="white-btn" href="#" title=""><?= lang('Site.Buttons.LearnMore') ?><i class="flaticon-arrow-pointing-to-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -17,11 +17,9 @@
                         <div class="image-box">
                             <img src="/site/images/complex/dom.png" />
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

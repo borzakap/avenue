@@ -1,33 +1,23 @@
 <div class="rspn-hdr">
-    <div class="rspn-mdbr">
-        <div class="rspn-scil">
-            <?php foreach($socials as $name => $link) : ?>
-            <a href="<?= $link ?>" title="<?= $name ?>" target="_blank"><i class="fab fa-<?= strtolower($name) ?>"></i></a>
-            <?php endforeach; ?>
-        </div>
-    </div>
     <div class="lg-mn">
-        <div class="logo"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img src="/site/images/logo-60.png" alt="Logo"></a></div>
+        <div class="logo"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-white.png" alt="Logo" srcset="/site/images/logo-white.png" width="131" height="49"></a></div>
         <div class="rspn-cnt">
-<!--            <span><i class="thm-clr far fa-envelope-open"></i><a href="javascript:void(0);" title="">bioxin0011@gmail.com</a></span>
-            <span><i class="thm-clr fas fa-map-marker-alt"></i>27 Division, mirpur-12, pallbi.</span>-->
+            <span class="call-us">
+                <i class="thm-clr fas fa-phone-alt"></i>
+                <strong><a href="tel:<?= $contact_phone ?>" class="binct-phone-number-1"><?= $contact_phone ?></a></strong>
+            </span>
+            <span class="social-links">
+                <?php foreach ($socials as $name => $link) : ?>
+                    <a href="<?= $link ?>" title="<?= $name ?>" target="_blank"><i class="fab fa-<?= strtolower($name) ?>"></i></a>
+                <?php endforeach; ?>
+            </span>
         </div>
-        <span class="rspn-mnu-btn"><i class="fa fa-list-ul"></i></span>
+        <span class="rspn-mnu-btn"><i class="fas fa-bars"></i></span>
     </div>
     <div class="rsnp-mnu">
         <span class="rspn-mnu-cls"><i class="fa fa-times"></i></span>
         <ul class="mb-0 list-unstyled w-100">
-            <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#home"><?= lang('Site.Menue.Main.Home') ?></a></li>
-            <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a></li>
-            <li class="menu-item-has-children">
-                <a href="javascript:void(0);"><?= lang('Site.Menue.Main.LayoutsMenuSet') ?></a>
-                <ul class="mb-0 list-unstyled">
-                    <li><a href="<?= route_to('App\Controllers\Layouts::genplan', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsGenplan') ?></a></li>
-                    <li><a href="<?= route_to('App\Controllers\Layouts::filter', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsFilter') ?></a></li>
-                </ul>
-            </li>
-            <li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>
-            <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#prefs"><?= lang('Site.Menue.Main.Prefs') ?></a></li>
+            <?= view('App\Views\site\_menu_list') ?>
         </ul>
     </div><!-- Responsive Menu -->
 </div><!-- Responsive Header -->

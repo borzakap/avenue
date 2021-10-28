@@ -2,7 +2,7 @@
     <div class="w-100 pt-100 pb-100 blue-layer opc7 position-relative overflow-hidden">
         <div class="fixed-bg" style="background-image: url(/site/images/complex/coworking-right.png);"></div>
         <div class="container">
-            <span class="d-block text-white"><?= $section_about_second_title ?></span>
+            <span class="d-block theme-pre-heading-white"><?= $section_about_second_title ?></span>
             <h2 class="mb-5 theme-heading-white"><?= $section_about_title ?></h2>
             <div class="row justify-content-center align-items-center mb-5 bg-white">
                 <div class="col-12 col-lg-5 order-1 order-lg-0 p-5">

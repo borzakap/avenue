@@ -11,7 +11,7 @@
                             <p class="mb-0"><?= $section_subscribe_after_title ?></p>
                         </div>
                         <div class="getin-touch-btn position-relative">
-                            <a class="thm-btn thm-bg" href="/site/pdf/2021_screen_album_Avenue.pdf" target="_blank" title=""><?= lang('Site.Buttons.Presentation') ?></a>
+                            <a class="white-btn" href="/site/pdf/2021_screen_album_Avenue.pdf" target="_blank" title=""><?= lang('Site.Buttons.Presentation') ?></a>
                         </div>
                     </div>
                 </div>

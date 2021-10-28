@@ -1,10 +1,8 @@
 /*===== Theme Button =====*/
 
-.thm-btn {
+.thm-btn,
+.white-btn {
     display: inline-block;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    color: #fff;
     position: relative;
     z-index: 1;
     font-size: 1rem;
@@ -12,6 +10,7 @@
     padding: 1.05rem 2.8rem;
     overflow: hidden;
     vertical-align: middle;
+    text-transform: uppercase;
 
     &:before {
         content: "";
@@ -19,11 +18,8 @@
         left: 0;
         top: 0;
         z-index: -1;
-        background-color: #000;
+        background-color: $black;
         opacity: .05;
-        -webkit-transform: translate(-30%, -120%) rotate(-55deg);
-        -ms-transform: translate(-30%, -120%) rotate(-55deg);
-        -o-transform: translate(-30%, -120%) rotate(-55deg);
         transform: translate(-30%, -120%) rotate(-55deg);
         width: 180%;
         height: 280%;
@@ -33,36 +29,25 @@
         margin-left: 10px;
     }
 
-    &:hover, &:focus {
-        color: #fff;
-    }
-
     &:hover:before, &:focus:before {
         width: 200%;
-        -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
-        -o-transform: rotate(0);
         transform: rotate(0);
     }
 }
 
-/*===== Simple Button =====*/
-
-.simple-btn {
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 9.5px 1.5625rem;
-
-    &:hover, &:focus {
-        color: #fff;
+.thm-btn{
+    color: $white;
+    background: $color-theme;
+    &:hover, &:focus{
+        color: $white;
     }
+}
 
-    &.thm-bg {
-        &:hover, &:focus {
-            background-color: $color-1;
-        }
+.white-btn{
+    color: $black;
+    background: $white;
+    &:hover, &:focus{
+        color: $black;
     }
 }
 

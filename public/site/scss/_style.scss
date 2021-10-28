@@ -54,8 +54,6 @@
 .feat-caro > button.slick-arrow:focus:before,
 .about-image > span,
 .solutions-list > li:hover > i,
-.sec-title-inner2 > h2 i:before,
-.sec-title-inner2 > h2 i:after,
 .slick-dots > li.slick-active button,
 .black-layer .slick-dots > li.slick-active button,
 .blue-layer .slick-dots > li.slick-active button,
@@ -1122,76 +1120,8 @@ h2.thm-clr
 
 /*===== Sec Title =====*/
 
-.sec-title {
-    position: relative;
-    margin-bottom: 2.8125rem;
-}
-
-.col-lg-4 .sec-title-inner {
-    max-width: 100%;
-}
-
-.sec-title-inner {
-    max-width: 45%;
-
-    > {
-        span {
-            font-size: 1rem;
-            letter-spacing: .6px;
-            font-weight: 600;
-
-            + h3 {
-                margin-top: 1.125rem;
-            }
-        }
-
-        h3 {
-            font-size: 2.1rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 500;
-
-            + p {
-                margin-top: .9375rem;
-            }
-        }
-    }
-}
 
 /*=== Light Title ===*/
-
-.dark-layer .sec-title-inner {
-    &> h2, h3 {
-        color: #fff;
-    }
-}
-
-.dark-layer2 .sec-title-inner {
-    &> h2, h3 {
-        color: #fff;
-
-    }   
-}
-
-.dark-layer3 .sec-title-inner > {
-    h2, h3 {
-        color: #fff;
-    }
-}
-
-.blue-layer .sec-title-inner > {
-    h2, h3 {
-        color: #fff;
-    }
-}
-
-/*=== Ver 2 ===*/
-
-.sec-title.v2 .sec-title-inner > span {
-    font-size: 1.125rem;
-}
 
 /*===== About Style 1 =====*/
 
@@ -1256,9 +1186,6 @@ h2.thm-clr
 
     .about-image > span {
         left: 50%;
-        -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
         transform: translateX(-50%);
         top: 3.125rem;
     }
@@ -1269,30 +1196,6 @@ h2.thm-clr
 
 
 /*===== Solutions Style =====*/
-
-.sec-title2 {
-    margin-bottom: 2.8125rem;
-}
-
-.sec-title-inner2 {
-    max-width: 60%;
-
-    > {
-        h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-
-            + p {
-                margin-top: 1.0625rem;
-            }
-        }
-
-        p {
-            font-size: 1.25rem;
-        }
-    }
-}
 
 .solutions-content-wrap {
     padding-left: 6.25rem;
@@ -1568,102 +1471,6 @@ h2.thm-clr
             -o-filter: grayscale(0);
             filter: grayscale(0);
             opacity: 1;
-        }
-    }
-}
-
-/*===== Footer Style =====*/
-
-.widget {
-    margin-bottom: 3.125rem;
-
-    .logo + p {
-        margin-top: 1.25rem;
-    }
-
-    > p {
-        line-height: 1.75rem;
-        color: $gray-200;
-    }
-    h3{
-        color: $gray-100;
-    }
-}
-
-.bg-color5 .widget {
-    > p, ul li {
-        color: #d5d5d5;
-    }
-}
-
-.widget > p + .social-links2 {
-    margin-top: 1.875rem;
-}
-
-.social-links2 > a {
-    display: inline-block;
-    color: #d5d5d5;
-    font-size: 1.5rem;
-
-    &:not(:first-child) {
-        margin-left: 1.4375rem;
-    }
-}
-
-.bg-color5 {
-    .widget > h3, .visitor-stat-box > h5 {
-        color: #fff;
-    }
-}
-
-.widget {
-    > h3 {
-        margin-bottom: .7rem;
-        font-size: 1.125rem;
-        font-weight: 500;
-        text-transform: uppercase;
-    }
-
-    ul li {
-        font-size: 1rem;
-        margin-top: 1.125rem;
-        width: 100%;
-
-        &:hover > a {
-            padding-left: .75rem;
-        }
-    }
-}
-
-.visitor-stat-box {
-    > {
-        h4 {
-            font-size: 1.5rem;
-
-            + h5 {
-                margin-top: 4px;
-            }
-        }
-
-        h5 {
-            font-weight: 400;
-            font-size: 1rem;
-        }
-    }
-
-    + .visitor-stat-box {
-        margin-top: 2.625rem;
-    }
-}
-
-.copyright {
-    padding: 1.75rem 0;
-
-    p {
-        font-size: 1rem;
-
-        a {
-            color: #fff;
         }
     }
 }
