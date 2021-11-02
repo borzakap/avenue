@@ -14,7 +14,7 @@
                 </div>
             </div><!-- Blog Wrap -->
             <div class="view-all w-100 text-center mt-5">
-                <a data-toggle="modal" data-target="#contact-form-modal" data-type="news" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.MoreLayouts') ?></a>
+                <a class="thm-btn thm-bg" href="<?= route_to('App\Controllers\Layouts::filter', 'default') ?>" title=""><?= lang('Site.Buttons.MoreLayouts') ?></a>
             </div><!-- View All -->
         </div>
     </div>

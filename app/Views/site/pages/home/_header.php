@@ -1,7 +1,7 @@
 <section>
     <div class="w-100 position-relative header-avenue pt-100">
         <div class="feat-wrap position-relative w-100">
-            <div class="feat-img position-absolute" style="background-image: url(/site/images/complex/trees.jpg);"></div>
+            <div class="feat-img position-absolute" style="background-image: url(/site/images/complex/trees.webp);"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-12">
@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-6 col-12 image-box-container">
                         <div class="image-box">
-                            <img src="/site/images/complex/dom.png" />
+                            <img src="/site/images/complex/dom.webp" />
                         </div>
                     </div>
                 </div>

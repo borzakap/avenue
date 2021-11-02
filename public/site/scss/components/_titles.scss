@@ -5,8 +5,14 @@
 .theme-heading-white, .theme-heading{
     font-weight: 900;
     font-size: 3rem;
-    line-height: 3.5rem;
+    line-height: 1.2;
     text-transform: uppercase;
+    @media(max-width: 768px){
+        font-size: 2rem;
+    }
+    @media(max-width: 500px){
+        font-size: 1.8rem;
+    }
 }
 .theme-heading{
     color: $black;
@@ -16,19 +22,14 @@
     text-shadow: 0px 9px 15px rgba(98, 64, 14, 0.45);
 }
 .theme-pre-heading, .theme-pre-heading-white{
-    font-size: 2.125rem;
+    font-size: 1.5rem;
     font-weight: 900;
+    line-height: 1;
+    margin-bottom: 1rem;
 }
 .theme-pre-heading{
     color: $color-theme;
 }
 .theme-pre-heading-white{
     color: $white;
-}
-
-@media(max-width: 768px){
-    .theme-heading-white{
-        font-size: 2rem;
-        line-height: 2rem;
-    }
 }

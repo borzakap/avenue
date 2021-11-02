@@ -2,8 +2,14 @@
 /*===== Banner Style =====*/
 
 .banner-inner {
-    max-width: 70%;
+    max-width: 67%;
     float: right;
+    @media(max-width: 1024px){
+        max-width: 64%;
+    }
+    @media(max-width: 500px){
+        max-width: 100%;
+    }
 }
 
 .banner-inner {

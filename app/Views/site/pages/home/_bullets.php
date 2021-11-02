@@ -20,7 +20,7 @@
                         <div class="text-inline">
                             <h4 class="mb-0"><?= lang('Site.Bollets.Bullet1.Title') ?></h4><!-- comment -->
                             <p class="mb-0"><?= lang('Site.Bollets.Bullet1.Text') ?></p>
-                            <a href="#"><?= lang('Site.Bollets.Bullet1.Ankor') ?></a>
+                            <a href="https://goo.gl/maps/7p1BTQWfhGkhKzsG6" target="_blank"><?= lang('Site.Bollets.Bullet1.Ankor') ?></a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                         <div class="text-inline">
                             <h4 class="mb-0"><?= lang('Site.Bollets.Bullet2.Title') ?></h4><!-- comment -->
                             <p class="mb-0"><?= lang('Site.Bollets.Bullet2.Text') ?></p>
-                            <a href="#"><?= lang('Site.Bollets.Bullet2.Ankor') ?></a>
+                            <a href="<?= route_to('App\Controllers\Layouts::filter', 'default') ?>"><?= lang('Site.Bollets.Bullet2.Ankor') ?></a>
                         </div>
                     </div>
                 </div>
