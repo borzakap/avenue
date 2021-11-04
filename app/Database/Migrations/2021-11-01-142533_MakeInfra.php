@@ -15,7 +15,7 @@ class MakeInfra extends Migration {
             'longitude' => ['type' => 'float', 'constaint' => '13,10', 'null' => true, 'default' => true],
             'distance' => ['type' => 'int', 'constaint' => 11, 'unsigned' => true, 'null' => true],
             'image' => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
-            'type' => ['type' => 'enum', 'constraint' => ['services', 'medicine', 'sport', 'parks', 'transport', 'shops', 'entertainment', 'education', 'education', 'empty'], 'default' => 'empty'],
+            'type' => ['type' => 'enum', 'constraint' => ['services', 'medicine', 'sport', 'parks', 'transport', 'shops', 'entertainment', 'education', 'empty'], 'default' => 'empty'],
             'publish' => ['type' => 'tinyint', 'constraint' => 1, 'default' => 1],
             'created_at' => ['type' => 'datetime', 'null' => true],
             'updated_at' => ['type' => 'datetime', 'null' => true],

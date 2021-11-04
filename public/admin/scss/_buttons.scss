@@ -61,3 +61,32 @@
     border-radius: 5px;
     cursor: default;
 }
+.image-container{
+    position: relative;
+    .image-edit{
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        background: $white;
+        padding: .5rem;
+        border-radius: .2rem;
+        cursor: pointer;
+        z-index: 1;
+        &:hover, &:focus{
+            background: $gray-700;
+            color: $white;
+        }
+    }
+    .update-image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid $gray-200;
+        border-radius: 5px;
+    }
+}
+

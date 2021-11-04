@@ -163,6 +163,33 @@ class ResidentialsController extends BaseController {
             }
             $return['message'] = lang('Admin.Messages.Success.Deleted');
         }else{
+            // validate image
+            $img_validate = $this->validate([
+                'image_file' => 'uploaded[image_file]|mime_in[image_file,image/png,image/jpg,image/jpeg]'
+            ]);
+            if($img_validate){
+                $image = $this->request->getFile('image_file');
+                // delete old image
+                if($planImages->image_name && file_exists(IMGPATH . 'plans/' . $planImages->image_name)){
+                    unlink(IMGPATH . 'plans/' . $planImages->image_name);  
+                }
+                // set new name
+                $planImages->image_name = $image->getRandomName();
+                $path = IMGPATH . 'plans/'.$planImages->image_name;
+                // prosses image
+                \Config\Services::image()
+                        ->withFile($image)
+                        ->resize(1200, 800, true, 'width')
+                        ->save($path);
+                // get the properties
+                $info = \Config\Services::image('imagick')
+                        ->withFile($path)
+                        ->getFile()
+                        ->getProperties(true);
+                // update meta for image
+                $planImages->image_width = $info['width'] ?? 0;
+                $planImages->image_height = $info['height'] ?? 0;
+            }
             $planImages->image_code = $this->request->getPost('image_code');
             model(PlansImagesModel::class)->save($planImages);
             $return['message'] = lang('Admin.Messages.Success.Updated');

@@ -11,6 +11,8 @@
 
 <?= view('App\Views\site\pages\oneroom\_description') ?>
 
+<?= view_cell('\App\Libraries\Infrastructure::map') ?>
+
 <section>
     <div class="w-100 pt-50 pb-50 position-relative pg-oneroom">
         <div class="container">
@@ -47,4 +49,9 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('pagejs') ?>
+<script src="/site/js/map.min.js"></script>
+<?= $this->endSection() ?>
+
+<?= $this->section('aftermain') ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQoQ-cFvvsdyaRHshQczCA6W0NnLvxpU8&amp;"></script>
 <?= $this->endSection() ?>

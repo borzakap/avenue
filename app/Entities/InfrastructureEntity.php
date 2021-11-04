@@ -9,7 +9,7 @@ use CodeIgniter\Entity\Entity;
  *
  * @author alexey
  */
-class InfrasturctureEntity extends Entity{
+class InfrastructureEntity extends Entity{
 
     // attributes
     protected $attributes = [

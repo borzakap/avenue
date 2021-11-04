@@ -52,6 +52,13 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->post('images-load', 'Admin\ProgressController::imagesLoad', ['as' => 'images_load']);
         $routes->post('images-update', 'Admin\ProgressController::imageUpdate', ['as' => 'image_update']);
     });
+    // infrastructure
+    $routes->group('infrastructure', function($routes){
+        $routes->get('', 'Admin\InfrastructureController::list', ['as' => 'infrastructure']);
+        $routes->match(['get', 'post'], 'create', 'Admin\InfrastructureController::create', ['as' => 'infrastructure_create']);
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\InfrastructureController::update/$1', ['as' => 'infrastructure_update']);
+        $routes->post('images-upload', 'Admin\InfrastructureController::imageUpload', ['as' => 'infrastructure_upload']);
+    });
     // sections
     $routes->group('sections', function($routes){
         $routes->get('', 'Admin\SectionsController::list', ['as' => 'sections']);
