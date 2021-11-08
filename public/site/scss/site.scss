@@ -4,13 +4,13 @@
 // import bootstrap
 @import "../modules/bootstrap/scss/bootstrap.scss";
 
+@import "vendors/module.scss";
+@import "utils/module.scss";
 @import "base/module.scss";
 @import "components/module.scss";
 @import "layout/module.scss";
 @import "pages/module.scss";
 @import "themes/module.scss";
-@import "utils/module.scss";
-@import "vendors/module.scss";
 
 // import bootstrap
 @import "../modules/bootstrap-select/scss/bootstrap-select.scss";

@@ -2,29 +2,45 @@
     padding-top: 2rem;
     padding-bottom: .5rem;
     background: $color-theme-gray;
+    width:100%;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    float: right;
+    position: relative;
+    @media(max-width: 1400px){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @media(max-width: 1035px){
+        padding-top: 4.8rem;
+    }
+    .breadcrumb-list-wrap{
+        margin-left: 15rem;
+        margin-top: .4rem;
+        @media(max-width: 1035px){
+            margin: 0;
+            padding: 0 .75rem;
+        }
+    }
 }
 ol.breadcrumb {
     padding: 0;
     background-color: transparent;
-    -webkit-border-radius: 0;
     border-radius: 0;
     margin-bottom: 0;
-}
-
-.page-top-wrap > h1 + ol.breadcrumb {
-    margin-top: 5px;
 }
 
 ol.breadcrumb li.breadcrumb-item {
     font-size: 1rem;
     position: relative;
-
+    &.active, a:hover, a:focus{
+        color: $color-theme;
+    }
     + li.breadcrumb-item {
-        margin-left: .75rem;
-        padding-left: 1.5625rem;
-
+        margin-left: .5rem;
+        padding-left: 1rem;
         &:before {
-            content: "\f061";
+            content: "\f054";
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             padding: 0;
@@ -32,11 +48,4 @@ ol.breadcrumb li.breadcrumb-item {
             left: 0;
         }
     }
-}
-
-ol.breadcrumb li.breadcrumb-item.active,
-ol.breadcrumb li.breadcrumb-item a:hover,
-ol.breadcrumb li.breadcrumb-item a:focus
-{
-    color: $color-theme;
 }

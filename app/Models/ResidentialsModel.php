@@ -21,14 +21,14 @@ class ResidentialsModel extends Model implements TranslationInterface {
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[3]|max_length[15]|alpha_dash|is_unique[residentials.slug,id,{id}]',
+        'slug' => 'required|min_length[2]|max_length[50]|alpha_dash|is_unique[residentials.slug,id,{id}]',
         'ceil_height' => 'decimal',
     ];
     protected $validationMessages = [
         'slug' => [
             'required' => 'Validation.slug.required',
             'min_length' => 'Validation.slug.minlength',
-            'max_length' => 'Validation.slug.alphadash',
+            'max_length' => 'Validation.slug.maxlength',
             'is_unique' => 'Validation.slug.isunique'
         ],
     ];
@@ -147,7 +147,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
             throw new Exception('there must be the translations');
         }
         foreach ($translations as $translation) {
-            $this->db->table('sections_translation')->replace($translation);
+            $this->db->table('residentials_translation')->replace($translation);
         }
         return $item_id;
     }

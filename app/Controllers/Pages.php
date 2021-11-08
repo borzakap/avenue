@@ -89,13 +89,48 @@ class Pages extends BaseController {
         if ($this->request->getMethod() !== 'post') {
             $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($filter, $this->request->getGet()));
             $this->data['pager'] = model(LayoutsModel::class)->pager;
-            return view('site/pages/oneroom', $this->data);
+            return view('site/pages/rooms', $this->data);
         }
         $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($filter, $this->request->getPost()));
         $this->data['pager'] = model(LayoutsModel::class)->pager;
         return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed_paged', $this->data)]);
     }
     
+    public function tworoom(string $slug = 'default'){
+        $this->data['meta_title'] = $this->text->translate('meta_title', 'tworoom');
+        $this->data['meta_description'] = $this->text->translate('meta_description', 'tworoom');
+        $this->data['section_about_title'] = $this->text->translate('section_about_title', 'tworoom');
+        $this->data['section_about_second_title'] = $this->text->translate('section_about_second_title', 'tworoom');
+        $this->data['section_about_first_subtitle'] = $this->text->translate('section_about_first_subtitle', 'tworoom');
+        $this->data['section_about_first_subdescription'] = $this->text->translate('section_about_first_subdescription', 'tworoom');
+        $this->data['section_about_second_subtitle'] = $this->text->translate('section_about_second_subtitle', 'tworoom');
+        $this->data['section_about_second_subdescription'] = $this->text->translate('section_about_second_subdescription', 'tworoom');
+        helper('form');
+        if ($slug == 'default') {
+            $default = model(ResidentialsModel::class)->first();
+            return redirect()->route('tworoom-filter', [$default->slug]);
+        }
+        if (!$residential = model(ResidentialsModel::class)->getBySlug($slug, $this->request->getLocale())) {
+            throw PageNotFoundException::forPageNotFound();
+        }
+        $this->data['residential'] = $residential;
+        $this->data['rooms'] = model(LayoutsModel::class)->getRoomsListFilter();
+        $this->data['floors'] = model(FloorsImagesModel::class)->getFloorsLayoutsFilter();
+        $this->data['sections'] = model(SectionsModel::class)->getSectionsListFilter($residential->id);
+        $filter = [
+            'rooms' => [
+                0 => 2,
+            ],
+        ];
+        if ($this->request->getMethod() !== 'post') {
+            $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($filter, $this->request->getGet()));
+            $this->data['pager'] = model(LayoutsModel::class)->pager;
+            return view('site/pages/rooms', $this->data);
+        }
+        $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($filter, $this->request->getPost()));
+        $this->data['pager'] = model(LayoutsModel::class)->pager;
+        return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed_paged', $this->data)]);
+    }
     
     
     

@@ -37,7 +37,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
     // residentials
     $routes->group('residentials', function($routes){
         $routes->get('', 'Admin\ResidentialsController::list', ['as' => 'residentials']);
-        $routes->match(['get', 'post'], 'create', 'Admin\ResidentialsController::create');
+        $routes->match(['get', 'post'], 'create', 'Admin\ResidentialsController::create', ['as' => 'residential_create']);
         $routes->match(['get', 'post'], 'update/(:num)', 'Admin\ResidentialsController::update/$1', ['as' => 'residential_update']);
         $routes->post('plans-upload', 'Admin\ResidentialsController::plansUpload', ['as' => 'plans-upload']);
         $routes->post('plans-load', 'Admin\ResidentialsController::plansLoad', ['as' => 'plans-load']);
@@ -144,6 +144,7 @@ $routes->group('api', function($routes){
 $routes->group('{locale}', function($routes){
     $routes->get('', 'Pages::index');
     $routes->match(['get', 'post'], 'oneroom/(:segment)', 'Pages::oneroom/$1', ['as'=>'oneroom-filter']);
+    $routes->match(['get', 'post'], 'tworoom/(:segment)', 'Pages::tworoom/$1', ['as'=>'tworoom-filter']);
     $routes->get('contact', 'Pages::contact');
     $routes->group('layouts', function($routes){
         $routes->get('genplan/(:segment)', 'Layouts::genplan/$1', ['as'=>'layouts-genplan']);

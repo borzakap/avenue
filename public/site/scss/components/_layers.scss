@@ -5,7 +5,8 @@
 .dark-layer, 
 .blue-layer,
 .white-layer,
-.white-layer-hor{
+.white-layer-hor,
+.blue-layer-hor{
     &:before{
         content: "";
         height: 100%;
@@ -30,7 +31,13 @@
             180deg, rgba(255,255,255,.7) 50%, rgba(252,252,252,0) 100%);
     }
 }
-
+.blue-layer-hor{
+    &:before{
+        background: #A17836;
+        background: linear-gradient(
+            180deg, #A17836 18.75%, rgba(161, 120, 54, 0.86) 100%)
+    }
+}
 .right-layer{
     &:before{
         content: "";

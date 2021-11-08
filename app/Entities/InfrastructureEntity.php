@@ -14,7 +14,9 @@ class InfrastructureEntity extends Entity{
     // attributes
     protected $attributes = [
         'title' => null,
+        'meta_title' => null,
         'description' => null,
+        'meta_description' => null,
         'language' => null,
     ];
 
@@ -41,10 +43,12 @@ class InfrastructureEntity extends Entity{
             throw new \RuntimeException('Infrastructure must be created before getting translations.');
         }
         if(empty($this->translations)){
-            $translations = model(LayoutsModel::class)->getTranslations($this->id);
+            $translations = model(InfrastructureModel::class)->getTranslations($this->id);
             foreach ($translations as $translation){
                 $this->translations[$translation->language]['title'] = $translation->title;
                 $this->translations[$translation->language]['description'] = $translation->description;
+                $this->translations[$translation->language]['meta_title'] = $translation->meta_title;
+                $this->translations[$translation->language]['meta_description'] = $translation->meta_description;
             }
         }
         return $this;
@@ -61,7 +65,7 @@ class InfrastructureEntity extends Entity{
     public function getUpdateLink (): ?string
     {
         if(!$this->update_link){
-            $this->update_link = '<a href="' . route_to('App\Controllers\Admin\InfrasturctureController::update', $this->id). '"><i class="fas fa-edit"></i></a>';
+            $this->update_link = '<a href="' . route_to('App\Controllers\Admin\InfrastructureController::update', $this->id). '"><i class="fas fa-edit"></i></a>';
         }
         return $this->update_link;
     }

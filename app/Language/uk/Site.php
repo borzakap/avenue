@@ -117,4 +117,16 @@ return [
         'AddressTitle' => 'Адреса відділу продажів',
         'AddressLineOne' => 'м. Буча, вул. Б.Гмирі, 7',
     ],
+    'Map' => [
+        'services' => 'Послуги',
+        'medicine' => 'Медицина',
+        'sport' => 'Спорт',
+        'parks' => 'Парки',
+        'transport' => 'Транспорт',
+        'shops' => 'Магазини',
+        'entertainment' => 'Розваги',
+        'education' => 'Освіта',
+        'empty' => 'Інше',
+        'MapHeading' => 'Розвинена інфраструктура комплексу',
+    ],
 ];
