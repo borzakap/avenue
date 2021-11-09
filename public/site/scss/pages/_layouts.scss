@@ -71,10 +71,30 @@
             }
         }
         & + .layout-info {
-            margin-top: 1.5625rem;
-            padding: 0 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 0 1.5rem;
             dd{
                 text-align: right;
+            }
+            .pannel-price{
+                font-size: rem(24);
+                font-weight: 700;
+                line-height: 1;
+            }
+            .pannel-area{
+                font-size: rem(18);
+                margin-bottom: 1rem;
+            }
+            .pannel-location{
+                
+                span{
+                    display: inline-block;
+                    padding: rem(7) rem(15) rem(7) rem(15); 
+                    background: rgba(153, 113, 36, 0.1);
+                    margin-right: .5rem;
+                    font-size: rem(14);
+                }
             }
         }
     }

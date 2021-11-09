@@ -108,7 +108,7 @@ class LayoutsModel extends Model implements TranslationInterface{
         }
         $page = $params['page_layouts'] ?? 1;
         
-        return $layouts->paginate(16, 'layouts', (int)$page);
+        return $layouts->paginate(9, 'layouts', (int)$page);
     }
 
     /**

@@ -1,0 +1,118 @@
+/*=== Slick Arrow ===*/
+
+.slick-slider > button {
+    &.slick-arrow {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        color: #777;
+        width: 3.4375rem;
+        height: 3.125rem;
+        z-index: 1;
+        background-color: $color-theme;
+        opacity: 62%;
+
+        &:hover, &:focus {
+            color: #fff;
+            opacity: 1;
+        }
+
+        &:before {
+            content: "";
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            z-index: -1;
+        }
+    }
+
+    &.slick-prev {
+        left: -.5rem;
+        > i{
+            width: rem(22.63);
+            height: rem(22.63);
+            border-right: rem(4.4834) solid $white;
+            border-top: rem(4.4834) solid $white;
+            box-sizing: border-box;
+            transform: matrix(-0.71, 0.71, 0.71, 0.71, 0, 0);
+            display: block;
+            position: absolute;
+            top: 28%;
+            left: 37%;
+        }
+    }
+
+    &.slick-next {
+        right: -.5rem;
+        > i{
+            width: rem(22.63);
+            height: rem(22.63);
+            border-left: rem(4.4834) solid $white;
+            border-bottom: rem(4.4834) solid $white;
+            box-sizing: border-box;
+            transform: matrix(-0.71, 0.71, 0.71, 0.71, 0, 0);
+            display: block;
+            position: absolute;
+            top: 28%;
+            right: 37%;
+        }
+    }
+
+}
+
+
+.slick-active .feat-img {
+    transform: scale(1);
+}
+.slick-dots {
+    padding-left: 0;
+    list-style: none;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    > li {
+        padding: 0 5px;
+
+        button {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: transparent;
+            -webkit-border-radius: 2.5rem;
+            border-radius: 2.5rem;
+            height: 14px;
+            width: 1.875rem;
+        }
+    }
+}
+
+.slick-dots > li.slick-active button {
+    width: 6.5625rem;
+}
+.slick-dots {
+    padding-left: 0;
+    list-style: none;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    > li {
+        padding: 0 5px;
+
+        button {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: transparent;
+            border-radius: 2.5rem;
+            height: 14px;
+            width: 1.875rem;
+        }
+    }
+}
+
+.slick-dots > li.slick-active button {
+    width: 6.5625rem;
+}

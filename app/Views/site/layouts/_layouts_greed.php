@@ -8,15 +8,19 @@
                 <a href="<?= route_to('App\Controllers\Layouts::view', $layout->slug) ?>" title=""><i class="fas fa-search-plus"></i></i></a>
             </div>
             <div class="layout-info w-100">
-                <h3 class="mb-2"><a href="<?= route_to('App\Controllers\Layouts::view', $layout->slug) ?>"><?= $layout->title ?></a></h3>
-                <dl class="row">
-                    <dt class="col-8"><?= lang('Site.Layouts.Dt.AllArea') ?></dt>
-                    <dd class="col-4"><?= $layout->all_area ?> м<sup>2</sup></dd>
-                    <dt class="col-8"><?= lang('Site.Layouts.Dt.LiveArea') ?></dt>
-                    <dd class="col-4"><?= $layout->live_area ?> м<sup>2</sup></dd>
-                    <dt class="col-8"><?= lang('Site.Layouts.Dt.KitArea') ?></dt>
-                    <dd class="col-4"><?= $layout->kit_area ?> м<sup>2</sup></dd>
-                </dl>
+                <?php if($layout->price > 0) : ?>
+                <div class="pannel-price">
+                    <span><?= $layout->price ?> $/м<sup>2</sup></span>
+                </div>
+                <?php endif; ?>
+                <div class="pannel-area">
+                    <span><?= lang('Site.Layouts.Texts.Rooms', ['count' => $layout->rooms]) ?>,</span>
+                    <span><?= $layout->all_area ?> м<sup>2</sup></span>
+                </div>
+                <div class="pannel-location">
+                    <span><?= $layout->withSection()->section->title ?></span>
+                    <span><?= lang('Site.Layouts.Texts.Floors') ?> <?= $layout->withFloorImage()->floor_image->image_code ?></span>
+                </div>
             </div>
         </div>
     </div>

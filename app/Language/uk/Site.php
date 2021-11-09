@@ -35,7 +35,10 @@ return [
             'LiveAreaDesc' => 'Житлова площа Я-А',
             'AllAreaAsc' => 'Загальна площа А-Я',
             'AllAreaDesc' => 'Загальна площа Я-А',
+            'Rooms' => '{count}-кімнатна',
+            'Floors' => 'Поверхи: '
         ],
+        
     ],
     'Popapform' => [
         'Title' => 'Запит у відділ продажів',

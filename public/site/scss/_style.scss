@@ -43,24 +43,13 @@
 /*----- light -------*/
 .social-links > a:hover,
 .social-links > a:focus,
-.slick-slider:not(.feat-caro) > button.slick-arrow:hover:before,
-.slick-slider:not(.feat-caro) > button.slick-arrow:focus:before
 {
     background-color: $color-theme-light;
 }
 /* ----- dark ----- */
 .thm-bg,
-.feat-caro > button.slick-arrow:hover:before,
-.feat-caro > button.slick-arrow:focus:before,
 .about-image > span,
 .solutions-list > li:hover > i,
-.slick-dots > li.slick-active button,
-.black-layer .slick-dots > li.slick-active button,
-.blue-layer .slick-dots > li.slick-active button,
-.dark-layer .slick-dots > li.slick-active button,
-.dark-layer2 .slick-dots > li.slick-active button,
-.dark-layer3 .slick-dots > li.slick-active button,
-.feat-caro .slick-dots > li.slick-active button,
 header.style2 .header-right-btns > a.get-quote,
 .team-social > a,
 .about-image > a:hover,
@@ -112,8 +101,6 @@ nav ul li > a:focus,
 .rsnp-mnu ul > li:hover > a,
 .rsnp-mnu ul > li.active > a,
 .rsnp-mnu ul > li > a:focus,
-.feat-caro > button.slick-arrow:hover,
-.feat-caro > button.slick-arrow:focus,
 .testi-img::before,
 .toggle-item.active > h4,
 .toggle-item > h4:hover,
@@ -920,56 +907,6 @@ h2.thm-clr
     }
 }
 
-/*=== Slick Arrow ===*/
-
-.slick-slider:not(.feat-caro):not(.shop-detail-nav-caro) > button {
-    &.slick-arrow {
-        position: absolute;
-        right: 0;
-        top: -6.5rem;
-        color: #777;
-        width: 3.4375rem;
-        height: 3.125rem;
-        z-index: 1;
-
-        &:hover, &:focus {
-            color: #fff;
-        }
-
-        &:before {
-            content: "";
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-            -ms-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-            -o-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            z-index: -1;
-        }
-    }
-
-    &.slick-prev {
-        right: 22.75%;
-    }
-
-    &.slick-next {
-        right: 19.3%;
-    }
-}
-
-.container .slick-slider:not(.feat-caro):not(.shop-detail-nav-caro) > button {
-    &.slick-prev {
-        right: 4.0625rem;
-    }
-
-    &.slick-next {
-        right: 0;
-    }
-}
-
 
 /*=== Line Animations ===*/
 
@@ -1047,68 +984,7 @@ h2.thm-clr
     padding: 10.8125rem 0;
 }
 
-.slick-active .feat-img {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-}
 
-.feat-caro {
-    position: relative;
-
-    > button {
-        &.slick-arrow {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
-            line-height: 5.625rem;
-            height: 5.625rem;
-            width: 5.625rem;
-            -webkit-border-radius: 50%;
-            border-radius: 50%;
-            color: #fff;
-            font-size: 2rem;
-            z-index: 1;
-            background-color: transparent;
-        }
-
-        &.slick-prev {
-            left: 3.125rem;
-        }
-
-        &.slick-next {
-            right: 3.125rem;
-        }
-
-        &.slick-arrow:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            border-radius: inherit;
-            opacity: .1;
-            background-color: #fff;
-        }
-    }
-
-    .slick-dots {
-        margin-top: 0;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 2.5rem;
-
-        > li button {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-    }
-}
 
 /*===== About Style 1 =====*/
 
@@ -1237,10 +1113,6 @@ h2.thm-clr
     color: #fff;
 }
 
-.testi-caro .slick-list {
-    margin: 0 -0.9375rem;
-}
-
 .testi-box-wrap {
     padding: 0 0.9375rem;
 }
@@ -1317,35 +1189,6 @@ h2.thm-clr
     }
 }
 
-.slick-dots {
-    padding-left: 0;
-    list-style: none;
-    margin: 10px 0 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    > li {
-        padding: 0 5px;
-
-        button {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: transparent;
-            -webkit-border-radius: 2.5rem;
-            border-radius: 2.5rem;
-            height: 14px;
-            width: 1.875rem;
-        }
-    }
-}
-
-.black-layer .slick-dots > li button, .blue-layer .slick-dots > li button, .dark-layer .slick-dots > li button, .dark-layer2 .slick-dots > li button, .dark-layer3 .slick-dots > li button {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.slick-dots > li.slick-active button {
-    width: 6.5625rem;
-}
 
 /*===== Blog Style =====*/
 

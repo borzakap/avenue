@@ -35,6 +35,8 @@ return [
             'LiveAreaDesc' => 'Жилая площадь Я-А',
             'AllAreaAsc' => 'Общая площадь А-Я',
             'AllAreaDesc' => 'Общая площадь Я-А',
+            'Rooms' => '{count}-комнатная',
+            'Floors' => 'Этажи: '
         ],
     ],
     'Popapform' => [
