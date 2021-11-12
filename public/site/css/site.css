@@ -13570,8 +13570,8 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   bottom: 0;
   left: 0;
   right: 0;
-  -webkit-transform: scale(0.2) translate(14%, -56%) rotate(28deg);
-  transform: scale(0.2) translate(14%, -56%) rotate(28deg);
+  -webkit-transform: scale(0.25) translate(3%, -35%) rotate(-62deg);
+  transform: scale(0.25) translate(3%, -35%) rotate(-62deg);
 }
 
 .layout-title-wrap h1 {
@@ -13579,6 +13579,7 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   color: #A07835;
   font-size: 2.125rem;
   line-height: 1;
+  margin-bottom: 1.2rem;
 }
 
 .layout-price-wrap {
@@ -13587,7 +13588,7 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
 
 .layout-price-wrap span {
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1;
   margin-right: 1rem;
 }
