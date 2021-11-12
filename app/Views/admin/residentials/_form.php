@@ -29,6 +29,16 @@
         <?php endforeach; ?>
     </div>
 
+    <!-- description -->
+    <div class="form-group col-md-12">
+        <?php foreach ($languages as $language) : ?>
+            <div class="languages-variants<?= ($default_naguage == $language) ? ' active' : '' ?>" data-language="<?= $language ?>">
+                <?= form_label(lang('Admin.Form.Labels.Сonditions', ['language' => $language]), 'conditions_'.$language) ?>
+                <?= form_textarea(['name' => 'translation[' . $language . '][conditions]', 'class' => 'form-control sceditor', 'id' => 'conditions_'.$language, 'value' => old('conditions.'.$language.'.description') ?? $data->translations[$language]['conditions'] ?? '']) ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
     <!-- metatitle -->
     <div class="form-group col-md-12">
         <?php foreach ($languages as $language) : ?>
@@ -53,6 +63,24 @@
     <div class="form-group col-md-12">
         <?= form_label(lang('Admin.Form.Labels.Slug'), 'slug') ?>
         <?= form_input(['name' => 'slug', 'class' => 'form-control', 'id' => 'slug', 'value' => old('slug') ?? $data->slug ?? '']) ?>
+    </div>
+
+    <!-- link fasebook -->
+    <div class="form-group col-md-4">
+        <?= form_label(lang('Admin.Form.Labels.LinkFasebook'), 'link_fasebook') ?>
+        <?= form_input(['name' => 'link_fasebook', 'class' => 'form-control', 'id' => 'link_fasebook', 'value' => old('link_fasebook') ?? $data->link_fasebook ?? '']) ?>
+    </div>
+    
+    <!-- link youtube -->
+    <div class="form-group col-md-4">
+        <?= form_label(lang('Admin.Form.Labels.LinkYoutube'), 'link_youtube') ?>
+        <?= form_input(['name' => 'link_youtube', 'class' => 'form-control', 'id' => 'link_youtube', 'value' => old('link_youtube') ?? $data->link_youtube ?? '']) ?>
+    </div>
+    
+    <!-- link instagram -->
+    <div class="form-group col-md-4">
+        <?= form_label(lang('Admin.Form.Labels.LinkInstagram'), 'link_instagram') ?>
+        <?= form_input(['name' => 'link_instagram', 'class' => 'form-control', 'id' => 'link_instagram', 'value' => old('link_instagram') ?? $data->link_instagram ?? '']) ?>
     </div>
 
     <!-- build start -->

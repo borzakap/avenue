@@ -13540,17 +13540,102 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   margin-top: .85rem;
 }
 
-.table-layout th {
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  padding-bottom: 0;
+.genplan-wrap {
+  overflow-x: auto;
 }
 
-.table-layout td {
-  color: #626076;
-  font-weight: bold;
-  font-size: 2rem;
-  padding-top: 0;
+@media (max-width: 48rem) {
+  .genplan-wrap {
+    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-x: scroll;
+  }
+}
+
+.genplan-wrap .genplan-img {
+  position: relative;
+  min-height: auto;
+  margin: 0 auto;
+  max-width: 120rem;
+  min-width: 48rem;
+  overflow: auto;
+}
+
+.genplan-wrap .genplan-img img {
+  width: 100%;
+}
+
+.genplan-wrap .genplan-img .rotation-wrapper-outer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: scale(0.2) translate(14%, -56%) rotate(28deg);
+  transform: scale(0.2) translate(14%, -56%) rotate(28deg);
+}
+
+.layout-title-wrap h1 {
+  font-weight: 900;
+  color: #A07835;
+  font-size: 2.125rem;
+  line-height: 1;
+}
+
+.layout-price-wrap {
+  margin-bottom: 2.125rem;
+}
+
+.layout-price-wrap span {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  margin-right: 1rem;
+}
+
+.layout-description-wrap, .layout-technical-wrap {
+  margin-top: 2.125rem;
+}
+
+.layout-description-wrap h2, .layout-technical-wrap h2 {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.layot-technical-table {
+  width: 100%;
+  border-top: 1px solid #eaecf4;
+}
+
+.layot-technical-table tr {
+  border-bottom: 1px solid #eaecf4;
+}
+
+.layot-technical-table tr td, .layot-technical-table tr th {
+  padding: .3rem 0;
+  font-weight: 400;
+}
+
+.layout-section-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.sections-schema.layout-schema svg polygon {
+  fill: #ceaa6d;
+  stroke: #A07835;
+  opacity: .8;
+}
+
+.layout-rules-title {
+  font-weight: 900;
+  color: #A07835;
+  font-size: 2.125rem;
+  line-height: 1;
+  margin-top: 2.2rem;
 }
 
 .layouts-info-bottom span.rate {
@@ -14096,11 +14181,16 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
 }
 
 .sections-schema svg polygon {
-  fill: #00000036;
   cursor: pointer;
-  stroke: #646464;
+  fill: #A07835;
+  stroke: #A07835;
   stroke-width: 0.2rem;
   stroke-linejoin: round;
+  opacity: .1;
+}
+
+.sections-schema svg polygon:hover {
+  opacity: .7;
 }
 
 /*@media(max-width: 767px){

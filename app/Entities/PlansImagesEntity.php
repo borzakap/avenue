@@ -12,7 +12,8 @@ use CodeIgniter\Entity\Entity;
 class PlansImagesEntity extends Entity {
     
     protected $attributes = [
-        'image_src' => null,
+        'image_name' => null,
+        'image_width' => null,
     ];
     
     protected $datamap = [];
@@ -70,6 +71,10 @@ class PlansImagesEntity extends Entity {
 
     protected function getImageSrc(){
         return 'images/sections/' . $this->image_name;
+    }
+    
+    public function getImageName() {
+        return $this->attributes['image_name'];
     }
 
 }

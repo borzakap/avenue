@@ -59,10 +59,6 @@
                     <?= form_input(['name' => 'image_code', 'type' => 'text', 'class' => 'form-control', 'id' => 'image_code', 'value' => '${image_code}']) ?>
                 </div>
                 <div class="form-group col">
-                    <?= form_label(lang('Admin.Form.Labels.PlanType'), 'plan_type') ?>
-                    <?= form_dropdown(['name' => 'plan_type', 'class' => 'form-control', 'id' => 'plan_type', 'options' => $plans_type]) ?>
-                 </div>
-                 <div class="form-group col">
                     <?= form_submit('update_img', lang('Admin.Form.Buttons.Upload'), ['class' => 'btn btn-primary', 'id' => 'upload-images-btn']) ?>
                     <input type="checkbox" name="delete_img" id="delete_img_${id}" /> <label for="delete_img_${id}">Delete</label>
                 </div>

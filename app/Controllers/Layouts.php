@@ -23,7 +23,7 @@ class Layouts extends BaseController{
         if(!$layout = model(LayoutsModel::class)->getBySlug($slug, $this->request->getLocale())){
             throw PageNotFoundException::forPageNotFound();
         }
-        $this->data['layout'] = $layout->withSection()->withPlan();
+        $this->data['layout'] = $layout->withSection()->withPlan()->withFloorImage()->withPlanImage();
         $this->data['meta_title'] = $this->data['layout']->meta_title;
         $this->data['meta_description'] = $this->data['layout']->meta_description;
         return view('site/layouts/layout', $this->data);

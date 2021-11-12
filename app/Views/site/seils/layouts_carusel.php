@@ -9,8 +9,8 @@
                 </div>
             </div>
             <div class="blog-wrap w-100">
-                <div class="row layouts-caro">
-                    <?= view('App\Views\site\layouts\_layouts_greed') ?>
+                <div class="layouts-caro">
+                    <?= view('App\Views\site\layouts\_layouts_greed', ['carusel' => 1]) ?>
                 </div>
             </div><!-- Blog Wrap -->
             <div class="view-all w-100 text-center mt-5">

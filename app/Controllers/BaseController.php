@@ -61,8 +61,8 @@ class BaseController extends Controller {
         $this->data['contact_phone'] = '(067)390-15-05';
         $this->data['contact_email'] = 'borzakap@gmail.com';
         $this->data['socials'] = [
-            'Facebook' => 'https://www.facebook.com/idilika.com.ua/',
-            'Instagram' => 'https://www.instagram.com/__idilika__/',
+            'Facebook' => 'https://www.facebook.com/idilikaavenue.com.ua/',
+            'Instagram' => 'https://www.instagram.com/idilika_avenue/',
             'Youtube' => 'https://www.youtube.com/channel/UCqFKJu9dEZmmg2NzJXgGbgw',
         ];
         

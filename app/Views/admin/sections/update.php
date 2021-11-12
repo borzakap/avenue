@@ -86,13 +86,27 @@
 <script src="/admin/js/sections.min.js"></script>
 <script type="text/template" data-template="images">
     <div class="col-12 col-md-6">
-        <?= form_open(route_to('floors-update'), ['class' => 'update-image']) ?>
+        <div class="image-container">
             <img class="img-fluid img-thumbnail" src="/images/sections/${image_name}" />
+            <i class="image-edit fas fa-edit"></i>
+            <?= form_open(route_to('floors-update'), ['class' => 'update-image']) ?>
             <input type="hidden" name="id" value="${id}" />
-            <input type="text" value="${image_code}" name="image_code" />
-            <input type="checkbox" name="delete_img" id="delete_img_${id}"> <label for="delete_img_${id}">Delete</label>
-            <input type="submit" name="update_img" value="Submit" />
-        <?= form_close() ?>    
+            <div class="form-row">
+                <div class="form-group col">
+                    <?= form_label(lang('Admin.Form.Labels.ImageUpload'), 'image_file') ?>
+                    <?= form_upload(['name' => 'image_file', 'class' => 'form-control-file', 'id' => 'image_file', 'value' => '']) ?>
+                </div>
+                <div class="form-group col">
+                    <?= form_label(lang('Admin.Form.Labels.ImageTitle'), 'image_code') ?>
+                    <?= form_input(['name' => 'image_code', 'type' => 'text', 'class' => 'form-control', 'id' => 'image_code', 'value' => '${image_code}']) ?>
+                </div>
+                <div class="form-group col">
+                    <?= form_submit('update_img', lang('Admin.Form.Buttons.Upload'), ['class' => 'btn btn-primary', 'id' => 'upload-images-btn']) ?>
+                    <input type="checkbox" name="delete_img" id="delete_img_${id}" /> <label for="delete_img_${id}">Delete</label>
+                </div>
+            </div>
+            <?= form_close() ?>    
+        </div>
     </div>
 </script>
 

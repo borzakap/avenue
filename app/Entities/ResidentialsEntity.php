@@ -14,6 +14,7 @@ class ResidentialsEntity extends Entity {
         'description' => null,
         'meta_description' => null,
         'address' => null,
+        'conditions' => null,
     ];
 
     protected $dates = [
@@ -58,6 +59,7 @@ class ResidentialsEntity extends Entity {
                 $this->translations[$translation->language]['description'] = $translation->description;
                 $this->translations[$translation->language]['meta_description'] = $translation->meta_description;
                 $this->translations[$translation->language]['address'] = $translation->address;
+                $this->translations[$translation->language]['conditions'] = $translation->conditions;
             }
         }
         return $this;

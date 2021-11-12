@@ -13,12 +13,17 @@
         height: 100%;
 
         polygon{
-            fill: #00000036;
             cursor: pointer;
-            stroke: #646464;
+            fill: $color-theme;
+            stroke: $color-theme;
             stroke-width: 0.2rem;
             stroke-linejoin: round;
+            opacity: .1;
+            &:hover{
+                opacity: .7;
+            }
         }
+        
     }
 }
 /*@media(max-width: 767px){

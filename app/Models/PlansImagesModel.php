@@ -64,12 +64,8 @@ class PlansImagesModel extends Model {
      */
     public function getImages(int $residential_id): ?array
     {
-        try{
-            return $this->where('residential_id', $residential_id)
-                    ->find();
-        } catch (\Exception $e) {
-            die($e->getTraceAsString());
-        }
+        return $this->where('residential_id', $residential_id)
+                ->find();
     }
     
     /**
@@ -79,11 +75,7 @@ class PlansImagesModel extends Model {
      */
     public function getImage(?int $id): ?object
     {
-        try{
-            return $this->where('id', $id)->first();
-        } catch (Exception $e) {
-            die($e->getTraceAsString());
-        }
+        return $this->where('id', $id)->first();
     }
 
     /**
@@ -93,13 +85,9 @@ class PlansImagesModel extends Model {
      */
     public function getPlanLayouts(int $residential_id): ?array
     {
-        try{
-            return $this->where('residential_id', $residential_id)
-                    ->where('plan_type', self::TYPE_LEAVING)
-                    ->find();
-        } catch (Exception $e) {
-            die($e->getTraceAsString());
-        }
+        return $this->where('residential_id', $residential_id)
+                ->where('plan_type', self::TYPE_LEAVING)
+                ->find();
     }
     
     /**
@@ -109,13 +97,9 @@ class PlansImagesModel extends Model {
      */
     public function getPlanCommerce(int $residential_id): ?array
     {
-        try{
-            return $this->where('residential_id', $residential_id)
-                    ->where('plan_type', self::TYPE_COMMERCE)
-                    ->find();
-        } catch (Exception $e) {
-            die($e->getTraceAsString());
-        }
+        return $this->where('residential_id', $residential_id)
+                ->where('plan_type', self::TYPE_COMMERCE)
+                ->find();
     }
     
     /**

@@ -117,21 +117,94 @@
     }
 }
 
-
-.table-layout{
-    th{
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        padding-bottom: 0;
+// genplan fotation in map
+.genplan-wrap{
+    overflow-x: auto;
+    @media(max-width: rem(768)){
+        -webkit-overflow-scrolling: touch;
+        -webkit-overflow-x: scroll;
     }
-    td{
-        color: #626076;
-        font-weight: bold;
-        font-size: 2rem;
-        padding-top: 0;
+    .genplan-img{
+        position: relative;
+        min-height: auto;
+        margin: 0 auto;
+        max-width: rem(1920);
+        min-width: rem(768);
+        overflow: auto;
+        img{
+            width: 100%;
+        }
+        .rotation-wrapper-outer{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: scale(0.2) translate(14%, -56%) rotate(28deg);
+        }
     }
 }
 
+.layout-title-wrap{
+    h1{
+        font-weight: 900;
+        color: $color-theme;
+        font-size: rem(34);
+        line-height: 1;
+    }
+}
+.layout-price-wrap{
+    margin-bottom: rem(34);
+    span{
+        font-weight: 700;
+        font-size: rem(48);
+        line-height: 1;
+        margin-right: 1rem;
+    }
+}
+.layout-description-wrap, .layout-technical-wrap{
+    margin-top: rem(34);
+    h2{
+        font-family: Roboto;
+        font-weight: 700;
+        font-size: rem(20);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+}
+.layot-technical-table{
+    width: 100%;
+    border-top: 1px solid $gray-200;
+    tr{
+        border-bottom: 1px solid $gray-200;
+        td, th{
+            padding: .3rem 0;
+            font-weight: 400;
+        }
+    }
+}
+.layout-section-title{
+    font-weight: 700;
+    font-size: rem(20);
+    line-height: 1.1;
+}
+.sections-schema.layout-schema{
+    svg{
+        polygon{
+            fill: lighten($color-theme, 20%);
+            stroke: $color-theme;
+            opacity: .8;
+        }
+    }
+}
+
+.layout-rules-title{
+    font-weight: 900;
+    color: $color-theme;
+    font-size: rem(34);
+    line-height: 1;
+    margin-top: 2.2rem;
+}
 
 
 .layouts-info-bottom span.rate {

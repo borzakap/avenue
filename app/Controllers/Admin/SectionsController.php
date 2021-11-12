@@ -168,6 +168,33 @@ class SectionsController extends BaseController{
             }
             $return['message'] = lang('Sections.Messages.Success.Deleted');
         }else{
+            // validate image
+            $img_validate = $this->validate([
+                'image_file' => 'uploaded[image_file]|mime_in[image_file,image/png,image/jpg,image/jpeg]'
+            ]);
+            if($img_validate){
+                $image = $this->request->getFile('image_file');
+                // delete old image
+                if($floorsImages->image_name && file_exists(IMGPATH . 'sections/' . $floorsImages->image_name)){
+                    unlink(IMGPATH . 'sections/' . $floorsImages->image_name);  
+                }
+                // set new name
+                $floorsImages->image_name = $image->getRandomName();
+                $path = IMGPATH . 'sections/'.$floorsImages->image_name;
+                // prosses image
+                \Config\Services::image()
+                        ->withFile($image)
+                        ->resize(1200, 800, true, 'width')
+                        ->save($path);
+                // get the properties
+                $info = \Config\Services::image('imagick')
+                        ->withFile($path)
+                        ->getFile()
+                        ->getProperties(true);
+                // update meta for image
+                $floorsImages->image_width = $info['width'] ?? 0;
+                $floorsImages->image_height = $info['height'] ?? 0;
+            }
             $floorsImages->image_code = $this->request->getPost('image_code');
             model(FloorsImagesModel::class)->save($floorsImages);
             $return['message'] = lang('Sections.Messages.Success.Updated');

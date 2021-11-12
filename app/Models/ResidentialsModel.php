@@ -12,7 +12,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
     protected $primaryKey = 'id';
     protected $returnType = 'App\Entities\ResidentialsEntity';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['slug', 'residential_build_start', 'residential_build_end', 'latitude', 'longitude', 'ceil_height', 'floors_number', 'publish', 'title', 'meta_title', 'description', 'meta_description', 'address', 'translation', 'language'];
+    protected $allowedFields = ['slug', 'residential_build_start', 'residential_build_end', 'latitude', 'longitude', 'ceil_height', 'floors_number',  'link_fasebook', 'link_youtube', 'link_instagram', 'publish', 'title', 'meta_title', 'description', 'meta_description', 'address', 'conditions', 'translation', 'language'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
@@ -55,7 +55,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
      * @return object|null
      */
     public function getBySlug(string $slug, string $language): ?object {
-        return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.language')
+        return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.conditions, residentials_translation.language')
                         ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
                         ->where('residentials.slug', $slug)
                         ->where('residentials_translation.language', $language)
@@ -69,7 +69,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
      * @return object|null
      */
     public function findItem(int $id, string $language): ?object {
-        return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.language')
+        return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.conditions, residentials_translation.language')
                         ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
                         ->where('residentials.id', $id)
                         ->where('residentials_translation.language', $language)
@@ -82,7 +82,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
      * @return array|null
      */
     public function getList(string $language, array $params = []): ?array {
-        return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.language')
+        return $this->select('residentials.*, residentials_translation.title, residentials_translation.meta_title, residentials_translation.description, residentials_translation.meta_description, residentials_translation.address, residentials_translation.conditions, residentials_translation.language')
                         ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
                         ->where('residentials_translation.language', $language)
                         ->findAll();
@@ -174,6 +174,9 @@ class ResidentialsModel extends Model implements TranslationInterface {
             'longitude' => $data['longitude'],
             'ceil_height' => $data['ceil_height'],
             'floors_number' => $data['floors_number'],
+            'link_fasebook' => $data['link_fasebook'],
+            'link_youtube' => $data['link_youtube'],
+            'link_instagram' => $data['link_instagram'],
             'publish' => !isset($data['publish']) ? self::UNPUBLISH : self::PUBLISH,
         ];
         return $retrieved;
@@ -195,6 +198,7 @@ class ResidentialsModel extends Model implements TranslationInterface {
             'description' => $data['description'],
             'meta_description' => $data['meta_description'],
             'address' => $data['address'],
+            'conditions' => $data['conditions'],
         ];
         return $retrieved;
     }

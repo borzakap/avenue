@@ -1,6 +1,10 @@
 <?php foreach ($layouts as $layout) : ?>
+    <?php if(!isset($carusel) || $carusel != 1) : ?>
     <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="layouts-box w-100">
+    <?php else : ?>
+    <div class="col">
+    <?php endif; ?>
+        <div class="layouts-box">
             <div class="layout-img w-100 position-relative overflow-hidden">
                 <div class="layout-img-wraper">
                     <img class="img-fluid w-100" src="/images/layouts/<?= $layout->image_2d ?>" alt="<?= $layout->title ?>">

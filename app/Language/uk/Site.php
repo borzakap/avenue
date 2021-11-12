@@ -38,6 +38,11 @@ return [
             'Rooms' => '{count}-кімнатна',
             'Floors' => 'Поверхи: '
         ],
+        'Titles' => [
+            'Description' => 'Опис планування',
+            'Technical' => 'Експлікація',
+            'Rules' => 'Умови придбання',
+        ],
         
     ],
     'Popapform' => [
