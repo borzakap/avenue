@@ -140,7 +140,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            transform: scale(0.2) translate(14%, -56%) rotate(28deg);
+            transform: scale(.25) translate(3%,-35%) rotate(-62deg);
         }
     }
 }
@@ -151,13 +151,14 @@
         color: $color-theme;
         font-size: rem(34);
         line-height: 1;
+        margin-bottom: 1.2rem;
     }
 }
 .layout-price-wrap{
     margin-bottom: rem(34);
     span{
         font-weight: 700;
-        font-size: rem(48);
+        font-size: rem(40);
         line-height: 1;
         margin-right: 1rem;
     }
