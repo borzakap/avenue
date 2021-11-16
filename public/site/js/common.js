@@ -127,6 +127,10 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (data) {
                 $('#layouts_filtered').html(data.html);
+                // reinit the favorities
+                if(favorite !== undefined){
+                    favorite.init();
+                }
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);
