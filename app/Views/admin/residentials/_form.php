@@ -84,15 +84,15 @@
     </div>
 
     <!-- build start -->
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 jquery-datepicker">
         <?= form_label(lang('Admin.Form.Labels.BuildStart'), 'residential_build_start') ?>
-        <?= form_input(['name' => 'residential_build_start', 'class' => 'form-control', 'id' => 'residential_build_start', 'value' => old('residential_build_start') ?? $data->residential_build_start ?? '']) ?>
+        <?= form_input(['name' => 'residential_build_start', 'class' => 'jquery-datepicker__input form-control', 'id' => 'residential_build_start', 'value' => old('residential_build_start') ?? $data->residential_build_start ?? '']) ?>
     </div>
 
     <!-- build end -->
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 jquery-datepicker">
         <?= form_label(lang('Admin.Form.Labels.BuildEnd'), 'residential_build_end') ?>
-        <?= form_input(['name' => 'residential_build_end', 'class' => 'form-control', 'id' => 'residential_build_end', 'value' => old('residential_build_end') ?? $data->residential_build_end ?? '']) ?>
+        <?= form_input(['name' => 'residential_build_end', 'class' => 'jquery-datepicker__input form-control', 'id' => 'residential_build_end', 'value' => old('residential_build_end') ?? $data->residential_build_end ?? '']) ?>
     </div>
 
     <!-- latitude -->

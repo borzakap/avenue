@@ -92,6 +92,9 @@ class LayoutsModel extends Model implements TranslationInterface{
         if (isset($params['sections']) && is_array($params['sections'])) {
             $layouts->whereIn('section_id', $params['sections']);
         }
+        if(isset($params['ids']) && is_array($params['ids'])){
+            $layouts->whereIn('layout_id', $params['ids']);
+        }
         if (isset($params['floors']) && is_array($params['floors'])) {
             $floor_images_builder = \Config\Database::connect()->table('floor_images');
             $floors = $params['floors'];

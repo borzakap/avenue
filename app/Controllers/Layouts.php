@@ -99,6 +99,34 @@ class Layouts extends BaseController{
     }
 
     /**
+     * show the wishlist
+     * @param string $slug
+     * @return RedirectResponse|string
+     * @throws PageNotFoundException
+     */
+    public function wishlist(string $slug = 'default'){
+        if ($slug == 'default') {
+            $default = model(ResidentialsModel::class)->first();
+            return redirect()->route('layouts-wishlist', [$default->slug]);
+        }
+        if (!$residential = model(ResidentialsModel::class)->getBySlug($slug, $this->request->getLocale())) {
+            throw PageNotFoundException::forPageNotFound();
+        }
+        $this->data['residential'] = $residential;
+        $this->data['meta_title'] = $residential->meta_title;
+        $this->data['meta_description'] = $residential->meta_description;
+        $wished = ['ids' => explode(',', $this->request->getCookie('layoutsfav'))];
+        if ($this->request->getMethod() !== 'post') {
+            $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), $wished);
+            $this->data['pager'] = model(LayoutsModel::class)->pager;
+            return view('site/layouts/wishlist', $this->data);
+        }
+        $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), array_merge($wished, $this->request->getPost()));
+        $this->data['pager'] = model(LayoutsModel::class)->pager;
+        return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed_paged', $this->data)]);
+    }
+
+    /**
      * loading layout in popup
      * @return object|null
      */

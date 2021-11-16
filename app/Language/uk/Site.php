@@ -10,6 +10,7 @@ return [
             'LayoutsGenplan' => 'На плані',
             'LayoutsMenuSet' => 'Квартири',
             'LayoutsFilter' => 'Фільтр',
+            'LayoutsWishlist' => 'Обрані',
             'CommerceGenplan' => 'Комерція',
             'Prefs' => 'Переваги',
             'Qoute' => 'Зворотній зв\'звязок',
@@ -36,12 +37,14 @@ return [
             'AllAreaAsc' => 'Загальна площа А-Я',
             'AllAreaDesc' => 'Загальна площа Я-А',
             'Rooms' => '{count}-кімнатна',
-            'Floors' => 'Поверхи: '
+            'Floors' => 'Поверхи: ',
+            'Wishlist' => 'Ви ще не обрали жодного планування!',
         ],
         'Titles' => [
             'Description' => 'Опис планування',
-            'Technical' => 'Експлікація',
+            'Technical' => 'Характеристики',
             'Rules' => 'Умови придбання',
+            'Wishlist' => 'Ваші обрані планування',
         ],
         
     ],
@@ -72,6 +75,7 @@ return [
         'Subscribe' => 'Записатись на перегляд',
         'Presentation' => 'Завантажити каталог',
         'Details' => 'Детальніше',
+        'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
         'Title' => 'Вітаємо! <br>ЖК Idilika Avenue',

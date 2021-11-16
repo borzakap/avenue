@@ -5,6 +5,7 @@
     <ul class="mb-0 list-unstyled">
         <li><a href="<?= route_to('App\Controllers\Layouts::genplan', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsGenplan') ?></a></li>
         <li><a href="<?= route_to('App\Controllers\Layouts::filter', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsFilter') ?></a></li>
+        <li><a href="<?= route_to('App\Controllers\Layouts::wishlist', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsWishlist') ?></a></li>
     </ul>
 </li>
 <li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>

@@ -8,6 +8,30 @@
     &:hover{
         border: 3px solid rgba(161, 120, 54, 0.68);    
     }
+    .layoutsfav{
+        display: block;
+        position: absolute;
+        z-index: 1;
+        padding: 1rem;
+        background: rgba($color-theme, 0.1);
+        border-radius: 50%;
+        right: 1.5rem;
+        top: 2.2rem;
+        cursor: pointer;
+        &.active{
+            svg{
+                fill: $color-theme;
+            }
+        }
+        svg{
+            stroke: $color-theme;
+            stroke-width: 3px;
+            fill: transparent;
+            &:hover{
+                fill: $color-theme;
+            }
+        }
+    }
     .layout-img{
         padding: 0.5rem;
         & > .layout-img-wraper {
@@ -44,10 +68,10 @@
             position: absolute;
             left: 50%;
             top: 80%;
-            background-color: $color-theme;
+            background-color: rgba($color-theme, 0.7);
             color: #fff;
             transform: translate(-50%, -50%);
-            padding: 3rem;
+            padding: 2.5rem;
             font-weight: 600;
             opacity: 0;
             visibility: hidden;
@@ -55,12 +79,12 @@
             border-radius: 50%;
 
             i {
-                font-size: 3rem;
+                font-size: 2.5rem;
                 vertical-align: middle;
             }
 
             &:hover, &:focus {
-                background-color: $color-theme;
+                background-color:  rgba($color-theme, 0.9);
             }
         }
         &:hover{
@@ -145,15 +169,6 @@
     }
 }
 
-.layout-title-wrap{
-    h1{
-        font-weight: 900;
-        color: $color-theme;
-        font-size: rem(34);
-        line-height: 1;
-        margin-bottom: 1.2rem;
-    }
-}
 .layout-price-wrap{
     margin-bottom: rem(34);
     span{
@@ -161,16 +176,6 @@
         font-size: rem(40);
         line-height: 1;
         margin-right: 1rem;
-    }
-}
-.layout-description-wrap, .layout-technical-wrap{
-    margin-top: rem(34);
-    h2{
-        font-family: Roboto;
-        font-weight: 700;
-        font-size: rem(20);
-        line-height: 1.1;
-        margin-bottom: 1rem;
     }
 }
 .layot-technical-table{
@@ -184,11 +189,6 @@
         }
     }
 }
-.layout-section-title{
-    font-weight: 700;
-    font-size: rem(20);
-    line-height: 1.1;
-}
 .sections-schema.layout-schema{
     svg{
         polygon{
@@ -199,12 +199,18 @@
     }
 }
 
-.layout-rules-title{
+.layout-bold-title{
     font-weight: 900;
     color: $color-theme;
     font-size: rem(34);
     line-height: 1;
-    margin-top: 2.2rem;
+}
+.layout-normal-title{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: rem(20);
+    line-height: 1.1;
+    margin-bottom: 1rem;
 }
 
 

@@ -118,6 +118,7 @@
     <script src="/site/modules/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/site/js/bootstrap-select.min.js"></script>
     <script src="/site/js/common.min.js"></script>
+    <script src="/site/js/favorite.min.js"></script>
     <?= $this->renderSection('pagejs') ?>
     <script type="text/javascript">
 (function (d, w, s) {

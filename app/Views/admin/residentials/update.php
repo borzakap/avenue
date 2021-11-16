@@ -42,6 +42,8 @@
 <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
 <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
 <script src="/admin/js/upload-images.min.js"></script>
+<script src="/admin/js/jquery.datepicker.min.js"></script>
+
 <script type="text/template" data-template="images">
     <div class="col-12 col-md-6">
         <div class="image-container">

@@ -150,6 +150,7 @@ $routes->group('{locale}', function($routes){
         $routes->get('genplan/(:segment)', 'Layouts::genplan/$1', ['as'=>'layouts-genplan']);
         $routes->get('section/(:segment)', 'Layouts::section/$1', ['as'=>'layouts-section']);
         $routes->match(['get', 'post'], 'filter/(:segment)', 'Layouts::filter/$1', ['as'=>'layouts-filter']);
+        $routes->match(['get', 'post'], 'wishlist/(:segment)', 'Layouts::wishlist/$1', ['as'=>'layouts-wishlist']);
         $routes->get('view/(:segment)', 'Layouts::view/$1', ['as'=>'layout-view']);
         $routes->post('load', 'Layouts::load', ['as'=>'layout-load']);
     });

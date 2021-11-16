@@ -12,9 +12,7 @@
 <section>
     <div class="w-100 pt-50 pb-50 position-relative">
         <div class="container">
-            <div class="w-100 layout-title-wrap">
-                <h1><?= $layout->title ?></h1>
-            </div>
+            <h1 class="layout-bold-title"><?= $layout->title ?></h1>
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="mb-3">
@@ -32,14 +30,8 @@
                     <div class="mt-20 w-100">
                         <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
                     </div><!-- View All -->
-                    <?php if($layout->description) : ?>
-                    <div class="layout-description-wrap">
-                        <h2><?= lang('Site.Layouts.Titles.Description'); ?></h2>
-                        <?= $layout->description ?>
-                    </div>
-                    <?php endif; ?>
-                    <div class="layout-technical-wrap">
-                        <h2><?= lang('Site.Layouts.Titles.Technical'); ?></h2>
+                    <div class="mt-20">
+                        <h2 class="layout-normal-title"><?= lang('Site.Layouts.Titles.Technical'); ?></h2>
                         <table class="layot-technical-table">
                             <tr>
                                 <th><?= lang('Site.Layouts.Dt.Rooms') ?></th>
@@ -63,22 +55,30 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-12">
-                    <p class="layout-section-title mt-lg-0 mt-md-0 mt-sm-2"><a href="<?= route_to('App\Controllers\Layouts::genplan', $layout->plan->slug) ?>"><?= $layout->section->title ?></a> / <?= lang('Site.Layouts.Texts.Floors') ?> <?= $layout->floor_image->image_code ?></p>
+                    <?php if($layout->description) : ?>
+                    <div class="mt-30">
+                        <h2 class="layout-bold-title"><?= lang('Site.Layouts.Titles.Description'); ?></h2>
+                        <?= $layout->description ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if($layout->plan->conditions) : ?>
+                    <div class="mt-30">
+                        <h2 class="layout-bold-title"><?= lang('Site.Layouts.Titles.Rules'); ?></h2>
+                        <?= $layout->plan->conditions ?>
+                    </div>
+                    <?php endif; ?>
+                    <div class="mt-20 w-100">
+                        <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
+                    </div><!-- View All -->
+                </div>
+                <div class="col-md-6 col-12">
+                    <p class="layout-normal-title mt-lg-0 mt-md-0 mt-sm-2"><a href="<?= route_to('App\Controllers\Layouts::genplan', $layout->plan->slug) ?>"><?= $layout->section->title ?></a> / <?= lang('Site.Layouts.Texts.Floors') ?> <?= $layout->floor_image->image_code ?></p>
                     <div class="sections-schema layout-schema">
                         <?= img(['src' => 'images/sections/' . ($layout->floor_image->image_name ?? '') , 'class' => 'img-fluid', 'width' => $layout->floor_image->image_width, 'height' => $layout->floor_image->image_height]) ?>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 <?= $layout->floor_image->image_width ?> <?= $layout->floor_image->image_height ?>">
                             <polygon points="<?= $layout->poligon ?>"></polygon>                        
                         </svg>
                     </div>
-                </div>
-                <div class="col-md-6 col-12">
-                    <h2 class="layout-rules-title"><?= lang('Site.Layouts.Titles.Rules'); ?></h2>
-                    <div class="layout-rule-text">
-                        <?= $layout->plan->conditions ?>
-                    </div>
-                    <div class="mt-20 w-100">
-                        <a data-toggle="modal" data-target="#contact-form-modal" data-type="projects" class="thm-btn thm-bg" href="#" title=""><?= lang('Site.Buttons.Subscribe') ?></a>
-                    </div><!-- View All -->
                 </div>
             </div>
         </div>

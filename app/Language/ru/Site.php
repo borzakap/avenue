@@ -10,6 +10,7 @@ return [
             'LayoutsGenplan' => 'На плане',
             'LayoutsMenuSet' => 'Квартиры',
             'LayoutsFilter' => 'Фильтр',
+            'LayoutsWishlist' => 'Избранные',
             'CommerceGenplan' => 'Коммерция',
             'Prefs' => 'Преимущества',
             'Qoute' => 'Обратная связь',
@@ -36,12 +37,14 @@ return [
             'AllAreaAsc' => 'Общая площадь А-Я',
             'AllAreaDesc' => 'Общая площадь Я-А',
             'Rooms' => '{count}-комнатная',
-            'Floors' => 'Этажи: '
+            'Floors' => 'Этажи: ',
+            'Wishlist' => 'Вы еще не выбрали ни одной планировки!',
         ],
         'Titles' => [
             'Description' => 'Описание планировки',
-            'Technical' => 'Экспликация',
+            'Technical' => 'Характеристики',
             'Rules' => 'Условия покупки',
+            'Wishlist' => 'Ваши избранные планировки',
         ],
     ],
     'Popapform' => [
@@ -71,6 +74,7 @@ return [
         'Subscribe' => 'Записаться на просмотр',
         'Presentation' => 'Скачать каталог',
         'Details' => 'Детальнее',
+        'FindWishedLayouts' => 'Выбрать',
     ],
     'Slider' => [
         'Title' => 'Приветствуем! <br>ЖК Idilika Avenue',

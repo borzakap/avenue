@@ -25,8 +25,9 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('pagescript') ?>
-        <!-- Custom scripts for sceditor-->
-        <script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
-        <script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
+<!-- Custom scripts for sceditor-->
+<script src="/admin/modules/sceditor/minified/sceditor.min.js"></script>
+<script src="/admin/modules/sceditor/minified/formats/xhtml.js"></script>
+<script src="/admin/js/jquery.datepicker.min.js"></script>
 
 <?= $this->endSection() ?>

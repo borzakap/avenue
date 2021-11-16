@@ -13424,6 +13424,32 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   border: 3px solid rgba(161, 120, 54, 0.68);
 }
 
+.layouts-box .layoutsfav {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  padding: 1rem;
+  background: rgba(160, 120, 53, 0.1);
+  border-radius: 50%;
+  right: 1.5rem;
+  top: 2.2rem;
+  cursor: pointer;
+}
+
+.layouts-box .layoutsfav.active svg {
+  fill: #A07835;
+}
+
+.layouts-box .layoutsfav svg {
+  stroke: #A07835;
+  stroke-width: 3px;
+  fill: transparent;
+}
+
+.layouts-box .layoutsfav svg:hover {
+  fill: #A07835;
+}
+
 .layouts-box .layout-img {
   padding: 0.5rem;
 }
@@ -13467,11 +13493,11 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   position: absolute;
   left: 50%;
   top: 80%;
-  background-color: #A07835;
+  background-color: rgba(160, 120, 53, 0.7);
   color: #fff;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  padding: 3rem;
+  padding: 2.5rem;
   font-weight: 600;
   opacity: 0;
   visibility: hidden;
@@ -13482,12 +13508,12 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
 }
 
 .layouts-box .layout-img > a i {
-  font-size: 3rem;
+  font-size: 2.5rem;
   vertical-align: middle;
 }
 
 .layouts-box .layout-img > a:hover, .layouts-box .layout-img > a:focus {
-  background-color: #A07835;
+  background-color: rgba(160, 120, 53, 0.9);
 }
 
 .layouts-box .layout-img:hover > a {
@@ -13574,14 +13600,6 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   transform: scale(0.25) translate(3%, -35%) rotate(-62deg);
 }
 
-.layout-title-wrap h1 {
-  font-weight: 900;
-  color: #A07835;
-  font-size: 2.125rem;
-  line-height: 1;
-  margin-bottom: 1.2rem;
-}
-
 .layout-price-wrap {
   margin-bottom: 2.125rem;
 }
@@ -13591,18 +13609,6 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   font-size: 2.5rem;
   line-height: 1;
   margin-right: 1rem;
-}
-
-.layout-description-wrap, .layout-technical-wrap {
-  margin-top: 2.125rem;
-}
-
-.layout-description-wrap h2, .layout-technical-wrap h2 {
-  font-family: Roboto;
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.1;
-  margin-bottom: 1rem;
 }
 
 .layot-technical-table {
@@ -13619,24 +13625,25 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   font-weight: 400;
 }
 
-.layout-section-title {
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.1;
-}
-
 .sections-schema.layout-schema svg polygon {
   fill: #ceaa6d;
   stroke: #A07835;
   opacity: .8;
 }
 
-.layout-rules-title {
+.layout-bold-title {
   font-weight: 900;
   color: #A07835;
   font-size: 2.125rem;
   line-height: 1;
-  margin-top: 2.2rem;
+}
+
+.layout-normal-title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
 }
 
 .layouts-info-bottom span.rate {
