@@ -48,14 +48,13 @@ class PagesTranslationsModel extends Model {
      * @return type
      */
     public function getTranslationBySlug(string $slug, string $language) {
-        try {
-            return $this->select('*')
-                            ->where('slug', $slug)
-                            ->where('language', $language)
-                            ->findAll();
-        } catch (\Exception $ex) {
-            die($ex->getMessage());
-        }
+//        if(!$found = cache("progress_{$residential_id}")){
+//            
+//        }
+        return $this->select('*')
+                        ->where('slug', $slug)
+                        ->where('language', $language)
+                        ->findAll();
     }
 
     /**
@@ -64,13 +63,9 @@ class PagesTranslationsModel extends Model {
      * @return object|boolen
      */
     public function getTranslations(string $slug) {
-        try {
-            return $this->select('*')
-                            ->where('slug', $slug)
-                            ->findAll();
-        } catch (\Exception $ex) {
-            die($ex->getTraceAsString());
-        }
+        return $this->select('*')
+                        ->where('slug', $slug)
+                        ->findAll();
     }
 
     /**

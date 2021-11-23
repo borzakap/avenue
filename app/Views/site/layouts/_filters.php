@@ -1,6 +1,7 @@
 <div class="shop-filters-pagination-wrap d-flex flex-wrap justify-content-between w-100">
-    <?= form_open(route_to('layouts-filter', $residential->slug), ['id' => 'filter_send', 'name' => 'filter_send', 'method' => 'get']) ?>
+    <?= form_open(route_to($alias ?? 'layouts-filter', $residential->slug), ['id' => 'filter_send', 'name' => 'filter_send', 'method' => 'get']) ?>
     <div class="shop-filters d-flex flex-wrap align-items-center justify-content-center">
+        <?php if(isset($rooms) && is_array($rooms)) : ?>
         <div class="filter-inner">
             <span><?= lang('Site.Layouts.Texts.RoomsCount') ?></span>
             <?php foreach ($rooms as $room) : ?>
@@ -8,6 +9,8 @@
                 <label for="rooms_<?= $room['rooms'] ?>"><?= $room['rooms'] ?></label>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+        <?php if(isset($floors) && is_array($floors)) : ?>
         <div class="filter-inner">
             <span><?= lang('Site.Layouts.Texts.FloorsCount') ?></span>
             <?php foreach ($floors as $floor) : ?>
@@ -15,6 +18,8 @@
                 <label for="floors_<?= $floor['image_code'] ?>"><?= $floor['image_code'] ?></label>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+        <?php if(isset($sections) && is_array($sections)) : ?>
         <div class="filter-inner">
             <span><?= lang('Site.Layouts.Texts.SectionsCount') ?></span>
             <?php foreach ($sections as $section) : ?>
@@ -22,14 +27,13 @@
                 <label for="sections_<?= $section['id'] ?>"><?= $section['section_code'] ?></label>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
         <div class="filter-inner">
             <span><?= lang('Site.Layouts.Texts.Ordering') ?></span>
             <div class="slc-wrp">
                 <select class="ordering filter-field">
                     <option value="all_area:asc"><?= lang('Site.Layouts.Texts.AllAreaAsc') ?></option>
                     <option value="all_area:desc"><?= lang('Site.Layouts.Texts.AllAreaDesc') ?></option>
-                    <option value="live_area:asc"><?= lang('Site.Layouts.Texts.LiveAreaAsc') ?></option>
-                    <option value="live_area:desc"><?= lang('Site.Layouts.Texts.LiveAreaDesc') ?></option>
                 </select>
             </div>
         </div>

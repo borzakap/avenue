@@ -9861,13 +9861,13 @@ p {
   font-family: Roboto;
   color: #000;
   line-height: 1.5rem;
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 ul li, ol li {
   font-family: Roboto;
   color: #000;
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   line-height: 1.5rem;
 }
 
@@ -9878,6 +9878,7 @@ a {
 a:hover, a:focus {
   text-decoration: none;
   outline: none;
+  color: #A07835;
 }
 
 ins {
@@ -13410,51 +13411,21 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   width: 6.5625rem;
 }
 
-.layouts-wrap {
-  position: relative;
-}
-
-.layouts-box {
+.readmore-box, .layouts-box, .progress-box {
   margin-top: 1.5rem;
   box-shadow: 0px 4px 7px rgba(79, 55, 10, 0.12);
   border: 3px solid #f2f2f2;
 }
 
-.layouts-box:hover {
+.readmore-box:hover, .layouts-box:hover, .progress-box:hover {
   border: 3px solid rgba(161, 120, 54, 0.68);
 }
 
-.layouts-box .layoutsfav {
-  display: block;
-  position: absolute;
-  z-index: 1;
-  padding: 1rem;
-  background: rgba(160, 120, 53, 0.1);
-  border-radius: 50%;
-  right: 1.5rem;
-  top: 2.2rem;
-  cursor: pointer;
+.readmore-box .image-box, .layouts-box .image-box, .progress-box .image-box {
+  padding: 0;
 }
 
-.layouts-box .layoutsfav.active svg {
-  fill: #A07835;
-}
-
-.layouts-box .layoutsfav svg {
-  stroke: #A07835;
-  stroke-width: 3px;
-  fill: transparent;
-}
-
-.layouts-box .layoutsfav svg:hover {
-  fill: #A07835;
-}
-
-.layouts-box .layout-img {
-  padding: 0.5rem;
-}
-
-.layouts-box .layout-img > .layout-img-wraper {
+.readmore-box .image-box .image-wraper, .layouts-box .image-box .image-wraper, .progress-box .image-box .image-wraper {
   display: block;
   position: relative;
   height: 100%;
@@ -13462,23 +13433,24 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   position: relative;
   display: block;
   overflow: hidden;
+  margin: 0;
 }
 
-.layouts-box .layout-img > .layout-img-wraper img {
+.readmore-box .image-box .image-wraper img, .layouts-box .image-box .image-wraper img, .progress-box .image-box .image-wraper img {
   display: block;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
   margin: auto 0;
   -o-object-fit: cover;
   object-fit: cover;
 }
 
-.layouts-box .layout-img > .layout-img-wraper:before {
+.readmore-box .image-box .image-wraper:before, .layouts-box .image-box .image-wraper:before, .progress-box .image-box .image-wraper:before {
   content: "";
   position: absolute;
   left: 0;
@@ -13489,7 +13461,7 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   opacity: .05;
 }
 
-.layouts-box .layout-img > a {
+.readmore-box .image-box > a, .layouts-box .image-box > a, .progress-box .image-box > a {
   position: absolute;
   left: 50%;
   top: 80%;
@@ -13507,43 +13479,82 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   border-radius: 50%;
 }
 
-.layouts-box .layout-img > a i {
+.readmore-box .image-box > a i, .layouts-box .image-box > a i, .progress-box .image-box > a i {
   font-size: 2.5rem;
   vertical-align: middle;
 }
 
-.layouts-box .layout-img > a:hover, .layouts-box .layout-img > a:focus {
+.readmore-box .image-box > a:hover, .layouts-box .image-box > a:hover, .progress-box .image-box > a:hover, .readmore-box .image-box > a:focus, .layouts-box .image-box > a:focus, .progress-box .image-box > a:focus {
   background-color: rgba(160, 120, 53, 0.9);
 }
 
-.layouts-box .layout-img:hover > a {
+.readmore-box .image-box:hover > a, .layouts-box .image-box:hover > a, .progress-box .image-box:hover > a {
   opacity: 1;
   visibility: visible;
   top: 50%;
 }
 
-.layouts-box .layout-img + .layout-info {
+.layouts-wrap {
+  position: relative;
+}
+
+.layouts-box .layoutsfav {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  padding: 0.7rem;
+  background: #fbf8f3;
+  border-radius: 50%;
+  right: 1rem;
+  top: 1.7rem;
+  cursor: pointer;
+}
+
+.layouts-box .layoutsfav.active svg {
+  fill: #A07835;
+}
+
+.layouts-box .layoutsfav svg {
+  stroke: #A07835;
+  stroke-width: 3px;
+  fill: #fbf8f3;
+}
+
+.layouts-box .layoutsfav svg:hover {
+  fill: #A07835;
+}
+
+.layouts-box .image-box {
+  padding: 1rem;
+}
+
+.layouts-box .image-box .image-wraper img {
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.layouts-box .layout-info {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
   padding: 0 1.5rem;
 }
 
-.layouts-box .layout-img + .layout-info dd {
+.layouts-box .layout-info dd {
   text-align: right;
 }
 
-.layouts-box .layout-img + .layout-info .pannel-price {
+.layouts-box .layout-info .pannel-price {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
 }
 
-.layouts-box .layout-img + .layout-info .pannel-area {
+.layouts-box .layout-info .pannel-area {
   font-size: 1.125rem;
   margin-bottom: 1rem;
 }
 
-.layouts-box .layout-img + .layout-info .pannel-location span {
+.layouts-box .layout-info .pannel-location span {
   display: inline-block;
   padding: 0.4375rem 0.9375rem 0.4375rem 0.9375rem;
   background: rgba(153, 113, 36, 0.1);
@@ -14231,6 +14242,66 @@ nav > div ul li.menu-item-has-children:hover > ul:before {
   margin: -1.5px -15px;
 }
 
+.progress-box .progress-info {
+  padding: 1.0625rem 0.95625rem;
+  background: #F1EFEC;
+}
+
+.progress-box .progress-info > * {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 125%;
+  color: #000;
+}
+
+.progress-box:hover .progress-info {
+  background: #fff;
+}
+
+.progress-nav {
+  padding: 0;
+}
+
+.progress-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.progress-nav ul li a {
+  display: block;
+  text-transform: uppercase;
+  padding: 0.9375rem 1.125rem 0.9375rem 1.125rem;
+  border: 2px solid #eee2cc;
+  font-size: 1.125rem;
+  color: #A07835;
+  margin-bottom: 0.625rem;
+  background: #fff;
+}
+
+.progress-nav ul li a:hover {
+  box-shadow: 0rem 0.5625rem 1.375rem rgba(160, 120, 53, 0.23);
+}
+
+.progress-nav ul li a:focus, .progress-nav ul li a.active {
+  background: #A07835;
+  border: 2px solid #A07835;
+  color: #fff;
+}
+
+.progress-nav ul li a.progress-readmore {
+  background: #eee2cc;
+  text-align: center;
+}
+
+.progress-nav ul li a.progress-readmore:hover {
+  border: 2px solid #A07835;
+  box-shadow: none;
+  color: #A07835;
+}
+
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/style.scss to edit this template
@@ -14781,18 +14852,6 @@ header.style2 .social-links > a:focus {
 }
 
 /*===== Text Color =====*/
-/*----- light -----*/
-.thm-clr,
-nav ul li:hover > a,
-nav ul li.active > a,
-nav ul li > a:focus,
-.topbar-links > li a:hover,
-.topbar-links > li a:focus,
-.topbar-links > li a.active {
-  color: #F1D09F;
-}
-
-/*------ dark -----*/
 .sticky-menu nav ul li:hover > a,
 .sticky-menu nav ul li.active > a,
 .sticky-menu nav ul li > a:focus,

@@ -73,13 +73,13 @@ p {
     font-family: Roboto;
     color: $black;
     line-height: 1.5rem;
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 ul li, ol li {
     font-family: Roboto;
     color: $black;
-    font-size: 0.875rem;
+    font-size: 0.975rem;
     line-height: 1.5rem;
 }
 
@@ -89,6 +89,7 @@ a {
     &:hover, &:focus {
         text-decoration: none;
         outline: none;
+        color: $color-theme;
     }
 }
 

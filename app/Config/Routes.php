@@ -145,6 +145,7 @@ $routes->group('{locale}', function($routes){
     $routes->get('', 'Pages::index');
     $routes->match(['get', 'post'], 'oneroom/(:segment)', 'Pages::oneroom/$1', ['as'=>'oneroom-filter']);
     $routes->match(['get', 'post'], 'tworoom/(:segment)', 'Pages::tworoom/$1', ['as'=>'tworoom-filter']);
+    $routes->match(['get', 'post'], 'bucha/(:segment)', 'Pages::bucha/$1', ['as'=>'bucha-filter']);
     $routes->get('contact', 'Pages::contact');
     $routes->group('layouts', function($routes){
         $routes->get('genplan/(:segment)', 'Layouts::genplan/$1', ['as'=>'layouts-genplan']);
@@ -159,6 +160,10 @@ $routes->group('{locale}', function($routes){
         $routes->get('section/(:segment)', 'Commerce::section/$1', ['as'=>'commerce-section']);
         $routes->get('view/(:segment)', 'Commerce::view/$1', ['as'=>'commerce-view']);
         $routes->post('load', 'Commerce::load', ['as'=>'commerce-load']);
+    });
+    $routes->group('progress', function($routes){
+        $routes->get('(:segment)', 'Progress::list/$1', ['as'=>'progress-site']);
+        $routes->get('view/(:segment)', 'Progress::view/$1', ['as'=>'progress-site-view']);
     });
 });
 

@@ -80,18 +80,6 @@ header.style2 .social-links > a:focus
 }
 
 /*===== Text Color =====*/
-/*----- light -----*/
-.thm-clr,
-nav ul li:hover > a,
-nav ul li.active > a,
-nav ul li > a:focus,
-.topbar-links > li a:hover,
-.topbar-links > li a:focus,
-.topbar-links > li a.active,
-{
-    color: $color-theme-light;
-}
-/*------ dark -----*/
 .sticky-menu nav ul li:hover > a,
 .sticky-menu nav ul li.active > a,
 .sticky-menu nav ul li > a:focus,

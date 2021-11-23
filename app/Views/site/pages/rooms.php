@@ -17,7 +17,7 @@
 <section>
     <div class="w-100 pt-50 pb-50 position-relative pg-oneroom">
         <div class="container">
-            <?= view('App\Views\site\pages\rooms\_filters') ?>
+            <?= view('App\Views\site\layouts\_filters') ?>
             <div class="layouts-wrap w-100">
                 <div class="row" id="layouts_filtered">
                     <?= view('App\Views\site\layouts\_layouts_greed_paged') ?>

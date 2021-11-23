@@ -82,11 +82,13 @@ function modules() {
     var jsBootstrapSelect = gulp.src('./node_modules/bootstrap-select/js/*')
             .pipe(gulp.dest('./modules/js-bootstrap-select'));
     
+    var magnificPopup = gulp.src('./node_modules/magnific-popup/dist/*')
+            .pipe(gulp.dest('./modules/magnific-popup'));
     // popper
 //    var popper = gulp.src('./node_modules/popper.js/dist/*')
 //            .pipe(gulp.dest('./modules/popper'));
     
-    return merge(bootstrapJS, bootstrapSCSS, bootstrapSelect, jsBootstrapSelect, jquery, slick, fontAwesome, jsCookie);
+    return merge(bootstrapJS, bootstrapSCSS, bootstrapSelect, jsBootstrapSelect, jquery, slick, fontAwesome, jsCookie, magnificPopup);
 }
 
 // CSS task

@@ -50,13 +50,13 @@ class ProgressModel extends Model implements TranslationInterface{
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert = [];
-    protected $afterInsert = [];
+    protected $afterInsert = ['deleteNavigation'];
     protected $beforeUpdate = [];
-    protected $afterUpdate = [];
+    protected $afterUpdate = ['deleteNavigation'];
     protected $beforeFind = [];
     protected $afterFind = [];
     protected $beforeDelete = [];
-    protected $afterDelete = [];
+    protected $afterDelete = ['deleteNavigation'];
 
     /**
      * get by curren slug
@@ -84,7 +84,6 @@ class ProgressModel extends Model implements TranslationInterface{
         if(isset($params['residential_id'])){
             $list->where('residential_id', $params['residential_id']);
         }
-        
         return $list->paginate();
     }
 
@@ -188,5 +187,39 @@ class ProgressModel extends Model implements TranslationInterface{
         ];
         return $retrieved;
     }
+    
+    /**
+     * get create the navigation for view progress
+     * @param int $residential_id
+     * @return type
+     */
+    public function getNavigation(int $residential_id): ?array{
+        if(!$found = cache("progress_{$residential_id}")){
+            $found = $this->select('slug, progressed_at')
+                    ->where('residential_id', $residential_id)
+                    ->orderBy('progressed_at','DESC')
+                    ->findAll(10);
+            cache()->save("progress_{$residential_id}", $found, 0);
+        }
+        return $found;
+    }
+    
+    /**
+     * deleting navigation data
+     * @param array $data
+     * @return array|null
+     */
+    public function deleteNavigation(array $data): ?array{
+        $residential_id = $data['data']['residential_id'] ?? false;
+        
+        if($residential_id){
+            cache()->delete("progress_{$residential_id}");
+        }else{
+            cache()->deleteMatching('progress_*');
+        }
+        return $data;
+    }
+    
+    
     
 }

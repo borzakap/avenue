@@ -14,7 +14,7 @@ use CodeIgniter\Exceptions\PageNotFoundException;
  *
  * @author alexey
  */
-class Progress {
+class Progress extends BaseController{
 
     public function view(string $slug): string {
         helper(['number']);
@@ -24,19 +24,23 @@ class Progress {
         $this->data['item'] = $item->withImages();
         $this->data['meta_title'] = $item->meta_title;
         $this->data['meta_description'] = $item->meta_description;
-        return view('site/layouts/layout', $this->data);
+        $this->data['navigation'] = model(ProgressModel::class)->getNavigation($item->residential_id);
+        return view('site/progress/view', $this->data);
     }
 
     public function list(string $slug = 'default') {
         if ($slug == 'default') {
             $default = model(ResidentialsModel::class)->first();
-            return redirect()->route('layouts-filter', [$default->slug]);
+            return redirect()->route('progress-site', [$default->slug]);
         }
         if (!$residential = model(ResidentialsModel::class)->getBySlug($slug, $this->request->getLocale())) {
             throw PageNotFoundException::forPageNotFound();
         }
-        
-        
+        $this->data['meta_title'] = $residential->meta_title;
+        $this->data['meta_description'] = $residential->meta_description;
+        $this->data['items'] = model(ProgressModel::class)->getList($this->request->getLocale(), ['residential_id' => $residential->id]);
+        $this->data['pager'] = model(ProgressModel::class)->pager;
+        return view('site/progress/list', $this->data);
     }
 
 }
