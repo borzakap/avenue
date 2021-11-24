@@ -8,7 +8,7 @@ img {
 
 .image-box-container{
     position: relative;
-    min-height: 20rem;
+    min-height: 24rem;
     .image-box{
         position: absolute;
         z-index: 1;
@@ -20,8 +20,8 @@ img {
         img{
             margin: auto 0;
             display: block;
-            top: 0;
-            bottom: 0;
+            top: 50%;
+            transform: translate(0, -50%);
             position: relative;
         }
 
@@ -36,8 +36,11 @@ img {
         .image-box{
             overflow: visible;
             width: 100vw;
+            max-width: 70rem;
             img{
+                bottom: 0;
                 top: 0;
+                transform: translate(0, 0);
             }
         }
     }
@@ -78,15 +81,13 @@ img {
         .image-box-container{
             .image-box{
                 margin-left: -20rem;
-                img{
-                    top: -5rem;
-                }
             }
         }
     }
     .image-box-container{
         .image-box{
             width: 60vw;
+            max-width: 50rem;
             &.image-box-right{
                 left: 0;
                 margin-left: 0;
@@ -118,6 +119,7 @@ img {
             img{
                 position: relative;
                 min-height: auto;
+                transform: translate(0, 0);
             }
         }
     }

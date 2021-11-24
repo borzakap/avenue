@@ -7,9 +7,9 @@
         display: block;
         position: absolute;
         z-index: 1;
-        padding: 0.7rem;
-        background: lighten($color-theme, 55%);
-        border-radius: 50%;
+        padding: 0.5rem;
+        background: $white;
+        border-radius: 20%;
         right: 1rem;
         top: 1.7rem;
         cursor: pointer;
@@ -21,7 +21,7 @@
         svg{
             stroke: $color-theme;
             stroke-width: 3px;
-            fill: lighten($color-theme, 55%);
+            fill: $white;
             &:hover{
                 fill: $color-theme;
             }
@@ -152,6 +152,25 @@
     margin-bottom: 1rem;
 }
 
+.functionals-pannel{
+    padding: 0.5rem 0;
+    text-align: right;
+    .functionals{
+        display: inline-block;
+        margin-left: 0.5rem;
+        padding: 0.5rem;
+        background: lighten($color-theme, 50%);
+        svg{
+            fill: $color-theme;
+        }
+        &:hover, &:focus{
+            background: $color-theme;
+            svg{
+                fill: lighten($color-theme, 50%);
+            }
+        }
+    }
+}
 
 .layouts-info-bottom span.rate {
     font-size: 13px;
