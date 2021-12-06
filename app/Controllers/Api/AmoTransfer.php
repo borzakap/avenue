@@ -12,7 +12,7 @@ use App\Controllers\Api\BaseController;
 class AmoTransfer extends BaseController{
     
     public function find(){
-        $unprosessed = getUnprossesLeadsId();
+        $unprosessed = $this->getUnprossesLeadsId();
         print_r($unprosessed);
     }
 
@@ -22,7 +22,7 @@ class AmoTransfer extends BaseController{
         $filter = new LeadsFilter();
         $filter->setCustomFieldsValues([412215 => '']);
         try {
-            $lead = $this->apiClient->leads()->first();
+            $lead = $this->apiClient->leads()->get($filter)->first();
         } catch (AmoCRMApiException $e) {
             die(PHP_EOL . $e->getErrorCode());
         }
