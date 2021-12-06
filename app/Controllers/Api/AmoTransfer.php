@@ -24,12 +24,21 @@ class AmoTransfer extends BaseController{
         $filter = new LeadsFilter();
         $filter->setCustomFieldsValues([412215 => '']);
         try {
-            $lead = $this->apiClient->leads()->get($filter)->first();
+            $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
         } catch (AmoCRMApiException $e) {
             die(PHP_EOL . $e->getErrorCode());
         }
         return $lead;
     }
 
+//    private function searchContact(){
+//        try{
+//            return $this->apiClient->contacts()->get()
+//        } catch (Exception $ex) {
+//
+//        }
+//    }
+    
+    
     //put your code here
 }
