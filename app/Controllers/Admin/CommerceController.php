@@ -12,7 +12,7 @@ use App\Controllers\Admin\BaseController;
 class CommerceController extends BaseController{
     
     /**
-     * get the list of commerce
+     * get the list of items
      * @return string
      */
     public function list() :string

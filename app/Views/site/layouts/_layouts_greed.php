@@ -27,8 +27,8 @@
                     <span><?= $layout->all_area ?> м<sup>2</sup></span>
                 </div>
                 <div class="pannel-location">
-                    <span><?= $layout->withSection()->section->title ?></span>
-                    <span><?= lang('Site.Layouts.Texts.Floors') ?> <?= $layout->withFloorImage()->floor_image->image_code ?></span>
+                    <span class="info-pannel"><?= $layout->withSection()->section->title ?></span>
+                    <span class="info-pannel"><?= lang('Site.Layouts.Texts.Floors') ?> <?= $layout->withFloorImage()->floor_image->image_code ?></span>
                 </div>
             </div>
         </div>

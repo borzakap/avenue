@@ -13,16 +13,16 @@
         right: 1rem;
         top: 1.7rem;
         cursor: pointer;
-        &.active{
-            svg{
-                fill: $color-theme;
-            }
-        }
         svg{
             stroke: $color-theme;
             stroke-width: 3px;
             fill: $white;
             &:hover{
+                fill: lighten($color-theme, 50%);
+            }
+        }
+        &.active{
+            svg{
                 fill: $color-theme;
             }
         }
@@ -51,16 +51,6 @@
         .pannel-area{
             font-size: rem(18);
             margin-bottom: 1rem;
-        }
-        .pannel-location{
-
-            span{
-                display: inline-block;
-                padding: rem(7) rem(15) rem(7) rem(15);
-                background: rgba(153, 113, 36, 0.1);
-                margin-right: .5rem;
-                font-size: rem(14);
-            }
         }
         & > h3 {
             font-size: 1.5rem;
@@ -163,7 +153,7 @@
         svg{
             fill: $color-theme;
         }
-        &:hover, &:focus{
+        &:hover{
             background: $color-theme;
             svg{
                 fill: lighten($color-theme, 50%);
@@ -172,6 +162,12 @@
     }
 }
 
+img.mfp-img{
+    margin: 1rem !important;
+}
+.mfp-figure:after{
+    background: $white !important;
+}
 .layouts-info-bottom span.rate {
     font-size: 13px;
 }

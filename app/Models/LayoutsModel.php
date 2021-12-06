@@ -196,7 +196,7 @@ class LayoutsModel extends Model implements TranslationInterface{
     }
 
     /**
-     * retrieving the main data for complex table
+     * retrieving the main data
      * @param array $data
      * @return array|null
      */
@@ -231,14 +231,14 @@ class LayoutsModel extends Model implements TranslationInterface{
 
     /**
      * retreive the translation data
-     * @param int $layout_id
+     * @param int $id
      * @param string $language
      * @param array $data
      * @return array
      */
-    public function retrieveTranslation(int $layout_id, string $language, array $data): array {
+    public function retrieveTranslation(int $id, string $language, array $data): array {
         $retrieved = [
-            'layout_id' => $layout_id,
+            'layout_id' => $id,
             'language' => $language,
             'title' => $data['title'],
             'meta_title' => $data['meta_title'],

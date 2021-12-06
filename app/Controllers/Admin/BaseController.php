@@ -35,6 +35,12 @@ class BaseController extends Controller {
     protected $breadcrumb;
 
     /**
+     * data to template
+     * @var array
+     */
+    protected $data = [];
+
+    /**
      * Constructor.
      *
      * @param RequestInterface  $request
@@ -49,12 +55,13 @@ class BaseController extends Controller {
          * preload breadcrumb
          */
         $this->breadcrumb = service('breadcrumb');
-        $this->breadcrumb->add(lang('Breadcrumb.Admin.Index'), '/admin');
+        $this->breadcrumb->add(lang('Breadcrumb.Admin.Index'), '/console');
         
-        //--------------------------------------------------------------------
-        // Preload any models, libraries, etc, here.
-        //--------------------------------------------------------------------
-        // E.g.: $this->session = \Config\Services::session();
+        $this->data = [
+            'languages' => config(App::class)->supportedLocales,
+            'default_language' => config(App::class)->defaultLocale,
+            'residentials' => model(ResidentialsModel::class)->getResidentialsList(config(App::class)->defaultLocale),
+        ];
     }
 
 }

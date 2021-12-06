@@ -16,6 +16,12 @@ use CodeIgniter\Exceptions\PageNotFoundException;
  */
 class Progress extends BaseController{
 
+    /**
+     * view
+     * @param string $slug
+     * @return string
+     * @throws PageNotFoundException
+     */
     public function view(string $slug): string {
         helper(['number']);
         if (!$item = model(ProgressModel::class)->getBySlug($slug, $this->request->getLocale())) {
@@ -28,6 +34,12 @@ class Progress extends BaseController{
         return view('site/progress/view', $this->data);
     }
 
+    /**
+     * list
+     * @param string $slug
+     * @return type
+     * @throws PageNotFoundException
+     */
     public function list(string $slug = 'default') {
         if ($slug == 'default') {
             $default = model(ResidentialsModel::class)->first();

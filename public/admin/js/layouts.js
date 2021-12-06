@@ -36,32 +36,6 @@ $(document).ready(function () {
         });
     });
 
-    // upload images
-    $('#images_upload').on('submit', function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: $(this).attr('action'),
-            method: "POST",
-            data: new FormData(this),
-            processData: false,
-            contentType: false,
-            cache: false,
-            dataType: "json",
-            success: function (res) {
-                if (res.success === true) {
-                    $('#images_alert').show();
-                    $('#images_alert').html('<div class="alert alert-success" role="alert">' + res.message + '</div>');
-                } else {
-                    $('#images_alert').show();
-                    $('#images_alert').html('<div class="alert alert-warning" role="alert">' + res.message + '</div>');
-                }
-                setTimeout(function () {
-                    $('#images_alert').hide();
-                    $('#images_alert').html('');
-                }, 10000);
-            }
-        });
-    });
     // save section poligon
     $('#poligon_section').on('submit', function (e) {
         e.preventDefault();

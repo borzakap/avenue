@@ -1,0 +1,60 @@
+.counter{
+    ul {
+        max-width:rem(450);
+        margin:0 auto;
+        padding:0px;
+        list-style:none;
+        text-align:center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        li{
+            display:inline;
+            font-size:rem(45);
+            text-align:center;
+            line-height: 2rem;
+            span{
+                display: block;
+                &.time-title{
+                    font-size: rem(12);
+                    color: $gray-500;
+                }
+            }
+        }
+    }
+
+}
+#point {
+    position:relative;
+    -moz-animation:mymove 1s ease infinite;
+    -webkit-animation:mymove 1s ease infinite;
+    padding-left:rem(10);
+    padding-right:rem(10);
+}
+
+@-webkit-keyframes mymove
+{
+    0% {
+        opacity:1.0;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1.0;
+    }
+}
+
+
+@-moz-keyframes mymove
+{
+    0% {
+        opacity:1.0;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1.0;
+    }
+}

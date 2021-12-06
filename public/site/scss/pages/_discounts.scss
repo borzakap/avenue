@@ -1,0 +1,9 @@
+.image-box-container-discounts{
+    @extend .image-box-container;
+    @media #{$SCREEN_LG}{
+        .image-box{
+            max-width: 100%;
+            margin: 0 -10px
+        }
+    }
+}

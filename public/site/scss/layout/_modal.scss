@@ -1,0 +1,20 @@
+.site-modal{
+    @extend .modal;
+    @media #{$SCREEN_LG}{
+        .modal-dialog{
+            max-width: rem(420);
+        } 
+    }
+    .modal-content{
+        border-radius: 0;
+        .modal-header{
+            border-bottom: none;
+            padding: 1.5rem 1.5rem 0 1.5rem;
+            border-radius: 0;
+        }
+        .modal-body{
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+
+    }
+}

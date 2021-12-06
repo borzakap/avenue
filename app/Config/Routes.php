@@ -52,6 +52,13 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->post('images-load', 'Admin\ProgressController::imagesLoad', ['as' => 'images_load']);
         $routes->post('images-update', 'Admin\ProgressController::imageUpdate', ['as' => 'image_update']);
     });
+    // discounts
+    $routes->group('discounts', function($routes){
+        $routes->get('', 'Admin\DiscountsController::list', ['as' => 'discounts']);
+        $routes->match(['get', 'post'], 'create', 'Admin\DiscountsController::create', ['as' => 'discounts_create']);
+        $routes->match(['get', 'post'], 'update/(:num)', 'Admin\DiscountsController::update/$1', ['as' => 'discounts_update']);
+        $routes->post('files', 'Admin\DiscountsController::files', ['as' => 'discounts_files']);
+    });
     // infrastructure
     $routes->group('infrastructure', function($routes){
         $routes->get('', 'Admin\InfrastructureController::list', ['as' => 'infrastructure']);
@@ -164,6 +171,10 @@ $routes->group('{locale}', function($routes){
     $routes->group('progress', function($routes){
         $routes->get('(:segment)', 'Progress::list/$1', ['as'=>'progress-site']);
         $routes->get('view/(:segment)', 'Progress::view/$1', ['as'=>'progress-site-view']);
+    });
+    $routes->group('discounts', function($routes){
+        $routes->get('(:segment)', 'Discounts::list/$1', ['as'=>'discounts-site']);
+        $routes->get('view/(:segment)', 'Discounts::view/$1', ['as'=>'discounts-site-view']);
     });
 });
 
