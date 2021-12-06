@@ -19,7 +19,7 @@ class AmoTransfer extends BaseController{
         $notes = $this->getNotesBylead($unprosessed->getId());
         $leadContacts = $unprosessed->getContacts();
         foreach ($leadContacts as $contact){
-            $contact = $this->apiClient->contacts()->get($contact->getId());
+            $contact = $this->apiClient->contacts()->getOne($contact->getId());
             print_r($contact);
         }
     }
