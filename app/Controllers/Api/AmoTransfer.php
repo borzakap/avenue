@@ -28,7 +28,7 @@ class AmoTransfer extends BaseController{
         } catch (AmoCRMApiException $e) {
             die(PHP_EOL . $e->getErrorCode());
         }
-        return $lead->getId();
+        return $lead;
     }
 
     //put your code here
