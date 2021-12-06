@@ -11,7 +11,7 @@ use App\Controllers\Api\BaseController;
  */
 class AmoTransfer extends BaseController{
     
-    public function idnex(){
+    public function find(){
         $unprosessed = getUnprossesLeadsId();
         print_r($unprosessed);
     }
@@ -22,7 +22,7 @@ class AmoTransfer extends BaseController{
         $filter = new LeadsFilter();
         $filter->setCustomFieldsValues([412215 => '']);
         try {
-            $lead = $this->apiClient->leads()->get($filter)->first();
+            $lead = $this->apiClient->leads()->first();
         } catch (AmoCRMApiException $e) {
             die(PHP_EOL . $e->getErrorCode());
         }

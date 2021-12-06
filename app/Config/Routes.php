@@ -145,8 +145,7 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function ($routes) 
 $routes->group('api', function($routes){
     $routes->post('request/send', 'Api\ClientsRequestsController::send');
     $routes->post('quiz/send', 'Api\ClientsQuizController::send');
-    $routes->get('amo/transfer', 'Api\AmoTransfer::index');
-    
+    $routes->get('amo/transfer', 'Api\AmoTransfer::find');
 });
 
 // site.
