@@ -6,7 +6,7 @@ namespace App\Controllers\Api;
 use App\Controllers\Api\BaseController;
 use AmoCRM\Filters\LeadsFilter;
 use AmoCRM\Models\LeadModel;
-
+use AmoCRM\Helpers\EntityTypesInterface;
 /**
  * Description of AmoTransfer
  *
@@ -16,7 +16,8 @@ class AmoTransfer extends BaseController{
     
     public function find(){
         $unprosessed = $this->getUnprossesLeadsId();
-        print_r($unprosessed);
+        $notes = $this->getNotesBylead($unprosessed->getId());
+        print_r($notes);
     }
 
 
@@ -32,6 +33,17 @@ class AmoTransfer extends BaseController{
         return $lead;
     }
 
+    // find notes
+    private function getNotesBylead(int $id){
+        try{
+            $notes = $this->amoService->notes(EntityTypesInterface::LEADS);
+            return $notes->getByParentId($id);
+        } catch (AmoCRMApiException $e) {
+            die(PHP_EOL . $e->getErrorCode());
+        }
+    }
+    
+    
 //    private function searchContact(){
 //        try{
 //            return $this->apiClient->contacts()->get()
