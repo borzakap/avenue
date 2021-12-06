@@ -4,6 +4,8 @@
 namespace App\Controllers\Api;
 
 use App\Controllers\Api\BaseController;
+use AmoCRM\Filters\LeadsFilter;
+
 /**
  * Description of AmoTransfer
  *
