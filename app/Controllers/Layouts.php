@@ -26,6 +26,8 @@ class Layouts extends BaseController{
         $this->data['layout'] = $layout->withSection()->withPlan()->withFloorImage()->withPlanImage();
         $this->data['meta_title'] = $this->data['layout']->meta_title;
         $this->data['meta_description'] = $this->data['layout']->meta_description;
+        // breadcrumb
+        $this->data['breadcrumbs'][] = ['url' => route_to('layouts-section', $layout->plan->slug), 'title' => lang('Site.Breadcrumbs.Sectiones')];
         return view('site/layouts/layout', $this->data);
     }
 

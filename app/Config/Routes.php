@@ -145,11 +145,13 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function ($routes) 
 $routes->group('api', function($routes){
     $routes->post('request/send', 'Api\ClientsRequestsController::send');
     $routes->post('quiz/send', 'Api\ClientsQuizController::send');
+    $routes->get('amo/transfer', 'Api\AmoTransfer::index');
+    
 });
 
 // site.
 $routes->group('{locale}', function($routes){
-    $routes->get('', 'Pages::index');
+    $routes->get('', 'Pages::index', ['as' => 'site_home']);
     $routes->match(['get', 'post'], 'oneroom/(:segment)', 'Pages::oneroom/$1', ['as'=>'oneroom-filter']);
     $routes->match(['get', 'post'], 'tworoom/(:segment)', 'Pages::tworoom/$1', ['as'=>'tworoom-filter']);
     $routes->match(['get', 'post'], 'bucha/(:segment)', 'Pages::bucha/$1', ['as'=>'bucha-filter']);

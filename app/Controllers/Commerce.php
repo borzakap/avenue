@@ -65,6 +65,8 @@ class Commerce extends BaseController{
         $this->data['meta_description'] = $residential->meta_description;
         $this->data['genplan'] = $residential->withSections()->withPlans();
         $this->data['floors'] = model(PlansImagesModel::class)->getPlanCommerce($residential->id);
+        // breadcrumb
+        $this->data['breadcrumbs'][] = ['url' => route_to('commerce-genplan', $slug), 'title' => lang('Site.breadcrumbs.Commerce')];
         return view('site/commerce/genplan', $this->data);
     }
     
