@@ -17,7 +17,8 @@ class AmoTransfer extends BaseController{
     public function find(){
         $unprosessed = $this->getUnprossesLeadsId();
         $notes = $this->getNotesBylead($unprosessed->getId());
-        print_r($notes);
+        $leadContacts = $unprosessed->getContacts();
+        print_r($leadContacts);
     }
 
 
