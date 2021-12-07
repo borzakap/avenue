@@ -40,12 +40,14 @@ class AmoTransfer extends BaseController{
             if($condition){
                 $return['custom_fields']['condition'] = $condition->getValues();
             }
-            
+        }
+        $notes = $this->getNotesBylead($unprosessed->getId());
+        if(!empty($notes)){
+            $return['notes'] = $notes;
         }
         
         print_r($return);
         print_r($unprosessed);
-        $notes = $this->getNotesBylead($unprosessed->getId());
         $leadContacts = $unprosessed->getContacts();
         foreach ($leadContacts as $contact){
             $contact = $this->apiClient->contacts()->getOne($contact->getId());
