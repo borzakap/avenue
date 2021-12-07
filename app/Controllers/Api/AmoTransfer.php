@@ -43,7 +43,10 @@ class AmoTransfer extends BaseController{
         }
         $notes = $this->getNotesBylead($unprosessed->getId());
         if(!empty($notes)){
-            $return['notes'] = $notes;
+            foreach($notes as $k => $note){
+                $return['notes'][$k]['text'] = $note->getText();
+                $return['notes'][$k]['created_at'] = $note->getСreatedAt();
+            }
         }
         
         print_r($return);
