@@ -77,7 +77,13 @@ class AmoTransfer extends BaseController{
         $tasksFilter->setEntityIds($unprosessed->getId());
         $tasksFilter->setIsCompleted(false);
         $tasksFilter->setEntityType(2);
-        $task_collection = $this->apiClient->tasks()->get($tasksFilter);
+        try{
+            $task_collection = $this->apiClient->tasks()->get($tasksFilter);
+        } catch (\AmoCRM\OAuth2\Client\Provider\AmoCRMException $ex) {
+            if($ex->getCode() != 200){
+                $task_collection = [];
+            }
+        }
         if(!empty($task_collection)){
             foreach($task_collection as $k => $task){
                 $return['tasks'][$k]['created_at'] = $task->getCreatedAt(); 
