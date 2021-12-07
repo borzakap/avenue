@@ -45,8 +45,8 @@ class AmoTransfer extends BaseController{
         if(!empty($notes)){
             foreach($notes as $k => $note){
                 $return['notes'][$k]['text'] = $note->getText();
-                print_r($note);
-//                $return['notes'][$k]['created_at'] = $note->getCreatedAt();
+//                print_r($note);
+                $return['notes'][$k]['created_at'] = $note['createdAt'];
             }
         }
         
