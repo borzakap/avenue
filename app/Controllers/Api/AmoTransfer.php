@@ -17,6 +17,7 @@ class AmoTransfer extends BaseController{
     public function find(){
         
         $return = [];
+        
         $unprosessed = $this->getUnprossesLeadsId();
         $return['name'] = $unprosessed->getName();
         $return['price'] = $unprosessed->getPrice();
