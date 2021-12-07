@@ -54,6 +54,7 @@ class AmoTransfer extends BaseController{
             foreach ($leadContacts as $k => $contact) {
                 $c = $this->apiClient->contacts()->getOne($contact->getId());
                 $return['contacts'][$k]['name'] = $c->getName();
+                $return['contacts'][$k]['created_at'] = $c->getCreatedAt();
                 $fields_c = $c->getCustomFieldsValues();
                 if(!empty($fields_c)){
                     $phones = $fields_c->getBy('fieldCode', 'PHONE');
@@ -74,7 +75,7 @@ class AmoTransfer extends BaseController{
         }
         $tasksFilter = new \AmoCRM\Filters\TasksFilter();
         $tasksFilter->setEntityIds($unprosessed->getId());
-//        $tasksFilter->setIsCompleted(false);
+        $tasksFilter->setIsCompleted(false);
         $tasksFilter->setEntityType(2);
         $task_collection = $this->apiClient->tasks()->get($tasksFilter);
         if(!empty($task_collection)){
@@ -86,8 +87,10 @@ class AmoTransfer extends BaseController{
 //            $return['tasks'] = $task_collection;
         }
 
-
-        print_r($return);
+        // sending to rmanager
+        $client = \Config\Services::curlrequest();
+        $response = $client->request('POST', 'https://r-manager.com.ua/api/transfer', $return);
+        print_r($response);
     }
 
 
