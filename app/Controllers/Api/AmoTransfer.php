@@ -20,6 +20,29 @@ class AmoTransfer extends BaseController{
         $unprosessed = $this->getUnprossesLeadsId();
         $return['name'] = $unprosessed->getName();
         $return['price'] = $unprosessed->getPrice();
+        $return['responsible'] = $unprosessed->getResponsibleUserId();
+        $return['created_at'] = $unprosessed->getCreatedAt();
+        $return['status'] = $unprosessed->getStatusId();
+        $lead_custom_f = $unprosessed->getCustomFieldsValues();
+        if(!empty($lead_custom_f)){
+            // rooms
+            $rooms = $lead_custom_f->getBy('fieldId', 580767);
+            if($rooms){
+                $return['custom_fields']['rooms'] = $rooms->getValues();
+            }
+            // status
+            $status = $lead_custom_f->getBy('fieldId', 580771);
+            if($status){
+                $return['custom_fields']['status'] = $status->getValues();
+            }
+            // condition
+            $condition = $lead_custom_f->getBy('fieldId', 580773);
+            if($condition){
+                $return['custom_fields']['condition'] = $condition->getValues();
+            }
+            
+        }
+        
         print_r($return);
         print_r($unprosessed);
         $notes = $this->getNotesBylead($unprosessed->getId());
