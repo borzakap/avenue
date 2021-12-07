@@ -56,7 +56,10 @@ class AmoTransfer extends BaseController{
                 $return['contacts'][$k]['name'] = $contact->getName();
                 $fields_c = $c->getCustomFieldsValues();
                 if(!empty($fields_c)){
-                    $return['contacts'][$k]['phones'] = $fields_c->getBy('fieldCode', 'PHONE');
+                    $phones = $fields_c->getBy('fieldCode', 'PHONE');
+                    if(!empty($phones)){
+                        $return['contacts'][$k]['phones'] = $phones->getValues();
+                    }
                 }
                 print_r($c);
             }
