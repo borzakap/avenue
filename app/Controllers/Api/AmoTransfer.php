@@ -78,7 +78,12 @@ class AmoTransfer extends BaseController{
         $tasksFilter->setEntityType(2);
         $task_collection = $this->apiClient->tasks()->get($tasksFilter);
         if(!empty($task_collection)){
-            $return['tasks'] = $task_collection;
+            foreach($task_collection as $k => $task){
+                $return['tasks'][$k]['created_at'] = $task->getCreatedAt(); 
+                $return['tasks'][$k]['text'] = $task->getText(); 
+                $return['tasks'][$k]['complete_till'] = $task->getCompleteTill(); 
+            }
+//            $return['tasks'] = $task_collection;
         }
 
 
