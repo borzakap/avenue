@@ -70,7 +70,6 @@ class AmoTransfer extends BaseController{
                         }
                     }
                 }
-                print_r($c);
             }
         }
         $tasksFilter = new \AmoCRM\Filters\TasksFilter();
