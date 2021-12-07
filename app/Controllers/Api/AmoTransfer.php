@@ -49,14 +49,16 @@ class AmoTransfer extends BaseController{
                 $return['notes'][$k]['created_at'] = $note->createdAt;
             }
         }
-        
-        print_r($return);
-        print_r($unprosessed);
         $leadContacts = $unprosessed->getContacts();
-        foreach ($leadContacts as $contact){
-            $contact = $this->apiClient->contacts()->getOne($contact->getId());
-            print_r($contact);
+        if (!empty($leadContacts)) {
+            foreach ($leadContacts as $k => $contact) {
+                $contact = $this->apiClient->contacts()->getOne($contact->getId());
+                $return['contacts'][$k]['name'] = $contact->getName();
+                print_r($contact);
+            }
         }
+
+        print_r($return);
     }
 
 
