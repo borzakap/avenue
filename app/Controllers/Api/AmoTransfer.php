@@ -62,6 +62,12 @@ class AmoTransfer extends BaseController{
                             $return['contacts'][$k]['phones'][$k] = $ph->getValue();
                         }
                     }
+                    $emails = $fields_c->getBy('fieldCode', 'EMAIL');
+                    if(!empty($emails)){
+                        foreach($emails->getValues() as $k => $em){
+                            $return['contacts'][$k]['emails'][$k] = $em->getValue();
+                        }
+                    }
                 }
                 print_r($c);
             }
