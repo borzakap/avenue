@@ -54,6 +54,10 @@ class AmoTransfer extends BaseController{
             foreach ($leadContacts as $k => $contact) {
                 $contact = $this->apiClient->contacts()->getOne($contact->getId());
                 $return['contacts'][$k]['name'] = $contact->getName();
+                $fields_c = $contact->getCustomFieldsValues();
+                if(empty($fields_c)){
+                    $return['contacts'][$k]['phones'] = $fields_c->getBy('fieldCode', 'PHONE');
+                }
                 print_r($contact);
             }
         }
