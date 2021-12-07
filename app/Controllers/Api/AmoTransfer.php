@@ -72,6 +72,15 @@ class AmoTransfer extends BaseController{
                 print_r($c);
             }
         }
+        $tasksFilter = new \AmoCRM\Filters\TasksFilter();
+        $tasksFilter->setEntityIds($unprosessed->getId());
+//        $tasksFilter->setIsCompleted(false);
+        $tasksFilter->setEntityType(2);
+        $task_collection = $this->apiClient->tasks()->get($tasksFilter);
+        if(!empty($task_collection)){
+            $return['tasks'] = $task_collection;
+        }
+
 
         print_r($return);
     }
