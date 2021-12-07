@@ -7,6 +7,7 @@ use App\Controllers\Api\BaseController;
 use AmoCRM\Filters\LeadsFilter;
 use AmoCRM\Models\LeadModel;
 use AmoCRM\Helpers\EntityTypesInterface;
+use AmoCRM\Exceptions\AmoCRMApiException;
 /**
  * Description of AmoTransfer
  *
@@ -79,8 +80,8 @@ class AmoTransfer extends BaseController{
         $tasksFilter->setEntityType(2);
         try{
             $task_collection = $this->apiClient->tasks()->get($tasksFilter);
-        } catch (\AmoCRM\OAuth2\Client\Provider\AmoCRMException $ex) {
-            if($ex->getCode() != 200){
+        } catch (AmoCRMApiException $ex) {
+            if($ex->getCode() == 204){
                 $task_collection = [];
             }
         }
