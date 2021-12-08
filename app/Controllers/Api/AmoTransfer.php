@@ -76,7 +76,7 @@ class AmoTransfer extends BaseController{
         }
         $tasksFilter = new \AmoCRM\Filters\TasksFilter();
         $tasksFilter->setEntityIds($unprosessed->getId());
-        $tasksFilter->setIsCompleted(false);
+//        $tasksFilter->setIsCompleted(false);
         $tasksFilter->setEntityType(2);
         try{
             $task_collection = $this->apiClient->tasks()->get($tasksFilter);
@@ -90,6 +90,8 @@ class AmoTransfer extends BaseController{
                 $return['tasks'][$k]['created_at'] = $task->getCreatedAt(); 
                 $return['tasks'][$k]['text'] = $task->getText(); 
                 $return['tasks'][$k]['complete_till'] = $task->getCompleteTill(); 
+                $return['tasks'][$k]['completed'] = $task->getIsCompleted(); 
+                $return['tasks'][$k]['relsult'] = $task->getResult(); 
             }
 //            $return['tasks'] = $task_collection;
         }
