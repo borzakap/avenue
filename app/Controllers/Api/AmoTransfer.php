@@ -8,6 +8,10 @@ use AmoCRM\Filters\LeadsFilter;
 use AmoCRM\Models\LeadModel;
 use AmoCRM\Helpers\EntityTypesInterface;
 use AmoCRM\Exceptions\AmoCRMApiException;
+use AmoCRM\Models\CustomFieldsValues\ValueCollections\CheckboxCustomFieldValueCollection;
+use AmoCRM\Models\CustomFieldsValues\CheckboxCustomFieldValuesModel;
+use AmoCRM\Models\CustomFieldsValues\ValueModels\CheckboxCustomFieldValueModel;
+
 /**
  * Description of AmoTransfer
  *
@@ -99,6 +103,9 @@ class AmoTransfer extends BaseController{
         // sending to rmanager
         $client = \Config\Services::curlrequest();
         $response = $client->request('POST', 'https://r-manager.com.ua/api/transfer', ['form_params' => $return]);
+        if($response->getBody()->result == 'ok'){
+            $this->setLeadProssesed($unprosessed->getId());
+        }
         print_r($response->getBody());
     }
 
@@ -106,7 +113,7 @@ class AmoTransfer extends BaseController{
     // finde unprossesed
     private function getUnprossesLeadsId(){
         $filter = new LeadsFilter();
-        $filter->setCustomFieldsValues([412215 => '']);
+        $filter->setCustomFieldsValues([591677 => false]);
         try {
             $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
         } catch (AmoCRMApiException $e) {
@@ -126,13 +133,63 @@ class AmoTransfer extends BaseController{
     }
     
     
-//    private function searchContact(){
-//        try{
-//            return $this->apiClient->contacts()->get()
-//        } catch (Exception $ex) {
-//
-//        }
-//    }
+    private function setLeadProssesed(int $entityIds){
+        try {
+            $lead = $this->apiClient->leads()->getOne($entityIds);
+        } catch (AmoCRMApiException $e) {
+            die(PHP_EOL . $e->getErrorCode());
+        }
+        
+        $customFields = $lead->getCustomFieldsValues();
+        if(empty($customFields)){
+            $customFields = new CustomFieldsValuesCollection();
+        }
+        
+        foreach($customFields as $customField){
+            $vals = $customField->getValues();
+            foreach ($vals as $value){
+                // the length must be < 255
+                $val = $value->getValue();
+                if(strlen($val) > 255){
+                    $val = substr($val, 0, 255);
+                    $value->setValue($val);
+                }
+//                print_r($value->getValue());
+            }
+        }
+        
+
+        $prossesed_field = $customFields->getBy('fieldId', 591677);
+        if(empty($prossesed_field)){
+            $prossesed_field = (new CheckboxCustomFieldValuesModel())->setFieldId(591677);
+            $customFields->add($prossesed_field);
+        }
+        
+        $prossesed_field->setValues(
+        (new CheckboxCustomFieldValueCollection())
+            ->add(
+                (new CheckboxCustomFieldValueModel())
+                    ->setValue(true)
+            )
+        );
+        
+        $lead->setCustomFieldsValues($customFields);
+
+        $active_amo_users = [2267560, 2780884, 2843521, 2963260, 3481210];
+        if(!in_array($lead->getCreatedBy(), $active_amo_users)){
+            $lead->setCreatedBy(0);
+        }
+        if(!in_array($lead->getUpdatedBy(), $active_amo_users)){
+            $lead->setUpdatedBy(0);
+        }
+        
+        try{
+            $this->apiClient->leads()->updateOne($lead);
+        } catch (AmoCRMApiException $e){
+            print_r($e->getLastRequestInfo());
+            die(PHP_EOL . 'Updated lead prossesed N ' . $entityIds . ' ' . $e->getErrorCode() . ' ' . $e->getMessage());
+        }
+    }
     
     
     //put your code here
