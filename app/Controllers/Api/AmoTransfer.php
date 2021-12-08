@@ -103,7 +103,7 @@ class AmoTransfer extends BaseController{
         // sending to rmanager
         $client = \Config\Services::curlrequest();
         $response = $client->request('POST', 'https://r-manager.com.ua/api/transfer', ['form_params' => $return]);
-        if($response->getBody()->result == 'ok'){
+        if($response){
             $this->setLeadProssesed($unprosessed->getId());
         }
         print_r($response->getBody());
