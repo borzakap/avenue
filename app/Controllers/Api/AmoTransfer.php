@@ -130,6 +130,9 @@ class AmoTransfer extends BaseController{
             $notes = $this->apiClient->notes(EntityTypesInterface::LEADS);
             return $notes->getByParentId($id, (new NotesFilter())->setNoteTypes([NoteFactory::NOTE_TYPE_CODE_COMMON]));
         } catch (AmoCRMApiException $e) {
+            if($e->getCode() == 204){
+                return [];
+            }
             die(PHP_EOL . $e->getTraceAsString());
         }
     }
