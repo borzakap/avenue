@@ -119,7 +119,7 @@ class AmoTransfer extends BaseController{
         try {
             $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
         } catch (AmoCRMApiException $e) {
-            die(PHP_EOL . $e->getErrorCode());
+            die(PHP_EOL . $e->getTraceAsString());
         }
         return $lead;
     }
@@ -130,7 +130,7 @@ class AmoTransfer extends BaseController{
             $notes = $this->apiClient->notes(EntityTypesInterface::LEADS);
             return $notes->getByParentId($id, (new NotesFilter())->setNoteTypes([NoteFactory::NOTE_TYPE_CODE_COMMON]));
         } catch (AmoCRMApiException $e) {
-            die(PHP_EOL . $e->getErrorCode());
+            die(PHP_EOL . $e->getTraceAsString());
         }
     }
     
@@ -139,7 +139,7 @@ class AmoTransfer extends BaseController{
         try {
             $lead = $this->apiClient->leads()->getOne($entityIds);
         } catch (AmoCRMApiException $e) {
-            die(PHP_EOL . $e->getErrorCode());
+            die(PHP_EOL . $e->getTraceAsString());
         }
         
         $customFields = $lead->getCustomFieldsValues();
