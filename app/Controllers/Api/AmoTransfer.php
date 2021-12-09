@@ -132,8 +132,9 @@ class AmoTransfer extends BaseController{
         } catch (AmoCRMApiException $e) {
             if($e->getCode() == 204){
                 return [];
+            }else{
+                die(PHP_EOL . $e->getErrorCode() . ' ' . $e->getMessage() . ' ' . $e->getTraceAsString());
             }
-            die(PHP_EOL . $e->getTraceAsString());
         }
     }
     
