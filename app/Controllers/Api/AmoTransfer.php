@@ -12,7 +12,8 @@ use AmoCRM\Models\CustomFieldsValues\ValueCollections\CheckboxCustomFieldValueCo
 use AmoCRM\Models\CustomFieldsValues\CheckboxCustomFieldValuesModel;
 use AmoCRM\Models\CustomFieldsValues\ValueModels\CheckboxCustomFieldValueModel;
 use AmoCRM\Collections\CustomFieldsValuesCollection;
-
+use AmoCRM\Filters\NotesFilter;
+use AmoCRM\Models\Factories\NoteFactory;
 /**
  * Description of AmoTransfer
  *
@@ -127,7 +128,7 @@ class AmoTransfer extends BaseController{
     private function getNotesBylead(int $id){
         try{
             $notes = $this->apiClient->notes(EntityTypesInterface::LEADS);
-            return $notes->getByParentId($id);
+            return $notes->getByParentId($id, (new NotesFilter())->setNoteTypes([NoteFactory::NOTE_TYPE_CODE_COMMON, NoteFactory::NOTE_TYPE_CODE_SERVICE_MESSAGE]));
         } catch (AmoCRMApiException $e) {
             die(PHP_EOL . $e->getErrorCode());
         }
