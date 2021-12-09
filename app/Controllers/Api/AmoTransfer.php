@@ -128,7 +128,7 @@ class AmoTransfer extends BaseController{
     private function getNotesBylead(int $id){
         try{
             $notes = $this->apiClient->notes(EntityTypesInterface::LEADS);
-            return $notes->getByParentId($id, (new NotesFilter())->setNoteTypes([NoteFactory::NOTE_TYPE_CODE_COMMON, NoteFactory::NOTE_TYPE_CODE_SERVICE_MESSAGE]));
+            return $notes->getByParentId($id, (new NotesFilter())->setNoteTypes([NoteFactory::NOTE_TYPE_CODE_COMMON]));
         } catch (AmoCRMApiException $e) {
             die(PHP_EOL . $e->getErrorCode());
         }
