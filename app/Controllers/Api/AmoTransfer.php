@@ -123,7 +123,7 @@ class AmoTransfer extends BaseController{
             $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
             print_r($lead);
         } catch (AmoCRMApiException $e) {
-            die(PHP_EOL . $e->getTraceAsString());
+            die(PHP_EOL . $e->getErrorCode() . ' ' . $e->getMessage());
         }
         return $lead;
     }
