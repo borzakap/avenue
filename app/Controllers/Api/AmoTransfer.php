@@ -115,7 +115,7 @@ class AmoTransfer extends BaseController{
     // finde unprossesed
     private function getUnprossesLeadsId(){
         $filter = new LeadsFilter();
-        $filter->setCustomFieldsValues([591677 => 0]);
+        $filter->setCustomFieldsValues([591677 => 'N']);
         print_r($filter);
         try {
             $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
