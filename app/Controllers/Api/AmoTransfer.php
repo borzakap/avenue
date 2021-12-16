@@ -116,6 +116,7 @@ class AmoTransfer extends BaseController{
     private function getUnprossesLeadsId(){
         $filter = new LeadsFilter();
         $filter->setCustomFieldsValues([591677 => 0]);
+        $filter->setOrder('createdAt', \AmoCRM\Filters\Interfaces\HasOrderInterface::SORT_DESC);
         print_r($filter);
         try {
             $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
