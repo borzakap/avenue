@@ -116,6 +116,7 @@ class AmoTransfer extends BaseController{
     private function getUnprossesLeadsId(){
         $filter = new LeadsFilter();
         $filter->setCustomFieldsValues([591677 => 0]);
+        print_r($filter);
         try {
             $lead = $this->apiClient->leads()->get($filter, [LeadModel::CONTACTS])->first();
         } catch (AmoCRMApiException $e) {
@@ -175,7 +176,7 @@ class AmoTransfer extends BaseController{
         (new CheckboxCustomFieldValueCollection())
             ->add(
                 (new CheckboxCustomFieldValueModel())
-                    ->setValue(1)
+                    ->setValue(true)
             )
         );
         
