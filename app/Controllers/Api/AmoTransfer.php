@@ -115,7 +115,7 @@ class AmoTransfer extends BaseController{
     // finde unprossesed
     private function getUnprossesLeadsId(){
         $filter = new LeadsFilter();
-        $filter->setCreatedAt(time());
+        $filter->setCreatedBy(0);
         $filter->setCustomFieldsValues([591677 => 0]);
         $filter->setOrder('createdAt', \AmoCRM\Filters\Interfaces\HasOrderInterface::SORT_DESC);
         print_r($filter);
