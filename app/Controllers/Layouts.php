@@ -24,10 +24,12 @@ class Layouts extends BaseController{
             throw PageNotFoundException::forPageNotFound();
         }
         $this->data['layout'] = $layout->withSection()->withPlan()->withFloorImage()->withPlanImage();
-        $this->data['meta_title'] = $this->data['layout']->meta_title;
-        $this->data['meta_description'] = $this->data['layout']->meta_description;
+        $this->data['meta_title'] = $layout->meta_title;
+        $this->data['meta_description'] = $layout->meta_description;
         // breadcrumb
-        $this->data['breadcrumbs'][] = ['url' => route_to('layouts-section', $layout->plan->slug), 'title' => lang('Site.Breadcrumbs.Sectiones')];
+        $this->data['breadcrumbs'][] = ['url' => route_to('layouts-genplan', $layout->plan->slug), 'title' => $layout->section->title];
+        $this->data['breadcrumbs'][] = ['url' => route_to('layout-view', $layout->slug), 'title' => $layout->title];
+        
         return view('site/layouts/layout', $this->data);
     }
 
@@ -66,6 +68,9 @@ class Layouts extends BaseController{
         $this->data['meta_description'] = $residential->meta_description;
         $this->data['floors'] = model(PlansImagesModel::class)->getPlanLayouts($residential->id);
         $this->data['genplan'] = $residential->withSections()->withPlans();
+        // breadcrumb
+        $this->data['breadcrumbs'][] = ['url' => route_to('layouts-genplan', $residential->slug), 'title' => $residential->title];
+
         return view('site/layouts/genplan', $this->data);
     }
 
@@ -90,6 +95,9 @@ class Layouts extends BaseController{
         $this->data['rooms'] = model(LayoutsModel::class)->getRoomsListFilter();
         $this->data['floors'] = model(FloorsImagesModel::class)->getFloorsLayoutsFilter();
         $this->data['sections'] = model(SectionsModel::class)->getSectionsListFilter($residential->id);
+        // breadcrumb
+        $this->data['breadcrumbs'][] = ['url' => route_to('layouts-genplan', $residential->slug), 'title' => $residential->title];
+
         if ($this->request->getMethod() !== 'post') {
             $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), $this->request->getGet());
             $this->data['pager'] = model(LayoutsModel::class)->pager;
@@ -117,6 +125,8 @@ class Layouts extends BaseController{
         $this->data['residential'] = $residential;
         $this->data['meta_title'] = $residential->meta_title;
         $this->data['meta_description'] = $residential->meta_description;
+        // breadcrumb
+        $this->data['breadcrumbs'][] = ['url' => route_to('layouts-genplan', $residential->slug), 'title' => $residential->title];
         $wished = ['ids' => explode(',', $this->request->getCookie('layoutsfav'))];
         if ($this->request->getMethod() !== 'post') {
             $this->data['layouts'] = model(LayoutsModel::class)->getList($this->request->getLocale(), $wished);

@@ -7,14 +7,17 @@ return [
             'About' => 'О нас',
             'Contact' => 'Контакты',
             'Layouts' => 'Планировки',
-            'LayoutsGenplan' => 'На плане',
-            'LayoutsMenuSet' => 'Квартиры',
-            'LayoutsFilter' => 'Фильтр',
-            'LayoutsWishlist' => 'Избранные',
+            'LayoutsGenplan' => 'Смотреть на плане',
+            'LayoutsMenuSet' => 'Планировки',
+            'LayoutsFilter' => 'Выбор по параметрам',
+            'LayoutsWishlist' => 'Понравившиеся вам',
             'CommerceGenplan' => 'Коммерция',
             'Prefs' => 'Преимущества',
             'Qoute' => 'Обратная связь',
         ],
+    ],
+    'Breadcrumb' => [
+        'Home' => 'Главная',
     ],
     'Layouts' => [
         'Dt' => [

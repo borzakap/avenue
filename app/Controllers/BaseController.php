@@ -65,7 +65,7 @@ class BaseController extends Controller {
             'Instagram' => 'https://www.instagram.com/idilika_avenue/',
             'Youtube' => 'https://www.youtube.com/channel/UCqFKJu9dEZmmg2NzJXgGbgw',
         ];
-        $this->data['breadcrumbs'][] = ['url' => route_to('site_home'), 'title' => lang('Home')];
+        $this->data['breadcrumbs'][] = ['url' => route_to('site_home'), 'title' => lang('Site.Breadcrumb.Home')];
         
 
         //--------------------------------------------------------------------

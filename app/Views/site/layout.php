@@ -32,7 +32,7 @@
             gtag('js', new Date());
             gtag('config', 'UA-68275464-10');
         </script>
-        <script src="//code.jivosite.com/widget/KlsLfikVEM" async></script>
+        <script src="//code-eu1.jivosite.com/widget/lWR2LJZlyK" async></script><!-- comment -->        
         <!-- Marquiz script start -->
         <script>
             (function (w, d, s, o) {
