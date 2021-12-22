@@ -48,6 +48,11 @@ class AmoTransfer extends BaseController{
             if($condition){
                 $return['custom_fields']['condition'] = $condition->getValues();
             }
+            // condition
+            $prosessed = $lead_custom_f->getBy('fieldId', 591677);
+            if($condition){
+                return false;
+            }
         }
         $notes = $this->getNotesBylead($unprosessed->getId());
         if(!empty($notes)){
