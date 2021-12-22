@@ -50,7 +50,7 @@ class AmoTransfer extends BaseController{
             }
             // condition
             $prosessed = $lead_custom_f->getBy('fieldId', 591677);
-            if($condition){
+            if($prosessed){
                 return false;
             }
         }
