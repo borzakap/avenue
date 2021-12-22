@@ -51,6 +51,7 @@ class AmoTransfer extends BaseController{
             // condition
             $prosessed = $lead_custom_f->getBy('fieldId', 591677);
             if($prosessed){
+                $this->setLeadProssesed($unprosessed->getId());
                 return false;
             }
         }
