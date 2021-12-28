@@ -13,7 +13,7 @@
     <div class="w-100 pt-50 pb-50 position-relative">
         <div class="container">
             <div class="row">
-                <?= view('App\Views\site\progress\_greed') ?>
+                <?= view('App\Views\site\discounts\_greed') ?>
             </div>
             <div class="pagination-wrap d-flex flex-wrap justify-content-center w-100" id="layouts_pagination">
                 <?= $pager->links() ?>

@@ -38,6 +38,8 @@
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'flats') echo ' active' ?>" href="<?= route_to('flats') ?>"><?=lang('Sidebar.Residentials.Flats') ?></a>
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'commerce') echo ' active' ?>" href="<?= route_to('commerce') ?>"><?=lang('Sidebar.Residentials.Commerce') ?></a>
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'infrastructure') echo ' active' ?>" href="<?= route_to('infrastructure') ?>"><?=lang('Sidebar.Residentials.Infrastructure') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'progress') echo ' active' ?>" href="<?= route_to('progress') ?>"><?=lang('Sidebar.Residentials.Progress') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'discounts') echo ' active' ?>" href="<?= route_to('discounts') ?>"><?=lang('Sidebar.Residentials.Discounts') ?></a>
             </div>
         </div>
     </li>
