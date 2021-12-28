@@ -65,10 +65,13 @@ class ProgressModel extends Model implements TranslationInterface{
      * @return object|null
      */
     public function getBySlug(string $slug, string $language): ?object {
-        return $this->select('progress.*, progress_translation.title, progress_translation.meta_title, progress_translation.description, progress_translation.meta_description, progress_translation.language')
+        return $this->select('progress.*, progress_translation.title, progress_translation.meta_title, progress_translation.description, progress_translation.meta_description, progress_translation.language, residentials.slug as residential_slug, residentials_translation.title as residential_title')
                         ->join('progress_translation', 'progress_translation.progress_id = progress.id', 'inner')
+                        ->join('residentials', 'residentials.id = progress.residential_id', 'inner')
+                        ->join('residentials_translation', 'residentials_translation.residential_id = residentials.id', 'inner')
                         ->where('progress.slug', $slug)
                         ->where('progress_translation.language', $language)
+                        ->where('residentials_translation.language', $language)
                         ->first();
     }
 

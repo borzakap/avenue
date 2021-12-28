@@ -25,12 +25,12 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Residential -->
-    <li class="nav-item<?php if(in_array($current_url->getSegment(2), ['residentials', 'sections', 'layouts', 'flats', 'commerce', 'infrastructure'])) echo ' active' ?>">
+    <li class="nav-item<?php if(in_array($current_url->getSegment(2), ['residentials', 'sections', 'layouts', 'flats', 'commerce', 'infrastructure','progress','discounts'])) echo ' active' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResidentials" aria-expanded="true" aria-controls="collapseResidentials">
             <i class="fas fa-fw fa-building"></i>
             <span><?=lang('Sidebar.Residentials.BlockHeading') ?></span>
         </a>
-        <div id="collapseResidentials" class="collapse<?php if(in_array($current_url->getSegment(2), ['residentials', 'sections', 'layouts', 'flats', 'commerce', 'infrastructure'])) echo ' show' ?>" aria-labelledby="headingResidentials" data-parent="#accordionSidebar">
+        <div id="collapseResidentials" class="collapse<?php if(in_array($current_url->getSegment(2), ['residentials', 'sections', 'layouts', 'flats', 'commerce', 'infrastructure','progress','discounts'])) echo ' show' ?>" aria-labelledby="headingResidentials" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner">
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'residentials') echo ' active' ?>" href="<?= route_to('residentials') ?>"><?=lang('Sidebar.Residentials.Residentials') ?></a>
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(2) == 'sections') echo ' active' ?>" href="<?= route_to('sections') ?>"><?=lang('Sidebar.Residentials.Sections') ?></a>

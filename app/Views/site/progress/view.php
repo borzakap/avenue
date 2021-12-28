@@ -35,7 +35,7 @@
                             </li>
                             <?php endforeach; ?>
                             <li>
-                                <a class="progress-readmore" href="<?= route_to('App\Controllers\Progress::list', 'default') ?>"><?= lang('ddd') ?></a>
+                                <a class="progress-readmore" href="<?= route_to('App\Controllers\Progress::list', 'default') ?>"><?= lang('Site.Progress.ViewMore') ?></a>
                             </li>
                         </ul>
                     </nav>

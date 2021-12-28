@@ -18,6 +18,7 @@ return [
     ],
     'Breadcrumb' => [
         'Home' => 'Главная',
+        'Progress' => 'Ход строительства',
     ],
     'Layouts' => [
         'Dt' => [
@@ -146,5 +147,7 @@ return [
     'Discounts' => [
         'DateTo' => 'до {date} г.',
     ],
-    
+    'Progress' => [
+        'ViewMore' => 'Больше отчетов',
+    ],
 ];
