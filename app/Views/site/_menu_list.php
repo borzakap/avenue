@@ -1,5 +1,10 @@
 <li><a href="<?= route_to('App\Controllers\Pages::index') ?>#home"><?= lang('Site.Menue.Main.Home') ?></a></li>
-<li><a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a></li>
+<li class="menu-item-has-children">
+    <a href="<?= route_to('App\Controllers\Pages::index') ?>#about"><?= lang('Site.Menue.Main.About') ?></a>
+    <ul class="mb-0 list-unstyled">
+        <li><a href="<?= route_to('App\Controllers\Progress::list', 'default') ?>" title=""><?= lang('Site.Menue.Main.Progress') ?></a></li>
+    </ul>
+</li>
 <li class="menu-item-has-children">
     <a href="javascript:void(0);"><?= lang('Site.Menue.Main.LayoutsMenuSet') ?></a>
     <ul class="mb-0 list-unstyled">

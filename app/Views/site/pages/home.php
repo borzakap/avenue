@@ -7,11 +7,10 @@
 
 
 <?= $this->section('main') ?>
-<a id="home"></a>
 <?= view('App\Views\site\pages\home\_header') ?>
 
 <?= view('App\Views\site\pages\home\_bullets') ?>
-
+<a id="about"></a>
 <?= view('App\Views\site\pages\home\_coworking') ?>
 
 <?= view('App\Views\site\pages\home\_video') ?>

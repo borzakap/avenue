@@ -14,6 +14,7 @@ return [
             'CommerceGenplan' => 'Коммерция',
             'Prefs' => 'Преимущества',
             'Qoute' => 'Обратная связь',
+            'Progress' => 'Ход строительства',
         ],
     ],
     'Breadcrumb' => [

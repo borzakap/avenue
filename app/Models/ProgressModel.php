@@ -83,7 +83,8 @@ class ProgressModel extends Model implements TranslationInterface{
     public function getList(string $language, array $params = []): ?array {
         $list = $this->select('progress.*, progress_translation.title, progress_translation.meta_title, progress_translation.description, progress_translation.meta_description, progress_translation.language')
                         ->join('progress_translation', 'progress_translation.progress_id = progress.id', 'inner')
-                        ->where('progress_translation.language', $language);
+                        ->where('progress_translation.language', $language)
+                        ->orderBy('progressed_at', 'DESC');
         if(isset($params['residential_id'])){
             $list->where('residential_id', $params['residential_id']);
         }
