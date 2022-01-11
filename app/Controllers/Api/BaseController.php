@@ -464,7 +464,7 @@ class BaseController extends ResourceController {
                 ->setCreatedAt(Time::now()->getTimestamp())
                 ->setMetadata($formMetadata)
                 ->setLead($unsortedLead)
-                ->setPipelineId($this->amoConf->piplineId)
+//                ->setPipelineId($this->amoConf->piplineId)
                 ->setContacts($unsortedContactsCollection);
 
         $formsUnsortedCollection = new FormsUnsortedCollection();
