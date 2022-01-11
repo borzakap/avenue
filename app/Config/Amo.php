@@ -28,7 +28,7 @@ class Amo extends BaseConfig {
      * amo redirect url
      * @var string
      */
-    public $redirectUri = 'https://avenue.idilika.com.ua/api/token';
+    public $redirectUri = 'https://r-manager.com.ua/api/token';
 
     /**
      * amo Authorization code
