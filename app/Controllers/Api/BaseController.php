@@ -475,8 +475,7 @@ class BaseController extends ResourceController {
 //            log_message('error', '[INFO] {add_unsorted_log}', ['add_unsorted_log' => $add_unsorted_log]);
             return $add_unsorted_log;
         } catch (AmoCRMApiException $e) {
-            log_message('error', var_dump($e->getLastRequestInfo()));
-//            log_message('error', '[ERROR] {exception} {trase}', ['exception' => $e, 'trase' => var_dump($e->getLastRequestInfo())]);
+            log_message('error', '[ERROR] {exception} {trase}', ['exception' => $e, 'trase' => $e->getTraceAsString()]);
             return false;
         }
     }
