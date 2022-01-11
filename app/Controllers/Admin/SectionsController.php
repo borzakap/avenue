@@ -57,7 +57,10 @@ class SectionsController extends BaseController{
         $this->breadcrumb->add(lang('Breadcrumb.Admin.SectionUpdate'), '/admin/sections/update');
         // verify if request method is not POST
         if ($this->request->getMethod() === 'post') {
-            
+            if (model(SectionsModel::class)->updateItem($id, $this->request->getPost())) {
+                return redirect()->route('section_update', [$id])->with('message', lang('Admin.Messages.Insertatiton'));
+            }
+            return redirect()->back()->withInput()->with('errors', model(SectionsModel::class)->errors());
         }
         $data = [
             'languages' => config(App::class)->supportedLocales,

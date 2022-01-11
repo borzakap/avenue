@@ -108,7 +108,8 @@ class DiscountsModel extends Model implements TranslationInterface {
                 ->join('discounts_translation', 'discounts_translation.discount_id = discounts.id', 'inner')
                 ->join('discounts_meta', 'discounts_meta.discount_id = discounts.id', 'inner')
                 ->where('discounts_meta.entity_type', 'residential')
-                ->where('discounts_translation.language', $language);
+                ->where('discounts_translation.language', $language)
+                ->orderBy('discounts_meta.date_to', 'DESC');
         return $items->paginate();
     }
 

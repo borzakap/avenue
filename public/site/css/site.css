@@ -1,6 +1,6 @@
 /*!
  * Idilika Avenue -  v1.1.0 (https://avenue.idilika.com.ua)
- * Copyright 2021-2021 borzakap
+ * Copyright 2021-2022 borzakap
  */
 
 @charset "UTF-8";
@@ -11812,7 +11812,7 @@ img {
   z-index: 1;
   font-size: 1rem;
   font-weight: 600;
-  padding: 1.05rem 2.8rem;
+  padding: 1.05rem 1.8rem;
   overflow: hidden;
   vertical-align: middle;
   text-transform: uppercase;

@@ -14,4 +14,4 @@
     </ul>
 </li>
 <li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>
-<li><a href="<?= route_to('App\Controllers\Pages::index') ?>#prefs"><?= lang('Site.Menue.Main.Prefs') ?></a></li>
+<li><a href="<?= route_to('App\Controllers\Discounts::list', 'default') ?>"><?= lang('Site.Menue.Main.Discounts') ?></a></li>

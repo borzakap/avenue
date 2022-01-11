@@ -21,7 +21,7 @@ class SectionsModel extends Model implements TranslationInterface{
     protected $deletedField = 'deleted_at';
     // Validation
     protected $validationRules = [
-        'slug' => 'required|min_length[5]|max_length[15]|alpha_dash|is_unique[sections.slug,id,{id}]',
+        'slug' => 'required|min_length[2]|max_length[20]|alpha_dash|is_unique[sections.slug,id,{id}]',
     ];
     protected $validationMessages = [
         'slug' => [

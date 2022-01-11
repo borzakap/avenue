@@ -15,11 +15,13 @@ return [
             'Prefs' => 'Переваги',
             'Qoute' => 'Зворотній зв\'звязок',
             'Progress' => 'Хід будівництва',
+            'Discounts' => 'Акції',
         ],
     ],
     'Breadcrumb' => [
         'Home' => 'Головна',
         'Progress' => 'Хід будівництва',
+        'Discounts' => 'Акції',
     ],
     'Layouts' => [
         'Dt' => [
