@@ -49,7 +49,7 @@ class ClientsRequestsController extends BaseController {
      */
     private function prepareData(): void{
         // set amoservice vars
-        $this->amoService->setFormId('AvenueIdilika');
+        $this->amoService->setFormId('site_form');
         $this->amoService->setFormName(lang('Api.Titles.FormNameFromSite'));
         $this->amoService->setLeadName(lang('Api.Titles.LeadNameFromSite'));
         $this->amoService->setContactName($this->request->getPost('name', FILTER_SANITIZE_STRING));
