@@ -57,6 +57,7 @@ $routes->group('console', ['filter' => 'role:superadmin,content_manager,sales_he
         $routes->get('', 'Admin\DiscountsController::list', ['as' => 'discounts']);
         $routes->match(['get', 'post'], 'create', 'Admin\DiscountsController::create', ['as' => 'discounts_create']);
         $routes->match(['get', 'post'], 'update/(:num)', 'Admin\DiscountsController::update/$1', ['as' => 'discounts_update']);
+        $routes->get('delete/(:num)', 'Admin\DiscountsController::delete/$1', ['as' => 'discounts_delete']);
         $routes->post('files', 'Admin\DiscountsController::files', ['as' => 'discounts_files']);
     });
     // infrastructure

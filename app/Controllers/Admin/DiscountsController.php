@@ -57,6 +57,24 @@ class DiscountsController extends BaseController {
     }
     
     /**
+     * deleate item
+     * @param int $id
+     */
+    public function delete(int $id){
+        if(false !== model(DiscountsModel::class)->delete($id)){
+            return redirect()->route('discounts')->with('message', lang('Console.Messages.Deleted'));
+        }
+        return redirect()->back()->withInput()->with('errors', model(DiscountsModel::class)->errors());
+    }
+
+
+
+
+
+
+
+
+    /**
      * save images
      * @return object
      */
