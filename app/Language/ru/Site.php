@@ -112,7 +112,7 @@ return [
             'FlatsCount' => 'Квартир в доме',
             'FloorsCount' => 'Этажей',
             'HousesCount' => 'Дом',
-            'FeeCount' => 'Года рассрочки',
+            'FeeCount' => 'Месяцев рассрочки',
         ],
         'News' => [
             'BeforeTitle' => 'Планировки',
