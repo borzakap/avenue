@@ -32,9 +32,9 @@
             gtag('js', new Date());
             gtag('config', 'UA-68275464-10');
         </script>
-        <script src="//code-eu1.jivosite.com/widget/lWR2LJZlyK" async></script><!-- comment -->        
+<!--        <script src="//code-eu1.jivosite.com/widget/lWR2LJZlyK" async></script> comment         -->
         <!-- Marquiz script start -->
-        <script>
+<!--        <script>
             (function (w, d, s, o) {
                 var j = d.createElement(s);
                 j.async = true;
@@ -58,7 +58,7 @@
                 disableOnMobile: false
             }
             );
-        </script>
+        </script>-->
         <!-- Marquiz script end -->
         <!-- Facebook Pixel Code -->
         <script>
