@@ -84,7 +84,7 @@ return [
         'FindWishedLayouts' => 'Выбрать',
     ],
     'Slider' => [
-        'Title' => 'Приветствуем! <br>ЖК Idilika Avenue',
+        'Title' => 'ЖК Idilika Avenue<br>Продолжаем строительство!',
         'Description' => 'ЖК Idilika Avenue - это новый и современный жилой комплекс комфорт класса, который станет Вашим лучшим местом проживания.',
     ],
     'Bollets' => [
