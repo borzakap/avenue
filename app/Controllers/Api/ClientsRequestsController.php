@@ -31,10 +31,10 @@ class ClientsRequestsController extends BaseController {
             return $this->response->setJSON($return);
         }
         
-        if(!$this->sendUnsorted()){
-            $return['message'] = lang('Site.Popapform.Messages.Error.AmoError');
-            return $this->response->setJSON($return);
-        }
+//        if(!$this->sendUnsorted()){
+//            $return['message'] = lang('Site.Popapform.Messages.Error.AmoError');
+//            return $this->response->setJSON($return);
+//        }
         
         $this->writeLog();
         
