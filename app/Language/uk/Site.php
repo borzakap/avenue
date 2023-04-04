@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
-        'Title' => 'ЖК Idilika Avenue<br>Продовжуємо будувати!',
-        'Description' => 'ЖК Idilika Avenue — це новий та сучасний житловий комплекс комфорт класу, який стане Вашим кращим місцем проживання.',
+        'Title' => 'Великодні тижні<br>в ЖК Idilika Avenue',
+        'Description' => 'НАЙНИЖЧА ЦІНА ЗА м2 в регіоні - 550$<br>Кількість пропозицій обмежена!',
     ],
     'Bollets' => [
         'Bullet1' => [
