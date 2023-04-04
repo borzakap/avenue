@@ -9,7 +9,7 @@
                             <h2 class="theme-heading-white mb-0"><?= lang('Site.Slider.Title') ?></h2>
                             <p class="mb-0"><?= lang('Site.Slider.Description') ?></p>
                             <div class="feat-cap-innr">
-                                <a href="<?= route_to('App\Controllers\Progress::list', 'default') ?>" class="white-btn" href="#" title=""><?= lang('Site.Buttons.LearnMore') ?><i class="flaticon-arrow-pointing-to-right"></i></a>
+                                <a  data-toggle="modal" data-target="#contact-form-modal" data-type="promo" href="#" class="white-btn" title=""><?= lang('Site.Buttons.LearnMore') ?><i class="flaticon-arrow-pointing-to-right"></i></a>
                             </div>
                         </div>
                     </div>
