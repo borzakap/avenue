@@ -135,6 +135,13 @@
         var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(ctw, sn);
     })(document, window, 'script');
     </script> 
+    <script type="text/javascript">
+        (function(d, w, s) {
+            var widgetHash = 'TNMDDWZMAVxdJXGdZ0dI', bch = d.createElement(s); bch.type = 'text/javascript'; bch.async = true;
+            bch.src = '//widgets.binotel.com/chat/widgets/' + widgetHash + '.js';
+            var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(bch, sn);
+        })(document, window, 'script');
+    </script>
 </body>	
 
 </html>
