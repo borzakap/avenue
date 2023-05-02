@@ -84,7 +84,7 @@ return [
         'FindWishedLayouts' => 'Выбрать',
     ],
     'Slider' => [
-        'Title' => 'Пасхальные недели<br>в ЖК Idilika Avenue',
+        'Title' => 'Жаркие скидки<br>в ЖК Idilika Avenue',
         'Description' => 'САМЫЕ НИЗКИЕ ЦЕНЫ ЗА м2 в регионе - 650$<br>Количество предложений ограничено!',
     ],
     'Bollets' => [

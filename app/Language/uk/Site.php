@@ -85,7 +85,7 @@ return [
         'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
-        'Title' => 'Великодні тижні<br>в ЖК Idilika Avenue',
+        'Title' => 'Спекотні знижки<br>в ЖК Idilika Avenue',
         'Description' => 'НАЙНИЖЧА ЦІНА ЗА м2 в регіоні - 650$<br>Кількість пропозицій обмежена!',
     ],
     'Bollets' => [
