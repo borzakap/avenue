@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
-        'Title' => 'Фінальна стадія будівництва',
-        'Description' => 'Актуальна ціна до кінця вересня - 770$/м2.<br>Встигни придбати до підвищення цін',
+        'Title' => 'The final stage of construction',
+        'Description' => 'Current price until the end of September - 770$/m2.<br>Make sure to buy before the price increases',
     ],
     'Bollets' => [
         'Bullet1' => [
