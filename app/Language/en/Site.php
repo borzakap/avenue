@@ -86,7 +86,7 @@ return [
     ],
     'Slider' => [
         'Title' => 'The final stage of construction',
-        'Description' => 'Current price until the end of September - 770$/m2.<br>Make sure to buy before the price increases',
+        'Description' => 'Розтермінування на 1 рік<br>Перший внесок - від 50%',
     ],
     'Bollets' => [
         'Bullet1' => [
