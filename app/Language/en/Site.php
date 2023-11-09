@@ -131,10 +131,10 @@ return [
     ],
     'Footer' => [
         'TimeOfWorkTitle' => 'Графiк роботи',
-        'TimeOfWorkLineOne' => 'З понеділка по суботу: з 9:00 — 18:00',
-        'TimeOfWorkLineTwo' => 'Неділя: з 10:00 — 18:00 (за домовленістю з клієнтом)',
-        'AddressTitle' => 'Адреса відділу продажів',
-        'AddressLineOne' => 'м. Буча, вул. Шевченка, 26-в',
+        'TimeOfWorkLineOne' => 'Mon-Fri: from 09:00 to 18:00',
+        'TimeOfWorkLineTwo' => 'Sat: from 10:00 to 16:00',
+        'AddressTitle' => 'Address of the sales department',
+        'AddressLineOne' => 'Bucha, st. Shevchenko, 26-v',
     ],
     'Map' => [
         'services' => 'Послуги',
