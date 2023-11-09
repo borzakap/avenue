@@ -8,7 +8,7 @@
             <a href="<?= route_to('App\Controllers\Discounts::view', $item->slug) ?>" title=""><i class="fas fa-search-plus"></i></i></a>
         </div>
         <div class="progress-info col-md-6 col-sm-12 p-2 d-flex flex-wrap align-content-between">
-            <span class="info-pannel mb-2"><?= lang('Site.Discounts.DateTo', ['date' => $item->date_to->toLocalizedString('d MMMM yyyy')]) ?></span>
+            <span class="info-pannel mb-2"><?= $item->date_to_string ?></span>
             <h3 class="mb-0"><a href="<?= route_to('App\Controllers\Progress::view', $item->slug) ?>" title=""><?= $item->title ?></a></h3>
             <a class="thm-btn" href="<?= route_to('App\Controllers\Discounts::view', $item->slug) ?>" title=""><?= lang('Site.Buttons.LearnMore') ?></a>
         </div>

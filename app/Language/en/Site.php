@@ -150,6 +150,8 @@ return [
     ],
     'Discounts' => [
         'DateTo' => 'до {date} р.',
+        'Complated' => 'Completed',
+
     ],
     'Progress' => [
         'ViewMore' => 'Більше звітів',

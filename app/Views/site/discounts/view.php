@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row with-shadow mb-lg-5 mb-0">
                 <div class="col-12 col-lg-4 order-1 order-lg-0 p-4">
-                    <span class="info-pannel"><?= lang('Site.Discounts.DateTo', ['date' => $item->date_to->toLocalizedString('d MMMM yyyy')]) ?></span>
+                    <span class="info-pannel"><?= $item->date_to_string ?></span>
                     <p class="layout-normal-title mt-3"><?= $item->slogan ?></p>
                     <div>
                         <?= view('App\Views\site\_contact_form') ?>

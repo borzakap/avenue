@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use CodeIgniter\Entity\Entity;
+use CodeIgniter\I18n\Time;
 
 /**
  * Description of DiscountsEntity
@@ -32,7 +33,9 @@ class DiscountsEntity extends Entity{
     // update and delete links
     protected $update_link = '';
     protected $delete_link = '';
-    
+    protected $date_to_stirng = '';
+
+
     /**
      * get translations
      * @return self
@@ -58,6 +61,16 @@ class DiscountsEntity extends Entity{
     
     public function getTranslations(): array{
         return $this->translations;
+    }
+    
+    public function getDateToString(): ?string
+    {
+        $this->date_to_stirng  = lang('Site.Discounts.Complated');
+        $now = Time::now();
+        if($now->isBefore($this->date_to)){
+            $this->date_to_stirng = lang('Site.Discounts.DateTo', ['date' => $this->date_to->toLocalizedString('d MMMM yyyy')]);
+        }
+        return $this->date_to_stirng;
     }
 
     /**
