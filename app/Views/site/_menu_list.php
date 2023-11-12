@@ -13,5 +13,10 @@
         <li><a href="<?= route_to('App\Controllers\Layouts::wishlist', 'default') ?>" title=""><?= lang('Site.Menue.Main.LayoutsWishlist') ?></a></li>
     </ul>
 </li>
-<li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>
+<li class="menu-item-has-children">
+    <a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a>
+    <ul class="mb-0 list-unstyled">
+        <li><a href="<?= route_to('App\Controllers\Pages::mall') ?>" title="">Avenue Mall</a></li>
+    </ul>
+</li>
 <li><a href="<?= route_to('App\Controllers\Discounts::list', 'default') ?>"><?= lang('Site.Menue.Main.Discounts') ?></a></li>

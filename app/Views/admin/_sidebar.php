@@ -58,6 +58,7 @@
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'tworoom') echo ' active' ?>" href="<?= route_to('page_update', 'tworoom') ?>"><?=lang('Sidebar.Pages.Tworoom') ?></a>
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'bucha') echo ' active' ?>" href="<?= route_to('page_update', 'bucha') ?>"><?=lang('Sidebar.Pages.Bucha') ?></a>
                 <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'contact') echo ' active' ?>" href="<?= route_to('page_update', 'contact') ?>"><?=lang('Sidebar.Pages.Contact') ?></a>
+                <a class="collapse-item<?php if($current_url->setSilent()->getSegment(4) == 'contact') echo ' active' ?>" href="<?= route_to('page_update', 'mall') ?>"><?=lang('Sidebar.Pages.Mall') ?></a>
             </div>
         </div>
     </li>

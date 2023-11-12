@@ -156,6 +156,7 @@ $routes->group('{locale}', function($routes){
     $routes->match(['get', 'post'], 'tworoom/(:segment)', 'Pages::tworoom/$1', ['as'=>'tworoom-filter']);
     $routes->match(['get', 'post'], 'bucha/(:segment)', 'Pages::bucha/$1', ['as'=>'bucha-filter']);
     $routes->get('contact', 'Pages::contact');
+    $routes->get('mall', 'Pages::mall');
     $routes->group('layouts', function($routes){
         $routes->get('genplan/(:segment)', 'Layouts::genplan/$1', ['as'=>'layouts-genplan']);
         $routes->get('section/(:segment)', 'Layouts::section/$1', ['as'=>'layouts-section']);

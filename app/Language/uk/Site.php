@@ -133,7 +133,7 @@ return [
         'TimeOfWorkTitle' => 'Графiк роботи',
         'TimeOfWorkLineOne' => 'пн-пт: з 09:00 по 18:00',
         'TimeOfWorkLineTwo' => 'сб: з 10:00 по 16:00',
-        'AddressTitle' => 'Адреса відділу продажів',
+        'AddressTitle' => 'Контакти відділу продажів',
         'AddressLineOne' => 'м. Буча, вул. Шевченка, 26-в',
     ],
     'Map' => [

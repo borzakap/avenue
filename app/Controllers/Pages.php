@@ -163,6 +163,44 @@ class Pages extends BaseController {
         $this->data['pager'] = model(LayoutsModel::class)->pager;
         return $this->response->setJSON(['html' => view('site/layouts/_layouts_greed_paged', $this->data)]);
     }
+
+    
+    public function mall(){
+        $this->data['meta_title'] = $this->text->translate('meta_title', 'mall');
+        $this->data['meta_description'] = $this->text->translate('meta_description', 'mall');
+        $this->data['section_about_title'] = $this->text->translate('section_about_title', 'mall');
+        $this->data['section_about_second_title'] = $this->text->translate('section_about_second_title', 'mall');
+        $this->data['section_about_first_subtitle'] = $this->text->translate('section_about_first_subtitle', 'mall');
+        $this->data['section_about_first_subdescription'] = $this->text->translate('section_about_first_subdescription', 'mall');
+        $this->data['section_about_second_subtitle'] = $this->text->translate('section_about_second_subtitle', 'mall');
+        $this->data['section_about_second_subdescription'] = $this->text->translate('section_about_second_subdescription', 'mall');
+        $this->data['section_prefs_first_sub_title'] = $this->text->translate('section_prefs_first_sub_title', 'mall');
+        $this->data['section_prefs_first_sub_description'] = $this->text->translate('section_prefs_first_sub_description', 'mall');
+        $this->data['section_prefs_first_sub_after_description'] = $this->text->translate('section_prefs_first_sub_after_description', 'mall');
+        $this->data['section_prefs_second_sub_title'] = $this->text->translate('section_prefs_second_sub_title', 'mall');
+        $this->data['section_prefs_second_sub_description'] = $this->text->translate('section_prefs_second_sub_description', 'mall');
+        $this->data['section_prefs_second_sub_after_description'] = $this->text->translate('section_prefs_second_sub_after_description', 'mall');
+        $this->data['section_prefs_third_sub_title'] = $this->text->translate('section_prefs_third_sub_title', 'mall');
+        $this->data['section_prefs_third_sub_description'] = $this->text->translate('section_prefs_third_sub_description', 'mall');
+        $this->data['section_prefs_third_sub_after_description'] = $this->text->translate('section_prefs_third_sub_after_description', 'mall');
+        $this->data['section_prefs_fourth_sub_title'] = $this->text->translate('section_prefs_fourth_sub_title', 'mall');
+        $this->data['section_prefs_fourth_sub_description'] = $this->text->translate('section_prefs_fourth_sub_description', 'mall');
+        $this->data['section_prefs_fourth_sub_after_description'] = $this->text->translate('section_prefs_fourth_sub_after_description', 'mall');
+        $this->data['section_faq_title'] = $this->text->translate('section_faq_title', 'mall');
+        $this->data['section_faq_first_sub_title'] = $this->text->translate('section_faq_first_sub_title', 'mall');
+        $this->data['section_faq_first_sub_description'] = $this->text->translate('section_faq_first_sub_description', 'mall');
+        $this->data['section_faq_second_sub_title'] = $this->text->translate('section_faq_second_sub_title', 'mall');
+        $this->data['section_faq_second_sub_description'] = $this->text->translate('section_faq_second_sub_description', 'mall');
+        $this->data['section_faq_third_sub_title'] = $this->text->translate('section_faq_third_sub_title', 'mall');
+        $this->data['section_faq_third_sub_description'] = $this->text->translate('section_faq_third_sub_description', 'mall');
+        $this->data['section_faq_fourth_sub_title'] = $this->text->translate('section_faq_fourth_sub_title', 'mall');
+        $this->data['section_faq_fourth_sub_description'] = $this->text->translate('section_faq_fourth_sub_description', 'mall');
+        $this->data['section_faq_fifth_sub_title'] = $this->text->translate('section_faq_fifth_sub_title', 'mall');
+        $this->data['section_faq_fifth_sub_description'] = $this->text->translate('section_faq_fifth_sub_description', 'mall');
+
+        return view('site/pages/mall', $this->data);
+    }
+
     
     public function contact() {
         return view('site/pages/contact', $this->data);

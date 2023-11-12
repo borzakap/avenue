@@ -21,6 +21,7 @@
                                 <div class="widget w-100">
                                     <h3><?= lang('Site.Footer.AddressTitle') ?></h3>
                                     <p class="mb-0"><?= lang('Site.Footer.AddressLineOne') ?></p>
+                                    <p class="mb-0"><a href="tel:<?= $contact_phone ?>" class="binct-phone-number-1"><?= $contact_phone ?></a></p>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4 col-lg-4">

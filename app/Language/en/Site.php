@@ -133,7 +133,7 @@ return [
         'TimeOfWorkTitle' => 'Графiк роботи',
         'TimeOfWorkLineOne' => 'Mon-Fri: from 09:00 to 18:00',
         'TimeOfWorkLineTwo' => 'Sat: from 10:00 to 16:00',
-        'AddressTitle' => 'Address of the sales department',
+        'AddressTitle' => 'Contacts of the sales department',
         'AddressLineOne' => 'Bucha, st. Shevchenko, 26-v',
     ],
     'Map' => [
