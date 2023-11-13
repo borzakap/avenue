@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
-        'Title' => 'The final stage of construction',
-        'Description' => 'Розтермінування на 1 рік<br>Перший внесок - від 50%',
+        'Title' => 'Black friday<br>5% discount',
+        'Description' => 'For apartments and commerce<br>Only until the end of November',
     ],
     'Bollets' => [
         'Bullet1' => [
