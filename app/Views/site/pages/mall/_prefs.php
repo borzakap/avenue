@@ -1,6 +1,6 @@
 <section>
     <div class="w-100 pt-100 pb-100 blue-layer opc7 position-relative">
-        <div class="fixed-bg" style="background-image: url(/site/images/slider/slider1.jpg);"></div>
+        <div class="fixed-bg" style="background-image: url(/site/images/complex/mall4.jpg);"></div>
         <div class="container">
             <div class="prefs-wrap w-100">
                 <div class="row justify-content-center">

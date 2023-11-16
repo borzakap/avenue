@@ -16,6 +16,7 @@
 <li class="menu-item-has-children">
     <a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a>
     <ul class="mb-0 list-unstyled">
+        <li><a href="<?= route_to('App\Controllers\Commerce::genplan', 'default') ?>"><?= lang('Site.Menue.Main.CommerceGenplan') ?></a></li>
         <li><a href="<?= route_to('App\Controllers\Pages::mall') ?>" title="">Avenue Mall</a></li>
     </ul>
 </li>

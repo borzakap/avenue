@@ -13,6 +13,8 @@
 <a id="about"></a>
 <?= view('App\Views\site\pages\home\_coworking') ?>
 
+<?= view('App\Views\site\pages\home\_promo') ?>
+
 <?= view('App\Views\site\pages\home\_video') ?>
 
 <?= view('App\Views\site\pages\home\_prefs') ?>
@@ -24,8 +26,6 @@
 <?= view('App\Views\site\pages\home\_complectacia') ?>
 
 <?= view('App\Views\site\pages\home\_faq') ?>
-
-<?= view('App\Views\site\pages\home\_promo') ?>
 
 <?= view('App\Views\site\pages\home\_projects') ?>
 
