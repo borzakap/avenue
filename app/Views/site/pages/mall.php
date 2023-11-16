@@ -11,6 +11,8 @@
 
 <?= view('App\Views\site\pages\mall\_description') ?>
 
+<?= view('App\Views\site\pages\mall\_genplan') ?>
+
 <?= view('App\Views\site\pages\mall\_prefs') ?>
 
 <?= view('App\Views\site\pages\mall\_faq') ?>

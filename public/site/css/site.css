@@ -1,6 +1,6 @@
 /*!
  * Idilika Avenue -  v1.1.0 (https://avenue.idilika.com.ua)
- * Copyright 2021-2022 borzakap
+ * Copyright 2021-2023 borzakap
  */
 
 @charset "UTF-8";
@@ -14328,7 +14328,8 @@ img.mfp-img {
   height: 100%;
 }
 
-.sections-schema svg polygon {
+.sections-schema svg polygon,
+.sections-schema svg rect {
   cursor: pointer;
   fill: #A07835;
   stroke: #A07835;
@@ -14337,7 +14338,8 @@ img.mfp-img {
   opacity: .1;
 }
 
-.sections-schema svg polygon:hover {
+.sections-schema svg polygon:hover,
+.sections-schema svg rect:hover {
   opacity: .7;
 }
 

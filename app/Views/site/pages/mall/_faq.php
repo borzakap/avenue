@@ -1,7 +1,7 @@
 <section>
     <a id="prefs"></a>
     <div class="w-100 pt-100 pb-100 white-layer position-relative overflow-hidden">
-        <div class="fixed-bg" style="background-image: url(/site/images/complex/mall5.jpg);"></div>
+        <div class="fixed-bg" style="background-image: url(/site/images/complex/mall6.jpg);"></div>
         <div class="container">
             <div class="sec-title col-md-8 col-sm-12 col-lg-8">
                 <div class="sec-title-inner d-inline-block">
