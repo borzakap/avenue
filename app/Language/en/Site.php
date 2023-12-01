@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
-        'Title' => 'Black friday<br>5% discount',
-        'Description' => 'For apartments and commerce<br>Only until the end of November',
+        'Title' => 'New Year<br>Discount 5%<br>on the first installment',
+        'Description' => 'Only until the end of December',
     ],
     'Bollets' => [
         'Bullet1' => [
