@@ -102,7 +102,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('aftermain') ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQoQ-cFvvsdyaRHshQczCA6W0NnLvxpU8&amp;"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbllBegXNey46b1Y9rEMbLJMd65xzDBQo"></script>
 <?= $this->endSection() ?>
 
 <?= $this->section('pagejs') ?>
