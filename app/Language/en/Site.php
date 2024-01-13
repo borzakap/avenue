@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Обрати',
     ],
     'Slider' => [
-        'Title' => 'New Year<br>Discount 5%<br>on the first installment',
-        'Description' => 'Only until the end of December',
+        'Title' => 'A two-room apartment with a down payment of only $22,000',
+        'Description' => 'Без здорожчання на 12 місяців',
     ],
     'Bollets' => [
         'Bullet1' => [
@@ -101,7 +101,7 @@ return [
         ],
         'Bullet3' => [
             'Title' => 'Здача:',
-            'Text' => 'ІV квартал 2023 р.',
+            'Text' => 'First quarter of 2024',
             'Ankor' => 'переглянути звіти',
         ],
     ],
