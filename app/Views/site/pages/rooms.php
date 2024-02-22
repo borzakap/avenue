@@ -49,10 +49,10 @@
 
 <?= $this->endSection() ?>
 
-<?= $this->section('pagejs') ?>
-<script src="/site/js/map.min.js"></script>
+<?= $this->section('aftermain') ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbllBegXNey46b1Y9rEMbLJMd65xzDBQo"></script>
 <?= $this->endSection() ?>
 
-<?= $this->section('aftermain') ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQoQ-cFvvsdyaRHshQczCA6W0NnLvxpU8&amp;"></script>
+<?= $this->section('pagejs') ?>
+<script src="/site/js/map.min.js"></script>
 <?= $this->endSection() ?>
