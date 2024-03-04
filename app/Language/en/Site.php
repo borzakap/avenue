@@ -79,14 +79,14 @@ return [
         'LearnMore' => 'Дізнатися більше',
         'SelectMy' => 'Обрати свою',
         'MoreLayouts' => 'Ще варіанти',
-        'Subscribe' => 'Записатись на перегляд',
-        'Presentation' => 'Завантажити каталог',
-        'Details' => 'Детальніше',
-        'FindWishedLayouts' => 'Обрати',
+        'Subscribe' => 'Sign up for viewing',
+        'Presentation' => 'Download the catalog',
+        'Details' => 'More details',
+        'FindWishedLayouts' => 'Select',
     ],
     'Slider' => [
-        'Title' => 'A two-room apartment with a down payment of only $22,000',
-        'Description' => 'Без здорожчання на 12 місяців',
+        'Title' => '10% discount for 100% payment',
+        'Description' => 'Only until the end of March',
     ],
     'Bollets' => [
         'Bullet1' => [
