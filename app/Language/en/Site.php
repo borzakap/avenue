@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Select',
     ],
     'Slider' => [
-        'Title' => '10% discount for 100% payment',
-        'Description' => 'Only until the end of March',
+        'Title' => '5% discount for 100% payment',
+        'Description' => 'Only until the end of April',
     ],
     'Bollets' => [
         'Bullet1' => [
@@ -101,7 +101,7 @@ return [
         ],
         'Bullet3' => [
             'Title' => 'Здача:',
-            'Text' => 'First quarter of 2024',
+            'Text' => 'ІІ quarter of 2024',
             'Ankor' => 'переглянути звіти',
         ],
     ],
