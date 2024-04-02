@@ -86,7 +86,7 @@ return [
     ],
     'Slider' => [
         'Title' => '5% discount for 100% payment',
-        'Description' => 'Only until the end of April',
+        'Description' => 'The final stage of the residential complex\'s readiness',
     ],
     'Bollets' => [
         'Bullet1' => [
@@ -101,7 +101,7 @@ return [
         ],
         'Bullet3' => [
             'Title' => 'Здача:',
-            'Text' => 'ІІ quarter of 2024',
+            'Text' => 'І quarter of 2024',
             'Ankor' => 'переглянути звіти',
         ],
     ],
