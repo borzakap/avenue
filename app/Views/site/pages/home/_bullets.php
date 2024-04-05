@@ -73,7 +73,7 @@
                         <div class="text-inline">
                             <h4 class="mb-0"><?= lang('Site.Bollets.Bullet3.Title') ?></h4><!-- comment -->
                             <p class="mb-0"><?= lang('Site.Bollets.Bullet3.Text') ?></p>
-                            <a href="#"><?= lang('Site.Bollets.Bullet3.Ankor') ?></a>
+                            <a href="<?= route_to('App\Controllers\Progress::list', 'default') ?>"><?= lang('Site.Bollets.Bullet3.Ankor') ?></a>
                         </div>
                     </div>
                 </div>
