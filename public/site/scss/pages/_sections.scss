@@ -24,6 +24,14 @@
                 opacity: .7;
             }
         }
+        text {
+            font-size: .8rem;
+            opacity: .7;
+            color: $color-white;
+            &:hover{
+                opacity: .7;
+            }
+        }
         
     }
 }

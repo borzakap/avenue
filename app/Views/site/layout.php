@@ -20,7 +20,7 @@
         <title><?= $meta_title ?></title>
 
         <link rel="stylesheet" href="/site/modules/fontawesome-free/css/all.min.css" type="text/css">
-        <link rel="stylesheet" href="/site/css/site.min.css">
+        <link rel="stylesheet" href="/site/css/site.css">
         <?= $this->renderSection('pagecss') ?>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FH5VW4BFCG"></script>

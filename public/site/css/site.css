@@ -14338,11 +14338,20 @@ img.mfp-img {
   opacity: .1;
 }
 
-.sections-schema svg polygon:hover,
-.sections-schema svg rect:hover {
+.sections-schema svg g:hover polygon,
+.sections-schema svg g:hover rect{
   opacity: .7;
 }
+.sections-schema svg g:hover text{
+    opacity: 1;
+}
 
+.sections-schema svg text{
+    font-size: .8rem;
+    fill: #fff;
+    opacity: .1;
+    z-index: -1;
+}
 /*@media(max-width: 767px){
     .rotation-wrapper-outer {
         display: table;
