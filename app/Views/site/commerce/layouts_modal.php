@@ -16,6 +16,7 @@
                         </div>
                         <div class="col-12 col-lg-5">
                             <dl class="row">
+                                <!--<dd class="col-4"><?= $data->sold_out ?> м</dd>-->
                                 <dt class="col-8"><?= lang('Site.Layouts.Dt.SeilHeight') ?></dt>
                                 <dd class="col-4"><?= $data->ceil_height ?> м</dd>
                                 <dt class="col-8"><?= lang('Site.Layouts.Dt.AllArea') ?></dt>

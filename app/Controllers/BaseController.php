@@ -62,7 +62,7 @@ class BaseController extends Controller {
         $this->data['contact_email'] = 'borzakap@gmail.com';
         $this->data['socials'] = [
             'Facebook' => 'https://www.facebook.com/idilikaavenue.com.ua/',
-            'Instagram' => 'https://www.instagram.com/idilika_avenue/',
+            'Instagram' => 'https://www.instagram.com/idilikaavenue.rb/',
             'Youtube' => 'https://www.youtube.com/@r-building',
         ];
         $this->data['breadcrumbs'][] = ['url' => route_to('site_home'), 'title' => lang('Site.Breadcrumb.Home')];
