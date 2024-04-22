@@ -192,7 +192,7 @@ class CommerceModel extends Model implements TranslationInterface{
             'residential_id' => (int)$data['residential_id'],
             'section_id' => (int)$data['section_id'],
             'code' => $data['code'],
-            'advertise' => $data['advertise'] ?? self::YES,
+            'advertise' => $data['advertise'] ?? self::NO,
             'sold_out' => $data['sold_out'] ?? self::NO,
             'price' => (float)$data['price'],
             'floor' => (int)$data['floor'],
@@ -201,7 +201,7 @@ class CommerceModel extends Model implements TranslationInterface{
             'levels' => (int)$data['levels'],
             'plans_images_id' => (int)$data['plans_images_id'],
             'floor_images_id' => (int)$data['floor_images_id'],
-            'publish' => $data['publish'] ?? self::YES,
+            'publish' => $data['publish'] ?? self::NO,
         ];
         return $retrieved;
     }

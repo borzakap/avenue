@@ -22,7 +22,13 @@
                                             <?= img(['src' => 'images/plans/' . $floor->image_name, 'class' => 'img-fluid', 'width' => $floor->image_width, 'height' => $floor->image_height]) ?>
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 <?= $floor->image_width ?> <?= $floor->image_height ?>">
                                                 <?php foreach ($floor->withCommercePoligons()->poligons as $poligon) : ?>
+                                                <g>
                                                     <polygon data-id="<?= $poligon->id ?>" data-slug="<?= $poligon->slug ?>" data-rooms="<?= $poligon->rooms ?>" data-action="<?= route_to('commerce-load') ?>" points="<?= $poligon->plan_poligon ?>"></polygon>                        
+                                                    <?php if($poligon->sold_out): ?>
+                                                        <?php $center = poligon_center($poligon->plan_poligon); ?>
+                                                        <text x="<?= $center['x'] ?>" y="<?= $center['y'] ?>" dominant-baseline="middle" text-anchor="middle">Продано</text> 
+                                                    <?php endif; ?>
+                                                </g>
                                                 <?php endforeach; ?>
                                             </svg>
                                         </div>

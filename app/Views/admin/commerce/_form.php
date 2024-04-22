@@ -116,7 +116,7 @@
     <!-- layout advertise -->
     <div class="form-group col-md-4">
         <div class="form-check">
-            <?= form_checkbox(['name' => 'advertise', 'class' => 'form-check-input', 'id' => 'advertise', 'value' => 'advertise', 'checked' => old('advertise') ?? $data->advertise ?? false]) ?>
+            <?= form_checkbox(['name' => 'advertise', 'class' => 'form-check-input', 'id' => 'advertise', 'value' => 1, 'checked' => old('advertise') ?? ($data->advertise ? true : false)]) ?>
             <?= form_label(lang('Admin.Form.Labels.Advertise'), 'advertise') ?>
         </div>
     </div>
@@ -124,7 +124,7 @@
     <!-- layout sold_out -->
     <div class="form-group col-md-4">
         <div class="form-check">
-            <?= form_checkbox(['name' => 'sold_out', 'class' => 'form-check-input', 'id' => 'sold_out', 'value' => 'sold_out', 'checked' => old('sold_out') ?? $data->sold_out ?? false]) ?>
+            <?= form_checkbox(['name' => 'sold_out', 'class' => 'form-check-input', 'id' => 'sold_out', 'value' => 1, 'checked' => old('sold_out') ?? ($data->sold_out ? true : false)]) ?>
             <?= form_label(lang('Admin.Form.Labels.SoldOut'), 'sold_out') ?>
         </div>
     </div>
@@ -132,7 +132,7 @@
     <!-- layout publish -->
     <div class="form-group col-md-4">
         <div class="form-check">
-            <?= form_checkbox(['name' => 'publish', 'class' => 'form-check-input', 'id' => 'publish', 'value' => 'publish', 'checked' => old('publish') ?? $data->publish ?? false]) ?>
+            <?= form_checkbox(['name' => 'publish', 'class' => 'form-check-input', 'id' => 'publish', 'value' => 1, 'checked' => old('publish') ?? ($data->publish ? true : false)]) ?>
             <?= form_label(lang('Admin.Form.Labels.Publish'), 'publish') ?>
         </div>
     </div>

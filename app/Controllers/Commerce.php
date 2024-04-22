@@ -54,6 +54,7 @@ class Commerce extends BaseController{
      */
     public function genplan(string $slug = 'default')
     {
+        helper('poligon');
         if($slug == 'default'){
             $default = model(ResidentialsModel::class)->first();
             return redirect()->route('commerce-genplan', [$default->slug]);
@@ -66,7 +67,7 @@ class Commerce extends BaseController{
         $this->data['genplan'] = $residential->withSections()->withPlans();
         $this->data['floors'] = model(PlansImagesModel::class)->getPlanCommerce($residential->id);
         // breadcrumb
-        $this->data['breadcrumbs'][] = ['url' => route_to('commerce-genplan', $slug), 'title' => lang('Site.breadcrumbs.Commerce')];
+        $this->data['breadcrumbs'][] = ['url' => route_to('commerce-genplan', $slug), 'title' => lang('Site.Breadcrumb.Commerce')];
         return view('site/commerce/genplan', $this->data);
     }
     
