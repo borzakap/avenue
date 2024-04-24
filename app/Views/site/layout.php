@@ -31,64 +31,24 @@
 
           gtag('config', 'G-FH5VW4BFCG');
         </script>
-<!--        <script src="//code-eu1.jivosite.com/widget/lWR2LJZlyK" async></script> comment         -->
-        <!-- Marquiz script start -->
-<!--        <script>
-            (function (w, d, s, o) {
-                var j = d.createElement(s);
-                j.async = true;
-                j.src = '//script.marquiz.ru/v2.js';
-                j.onload = function () {
-                    if (document.readyState !== 'loading')
-                        Marquiz.init(o);
-                    else
-                        document.addEventListener("DOMContentLoaded", function () {
-                            Marquiz.init(o);
-                        });
-                };
-                d.head.insertBefore(j, d.head.firstElementChild);
-            })(window, document, 'script', {
-                host: '//quiz.marquiz.ru',
-                region: 'eu',
-                id: '610015711eae72003e495432',
-                autoOpen: 15,
-                autoOpenFreq: 'once',
-                openOnExit: true,
-                disableOnMobile: false
-            }
-            );
-        </script>-->
-        <!-- Marquiz script end -->
-        <!-- Facebook Pixel Code -->
+        <!-- Meta Pixel Code -->
         <script>
-            !function (f, b, e, v, n, t, s)
-            {
-                if (f.fbq)
-                    return;
-                n = f.fbq = function () {
-                    n.callMethod ?
-                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                };
-                if (!f._fbq)
-                    f._fbq = n;
-                n.push = n;
-                n.loaded = !0;
-                n.version = '2.0';
-                n.queue = [];
-                t = b.createElement(e);
-                t.async = !0;
-                t.src = v;
-                s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s)
-            }(window, document, 'script',
-                    'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '222136853284692');
-            fbq('track', 'PageView');
+        !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}
+        (window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1092865188668898');
+        fbq('track', 'PageView');
         </script>
-    <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id=222136853284692&ev=PageView&noscript=1"
+        <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1092865188668898&ev=PageView&noscript=1"
                    /></noscript>
-    <!-- End Facebook Pixel Code -->
+    <!-- End Meta Pixel Code -->
     <!--    adsquiz.io-->
     <link href="https://services.adsquiz.io/adsquiz_integration/adsquizstyle_integration.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://services.adsquiz.io/adsquiz_integration/adsquizscript_intpopup.js" data-vidget-popup></script>
