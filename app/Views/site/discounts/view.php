@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-12 col-lg-8 image-box-container-discounts order-0 order-lg-1">
                     <div class="image-box">
-                        <img src="/images/discounts/<?= $item->image ?>" alt="<?= $item->title ?>" />
+                        <img src="/images/discounts/<?= $item->rules ?>" alt="<?= $item->title ?>" />
                     </div>
                 </div>
             </div>
