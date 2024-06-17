@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Select',
     ],
     'Slider' => [
-        'Title' => '5% discount for 100% payment',
-        'Description' => 'The final stage of the residential complex\'s readiness',
+        'Title' => 'Installment for 3 years without price increase',
+        'Description' => 'Live in your own home today',
     ],
     'Bollets' => [
         'Bullet1' => [
