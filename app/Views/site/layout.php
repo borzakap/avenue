@@ -49,11 +49,11 @@
                    /></noscript>
     <!-- End Meta Pixel Code -->
     <!--    adsquiz.io-->
-    <link href="https://services.adsquiz.io/adsquiz_integration/adsquizstyle_integration.css" rel="stylesheet" type="text/css">
+<!--    <link href="https://services.adsquiz.io/adsquiz_integration/adsquizstyle_integration.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://services.adsquiz.io/adsquiz_integration/adsquizscript_intpopup.js" data-vidget-popup></script>
     <script type="text/javascript"> 
         window.onload = function() {createAdsquizIframe("https://avenue.adsquiz.io?int_q=popup&utm_source=vidget_popup",10000,2);};
-    </script>
+    </script>-->
     <!--    adsquiz.io-->
 </head>
 <body>
