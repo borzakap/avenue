@@ -134,7 +134,8 @@ return [
         'TimeOfWorkTitle' => 'Графiк роботи',
         'TimeOfWorkLineOne' => 'пн-пт: з 09:00 по 18:00',
         'TimeOfWorkLineTwo' => 'сб: з 10:00 по 16:00',
-        'AddressTitle' => 'Контакти відділу продажів',
+        'AddressTitle' => 'Відділ продажів',
+        'AddressSupplyTitle' => 'Відділ постачання',
         'AddressLineOne' => 'м. Буча, вул. Шевченка, 26-в',
     ],
     'Map' => [

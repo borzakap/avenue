@@ -26,13 +26,8 @@
                             </div>
                             <div class="col-md-4 col-sm-4 col-lg-4">
                                 <div class="widget w-100">
-<!--                                    <h3>Quick Links</h3>
-                                    <ul class="mb-0 list-unstyled w-100">
-                                        <li><a href="projects.html" title="">Our Work</a></li>
-                                        <li><a href="team.html" title="">Our Workers</a></li>
-                                        <li><a href="shop.html" title="">Our Shop</a></li>
-                                        <li><a href="services.html" title="">Services We Offers</a></li>
-                                    </ul>-->
+                                    <h3><?= lang('Site.Footer.AddressSupplyTitle') ?></h3>
+                                    <p class="mb-0"><a href="mailto:rbuildingm@gmail.com">rbuildingm@gmail.com</a></p>
                                 </div>
                             </div>
                         </div>
