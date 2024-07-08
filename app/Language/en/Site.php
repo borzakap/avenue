@@ -113,7 +113,7 @@ return [
             'FlatsCount' => 'Apartment in the building',
             'FloorsCount' => 'Floors',
             'HousesCount' => 'House',
-            'FeeCount' => 'Months of installments',
+            'FeeCount' => 'Entrances',
         ],
         'News' => [
             'BeforeTitle' => 'Плануваня',

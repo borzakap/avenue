@@ -114,7 +114,7 @@ return [
             'FlatsCount' => 'Квартир в будинку',
             'FloorsCount' => 'Поверхів',
             'HousesCount' => 'Будинок',
-            'FeeCount' => 'Місяців розстрочки',
+            'FeeCount' => 'Під\'їзди',
         ],
         'News' => [
             'BeforeTitle' => 'Плануваня',

@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-lg-3">
                     <div class="fact-box w-100">
-                        <h2 class="mb-0"><span class="counter">12</span></h2>
+                        <h2 class="mb-0"><span class="counter">2</span></h2>
                         <h4 class="mb-0"><?= lang('Site.Sections.Prefs.FeeCount') ?></h4>
                     </div>
                 </div>
