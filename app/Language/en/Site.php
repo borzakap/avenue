@@ -90,24 +90,24 @@ return [
     ],
     'Bollets' => [
         'Bullet1' => [
-            'Title' => 'Адреса:',
-            'Text' => 'м. Буча, вул. Б.Гмирi, 7',
-            'Ankor' => 'переглянути на карті',
+            'Title' => 'Address:',
+            'Text' => 'Bucha, str. B. Hmyri, 7',
+            'Ankor' => 'view on the map',
         ],
         'Bullet2' => [
-            'Title' => 'Квартири:',
-            'Text' => '160 усього квартир',
-            'Ankor' => 'переглянути планування',
+            'Title' => 'Apartments:',
+            'Text' => '160 apartments in total',
+            'Ankor' => 'view the layouts',
         ],
         'Bullet3' => [
-            'Title' => 'Здача:',
-            'Text' => 'ІV quarter of 2024',
+            'Title' => 'Commissioned:',
+            'Text' => 'Commissioned',
             'Ankor' => 'view reports',
         ],
     ],
     'Sections' => [
         'Page' => [
-            'Floors' => 'Поверхи',
+            'Floors' => 'Floors',
         ],
         'Prefs' => [
             'FlatsCount' => 'Apartment in the building',
@@ -116,17 +116,17 @@ return [
             'FeeCount' => 'Entrances',
         ],
         'News' => [
-            'BeforeTitle' => 'Плануваня',
-            'Title' => 'Оберіть свою квартиру',
+            'BeforeTitle' => 'Planning',
+            'Title' => 'Choose your apartment',
         ],
         'Projects' => [
-            'BeforeTitle' => 'Переваги',
+            'BeforeTitle' => 'Advantages',
         ],
         'Abouts' => [
-            'Wellcome' => 'Вітаємо!'
+            'Wellcome' => 'Congratulations!'
         ],
         'Faq' => [
-            'BeforeTitle' => 'Чому ми',
+            'BeforeTitle' => 'Why us',
         ],
     ],
     'Footer' => [
