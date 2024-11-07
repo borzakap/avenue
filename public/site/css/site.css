@@ -12437,6 +12437,10 @@ body.sticky .sticky-menu {
   margin-bottom: 5rem;
 }
 
+.feat-cap .theme-heading-white{
+    text-transform: none;
+}
+
 .feat-cap > h1 + p, .feat-cap > h2 + p {
   margin-top: 10px;
 }
