@@ -22,7 +22,7 @@ class DiscountsModel extends Model implements TranslationInterface {
     protected $protectFields = true;
     protected $allowedFields = ['slug', 'residential_id', 'image', 'publish', 'language', 
         'title', 'meta_title', 'description', 'meta_description', 'slogan', 'value_type', 
-        'value', 'date_to', 'date_from', 'rules', 'info'];
+        'value', 'date_to', 'date_from', 'rules', 'info', 'image_transparent'];
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
