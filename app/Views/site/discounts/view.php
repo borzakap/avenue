@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-12 col-lg-8 image-box-container-discounts order-0 order-lg-1">
                     <div class="image-box">
-                        <img src="/images/discounts/<?= $item->image_transparent ?>" alt="<?= $item->title ?>" />
+                        <img src="/images/discounts/<?= $item->rules ?>" alt="<?= $item->title ?>" />
                     </div>
                 </div>
             </div>
@@ -30,8 +30,8 @@
                 <div class="col-12 col-lg-8 mb-3 progress-description order-1 order-lg-0">
                     <h1 class="layout-bold-title"><?= $item->title ?></h1>
                     <?= $item->description ?>
-                    <?php if($item->rules) : ?>
-                    <p class="layout-normal-title mt-3"><a href="/images/discounts/<?= $item->rules ?>">Умови акції</a></p>
+                    <?php if($item->image_transparent) : ?>
+                    <p class="layout-normal-title mt-3"><a href="/images/discounts/<?= $item->image_transparent ?>">Умови акції</a></p>
                     <?php endif; ?>
                 </div>
                 <div class="col-12 col-lg-4 mb-3 p-3 with-border p-3 order-0 order-lg-1">
