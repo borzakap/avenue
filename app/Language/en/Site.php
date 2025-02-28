@@ -86,7 +86,7 @@ return [
     ],
     'Slider' => [
         'Title' => 'єОселя<br/>єВідновлення',
-        'Description' => 'Live in your own home today',
+        'Description' => 'Ready-made apartments with documents in Bucha',
     ],
     'Bollets' => [
         'Bullet1' => [
