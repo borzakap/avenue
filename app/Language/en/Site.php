@@ -85,7 +85,7 @@ return [
         'FindWishedLayouts' => 'Select',
     ],
     'Slider' => [
-        'Title' => 'Installment for 3 years without price increase',
+        'Title' => 'єОселя<br/>єВідновлення',
         'Description' => 'Live in your own home today',
     ],
     'Bollets' => [
@@ -151,7 +151,7 @@ return [
         'MapHeading' => 'The infrastructure of the complex is developed',
     ],
     'Discounts' => [
-        'DateTo' => 'до {date} р.',
+        'DateTo' => 'to {date} y.',
         'Complated' => 'Completed',
 
     ],
