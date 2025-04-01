@@ -14,13 +14,13 @@ return [
             'CommerceGenplan' => 'Commerce',
             'Prefs' => 'Advantages',
             'Qoute' => 'Feedback',
-            'Progress' => 'Construction progress',
+            'Progress' => 'News',
             'Discounts' => 'Discounts',
         ],
     ],
     'Breadcrumb' => [
         'Home' => 'Home',
-        'Progress' => 'Construction progress',
+        'Progress' => 'News',
         'Discounts' => 'Discounts',
     ],
     'Layouts' => [

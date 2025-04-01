@@ -15,7 +15,7 @@
                                     <h3><?= lang('Site.Footer.TimeOfWorkTitle') ?></h3>
                                     <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineOne') ?></p>
                                     <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineTwo') ?></p>
-                                    <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineTree') ?></p>
+                                    <!--<p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineTree') ?></p>-->
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4 col-lg-4">
