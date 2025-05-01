@@ -15,8 +15,6 @@
 
 <?= view('App\Views\site\pages\home\_promo') ?>
 
-<?= view('App\Views\site\pages\home\_video') ?>
-
 <?= view('App\Views\site\pages\home\_prefs') ?>
 
 <?= view('App\Views\site\pages\home\_numbers') ?>
