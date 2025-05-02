@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-12">
-                    <p><?= number_to_roman(ceil($layout->section->section_build_end->getMonth() / 3)) ?> <?= lang('Site.Layouts.Dt.Quarter') ?> <?= $layout->section->section_build_end->getYear() ?> <?= lang('Site.Layouts.Dt.Year') ?></p>
+                    <!-- <p><?= number_to_roman(ceil($layout->section->section_build_end->getMonth() / 3)) ?> <?= lang('Site.Layouts.Dt.Quarter') ?> <?= $layout->section->section_build_end->getYear() ?> <?= lang('Site.Layouts.Dt.Year') ?></p> -->
                     <?php if($layout->price && $layout->price > 0): ?>
                     <div class="layout-price-wrap">
                         <span><?= round($layout->price); ?>$/м<sup>2</sup></span>
