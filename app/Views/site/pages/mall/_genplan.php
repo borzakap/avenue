@@ -24,7 +24,7 @@
                             </g>
                             <g id="11">
                                 <rect x="48.07" y="106.26" class="st0" width="79.59" height="151.27"/>
-                                <text x="66.07" y="193.26"></text>
+                                <text x="66.07" y="193.26">Продано</text>
                             </g>
                             <g id="9">
                                 <rect x="170.15" y="220.11" class="st0" width="63.08" height="141.37"/>

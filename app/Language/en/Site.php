@@ -85,7 +85,7 @@ return [
         'FindWishedLayouts' => 'Select',
     ],
     'Slider' => [
-        'Title' => 'єОселя<br/>єВідновлення',
+        'Title' => 'Buy with housing certificates',
         'Description' => 'Ready-made apartments with documents in Bucha',
     ],
     'Bollets' => [
