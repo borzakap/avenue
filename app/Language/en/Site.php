@@ -53,7 +53,7 @@ return [
             'Rules' => 'Terms of purchase',
             'Wishlist' => 'Your chosen layouts',
         ],
-        
+
     ],
     'Popapform' => [
         'Title' => 'Inquiry to the sales department',
@@ -62,7 +62,7 @@ return [
         'YourMail' => 'Email address',
         'YourMessage' => 'What exactly are you interested in?',
         'Submit' => 'Send',
-        
+
         'Messages' => [
             'Error' => [
                 'UndefinedError' => 'Error processing message',
@@ -85,8 +85,8 @@ return [
         'FindWishedLayouts' => 'Select',
     ],
     'Slider' => [
-        'Title' => 'Buy with housing certificates',
-        'Description' => 'Ready-made apartments with documents in Bucha',
+        'Title' => 'Buy commercial space in Avenue Mall',
+        'Description' => 'Modern shopping center in Bucha',
     ],
     'Bollets' => [
         'Bullet1' => [
