@@ -5,7 +5,9 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-3">
                         <div class="widget w-100">
-                            <div class="logo w-100"><h1 class="mb-0"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-white.png" alt="Logo" srcset="/site/images/logo-white.png"></a></h1></div><!-- Logo -->
+                            <div class="logo w-100">
+                                <h1 class="mb-0"><a href="<?= route_to('App\Controllers\Pages::index') ?>" title="Home"><img class="img-fluid" src="/site/images/logo-white.png" alt="Logo" srcset="/site/images/logo-white.png"></a></h1>
+                            </div><!-- Logo -->
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 col-lg-9">
@@ -15,7 +17,7 @@
                                     <h3><?= lang('Site.Footer.TimeOfWorkTitle') ?></h3>
                                     <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineOne') ?></p>
                                     <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineTwo') ?></p>
-                                    <!-- <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineTree') ?></p> -->
+                                    <p class="mb-0"><?= lang('Site.Footer.TimeOfWorkLineTree') ?></p>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4 col-lg-4">
@@ -43,5 +45,5 @@
                 <?php endforeach; ?>
             </div>
         </div>
-    </div>    
+    </div>
 </footer>
